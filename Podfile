@@ -8,7 +8,9 @@ target 'FinalProject' do
   # Pods for FinalProject
   pod 'Moya/RxSwift'
   pod 'SwiftLint'
-
+  pod 'GoogleSignIn'
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
   target 'FinalProjectTests' do
     inherit! :search_paths
     # Pods for testing

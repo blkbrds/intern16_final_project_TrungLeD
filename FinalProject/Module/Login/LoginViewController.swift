@@ -7,18 +7,24 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 class LoginViewController: UIViewController {
+    
+    // MARK: - IBoutlet
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passWordTextField: UITextField!
+    @IBOutlet weak var buttonLogin: UIButton!
+    @IBOutlet weak var signInButton: GIDSignInButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        GIDSignIn.sharedInstance()?.presentingViewController = self
     }
-
+    
+    // MARK: - Function
     @IBAction func loginPressed(_ sender: UIButton) {
+        
     }
     
 }
