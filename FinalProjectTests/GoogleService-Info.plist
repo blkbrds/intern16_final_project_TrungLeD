@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>357758924999-jdsaavfp6nv2ea2laqk3dsrt1sr3qdq7.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.357758924999-jdsaavfp6nv2ea2laqk3dsrt1sr3qdq7</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDkVP-hBQMPW-17z7oksMRIqdUsSrJIzqc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>357758924999</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>vn.asiantech.FinalProject</string>
+	<key>PROJECT_ID</key>
+	<string>bookingthepitch</string>
+	<key>STORAGE_BUCKET</key>
+	<string>bookingthepitch.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:357758924999:ios:13b6d12e1dcc7159f866e2</string>
+	<key>DATABASE_URL</key>
+	<string>https://bookingthepitch.firebaseio.com</string>
+</dict>
+</plist>

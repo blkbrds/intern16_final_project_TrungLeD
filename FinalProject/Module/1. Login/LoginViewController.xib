@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="FinalProject" customModuleProvider="target">
+            <connections>
+                <outlet property="emailTextField" destination="4ao-js-GRz" id="AuW-yI-nrb"/>
+                <outlet property="passWordTextField" destination="rru-Qs-STY" id="bpN-dq-J6I"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="c04-hJ-uay">
+                    <rect key="frame" x="68" y="275.5" width="195" height="76.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2V-RW-mHG">
+                            <rect key="frame" x="0.0" y="0.0" width="88" height="41"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please sign in to continue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UtG-dG-c1n">
+                            <rect key="frame" x="0.0" y="56" width="195" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="76.5" id="LkJ-bj-3Ql"/>
+                        <constraint firstAttribute="width" constant="195" id="czP-2q-n7u"/>
+                    </constraints>
+                </stackView>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" background="square.and.arrow.up.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="4ao-js-GRz">
+                    <rect key="frame" x="68" y="379" width="301" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="Ypt-tE-7zK"/>
+                        <constraint firstAttribute="width" constant="301" id="fAm-0V-uA3"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                </textField>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" background="square.and.arrow.up.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rru-Qs-STY">
+                    <rect key="frame" x="68" y="473" width="301" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="SNb-rs-jfs"/>
+                        <constraint firstAttribute="width" constant="301" id="sie-6I-Q32"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgP-8k-M0s">
+                    <rect key="frame" x="190" y="618" width="34" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="login"/>
+                    <connections>
+                        <action selector="loginPressed:" destination="-1" eventType="touchUpInside" id="daU-0A-i6c"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="rru-Qs-STY" firstAttribute="height" secondItem="4ao-js-GRz" secondAttribute="height" id="351-Sk-xz5"/>
+                <constraint firstItem="rru-Qs-STY" firstAttribute="trailing" secondItem="4ao-js-GRz" secondAttribute="trailing" id="EZQ-Tw-fke"/>
+                <constraint firstItem="rru-Qs-STY" firstAttribute="width" secondItem="4ao-js-GRz" secondAttribute="width" id="KOM-F0-W38"/>
+                <constraint firstItem="rru-Qs-STY" firstAttribute="leading" secondItem="4ao-js-GRz" secondAttribute="leading" id="Qoh-y8-ipd"/>
+                <constraint firstItem="4ao-js-GRz" firstAttribute="top" secondItem="c04-hJ-uay" secondAttribute="bottom" constant="27" id="Sus-wb-7SN"/>
+                <constraint firstItem="rru-Qs-STY" firstAttribute="top" secondItem="4ao-js-GRz" secondAttribute="bottom" constant="44" id="cWp-Of-WEe"/>
+                <constraint firstItem="c04-hJ-uay" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" multiplier="0.7" id="e38-LV-s9V"/>
+                <constraint firstItem="4ao-js-GRz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="68" id="f2H-H5-UHh"/>
+                <constraint firstItem="c04-hJ-uay" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" multiplier="0.8" id="k4B-ud-gPh"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="4ao-js-GRz" secondAttribute="trailing" constant="45" id="zMQ-Vb-1Qs"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="131.8840579710145" y="153.34821428571428"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="square.and.arrow.up.fill" catalog="system" width="115" height="128"/>
+    </resources>
+</document>

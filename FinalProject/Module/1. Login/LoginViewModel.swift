@@ -9,11 +9,11 @@
 import Foundation
 final class LoginViewModel {
     
-    //MARK: - Properties
+    // MARK: - Properties
     var email: String
     var passWord: String
     
-    //MARK: - Init
+    // MARK: - Init
     init(email: String, passWord: String) {
         self.email = email
         self.passWord = passWord
