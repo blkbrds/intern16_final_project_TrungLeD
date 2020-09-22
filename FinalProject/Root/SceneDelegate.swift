@@ -36,7 +36,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 extension SceneDelegate {
     
     private func configSideMenu() {
-        let menu: SideMenuNavigationController = SideMenuNavigationController.init(rootViewController: MenuListController(with: ["HOME", "COLLECTION", "SCHEDULE", "FAVORITES"]))
+        let menu: SideMenuNavigationController = SideMenuNavigationController(rootViewController: MenuListController(with: ["HOME", "COLLECTION", "SCHEDULE", "FAVORITES"]))
         sideMenuManager.leftMenuNavigationController = menu
     }
 }
