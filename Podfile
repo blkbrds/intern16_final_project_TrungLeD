@@ -8,9 +8,8 @@ target 'FinalProject' do
   # Pods for FinalProject
   pod 'Moya/RxSwift'
   pod 'SwiftLint'
-  pod 'Firebase/Analytics'
-  pod 'Firebase/Auth'
   pod 'SideMenu'
+  pod 'ObjectMapper', '~> 3.5'
   target 'FinalProjectTests' do
     inherit! :search_paths
     # Pods for testing

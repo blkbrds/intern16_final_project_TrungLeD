@@ -12,7 +12,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passWordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-
+    @IBOutlet weak var errorLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupElements()
@@ -20,31 +21,13 @@ class LoginViewController: UIViewController {
         
    // MARK: - Function
     private func setupElements() {
-        Utilities.styleTextField(passWordTextField)
-        Utilities.styleTextField(emailTextField)
-//        Utilities.styleFilledButton(loginButton)
+        Utilities.styleTextFiend(emailTextField)
+        Utilities.styleTextFiend(passWordTextField)
+        Utilities.styleFilledButton(loginButton)
+        // Utilities.styleHollowButton(<#T##button: UIButton##UIButton#>)
     }
     
     @IBAction func loginPressed(_ sender: UIButton) {
         
-          // TODO: Validate Text Fields
-          
-          // Create cleaned versions of the text field
-          let email = emailTextField.text
-          let password = passWordTextField.text
-          
-          // Signing in the user
-        Auth.auth().signIn(withEmail: email ?? "", password: password ?? "") { ( result, error ) in
-            if error != nil {
-                print("error")
-              }
-              else {
-                  let homevc = HomeViewController()
-                var window: UIWindow?
-                window?.rootViewController = homevc
-                window?.makeKeyAndVisible()
-              }
-          }
     }
-    
 }

@@ -18,16 +18,16 @@
 		0EBA37442511C97B003465DD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA373F2511C97B003465DD /* NetworkManager.swift */; };
 		0EBA37452511C97B003465DD /* Networkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA37402511C97B003465DD /* Networkable.swift */; };
 		0EBA37462511C97B003465DD /* ServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA37412511C97B003465DD /* ServiceAPI.swift */; };
-		0EBA37492511C9DE003465DD /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA37482511C9DE003465DD /* Post.swift */; };
+		0EBA37492511C9DE003465DD /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA37482511C9DE003465DD /* Customer.swift */; };
 		0EBA374B2511CA7A003465DD /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA374A2511CA7A003465DD /* App.swift */; };
 		0EBA374D2511CAB7003465DD /* ArrayExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA374C2511CAB7003465DD /* ArrayExt.swift */; };
 		8EEB3D4DE025B99592CD1248 /* Pods_FinalProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03B8B1F4D95006C6444E9465 /* Pods_FinalProjectTests.framework */; };
-		B0121B19251359650035E4F2 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0121B18251359650035E4F2 /* Utilities.swift */; };
 		B0121B1D25136A550035E4F2 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0121B1B25136A550035E4F2 /* HomeTableViewCell.swift */; };
 		B0121B1E25136A550035E4F2 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0121B1C25136A550035E4F2 /* HomeTableViewCell.xib */; };
 		B03FF5DA2518A58D0065C493 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03FF5D92518A58D0065C493 /* HomeViewModel.swift */; };
 		B03FF5ED2519E5CB0065C493 /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03FF5EB2519E5CB0065C493 /* DatePickerTableViewCell.swift */; };
 		B03FF5EE2519E5CB0065C493 /* DatePickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B03FF5EC2519E5CB0065C493 /* DatePickerTableViewCell.xib */; };
+		B080EBD8251AF82300C6EFDB /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B080EBD7251AF82300C6EFDB /* Utilities.swift */; };
 		B0A4A416251349A200E39134 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A4A414251349A200E39134 /* HomeViewController.swift */; };
 		B0A4A417251349A200E39134 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A4A415251349A200E39134 /* HomeViewController.xib */; };
 		B0A4A4192513560300E39134 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B0A4A4182513560300E39134 /* GoogleService-Info.plist */; };
@@ -65,18 +65,18 @@
 		0EBA373F2511C97B003465DD /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		0EBA37402511C97B003465DD /* Networkable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networkable.swift; sourceTree = "<group>"; };
 		0EBA37412511C97B003465DD /* ServiceAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceAPI.swift; sourceTree = "<group>"; };
-		0EBA37482511C9DE003465DD /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		0EBA37482511C9DE003465DD /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 		0EBA374A2511CA7A003465DD /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		0EBA374C2511CAB7003465DD /* ArrayExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExt.swift; sourceTree = "<group>"; };
 		1AE93E88E0AAA2660B6596CE /* Pods-FinalProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.debug.xcconfig"; path = "Target Support Files/Pods-FinalProject/Pods-FinalProject.debug.xcconfig"; sourceTree = "<group>"; };
 		550C4E5595AD36ADC972504A /* Pods-FinalProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProjectTests.release.xcconfig"; path = "Target Support Files/Pods-FinalProjectTests/Pods-FinalProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		8E81EE897478CE01D48B2924 /* Pods-FinalProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-FinalProjectTests/Pods-FinalProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
-		B0121B18251359650035E4F2 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		B0121B1B25136A550035E4F2 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		B0121B1C25136A550035E4F2 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
 		B03FF5D92518A58D0065C493 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		B03FF5EB2519E5CB0065C493 /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
 		B03FF5EC2519E5CB0065C493 /* DatePickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerTableViewCell.xib; sourceTree = "<group>"; };
+		B080EBD7251AF82300C6EFDB /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		B0A4A414251349A200E39134 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B0A4A415251349A200E39134 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		B0A4A4182513560300E39134 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -183,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				0EBA374C2511CAB7003465DD /* ArrayExt.swift */,
+				B080EBD7251AF82300C6EFDB /* Utilities.swift */,
 			);
 			path = Ext;
 			sourceTree = "<group>";
@@ -190,7 +191,7 @@
 		0EBA37382511C8A8003465DD /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0EBA37482511C9DE003465DD /* Post.swift */,
+				0EBA37482511C9DE003465DD /* Customer.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -218,7 +219,6 @@
 				0EBA37182511C6C2003465DD /* Main.storyboard */,
 				0EBA371D2511C6C7003465DD /* LaunchScreen.storyboard */,
 				0EBA37202511C6C7003465DD /* Info.plist */,
-				B0121B18251359650035E4F2 /* Utilities.swift */,
 			);
 			path = Supports;
 			sourceTree = "<group>";
@@ -504,16 +504,16 @@
 			files = (
 				0EBA37442511C97B003465DD /* NetworkManager.swift in Sources */,
 				0EBA37422511C97B003465DD /* Error.swift in Sources */,
-				B0121B19251359650035E4F2 /* Utilities.swift in Sources */,
 				B03FF5DA2518A58D0065C493 /* HomeViewModel.swift in Sources */,
 				B03FF5ED2519E5CB0065C493 /* DatePickerTableViewCell.swift in Sources */,
 				0EBA37462511C97B003465DD /* ServiceAPI.swift in Sources */,
+				B080EBD8251AF82300C6EFDB /* Utilities.swift in Sources */,
 				0EBA374B2511CA7A003465DD /* App.swift in Sources */,
 				0EBA37452511C97B003465DD /* Networkable.swift in Sources */,
 				B0121B1D25136A550035E4F2 /* HomeTableViewCell.swift in Sources */,
 				0EBA37172511C6C2003465DD /* ViewController.swift in Sources */,
 				0EBA374D2511CAB7003465DD /* ArrayExt.swift in Sources */,
-				0EBA37492511C9DE003465DD /* Post.swift in Sources */,
+				0EBA37492511C9DE003465DD /* Customer.swift in Sources */,
 				B0C3AF6A2512148300959BDD /* LoginViewModel.swift in Sources */,
 				0EBA37132511C6C2003465DD /* AppDelegate.swift in Sources */,
 				0EBA37152511C6C2003465DD /* SceneDelegate.swift in Sources */,
@@ -722,7 +722,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = FinalProjectTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -744,7 +744,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = FinalProjectTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

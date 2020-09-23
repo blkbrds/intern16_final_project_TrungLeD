@@ -9,29 +9,31 @@
 import Moya
 
 enum ServiceAPI {
-    case posts
-    case postsWith(id: Int)
+    case getAllDictrict
+    case login(phone: String, pw: String)
 }
 
 extension ServiceAPI: TargetType {
 
     var baseURL: URL {
-        return URL.init(string: "https://jsonplaceholder.typicode.com/")!
+        return URL.init(string: "http://18.188.45.34:8080/")!
     }
     
     var path: String {
         switch self {
-        case .posts, .postsWith:
-            return "posts"
+        case.getAllDictrict:
+            return "trungapi/common/get-all-district"
+        case .login:
+            return "trungapi/common/login"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .posts:
+        case .getAllDictrict:
             return .get
-        case .postsWith:
-            return .get
+        case .login:
+            return .post
         }
     }
     
@@ -41,16 +43,23 @@ extension ServiceAPI: TargetType {
     
     var task: Task {
         switch self {
-        case .posts:
+            // ko can chuyen tham so
+        case .getAllDictrict, .login:
             return .requestPlain
-        case .postsWith(let id):
-            return .requestParameters(parameters: ["id": id], encoding: JSONEncoding.default)
+            // can chuyen tham so return .request Parameters
         }
     }
     
     var headers: [String: String]? {
         var headers: [String: String] = [:]
         headers["Content-type"] = "application/json"
+        switch self {
+        case .login(let phone, let pw):
+            headers["username"] = phone
+            headers["password"] = pw
+        case .getAllDictrict:
+            break
+        }
         return headers
     }
 }

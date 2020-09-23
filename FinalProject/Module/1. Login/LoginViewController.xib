@@ -10,6 +10,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="FinalProject" customModuleProvider="target">
             <connections>
                 <outlet property="emailTextField" destination="4ao-js-GRz" id="AuW-yI-nrb"/>
+                <outlet property="errorLabel" destination="DGV-T3-jA5" id="puU-Lm-feD"/>
+                <outlet property="loginButton" destination="hgP-8k-M0s" id="FBi-Ll-46T"/>
                 <outlet property="passWordTextField" destination="rru-Qs-STY" id="bpN-dq-J6I"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -40,7 +42,7 @@
                         <constraint firstAttribute="width" constant="195" id="czP-2q-n7u"/>
                     </constraints>
                 </stackView>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" background="square.and.arrow.up.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="4ao-js-GRz">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4ao-js-GRz">
                     <rect key="frame" x="68" y="379" width="301" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="Ypt-tE-7zK"/>
@@ -49,7 +51,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
                 </textField>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" background="square.and.arrow.up.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rru-Qs-STY">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rru-Qs-STY">
                     <rect key="frame" x="68" y="473" width="301" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="SNb-rs-jfs"/>
@@ -58,14 +60,24 @@
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                     <textInputTraits key="textInputTraits" returnKeyType="next"/>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgP-8k-M0s">
-                    <rect key="frame" x="190" y="618" width="34" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="login"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hgP-8k-M0s">
+                    <rect key="frame" x="274" y="568" width="95" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="95" id="T4Q-AI-lTp"/>
+                        <constraint firstAttribute="height" constant="50" id="z2b-75-uEG"/>
+                    </constraints>
+                    <state key="normal" title="LOGIN -&gt;"/>
                     <connections>
                         <action selector="loginPressed:" destination="-1" eventType="touchUpInside" id="daU-0A-i6c"/>
                     </connections>
                 </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGV-T3-jA5">
+                    <rect key="frame" x="61" y="684" width="314" height="46"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
@@ -77,6 +89,8 @@
                 <constraint firstItem="rru-Qs-STY" firstAttribute="top" secondItem="4ao-js-GRz" secondAttribute="bottom" constant="44" id="cWp-Of-WEe"/>
                 <constraint firstItem="c04-hJ-uay" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" multiplier="0.7" id="e38-LV-s9V"/>
                 <constraint firstItem="4ao-js-GRz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="68" id="f2H-H5-UHh"/>
+                <constraint firstItem="hgP-8k-M0s" firstAttribute="top" secondItem="rru-Qs-STY" secondAttribute="bottom" constant="45" id="hT8-wx-66u"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hgP-8k-M0s" secondAttribute="trailing" constant="45" id="jAe-Yq-w0M"/>
                 <constraint firstItem="c04-hJ-uay" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" multiplier="0.8" id="k4B-ud-gPh"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="4ao-js-GRz" secondAttribute="trailing" constant="45" id="zMQ-Vb-1Qs"/>
             </constraints>
@@ -84,7 +98,4 @@
             <point key="canvasLocation" x="131.8840579710145" y="153.34821428571428"/>
         </view>
     </objects>
-    <resources>
-        <image name="square.and.arrow.up.fill" catalog="system" width="115" height="128"/>
-    </resources>
 </document>

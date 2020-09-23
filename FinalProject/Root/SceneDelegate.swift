@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         configSideMenu()
         let window = UIWindow(windowScene: windowScene)
-        let vc = HomeViewController()
+        let vc = LoginViewController()
         let navi = UINavigationController(rootViewController: vc)
         window.rootViewController = navi
         self.window = window

@@ -7,16 +7,15 @@
 //
 
 import Foundation
+import UIKit
+
 final class LoginViewModel {
     
-    // MARK: - Properties
-    var email: String
-    var passWord: String
+    var userName: String?
+    var passWord: String?
     
-    // MARK: - Init
-    init(email: String, passWord: String) {
-        self.email = email
-        self.passWord = passWord
+    func login(phone: String, pw: String) {
+        NetworkManager.shared.login(phone: userName ?? "", pw: passWord ?? "") { (customer, error) in
+        }
     }
-    
 }

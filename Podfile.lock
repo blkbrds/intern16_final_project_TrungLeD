@@ -76,6 +76,7 @@ PODS:
     - nanopb/encode (= 1.30906.0)
   - nanopb/decode (1.30906.0)
   - nanopb/encode (1.30906.0)
+  - ObjectMapper (3.5.3)
   - PromisesObjC (1.2.10)
   - RxSwift (5.1.1)
   - SideMenu (6.4.9)
@@ -85,6 +86,7 @@ DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Auth
   - Moya/RxSwift
+  - ObjectMapper (~> 3.5)
   - SideMenu
   - SwiftLint
 
@@ -103,6 +105,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - Moya
     - nanopb
+    - ObjectMapper
     - PromisesObjC
     - RxSwift
     - SideMenu
@@ -122,11 +125,12 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
   Moya: 5b45dacb75adb009f97fde91c204c1e565d31916
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
+  ObjectMapper: 97111c97e054a6ee25917662106689f0b4127b37
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SideMenu: 8ef57a3cfc024a2d3fc1c036c7fe98537baec9e0
   SwiftLint: 1216c910d27c2633ade33b4f071bb6b930982e62
 
-PODFILE CHECKSUM: 20f96141ae4e950ff82aa898fb621302a0944cdb
+PODFILE CHECKSUM: 09c63ee01a0e7ce757c3b8833ae2cd921f863338
 
 COCOAPODS: 1.9.3

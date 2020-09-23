@@ -29,7 +29,6 @@ class HomeTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-
     class func cellHeight() -> CGFloat {
         return 100
     }

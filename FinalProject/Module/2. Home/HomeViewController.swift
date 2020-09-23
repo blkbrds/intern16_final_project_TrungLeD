@@ -15,7 +15,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var inputDate: [Date] = []
-    var datePickerIndexPath : IndexPath!
+    var datePickerIndexPath: IndexPath!
     private var viewModel = HomeViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()

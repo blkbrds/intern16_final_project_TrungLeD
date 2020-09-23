@@ -10,29 +10,49 @@ import Moya
 import RxSwift
 
 class NetworkManager: Networkable {
+    static var shared: NetworkManager = NetworkManager()
+    var provider = MoyaProvider<ServiceAPI>()
     
-    var provider = MoyaProvider<ServiceAPI>(plugins: [NetworkLoggerPlugin(configuration: .init(logOptions: .verbose))])
+//    func getPosts() -> Single<Any> {
+//        return provider.rx.request(.posts)
+//            .filterSuccessfulStatusCodes()
+//            .mapJSON()
+//    }
+//
+//    func getPostWith(id: Int, completion: @escaping (Post?, Error?) -> ()) {
+//        provider.request(.posts) { (result) in
+//            switch result {
+//            case .success(let response):
+//                do {
+//                    let rs = try response.filterSuccessfulStatusCodes()
+//                    let data = try rs.mapJSON() as? [String: Any]
+//                    print(data)
+//                } catch {
+//                    print(error)
+//                }
+//            case .failure(let error):
+//                print(error)
+//            }
+//        }
+//    }
     
-    func getPosts() -> Single<Any> {
-        return provider.rx.request(.posts)
-            .filterSuccessfulStatusCodes()
-            .mapJSON()
-    }
-
-    func getPostWith(id: Int, completion: @escaping (Post?, Error?) -> ()) {
-        provider.request(.posts) { (result) in
+    func login(phone: String, pw: String, completion: @escaping (Customer, Error?) -> Void) {
+        provider.request(.login(phone: phone, pw: pw)) { result in
             switch result {
             case .success(let response):
                 do {
-                    let rs = try response.filterSuccessfulStatusCodes()
-                    let data = try rs.mapJSON() as? [String: Any]
-                    print(data)
+                    let customer = try response.map(Customer.self)
+                    completion(customer, nil)
+                    
                 } catch {
+//                    completion(nil, error)
                     print(error)
                 }
             case .failure(let error):
                 print(error)
+//                completion(nil, error)
             }
         }
+        
     }
 }
