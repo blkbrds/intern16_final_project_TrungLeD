@@ -8,14 +8,12 @@
 
 import Foundation
 import UIKit
-
+typealias Completion = (Bool, String) -> Void
 final class LoginViewModel {
     
     var userName: String?
     var passWord: String?
-    
-    func login(phone: String, pw: String) {
-        NetworkManager.shared.login(phone: userName ?? "", pw: passWord ?? "") { (customer, error) in
+    func loadAPI(completion: @escaping Completion) {
+
         }
-    }
 }

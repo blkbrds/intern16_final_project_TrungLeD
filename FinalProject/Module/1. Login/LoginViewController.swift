@@ -7,8 +7,9 @@
 //
 
 import UIKit
-import FirebaseAuth
 class LoginViewController: UIViewController {
+    
+    var viewModel = LoginViewModel()
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passWordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -27,7 +28,22 @@ class LoginViewController: UIViewController {
         // Utilities.styleHollowButton(<#T##button: UIButton##UIButton#>)
     }
     
-    @IBAction func loginPressed(_ sender: UIButton) {
+    func updateUI() {
         
+    }
+    @IBAction func loginPressed(_ sender: UIButton) {
+        viewModel.loadAPI { (done, message) in
+            if done {
+                print("Đăng Nhập Thành Công")
+                self.updateUI()
+                let appd = UIApplication.shared.connectedScenes.first
+                if let app: AppDelegate = (appd?.delegate as? AppDelegate) {
+                    app.changeRoot(rootType: .home)
+                }
+            } else {
+                self.errorLabel.text = "Sai Tên Đăng Nhập Hoặc Mật Khẩu"
+                print("Loi dang nhap: \(message)")
+            }
+        }
     }
 }

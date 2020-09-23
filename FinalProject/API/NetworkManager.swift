@@ -41,9 +41,9 @@ class NetworkManager: Networkable {
             switch result {
             case .success(let response):
                 do {
-                    let customer = try response.map(Customer.self)
-                    completion(customer, nil)
-                    
+                    //let result = try response.map(Customer.self)
+                 //   let customer = try?JSONDecoder().encode(Customer)
+                 //   print(result.message)
                 } catch {
 //                    completion(nil, error)
                     print(error)
