@@ -7,13 +7,9 @@
 //
 
 import Moya
-import RxSwift
 
 protocol Networkable {
-    var provider: MoyaProvider<ServiceAPI> { get }
+    var provider: MoyaProvider<APIService> { get }
     
-//    func getPosts() -> Single<Any>
-//    func getPostWith(id: Int, completion: @escaping (Post?, Error?) -> ())
-    
-    func login(phone: String, pw: String, completion: @escaping (Customer?, Error?) -> Void)
+    func login(phone: String, pw: String, completion: @escaping CompletionResult<Customer>)
 }

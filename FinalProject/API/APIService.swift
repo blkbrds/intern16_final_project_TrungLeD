@@ -23,8 +23,8 @@ public enum APICompletion {
     case failure(Error)
 }
 typealias CompletionResult<Value> = (Result<Value>) -> Void
-extension APIService: TargetType {
 
+extension APIService: TargetType {
     var baseURL: URL {
         return URL.init(string: "http://18.188.45.34:8080/")!
     }
@@ -76,7 +76,7 @@ extension Data {
 
     init(forResouce name: String?, ofType ext: String?) {
         @objc class TestClass: NSObject { }
-        let bundle = Bundle.init(for: TestClass.self)
+        let bundle = Bundle(for: TestClass.self)
         guard let path = bundle.path(forResource: name, ofType: ext),
             let data = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
             fatalError("fatalError")

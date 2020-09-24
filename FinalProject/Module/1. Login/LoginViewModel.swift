@@ -11,18 +11,20 @@ import UIKit
 
 final class LoginViewModel {
     
-    var userName: String?
-    var passWord: String?
-    
     let networkManager: NetworkManager
 
     init(networkManager: NetworkManager = NetworkManager.shared) {
         self.networkManager = networkManager
     }
 
-    func login(phone: String, pw: String, completion: @escaping APICompletion) {
-        networkManager.login(phone: phone, pw: pw) { (customer, error) in
-            completion(.success)
+    func login(phone: String, pw: String, completion: @escaping (APICompletion) -> Void ) {
+        networkManager.login(phone: phone, pw: pw) { result in
+            switch result {
+            case .success(let customer):
+                completion(.success)
+            case .failure(let error):
+                completion(.failure(error))
+            }
         }
     }
 }

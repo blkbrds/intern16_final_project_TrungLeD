@@ -8,50 +8,33 @@
 
 import Moya
 import RxSwift
+import ObjectMapper
 
-class NetworkManager: Networkable {
+final class NetworkManager: Networkable {
+ 
     static var shared: NetworkManager = NetworkManager()
-    var provider = MoyaProvider<ServiceAPI>()
-    
-//    func getPosts() -> Single<Any> {
-//        return provider.rx.request(.posts)
-//            .filterSuccessfulStatusCodes()
-//            .mapJSON()
-//    }
-//
-//    func getPostWith(id: Int, completion: @escaping (Post?, Error?) -> ()) {
-//        provider.request(.posts) { (result) in
-//            switch result {
-//            case .success(let response):
-//                do {
-//                    let rs = try response.filterSuccessfulStatusCodes()
-//                    let data = try rs.mapJSON() as? [String: Any]
-//                    print(data)
-//                } catch {
-//                    print(error)
-//                }
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
-//    }
-    
-    func login(phone: String, pw: String, completion: @escaping (Customer?, Error?) -> Void) {
-        provider.request(.login(phone: phone, pw: pw)) { result in
+    var provider = MoyaProvider<APIService>()
+
+    func login(phone: String, pw: String, completion: @escaping CompletionResult<Customer>) {
+        provider.request(.login(phone: phone, pw: pw)) { (result) in
             switch result {
             case .success(let response):
                 do {
-                    // let customer = try response.mapJSON()
-                 let customer = try response.map(Customer.self)
-                   completion(customer, nil)
-                    print(customer)
+                    if let json = try response.mapJSON() as? [String: Any],
+                        let dataJS = json["data"] as? [String: Any],
+                        let customerJS = dataJS["customer"] as? [String: Any] {
+                        guard let customer = Mapper<Customer>().map(JSONObject: customerJS) else {
+                            completion(.failure(NSError(domain: "", code: 400, userInfo: nil)))
+                            return
+                        }
+                        completion(.success(customer)) 
+                    }
                 } catch {
-                    completion(nil, error)
+                    completion(.failure(error))
                 }
             case .failure(let error):
-                completion(nil, error)
+                completion(.failure(error))
             }
         }
-        
     }
 }
