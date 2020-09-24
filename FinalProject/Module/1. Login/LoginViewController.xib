@@ -9,10 +9,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="FinalProject" customModuleProvider="target">
             <connections>
-                <outlet property="emailTextField" destination="4ao-js-GRz" id="AuW-yI-nrb"/>
                 <outlet property="errorLabel" destination="DGV-T3-jA5" id="puU-Lm-feD"/>
                 <outlet property="loginButton" destination="hgP-8k-M0s" id="FBi-Ll-46T"/>
                 <outlet property="passWordTextField" destination="rru-Qs-STY" id="bpN-dq-J6I"/>
+                <outlet property="phoneTextField" destination="4ao-js-GRz" id="dAj-6A-HWu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -42,7 +42,7 @@
                         <constraint firstAttribute="width" constant="195" id="czP-2q-n7u"/>
                     </constraints>
                 </stackView>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4ao-js-GRz">
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4ao-js-GRz">
                     <rect key="frame" x="68" y="379" width="301" height="50"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="50" id="Ypt-tE-7zK"/>

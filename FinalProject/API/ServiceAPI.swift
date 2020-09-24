@@ -8,6 +8,13 @@
 
 import Moya
 
+typealias APICompletion = (Result) -> Void
+
+enum Result {
+    case success
+    case failure(Error)
+}
+
 enum ServiceAPI {
     case getAllDictrict
     case login(phone: String, pw: String)
@@ -43,23 +50,21 @@ extension ServiceAPI: TargetType {
     
     var task: Task {
         switch self {
-            // ko can chuyen tham so
-        case .getAllDictrict, .login:
+        case .login(let phone, let pw):
+            let phoneData = phone.data(using: String.Encoding.utf8) ?? Data()
+            let pwData = pw.data(using: String.Encoding.utf8) ?? Data()
+            var formData: [Moya.MultipartFormData] = []
+            formData.append(Moya.MultipartFormData(provider: .data(phoneData), name: "phone"))
+            formData.append(Moya.MultipartFormData(provider: .data(pwData), name: "password"))
+            return .uploadMultipart(formData)
+        case .getAllDictrict:
             return .requestPlain
-            // can chuyen tham so return .request Parameters
         }
     }
     
     var headers: [String: String]? {
         var headers: [String: String] = [:]
         headers["Content-type"] = "application/json"
-        switch self {
-        case .login(let phone, let pw):
-            headers["username"] = phone
-            headers["password"] = pw
-        case .getAllDictrict:
-            break
-        }
         return headers
     }
 }

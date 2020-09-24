@@ -36,21 +36,20 @@ class NetworkManager: Networkable {
 //        }
 //    }
     
-    func login(phone: String, pw: String, completion: @escaping (Customer, Error?) -> Void) {
+    func login(phone: String, pw: String, completion: @escaping (Customer?, Error?) -> Void) {
         provider.request(.login(phone: phone, pw: pw)) { result in
             switch result {
             case .success(let response):
                 do {
-                    //let result = try response.map(Customer.self)
-                 //   let customer = try?JSONDecoder().encode(Customer)
-                 //   print(result.message)
+                    // let customer = try response.mapJSON()
+                 let customer = try response.map(Customer.self)
+                   completion(customer, nil)
+                    print(customer)
                 } catch {
-//                    completion(nil, error)
-                    print(error)
+                    completion(nil, error)
                 }
             case .failure(let error):
-                print(error)
-//                completion(nil, error)
+                completion(nil, error)
             }
         }
         

@@ -14,6 +14,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tableView: UITableView!
     
+    var menu: SideMenuNavigationController?
     var inputDate: [Date] = []
     var datePickerIndexPath: IndexPath!
     private var viewModel = HomeViewModel()
@@ -45,16 +46,19 @@ class HomeViewController: UIViewController {
     }
     
     func configSideMenu() {
+        let menu = SideMenuNavigationController(rootViewController: MenuListController(with: ["HOME", "COLLECTION", "SCHEDULE", "FAVORITES"]))
+        menu.leftSide = true
+        SideMenuManager.defaultManager.addPanGestureToPresent(toView: self.view)
+        SideMenuManager.defaultManager.leftMenuNavigationController = menu
         let leftItem = UIBarButtonItem(image: UIImage(systemName: "text.justify"), style: .plain, target: self, action: #selector(didTapMenu))
-        leftItem.tintColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
-        navigationItem.leftBarButtonItem = leftItem
+        leftItem.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        self.navigationItem.leftBarButtonItem = leftItem
     }
     
     @objc func didTapMenu() {
         guard let menu = SideMenuManager.defaultManager.leftMenuNavigationController else { return }
         present(menu, animated: true)
     }
-
 }
 
 // MARK: Side Menu
