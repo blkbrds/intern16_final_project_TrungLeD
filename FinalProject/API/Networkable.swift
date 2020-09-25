@@ -13,4 +13,6 @@ protocol Networkable {
     
     // MARK: Function
     func login(phone: String, pw: String, completion: @escaping CompletionResult<Customer>)
+    
+func getAllPitch(page: Int, pageSize: Int, completion: @escaping CompletionResult<DataPitch>)
 }

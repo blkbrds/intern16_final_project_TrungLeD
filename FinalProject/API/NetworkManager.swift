@@ -14,8 +14,6 @@ final class NetworkManager: Networkable {
     // MARK: Properties
     static var shared: NetworkManager = NetworkManager()
     var provider = MoyaProvider<APIService>()
-    
-    // MARK: Function
     func login(phone: String, pw: String, completion: @escaping CompletionResult<Customer>) {
         provider.request(.login(phone: phone, pw: pw)) { (result) in
             switch result {
@@ -28,7 +26,7 @@ final class NetworkManager: Networkable {
                             completion(.failure(NSError(domain: "", code: 400, userInfo: nil)))
                             return
                         }
-                        completion(.success(customer)) 
+                        completion(.success(customer))
                     }
                 } catch {
                     completion(.failure(error))
@@ -37,5 +35,9 @@ final class NetworkManager: Networkable {
                 completion(.failure(error))
             }
         }
+    }
+    
+    func getAllPitch(page: Int, pageSize: Int, completion: @escaping CompletionResult<DataPitch>) {
+        
     }
 }

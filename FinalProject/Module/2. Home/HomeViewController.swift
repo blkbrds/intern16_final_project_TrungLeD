@@ -13,16 +13,16 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tableView: UITableView!
-    
     var menu: SideMenuNavigationController?
     var inputDate: [Date] = []
     var datePickerIndexPath: IndexPath!
-    private var viewModel = HomeViewModel()
+    private var viewModel: HomeViewModel = HomeViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
         configSideMenu()
         configTableView()
         addInitValue()
+       // viewModel.getAllData()
     }
     
     func addInitValue() {
@@ -52,6 +52,7 @@ class HomeViewController: UIViewController {
         leftItem.tintColor = #colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1)
         navigationItem.leftBarButtonItem = leftItem
         SideMenuManager.defaultManager.leftMenuNavigationController = menu
+        navigationController?.navigationBar.isHidden = false
         SideMenuManager.defaultManager.addPanGestureToPresent(toView: self.view)
        
     }
