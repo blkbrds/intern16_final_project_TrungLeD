@@ -27,6 +27,8 @@ final class NetworkManager: Networkable {
                             return
                         }
                         completion(.success(customer))
+                    } else {
+                        print("loi")
                     }
                 } catch {
                     completion(.failure(error))
@@ -38,6 +40,24 @@ final class NetworkManager: Networkable {
     }
     
     func getAllPitch(page: Int, pageSize: Int, completion: @escaping CompletionResult<DataPitch>) {
-        
+        provider.request(.getAllPitch(page: 1, pageSize: 100)) { (result) in
+            switch result {
+            case .success(let response):
+                do {
+                    if let json = try response.mapJSON() as? [String: Any] {
+                        guard let customer = Mapper<DataPitch>().map(JSONObject: json) else {
+                            completion(.failure(NSError(domain: "", code: 400, userInfo: nil)))
+                            return
+                        }
+                        print("== ", json, response.request?.url)
+                        completion(.success(customer))
+                    }
+                } catch {
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 }

@@ -24,11 +24,11 @@ public enum APICompletion {
     case failure(Error)
 }
 typealias CompletionResult<Value> = (Result<Value>) -> Void
-var string = "http://18.188.45.34:8080/trungapi"
+
 extension APIService: TargetType {
     var baseURL: URL {
-        guard let url = URL(string: string ) else {
-            preconditionFailure("Invalid static URL string: \(string)")
+        guard let url = URL(string: "http://18.188.45.34:8080/trungapi" ) else {
+            fatalError("Invalid static URL string")
         }
         return url
     }
