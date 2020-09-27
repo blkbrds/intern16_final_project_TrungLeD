@@ -19,12 +19,17 @@
 		0EBA37462511C97B003465DD /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA37412511C97B003465DD /* APIService.swift */; };
 		0EBA374B2511CA7A003465DD /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA374A2511CA7A003465DD /* App.swift */; };
 		0EBA374D2511CAB7003465DD /* ArrayExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA374C2511CAB7003465DD /* ArrayExt.swift */; };
+		51316F062521003E00EAAE16 /* ImageDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51316F042521003E00EAAE16 /* ImageDetailCell.swift */; };
+		51316F072521003E00EAAE16 /* ImageDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51316F052521003E00EAAE16 /* ImageDetailCell.xib */; };
+		51316F0A252104A400EAAE16 /* InforDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51316F08252104A400EAAE16 /* InforDetailCell.swift */; };
+		51316F0B252104A400EAAE16 /* InforDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51316F09252104A400EAAE16 /* InforDetailCell.xib */; };
+		51B6A9C62520339200E18859 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B6A9C52520339200E18859 /* APIError.swift */; };
+		51B6A9D0252071A900E18859 /* Pitch1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B6A9CF252071A900E18859 /* Pitch1.swift */; };
+		51B6A9D225207E9B00E18859 /* Data.Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B6A9D125207E9B00E18859 /* Data.Ext.swift */; };
+		51B6A9D42520855200E18859 /* NewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B6A9D32520855200E18859 /* NewData.swift */; };
 		B0046936251D906D00208038 /* Pitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0046935251D906D00208038 /* Pitch.swift */; };
 		B0046938251D93F200208038 /* UITextFieldExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0046937251D93F200208038 /* UITextFieldExt.swift */; };
 		B004693A251D96B300208038 /* UIButtonExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0046939251D96B300208038 /* UIButtonExt.swift */; };
-		B004693C251DA18F00208038 /* PitchType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B004693B251DA18F00208038 /* PitchType.swift */; };
-		B004693E251DA19F00208038 /* owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B004693D251DA19F00208038 /* owner.swift */; };
-		B0046940251DCAA400208038 /* DataPitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B004693F251DCAA400208038 /* DataPitch.swift */; };
 		B0121B1D25136A550035E4F2 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0121B1B25136A550035E4F2 /* HomeTableViewCell.swift */; };
 		B0121B1E25136A550035E4F2 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0121B1C25136A550035E4F2 /* HomeTableViewCell.xib */; };
 		B03FF5DA2518A58D0065C493 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03FF5D92518A58D0065C493 /* HomeViewModel.swift */; };
@@ -71,13 +76,18 @@
 		0EBA374C2511CAB7003465DD /* ArrayExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExt.swift; sourceTree = "<group>"; };
 		2706D3E383C00F904DD7790D /* Pods-FinalProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.release.xcconfig"; path = "Target Support Files/Pods-FinalProject/Pods-FinalProject.release.xcconfig"; sourceTree = "<group>"; };
 		36763DE98DFBD511196E59ED /* Pods-FinalProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProjectTests.release.xcconfig"; path = "Target Support Files/Pods-FinalProjectTests/Pods-FinalProjectTests.release.xcconfig"; sourceTree = "<group>"; };
+		51316F042521003E00EAAE16 /* ImageDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImageDetailCell.swift; path = "../../../../../../trungld/intern16_final_project_TrungLeD/FinalProject/Module/3.Detail/3.1 DetailCell/ImageDetailCell.swift"; sourceTree = "<group>"; };
+		51316F052521003E00EAAE16 /* ImageDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ImageDetailCell.xib; path = "../../../../../../trungld/intern16_final_project_TrungLeD/FinalProject/Module/3.Detail/3.1 DetailCell/ImageDetailCell.xib"; sourceTree = "<group>"; };
+		51316F08252104A400EAAE16 /* InforDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InforDetailCell.swift; path = "../../../../../../trungld/intern16_final_project_TrungLeD/FinalProject/Module/3.Detail/3.1 DetailCell/InforDetailCell.swift"; sourceTree = "<group>"; };
+		51316F09252104A400EAAE16 /* InforDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = InforDetailCell.xib; path = "../../../../../../trungld/intern16_final_project_TrungLeD/FinalProject/Module/3.Detail/3.1 DetailCell/InforDetailCell.xib"; sourceTree = "<group>"; };
+		51B6A9C52520339200E18859 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIError.swift; path = ../../../../trungld/intern16_final_project_TrungLeD/FinalProject/API/APIError.swift; sourceTree = "<group>"; };
+		51B6A9CF252071A900E18859 /* Pitch1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Pitch1.swift; path = ../../../../../trungld/intern16_final_project_TrungLeD/FinalProject/Model/ObjectMapper/Pitch1.swift; sourceTree = "<group>"; };
+		51B6A9D125207E9B00E18859 /* Data.Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Data.Ext.swift; path = ../../../../../trungld/intern16_final_project_TrungLeD/FinalProject/Library/Ext/Data.Ext.swift; sourceTree = "<group>"; };
+		51B6A9D32520855200E18859 /* NewData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewData.swift; sourceTree = "<group>"; };
 		71B484E88DEE2FED67A1E072 /* Pods-FinalProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.debug.xcconfig"; path = "Target Support Files/Pods-FinalProject/Pods-FinalProject.debug.xcconfig"; sourceTree = "<group>"; };
 		B0046935251D906D00208038 /* Pitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pitch.swift; sourceTree = "<group>"; };
 		B0046937251D93F200208038 /* UITextFieldExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExt.swift; sourceTree = "<group>"; };
 		B0046939251D96B300208038 /* UIButtonExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExt.swift; sourceTree = "<group>"; };
-		B004693B251DA18F00208038 /* PitchType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchType.swift; sourceTree = "<group>"; };
-		B004693D251DA19F00208038 /* owner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = owner.swift; sourceTree = "<group>"; };
-		B004693F251DCAA400208038 /* DataPitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPitch.swift; sourceTree = "<group>"; };
 		B0121B1B25136A550035E4F2 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		B0121B1C25136A550035E4F2 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
 		B03FF5D92518A58D0065C493 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -166,6 +176,7 @@
 		0EBA37342511C86A003465DD /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				51316F022520FF2300EAAE16 /* 3.Detail */,
 				B0C3AF642512058700959BDD /* 1. Login */,
 				0EBA374F2511D18E003465DD /* 2. Home */,
 			);
@@ -197,6 +208,7 @@
 				B063606D251CAA1200C21C33 /* UIVIewControllerExt.swift */,
 				B0046937251D93F200208038 /* UITextFieldExt.swift */,
 				B0046939251D96B300208038 /* UIButtonExt.swift */,
+				51B6A9D125207E9B00E18859 /* Data.Ext.swift */,
 			);
 			path = Ext;
 			sourceTree = "<group>";
@@ -241,6 +253,7 @@
 				0EBA373F2511C97B003465DD /* NetworkManager.swift */,
 				0EBA37402511C97B003465DD /* Networkable.swift */,
 				0EBA37412511C97B003465DD /* APIService.swift */,
+				51B6A9C52520339200E18859 /* APIError.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -256,6 +269,25 @@
 				B03FF5EA2519E4FC0065C493 /* 2.2. DatePicker */,
 			);
 			path = "2. Home";
+			sourceTree = "<group>";
+		};
+		51316F022520FF2300EAAE16 /* 3.Detail */ = {
+			isa = PBXGroup;
+			children = (
+				51316F032520FF8B00EAAE16 /* 3.1 DetailCell */,
+			);
+			path = 3.Detail;
+			sourceTree = "<group>";
+		};
+		51316F032520FF8B00EAAE16 /* 3.1 DetailCell */ = {
+			isa = PBXGroup;
+			children = (
+				51316F042521003E00EAAE16 /* ImageDetailCell.swift */,
+				51316F052521003E00EAAE16 /* ImageDetailCell.xib */,
+				51316F08252104A400EAAE16 /* InforDetailCell.swift */,
+				51316F09252104A400EAAE16 /* InforDetailCell.xib */,
+			);
+			path = "3.1 DetailCell";
 			sourceTree = "<group>";
 		};
 		9684E36BDD3F8E27F43C5591 /* Frameworks */ = {
@@ -302,11 +334,10 @@
 		B04CBDEE251C65F00092D49F /* ObjectMapper */ = {
 			isa = PBXGroup;
 			children = (
+				51B6A9D32520855200E18859 /* NewData.swift */,
 				B04CBDEF251C66020092D49F /* Customer.swift */,
 				B0046935251D906D00208038 /* Pitch.swift */,
-				B004693B251DA18F00208038 /* PitchType.swift */,
-				B004693D251DA19F00208038 /* owner.swift */,
-				B004693F251DCAA400208038 /* DataPitch.swift */,
+				51B6A9CF252071A900E18859 /* Pitch1.swift */,
 			);
 			path = ObjectMapper;
 			sourceTree = "<group>";
@@ -421,6 +452,8 @@
 				B0121B1E25136A550035E4F2 /* HomeTableViewCell.xib in Resources */,
 				B03FF5EE2519E5CB0065C493 /* DatePickerTableViewCell.xib in Resources */,
 				B0A4A417251349A200E39134 /* HomeViewController.xib in Resources */,
+				51316F072521003E00EAAE16 /* ImageDetailCell.xib in Resources */,
+				51316F0B252104A400EAAE16 /* InforDetailCell.xib in Resources */,
 				0EBA371C2511C6C7003465DD /* Assets.xcassets in Resources */,
 				B0A4A4192513560300E39134 /* GoogleService-Info.plist in Resources */,
 			);
@@ -527,26 +560,29 @@
 				0EBA37422511C97B003465DD /* Error.swift in Sources */,
 				B063606E251CAA1200C21C33 /* UIVIewControllerExt.swift in Sources */,
 				B03FF5DA2518A58D0065C493 /* HomeViewModel.swift in Sources */,
-				B004693E251DA19F00208038 /* owner.swift in Sources */,
 				B03FF5ED2519E5CB0065C493 /* DatePickerTableViewCell.swift in Sources */,
 				0EBA37462511C97B003465DD /* APIService.swift in Sources */,
 				B080EBD8251AF82300C6EFDB /* Utilities.swift in Sources */,
 				0EBA374B2511CA7A003465DD /* App.swift in Sources */,
 				0EBA37452511C97B003465DD /* Networkable.swift in Sources */,
 				B0121B1D25136A550035E4F2 /* HomeTableViewCell.swift in Sources */,
+				51B6A9D225207E9B00E18859 /* Data.Ext.swift in Sources */,
 				0EBA37172511C6C2003465DD /* ViewController.swift in Sources */,
-				B0046940251DCAA400208038 /* DataPitch.swift in Sources */,
 				0EBA374D2511CAB7003465DD /* ArrayExt.swift in Sources */,
 				B0C3AF6A2512148300959BDD /* LoginViewModel.swift in Sources */,
 				B0046936251D906D00208038 /* Pitch.swift in Sources */,
+				51B6A9D42520855200E18859 /* NewData.swift in Sources */,
 				0EBA37132511C6C2003465DD /* AppDelegate.swift in Sources */,
 				B0046938251D93F200208038 /* UITextFieldExt.swift in Sources */,
+				51316F062521003E00EAAE16 /* ImageDetailCell.swift in Sources */,
 				0EBA37152511C6C2003465DD /* SceneDelegate.swift in Sources */,
+				51B6A9D0252071A900E18859 /* Pitch1.swift in Sources */,
 				B04CBDF0251C66020092D49F /* Customer.swift in Sources */,
-				B004693C251DA18F00208038 /* PitchType.swift in Sources */,
 				B0A4A416251349A200E39134 /* HomeViewController.swift in Sources */,
 				B004693A251D96B300208038 /* UIButtonExt.swift in Sources */,
 				B0C3AF672512059B00959BDD /* LoginViewController.swift in Sources */,
+				51B6A9C62520339200E18859 /* APIError.swift in Sources */,
+				51316F0A252104A400EAAE16 /* InforDetailCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

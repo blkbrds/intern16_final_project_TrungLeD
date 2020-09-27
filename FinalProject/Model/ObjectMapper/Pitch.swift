@@ -10,33 +10,35 @@ import Foundation
 import ObjectMapper
 
 final class Pitch: Mappable {
-    
     var id: String?
+    var idOwner: String?
     var nameOwner: String?
     var phone: String?
     var address: String?
     var district: String?
-    var lat: Int?
-    var long: Int?
+    var lat: String?
+    var long: String?
     var typePitch: String?
     var namePitch: String?
     var description: String?
+    var count: String?
     var isUse: String?
-
     required init(map: Map) {
     }
-
+    
     func mapping(map: Map) {
-        id <- map["id"]
-        nameOwner <- map["pitchType.owner.name"]
-        phone <- map["pitchType.owner.phone"]
-        address <- map["pitchType.owner.address"]
-        district <- map["pitchType.owner.district"]
-        lat <- map["pitchType.owner.lat"]
-        long <- map["pitchType.owner.lng"]
-        typePitch <- map["pitchType.name"]
-        namePitch <- map["name"]
-        description <- map["description"]
-        isUse <- map["is_use"]
+        id <- map["data.id"]
+        idOwner <- map["data.pitchType.id"]
+        nameOwner <- map["data.pitchType.owner.name"]
+        phone <- map["data.pitchType.owner.phone"]
+        address <- map["data.pitchType.owner.address"]
+        district <- map["data.pitchType.owner.district"]
+        lat <- map["data.pitchType.owner.lat"]
+        long <- map["data.pitchType.owner.lng"]
+        typePitch <- map["data.pitchType.name"]
+        namePitch <- map["data.name"]
+        description <- map["data.description"]
+        count <- map["data.count"]
+        isUse <- map["data.is_use"]
     }
 }

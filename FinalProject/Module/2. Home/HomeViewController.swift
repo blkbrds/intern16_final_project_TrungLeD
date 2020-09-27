@@ -22,7 +22,7 @@ class HomeViewController: UIViewController {
         configSideMenu()
         configTableView()
         addInitValue()
-       // viewModel.getAllData()
+    viewModel.getAllData()
     }
     
     func addInitValue() {

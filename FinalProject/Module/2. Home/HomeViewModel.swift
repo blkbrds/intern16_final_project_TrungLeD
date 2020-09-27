@@ -16,17 +16,16 @@ class HomeViewModel {
     init(networkManager: NetworkManager = NetworkManager.shared) {
         self.networkManager = networkManager
     }
-//    func getAllData() {
-//        networkManager.getAllPitch(page: 4, pageSize: 5) { [weak self] result in
-//            guard let this = self else { return }
-//            switch result {
-//            case .failure(let error):
-//                break
-//            case .success(let result):
-//                this.pitch = result
-//                print(this.pitch)
-//                
-//            }
-//        }
-//    }
+    func getAllData() {
+        networkManager.getAllPitch(page: 1, pageSize: 1000) { [weak self] result in
+            guard let this = self else { return }
+            switch result {
+            case .failure(let error):
+                break
+            case .success(let result):
+                print(this.pitch)
+                
+            }
+        }
+    }
 }

@@ -12,6 +12,8 @@ enum APIService {
     case getAllDictrict
     case login(phone: String, pw: String)
     case getAllPitch(page: Int, pageSize: Int)
+//    case updateAccount(id: Int, name: String, teamName: String, description: String)
+//    case getFavoritePitch(id: Int)
 }
 // enum Result
 public enum Result<Value> {
@@ -39,19 +41,23 @@ extension APIService: TargetType {
             return "/common/get-all-district"
         case .login:
             return "/common/login"
-        case .getAllPitch(let page, let pageSize):
-            return "/get-all-pitch?page=\(page)&pageSize=\(pageSize)"
-        }
-    }
+        case .getAllPitch:
+            return "/common/get-all-pitch"
+  
     
+//    case .updateAccount(id: let id, name: let name, teamName: let teamName, description: let description):
+// 
+//    case .getFavoritePitch(id: let id):
+   
+
+    }
+    }
     var method: Moya.Method {
         switch self {
-        case .getAllDictrict:
+        case .getAllDictrict, .getAllPitch(_, _):
             return .get
         case .login:
             return .post
-        case .getAllPitch:
-            return .get
         }
     }
     
@@ -71,7 +77,10 @@ extension APIService: TargetType {
         case .getAllDictrict:
             return .requestPlain
         case .getAllPitch(let page, let pageSize):
-        return .requestParameters(parameters: ["page": page, "pageSize": pageSize], encoding: URLEncoding.default)
+            var params: [String: Any] = [:]
+            params["page"] = page
+            params["pageSize"] = pageSize
+            return .requestParameters(parameters:["page": page, "pageSize": pageSize], encoding: URLEncoding.default)
         }
     }
     

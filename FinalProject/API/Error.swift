@@ -9,7 +9,7 @@
 import Foundation
 
 extension Error {
-
+    
     public var code: Int {
         let `self` = self as NSError
         return self.code

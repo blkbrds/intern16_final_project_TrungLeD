@@ -36,6 +36,7 @@ extension LoginViewController {
         phoneTextField.drawLine()
         passWordTextField.drawLine()
         loginButton.drawColor()
+        loginButton.styleHollowButton()
     }
     
     private func login() {

@@ -13,4 +13,10 @@ extension UIButton {
         self.layer.cornerRadius = 25.0
         self.tintColor = UIColor.white
     }
+    func styleHollowButton() {
+        self.layer.borderWidth = 2
+        self.layer.borderColor = UIColor.black.cgColor
+        self.layer.cornerRadius = 25.0
+        self.tintColor = UIColor.black
+    }
 }
