@@ -10,7 +10,6 @@
 		0A43136DCB4B44BF96A8A057 /* Pods_FinalProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA793CAF2D9C7A41645277D2 /* Pods_FinalProjectTests.framework */; };
 		0EBA37132511C6C2003465DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA37122511C6C2003465DD /* AppDelegate.swift */; };
 		0EBA37152511C6C2003465DD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA37142511C6C2003465DD /* SceneDelegate.swift */; };
-		0EBA37172511C6C2003465DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA37162511C6C2003465DD /* ViewController.swift */; };
 		0EBA371C2511C6C7003465DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EBA371B2511C6C7003465DD /* Assets.xcassets */; };
 		0EBA372A2511C6C7003465DD /* FinalProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA37292511C6C7003465DD /* FinalProjectTests.swift */; };
 		0EBA37422511C97B003465DD /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA373D2511C97B003465DD /* Error.swift */; };
@@ -21,8 +20,8 @@
 		0EBA374D2511CAB7003465DD /* ArrayExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA374C2511CAB7003465DD /* ArrayExt.swift */; };
 		B001147A25217F15003EA463 /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B001147625217F15003EA463 /* Owner.swift */; };
 		B001147B25217F15003EA463 /* PitchType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B001147725217F15003EA463 /* PitchType.swift */; };
-		B001147C25217F15003EA463 /* PitchBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B001147825217F15003EA463 /* PitchBase.swift */; };
-		B001147D25217F15003EA463 /* Data1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B001147925217F15003EA463 /* Data1.swift */; };
+		B001147D25217F15003EA463 /* Pitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B001147925217F15003EA463 /* Pitch.swift */; };
+		B001148F252198DB003EA463 /* HomeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B001148E252198DB003EA463 /* HomeCellViewModel.swift */; };
 		B0046938251D93F200208038 /* UITextFieldExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0046937251D93F200208038 /* UITextFieldExt.swift */; };
 		B004693A251D96B300208038 /* UIButtonExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0046939251D96B300208038 /* UIButtonExt.swift */; };
 		B0121B1D25136A550035E4F2 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0121B1B25136A550035E4F2 /* HomeTableViewCell.swift */; };
@@ -32,7 +31,6 @@
 		B03FF5EE2519E5CB0065C493 /* DatePickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B03FF5EC2519E5CB0065C493 /* DatePickerTableViewCell.xib */; };
 		B04CBDF0251C66020092D49F /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04CBDEF251C66020092D49F /* Customer.swift */; };
 		B063606E251CAA1200C21C33 /* UIVIewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B063606D251CAA1200C21C33 /* UIVIewControllerExt.swift */; };
-		B080EBD8251AF82300C6EFDB /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B080EBD7251AF82300C6EFDB /* Utilities.swift */; };
 		B0A4A416251349A200E39134 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A4A414251349A200E39134 /* HomeViewController.swift */; };
 		B0A4A417251349A200E39134 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A4A415251349A200E39134 /* HomeViewController.xib */; };
 		B0A4A4192513560300E39134 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B0A4A4182513560300E39134 /* GoogleService-Info.plist */; };
@@ -57,7 +55,6 @@
 		0EBA370F2511C6C2003465DD /* FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EBA37122511C6C2003465DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0EBA37142511C6C2003465DD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0EBA37162511C6C2003465DD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0EBA371B2511C6C7003465DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0EBA37202511C6C7003465DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0EBA37252511C6C7003465DD /* FinalProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinalProjectTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,8 +71,8 @@
 		71B484E88DEE2FED67A1E072 /* Pods-FinalProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.debug.xcconfig"; path = "Target Support Files/Pods-FinalProject/Pods-FinalProject.debug.xcconfig"; sourceTree = "<group>"; };
 		B001147625217F15003EA463 /* Owner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
 		B001147725217F15003EA463 /* PitchType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchType.swift; sourceTree = "<group>"; };
-		B001147825217F15003EA463 /* PitchBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchBase.swift; sourceTree = "<group>"; };
-		B001147925217F15003EA463 /* Data1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data1.swift; sourceTree = "<group>"; };
+		B001147925217F15003EA463 /* Pitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pitch.swift; sourceTree = "<group>"; };
+		B001148E252198DB003EA463 /* HomeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellViewModel.swift; sourceTree = "<group>"; };
 		B0046937251D93F200208038 /* UITextFieldExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExt.swift; sourceTree = "<group>"; };
 		B0046939251D96B300208038 /* UIButtonExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExt.swift; sourceTree = "<group>"; };
 		B0121B1B25136A550035E4F2 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
@@ -85,7 +82,6 @@
 		B03FF5EC2519E5CB0065C493 /* DatePickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerTableViewCell.xib; sourceTree = "<group>"; };
 		B04CBDEF251C66020092D49F /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 		B063606D251CAA1200C21C33 /* UIVIewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVIewControllerExt.swift; sourceTree = "<group>"; };
-		B080EBD7251AF82300C6EFDB /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		B0A4A414251349A200E39134 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B0A4A415251349A200E39134 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		B0A4A4182513560300E39134 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -193,7 +189,6 @@
 			isa = PBXGroup;
 			children = (
 				0EBA374C2511CAB7003465DD /* ArrayExt.swift */,
-				B080EBD7251AF82300C6EFDB /* Utilities.swift */,
 				B063606D251CAA1200C21C33 /* UIVIewControllerExt.swift */,
 				B0046937251D93F200208038 /* UITextFieldExt.swift */,
 				B0046939251D96B300208038 /* UIButtonExt.swift */,
@@ -248,12 +243,11 @@
 		0EBA374F2511D18E003465DD /* 2. Home */ = {
 			isa = PBXGroup;
 			children = (
-				B0A4A414251349A200E39134 /* HomeViewController.swift */,
-				B03FF5D92518A58D0065C493 /* HomeViewModel.swift */,
-				0EBA37162511C6C2003465DD /* ViewController.swift */,
-				B0A4A415251349A200E39134 /* HomeViewController.xib */,
 				B0121B1A25136A350035E4F2 /* 2.1. Cell */,
 				B03FF5EA2519E4FC0065C493 /* 2.2. DatePicker */,
+				B0A4A414251349A200E39134 /* HomeViewController.swift */,
+				B0A4A415251349A200E39134 /* HomeViewController.xib */,
+				B03FF5D92518A58D0065C493 /* HomeViewModel.swift */,
 			);
 			path = "2. Home";
 			sourceTree = "<group>";
@@ -272,6 +266,7 @@
 			children = (
 				B0121B1B25136A550035E4F2 /* HomeTableViewCell.swift */,
 				B0121B1C25136A550035E4F2 /* HomeTableViewCell.xib */,
+				B001148E252198DB003EA463 /* HomeCellViewModel.swift */,
 			);
 			path = "2.1. Cell";
 			sourceTree = "<group>";
@@ -302,8 +297,7 @@
 		B04CBDEE251C65F00092D49F /* ObjectMapper */ = {
 			isa = PBXGroup;
 			children = (
-				B001147925217F15003EA463 /* Data1.swift */,
-				B001147825217F15003EA463 /* PitchBase.swift */,
+				B001147925217F15003EA463 /* Pitch.swift */,
 				B001147625217F15003EA463 /* Owner.swift */,
 				B001147725217F15003EA463 /* PitchType.swift */,
 				B04CBDEF251C66020092D49F /* Customer.swift */,
@@ -530,19 +524,17 @@
 				B03FF5ED2519E5CB0065C493 /* DatePickerTableViewCell.swift in Sources */,
 				0EBA37462511C97B003465DD /* APIService.swift in Sources */,
 				B001147A25217F15003EA463 /* Owner.swift in Sources */,
-				B080EBD8251AF82300C6EFDB /* Utilities.swift in Sources */,
-				B001147C25217F15003EA463 /* PitchBase.swift in Sources */,
 				0EBA374B2511CA7A003465DD /* App.swift in Sources */,
 				0EBA37452511C97B003465DD /* Networkable.swift in Sources */,
 				B0121B1D25136A550035E4F2 /* HomeTableViewCell.swift in Sources */,
-				0EBA37172511C6C2003465DD /* ViewController.swift in Sources */,
 				B001147B25217F15003EA463 /* PitchType.swift in Sources */,
 				0EBA374D2511CAB7003465DD /* ArrayExt.swift in Sources */,
 				B0C3AF6A2512148300959BDD /* LoginViewModel.swift in Sources */,
+				B001148F252198DB003EA463 /* HomeCellViewModel.swift in Sources */,
 				0EBA37132511C6C2003465DD /* AppDelegate.swift in Sources */,
 				B0046938251D93F200208038 /* UITextFieldExt.swift in Sources */,
 				0EBA37152511C6C2003465DD /* SceneDelegate.swift in Sources */,
-				B001147D25217F15003EA463 /* Data1.swift in Sources */,
+				B001147D25217F15003EA463 /* Pitch.swift in Sources */,
 				B04CBDF0251C66020092D49F /* Customer.swift in Sources */,
 				B0A4A416251349A200E39134 /* HomeViewController.swift in Sources */,
 				B004693A251D96B300208038 /* UIButtonExt.swift in Sources */,
