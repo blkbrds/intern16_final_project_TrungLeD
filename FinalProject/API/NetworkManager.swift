@@ -38,24 +38,22 @@ final class NetworkManager: Networkable {
         }
     }
     
-    
-    func getAllPitch(page: Int, pageSize: Int, completion: @escaping CompletionResult<NewData>) {
+    func getAllPitch(page: Int, pageSize: Int, completion: @escaping CompletionResult<PitchBase>) {
         provider.request(.getAllPitch(page: 1, pageSize: 100)) { (result1) in
-            switch result1 {
-            case let .success(response):
-                do {
-                    let results = try JSONDecoder().decode(NewData.self, from: response.data)
-                    print("1\(results)")
-                    print("2\(results.data)")
-               //     let pitchJS = try JSONDecoder().decode(Datum.self, from: results)
-                    print(pitchJS)
-                }catch let error {
-                    print(error)
-                    completion(.failure(error))
+           switch result1 {
+            case .success(let data):
+                if let data = data as? [String:Any], let countries = data["data"] as? [[String:Any]] {
+                let array: PitchBase = Mapper<PitchBase>().mapArray(JSONArray: countries)
+                if !array.isEmpty {
+                  completion( .success(array))
+                } else {
+                  completion( .failure(Api.Error.emptyData))
                 }
-            case let .failure(error):
-                print(error)
-                completion(.failure(error))
+              } else {
+                completion( .failure(Api.Error.emptyData))
+              }
+            case .failure(let error):
+              completion( .failure(error))
             }
         }
     }
