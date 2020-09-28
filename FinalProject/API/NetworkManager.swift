@@ -14,7 +14,8 @@ final class NetworkManager: Networkable {
     // MARK: Properties
     static var shared: NetworkManager = NetworkManager()
     var provider = MoyaProvider<APIService>()
-    typealias JSON = [String: Any]
+    
+    // MARK: Function
     func login(phone: String, pw: String, completion: @escaping CompletionResult<Customer>) {
         provider.request(.login(phone: phone, pw: pw)) { (result) in
             switch result {
@@ -38,24 +39,20 @@ final class NetworkManager: Networkable {
         }
     }
     
-    
-    func getAllPitch(page: Int, pageSize: Int, completion: @escaping CompletionResult<NewData>) {
+    func getAllPitch(page: Int, pageSize: Int, completion: @escaping CompletionResult<[Pitch]>) {
         provider.request(.getAllPitch(page: 1, pageSize: 100)) { (result1) in
             switch result1 {
-            case let .success(response):
+            case .success(let response):
                 do {
-                    let results = try JSONDecoder().decode(NewData.self, from: response.data)
-                    print("1\(results)")
-                    print("2\(results.data)")
-               //     let pitchJS = try JSONDecoder().decode(Datum.self, from: results)
-                  //  print(pitchJS)
-                }catch let error {
-                    print(error)
+                    if let json = try response.mapJSON() as? JSON, let dataJS = json["data"] as? JSArray {
+                        let pitchJS: [Pitch] = Mapper<Pitch>().mapArray(JSONArray: dataJS) 
+                        completion(.success(pitchJS))
+                    }
+                } catch {
                     completion(.failure(error))
                 }
-            case let .failure(error):
-                print(error)
-                completion(.failure(error))
+            case .failure(let error):
+                completion( .failure(error))
             }
         }
     }

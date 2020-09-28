@@ -11,23 +11,46 @@ import SideMenu
 
 class HomeViewController: UIViewController {
     
+    // MARK: IBOutlet
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tableView: UITableView!
+    
+    // MARK: Properties
     var menu: SideMenuNavigationController?
     var inputDate: [Date] = []
     var datePickerIndexPath: IndexPath!
     private var viewModel: HomeViewModel = HomeViewModel()
+    
+    // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configSideMenu()
         configTableView()
         addInitValue()
-    viewModel.getAllData()
+        loadData()
+    }
+    
+    // MARK: Function
+    private func loadData() {
+        viewModel.getAllData() { [weak self] result in
+            guard let this = self else { return }
+            switch result {
+            case .success:
+                DispatchQueue.main.async {
+                    this.tableView.reloadData()
+                }
+            case .failure(let error):
+                DispatchQueue.main.async {
+                }
+            }
+        }
+        
     }
     
     func addInitValue() {
         inputDate = Array(repeating: Date(), count: viewModel.datas.count)
     }
+    
     func configTableView() {
         let nib = UINib(nibName: "HomeTableViewCell", bundle: Bundle.main)
         tableView.register(nib, forCellReuseIdentifier: "cellHome")
@@ -48,13 +71,13 @@ class HomeViewController: UIViewController {
     func configSideMenu() {
         let menu = SideMenuNavigationController(rootViewController: MenuListController(with: ["HOME", "COLLECTION", "SCHEDULE", "FAVORITES"]))
         menu.leftSide = true
-         let leftItem = UIBarButtonItem(image: UIImage(systemName: "text.justify"), style: .plain, target: self, action: #selector(didTapMenu))
+        let leftItem = UIBarButtonItem(image: UIImage(systemName: "text.justify"), style: .plain, target: self, action: #selector(didTapMenu))
         leftItem.tintColor = #colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1)
         navigationItem.leftBarButtonItem = leftItem
         SideMenuManager.defaultManager.leftMenuNavigationController = menu
         navigationController?.navigationBar.isHidden = false
         SideMenuManager.defaultManager.addPanGestureToPresent(toView: self.view)
-       
+        
     }
     
     @objc func didTapMenu() {
@@ -110,25 +133,28 @@ extension HomeViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         if datePickerIndexPath == indexPath {
             guard let cellDatePicker = tableView.dequeueReusableCell(withIdentifier: "cellDatePicker", for: indexPath)
                 as? DatePickerTableViewCell
                 else {
-                return UITableViewCell()
+                    return UITableViewCell()
             }
             cellDatePicker.updateCell(date: inputDate[indexPath.row - 1], indexPath: indexPath)
-   //         cellDatePicker.delegate = self
+            cellDatePicker.delegate = self
             return cellDatePicker
         } else {
             guard let cellHome = tableView.dequeueReusableCell(withIdentifier: "cellHome", for: indexPath) as? HomeTableViewCell else {
                 return UITableViewCell()
             }
+            cellHome.viewModel = viewModel.viewModelForCell(at: indexPath)
             return cellHome
         }
-}
+    }
     
 }
 
+// MARK: Extension
 extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -156,11 +182,11 @@ extension HomeViewController: UITableViewDelegate {
     }
     
 }
-extension ViewController: DatePickerDelegate {
+extension HomeViewController: DatePickerDelegate {
     
     func didChangeDate(date: Date, indexPath: IndexPath) {
-       // inputDate[indexPath.row] = date
-    //    tableView.reloadRows(at: [indexPath], with: .none)
+        // inputDate[indexPath.row] = date
+        //    tableView.reloadRows(at: [indexPath], with: .none)
     }
     
 }

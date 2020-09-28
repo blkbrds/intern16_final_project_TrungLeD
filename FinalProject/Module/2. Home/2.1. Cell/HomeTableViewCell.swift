@@ -18,15 +18,34 @@ enum DateFormatType: String {
     //Date
     case date = "dd-MM-yyyy"
 }
-class HomeTableViewCell: UITableViewCell {
+final class HomeTableViewCell: UITableViewCell {
+    
+    // MARK: IBOutlet
+    @IBOutlet weak var namePitch: UILabel!
+    @IBOutlet weak var address: UILabel!
+    @IBOutlet weak var timeActive: UILabel!
     @IBOutlet weak var imageView1: UIImageView!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var favoritesButton: UIButton!
     @IBOutlet weak var bookingButton: UIButton!
-    @IBOutlet weak var dateBooking: UILabel!
     @IBOutlet weak var dateBookingLabel: UILabel!
+    
+    // MARK: Properties
+    var viewModel: HomeCellViewModel? {
+        didSet {
+            updateView()
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
+    }
+    
+    // MARK: Function
+    private func updateView() {
+        namePitch.text = viewModel?.name
+        address.text = viewModel?.districtOwner
+        dateBookingLabel.text = viewModel?.timeUser
+        imageView1.layer.cornerRadius = 10
     }
     
     class func cellHeight() -> CGFloat {
@@ -34,7 +53,7 @@ class HomeTableViewCell: UITableViewCell {
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -43,8 +62,7 @@ class HomeTableViewCell: UITableViewCell {
     }
     
     func updateText(text: String, date: Date) {
-        dateBookingLabel.text = text
-        dateBooking.text = date.convertToString(dateFormat: .dateWithTime)
+        dateBookingLabel.text = date.convertToString(dateFormat: .dateWithTime)
     }
     
 }

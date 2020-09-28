@@ -9,23 +9,33 @@
 import Foundation
 
 class HomeViewModel {
-    var datas: [String] = ["san 1", "san 2", "san3", "san4", "san5", "san6"]
+    
+    var datas: [Pitch] = []
     let networkManager: NetworkManager
-    var pitch: [Pitch] = []
     
     init(networkManager: NetworkManager = NetworkManager.shared) {
         self.networkManager = networkManager
     }
-    func getAllData() {
+    func getAllData(completion: @escaping APICompletion) {
         networkManager.getAllPitch(page: 1, pageSize: 1000) { [weak self] result in
             guard let this = self else { return }
             switch result {
             case .failure(let error):
-                break
+                completion( .failure(error))
             case .success(let result):
-                print(this.pitch)
-                
+                this.datas = result
+                completion( .success)
             }
         }
+    }
+    
+    func numberOfRowsInSection() -> Int {
+        return datas.count
+    }
+    
+    func viewModelForCell(at indexPath: IndexPath) -> HomeCellViewModel {
+        let item = datas[indexPath.row]
+        let viewModel = HomeCellViewModel(item: item)
+        return viewModel
     }
 }

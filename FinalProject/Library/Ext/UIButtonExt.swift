@@ -8,7 +8,9 @@
 
 import UIKit
 extension UIButton {
-    func drawColor(){
+    
+    // MARK: Function
+    func drawColor() {
         self.backgroundColor = UIColor(red: 48 / 255, green: 173 / 255, blue: 99 / 255, alpha: 1)
         self.layer.cornerRadius = 25.0
         self.tintColor = UIColor.white

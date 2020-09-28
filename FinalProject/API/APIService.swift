@@ -12,8 +12,8 @@ enum APIService {
     case getAllDictrict
     case login(phone: String, pw: String)
     case getAllPitch(page: Int, pageSize: Int)
-//    case updateAccount(id: Int, name: String, teamName: String, description: String)
-//    case getFavoritePitch(id: Int)
+    //    case updateAccount(id: Int, name: String, teamName: String, description: String)
+    //    case getFavoritePitch(id: Int)
 }
 // enum Result
 public enum Result<Value> {
@@ -21,7 +21,12 @@ public enum Result<Value> {
     case failure(Error)
 }
 
-public enum APICompletion {
+typealias JSON = [String: Any]
+typealias JSArray = [JSON]
+
+typealias APICompletion = (APIResult) -> Void
+
+enum APIResult {
     case success
     case failure(Error)
 }
@@ -43,14 +48,9 @@ extension APIService: TargetType {
             return "/common/login"
         case .getAllPitch:
             return "/common/get-all-pitch"
-  
-    
-//    case .updateAccount(id: let id, name: let name, teamName: let teamName, description: let description):
-// 
-//    case .getFavoritePitch(id: let id):
-   
-
-    }
+            
+            
+        }
     }
     var method: Moya.Method {
         switch self {
