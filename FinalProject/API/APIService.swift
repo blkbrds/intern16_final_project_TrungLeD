@@ -27,7 +27,7 @@ typealias CompletionResult<Value> = (Result<Value>) -> Void
 
 extension APIService: TargetType {
     var baseURL: URL {
-        guard let url = URL(string: "http://18.188.45.34:8080/" ) else {
+        guard let url = URL(string: "http://18.188.45.34:8080/") else {
             preconditionFailure("Invalid static URL string")
         }
         return url
