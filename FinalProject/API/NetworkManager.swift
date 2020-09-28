@@ -48,7 +48,7 @@ final class NetworkManager: Networkable {
                     print("1\(results)")
                     print("2\(results.data)")
                //     let pitchJS = try JSONDecoder().decode(Datum.self, from: results)
-                    print(pitchJS)
+                  //  print(pitchJS)
                 }catch let error {
                     print(error)
                     completion(.failure(error))
