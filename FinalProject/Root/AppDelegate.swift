@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         case .login:
             window?.rootViewController = LoginViewController()
         case .home:
-            let navi = UINavigationController(rootViewController: HomeViewController())
+            let navi = UINavigationController(rootViewController: DetailViewController())
             window?.rootViewController = navi
         }
     }

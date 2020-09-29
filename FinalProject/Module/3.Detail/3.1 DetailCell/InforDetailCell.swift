@@ -10,6 +10,9 @@ import UIKit
 
 class InforDetailCell: UITableViewCell {
 
+    @IBOutlet weak var timeActive: UILabel!
+    @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,5 +23,4 @@ class InforDetailCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 }

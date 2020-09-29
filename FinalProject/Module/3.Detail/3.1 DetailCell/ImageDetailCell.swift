@@ -10,6 +10,7 @@ import UIKit
 
 class ImageDetailCell: UITableViewCell {
 
+    @IBOutlet weak var imageView1: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -17,8 +18,16 @@ class ImageDetailCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    }
+    
+    @IBAction func bookingTapped(_ sender: UIButton) {
+        
+    }
+    @IBAction func locationTapped(_ sender: Any) {
+    }
+    
+    @IBAction func favoriteTapped(_ sender: Any) {
+        
     }
     
 }

@@ -35,6 +35,8 @@
 		B03FF5EE2519E5CB0065C493 /* DatePickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B03FF5EC2519E5CB0065C493 /* DatePickerTableViewCell.xib */; };
 		B04CBDF0251C66020092D49F /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04CBDEF251C66020092D49F /* Customer.swift */; };
 		B063606E251CAA1200C21C33 /* UIVIewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B063606D251CAA1200C21C33 /* UIVIewControllerExt.swift */; };
+		B09515C02522CA3200948EC9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09515BE2522CA3100948EC9 /* DetailViewController.swift */; };
+		B09515C12522CA3200948EC9 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B09515BF2522CA3200948EC9 /* DetailViewController.xib */; };
 		B0A4A416251349A200E39134 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A4A414251349A200E39134 /* HomeViewController.swift */; };
 		B0A4A417251349A200E39134 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0A4A415251349A200E39134 /* HomeViewController.xib */; };
 		B0A4A4192513560300E39134 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B0A4A4182513560300E39134 /* GoogleService-Info.plist */; };
@@ -92,6 +94,8 @@
 		B04CBDEF251C66020092D49F /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 		B063606D251CAA1200C21C33 /* UIVIewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVIewControllerExt.swift; sourceTree = "<group>"; };
 		B09515BC2521EA2200948EC9 /* APIError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		B09515BE2522CA3100948EC9 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		B09515BF2522CA3200948EC9 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		B0A4A414251349A200E39134 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B0A4A415251349A200E39134 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		B0A4A4182513560300E39134 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -278,6 +282,8 @@
 			isa = PBXGroup;
 			children = (
 				B001146D25217712003EA463 /* 3.1 DetailCell */,
+				B09515BE2522CA3100948EC9 /* DetailViewController.swift */,
+				B09515BF2522CA3200948EC9 /* DetailViewController.xib */,
 			);
 			path = 3.Detail;
 			sourceTree = "<group>";
@@ -455,6 +461,7 @@
 				B0C3AF682512059B00959BDD /* LoginViewController.xib in Resources */,
 				B001147425217712003EA463 /* ImageDetailCell.xib in Resources */,
 				B0121B1E25136A550035E4F2 /* HomeTableViewCell.xib in Resources */,
+				B09515C12522CA3200948EC9 /* DetailViewController.xib in Resources */,
 				B03FF5EE2519E5CB0065C493 /* DatePickerTableViewCell.xib in Resources */,
 				B0A4A417251349A200E39134 /* HomeViewController.xib in Resources */,
 				0EBA371C2511C6C7003465DD /* Assets.xcassets in Resources */,
@@ -561,6 +568,7 @@
 			files = (
 				0EBA37442511C97B003465DD /* NetworkManager.swift in Sources */,
 				B001147325217712003EA463 /* InforDetailCell.swift in Sources */,
+				B09515C02522CA3200948EC9 /* DetailViewController.swift in Sources */,
 				0EBA37422511C97B003465DD /* Error.swift in Sources */,
 				B063606E251CAA1200C21C33 /* UIVIewControllerExt.swift in Sources */,
 				B03FF5DA2518A58D0065C493 /* HomeViewModel.swift in Sources */,
