@@ -14,7 +14,15 @@ final class Pitch: Mappable {
     
     // MARK: Init
     init?(map: Map) {}
-    init() {}
+    init(id: Int?, pitchType: PitchType?, name: String?, description: String?, timeUse: String?, count: Double?, isUse: String?) {
+        self.id = id
+        self.pitchType = pitchType
+        self.name = name
+        self.description = description
+        self.timeUse = timeUse
+        self.count = count
+        self.isUse = isUse
+    }
     
     // MARK: Function
     func mapping(map: Map) {

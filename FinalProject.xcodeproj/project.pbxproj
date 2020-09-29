@@ -27,8 +27,6 @@
 		B0121B1D25136A550035E4F2 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0121B1B25136A550035E4F2 /* HomeTableViewCell.swift */; };
 		B0121B1E25136A550035E4F2 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0121B1C25136A550035E4F2 /* HomeTableViewCell.xib */; };
 		B03FF5DA2518A58D0065C493 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03FF5D92518A58D0065C493 /* HomeViewModel.swift */; };
-		B03FF5ED2519E5CB0065C493 /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03FF5EB2519E5CB0065C493 /* DatePickerTableViewCell.swift */; };
-		B03FF5EE2519E5CB0065C493 /* DatePickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B03FF5EC2519E5CB0065C493 /* DatePickerTableViewCell.xib */; };
 		B04CBDF0251C66020092D49F /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04CBDEF251C66020092D49F /* Customer.swift */; };
 		B063606E251CAA1200C21C33 /* UIVIewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B063606D251CAA1200C21C33 /* UIVIewControllerExt.swift */; };
 		B0A4A416251349A200E39134 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A4A414251349A200E39134 /* HomeViewController.swift */; };
@@ -78,8 +76,6 @@
 		B0121B1B25136A550035E4F2 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		B0121B1C25136A550035E4F2 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
 		B03FF5D92518A58D0065C493 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		B03FF5EB2519E5CB0065C493 /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
-		B03FF5EC2519E5CB0065C493 /* DatePickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerTableViewCell.xib; sourceTree = "<group>"; };
 		B04CBDEF251C66020092D49F /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 		B063606D251CAA1200C21C33 /* UIVIewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVIewControllerExt.swift; sourceTree = "<group>"; };
 		B0A4A414251349A200E39134 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -244,7 +240,6 @@
 			isa = PBXGroup;
 			children = (
 				B0121B1A25136A350035E4F2 /* 2.1. Cell */,
-				B03FF5EA2519E4FC0065C493 /* 2.2. DatePicker */,
 				B0A4A414251349A200E39134 /* HomeViewController.swift */,
 				B0A4A415251349A200E39134 /* HomeViewController.xib */,
 				B03FF5D92518A58D0065C493 /* HomeViewModel.swift */,
@@ -283,15 +278,6 @@
 			children = (
 			);
 			path = Manager;
-			sourceTree = "<group>";
-		};
-		B03FF5EA2519E4FC0065C493 /* 2.2. DatePicker */ = {
-			isa = PBXGroup;
-			children = (
-				B03FF5EB2519E5CB0065C493 /* DatePickerTableViewCell.swift */,
-				B03FF5EC2519E5CB0065C493 /* DatePickerTableViewCell.xib */,
-			);
-			path = "2.2. DatePicker";
 			sourceTree = "<group>";
 		};
 		B04CBDEE251C65F00092D49F /* ObjectMapper */ = {
@@ -413,7 +399,6 @@
 			files = (
 				B0C3AF682512059B00959BDD /* LoginViewController.xib in Resources */,
 				B0121B1E25136A550035E4F2 /* HomeTableViewCell.xib in Resources */,
-				B03FF5EE2519E5CB0065C493 /* DatePickerTableViewCell.xib in Resources */,
 				B0A4A417251349A200E39134 /* HomeViewController.xib in Resources */,
 				0EBA371C2511C6C7003465DD /* Assets.xcassets in Resources */,
 				B0A4A4192513560300E39134 /* GoogleService-Info.plist in Resources */,
@@ -521,7 +506,6 @@
 				0EBA37422511C97B003465DD /* Error.swift in Sources */,
 				B063606E251CAA1200C21C33 /* UIVIewControllerExt.swift in Sources */,
 				B03FF5DA2518A58D0065C493 /* HomeViewModel.swift in Sources */,
-				B03FF5ED2519E5CB0065C493 /* DatePickerTableViewCell.swift in Sources */,
 				0EBA37462511C97B003465DD /* APIService.swift in Sources */,
 				B001147A25217F15003EA463 /* Owner.swift in Sources */,
 				0EBA374B2511CA7A003465DD /* App.swift in Sources */,

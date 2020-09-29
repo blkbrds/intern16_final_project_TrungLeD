@@ -48,9 +48,6 @@ final class HomeTableViewCell: UITableViewCell {
         imageView1.layer.cornerRadius = 10
     }
     
-    class func cellHeight() -> CGFloat {
-        return 100
-    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         

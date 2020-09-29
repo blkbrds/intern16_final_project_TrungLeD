@@ -16,9 +16,9 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: Properties
+    let searchBar = UISearchBar()
     var menu: SideMenuNavigationController?
     var inputDate: [Date] = []
-    var datePickerIndexPath: IndexPath!
     private var viewModel: HomeViewModel = HomeViewModel()
     
     // MARK: Life Cycle
@@ -26,8 +26,8 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         configSideMenu()
         configTableView()
-        addInitValue()
         loadData()
+        configureUI()
     }
     
     // MARK: Function
@@ -44,28 +44,43 @@ class HomeViewController: UIViewController {
                 }
             }
         }
-        
+    }
+    @objc func handleShowSearchBar() {
+        searchBar.placeholder = "Nhập Khu Vực"
+        searchBar.becomeFirstResponder()
+        search(shouldShow: true)
     }
     
-    func addInitValue() {
-        inputDate = Array(repeating: Date(), count: viewModel.datas.count)
+    // MARK: - Helper Functions
+    
+    func configureUI() {
+        view.backgroundColor = .white
+        searchBar.delegate = self
+        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.isTranslucent = true
+        showSearchBarButton(shouldShow: true)
+    }
+    
+    func showSearchBarButton(shouldShow: Bool) {
+        if shouldShow {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(handleShowSearchBar))
+        } else {
+            navigationItem.rightBarButtonItem = nil
+        }
+    }
+    
+    func search(shouldShow: Bool) {
+        showSearchBarButton(shouldShow: !shouldShow)
+        searchBar.showsCancelButton = shouldShow
+        navigationItem.titleView = shouldShow ? searchBar : nil
     }
     
     func configTableView() {
         let nib = UINib(nibName: "HomeTableViewCell", bundle: Bundle.main)
         tableView.register(nib, forCellReuseIdentifier: "cellHome")
-        let nib2 = UINib(nibName: "DatePickerTableViewCell", bundle: Bundle.main)
-        tableView.register(nib2, forCellReuseIdentifier: "cellDatePicker")
         tableView.delegate = self
         tableView.dataSource = self
-    }
-    
-    func indexPathToInsertDatePicker(indexPath: IndexPath) -> IndexPath {
-        if let datePickerIndexPath = datePickerIndexPath, datePickerIndexPath.row < indexPath.row {
-            return indexPath
-        } else {
-            return IndexPath(row: indexPath.row + 1, section: indexPath.section)
-        }
     }
     
     func configSideMenu() {
@@ -89,7 +104,6 @@ class HomeViewController: UIViewController {
 // MARK: Side Menu
 class MenuListController: UITableViewController {
     
-    private var darkColor = UIColor(red: 33 / 255, green: 33 / 255, blue: 33 / 255, alpha: 1)
     private var items: [String]
     init (with items: [String]) {
         self.items = items
@@ -123,70 +137,53 @@ class MenuListController: UITableViewController {
 
 // MARK: UITableView Delegate, UITableView DataSource
 extension HomeViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cellHome = tableView.dequeueReusableCell(withIdentifier: "cellHome", for: indexPath) as? HomeTableViewCell else {
+            return UITableViewCell()
+        }
+        cellHome.viewModel = viewModel.viewModelForCellByDefault(at: indexPath)
+        return cellHome
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if datePickerIndexPath != nil {
-            return viewModel.datas.count + 1
-        } else {
-            return viewModel.datas.count
-        }
+        return viewModel.dataSorts.count
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        if datePickerIndexPath == indexPath {
-            guard let cellDatePicker = tableView.dequeueReusableCell(withIdentifier: "cellDatePicker", for: indexPath)
-                as? DatePickerTableViewCell
-                else {
-                    return UITableViewCell()
-            }
-            cellDatePicker.updateCell(date: inputDate[indexPath.row - 1], indexPath: indexPath)
-            cellDatePicker.delegate = self
-            return cellDatePicker
-        } else {
-            guard let cellHome = tableView.dequeueReusableCell(withIdentifier: "cellHome", for: indexPath) as? HomeTableViewCell else {
-                return UITableViewCell()
-            }
-            cellHome.viewModel = viewModel.viewModelForCell(at: indexPath)
-            return cellHome
-        }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 130
     }
-    
 }
 
 // MARK: Extension
 extension HomeViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.beginUpdates()
-        if let datePickerIndexPath = datePickerIndexPath, datePickerIndexPath.row - 1 == indexPath.row {
-            tableView.deleteRows(at: [datePickerIndexPath], with: .fade)
-            self.datePickerIndexPath = nil
-        } else {
-            if let datePickerIndexPath = datePickerIndexPath {
-                tableView.deleteRows(at: [datePickerIndexPath], with: .fade)
-            }
-            datePickerIndexPath = indexPathToInsertDatePicker(indexPath: indexPath)
-            tableView.insertRows(at: [datePickerIndexPath], with: .fade)
-            tableView.deselectRow(at: indexPath, animated: true)
-        }
-        tableView.endUpdates()
+        
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if datePickerIndexPath == indexPath {
-            return DatePickerTableViewCell.cellHeight()
-        } else {
-            return DatePickerTableViewCell.cellHeight()
-        }
-    }
-    
+    //    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    //        let booking = UIContextualAction(style: .normal, title: "Booking") { (action, view, completionHandle) in
+    //
+    //        }
+    //    }
 }
-extension HomeViewController: DatePickerDelegate {
-    
-    func didChangeDate(date: Date, indexPath: IndexPath) {
-        // inputDate[indexPath.row] = date
-        //    tableView.reloadRows(at: [indexPath], with: .none)
+
+extension HomeViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        print("Search bar editing did begin..")
     }
     
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        print("Search bar editing did end..")
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        search(shouldShow: false)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("Search text is \(searchText)")
+        var temp:[String]!
+        if !searchText.isEmpty {
+
+        }
+    }
 }
