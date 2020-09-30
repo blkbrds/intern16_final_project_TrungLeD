@@ -16,6 +16,7 @@ class CollectionViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: Properties
+    let datePicker = UIDatePicker()
     let searchBar = UISearchBar()
     var menu: SideMenuNavigationController?
     var inputDate: [Date] = []
@@ -99,6 +100,38 @@ class CollectionViewController: UIViewController {
         guard let menu = SideMenuManager.defaultManager.leftMenuNavigationController else { return }
         present(menu, animated: true)
     }
+    
+    // MARK: Swipe booking button
+    func bookingAction(at indexPath: IndexPath) -> UIContextualAction {
+        let booking = viewModel.pitchData[indexPath.row]
+        let action = UIContextualAction(style: .normal, title: "Booking") { (action, view, completion) in
+            
+        }
+        action.image = #imageLiteral(resourceName: "ic_Detail_booking.png")
+        action.backgroundColor = #colorLiteral(red: 0.7821254493, green: 0.8392576644, blue: 1, alpha: 1)
+        return action
+    }
+    
+    func createDatePicker() {
+        datePicker.datePickerMode = .dateAndTime
+        // toolbar
+        var toolbar = UIToolbar()
+        toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44))
+        toolbar.sizeToFit()
+        let cancelBtn = UIBarButtonItem(title: "cancel", style: .plain, target: self, action: #selector(self.cancelPressed))
+        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(self.donePressed))
+        let flexibleBtn = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbar.setItems([cancelBtn,flexibleBtn,doneBtn], animated: true)
+    }
+    @objc func cancelPressed() {
+        view.resignFirstResponder()
+    }
+    
+    @objc func donePressed() {
+        print(datePicker.date)
+        self.view.endEditing(true)
+        view.resignFirstResponder()
+    }
 }
 
 // MARK: Side Menu
@@ -133,9 +166,10 @@ class MenuListController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
 }
 
-// MARK: UITableView Delegate, UITableView DataSource
+// MARK: Extension: UITableView DataSource
 extension CollectionViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cellCollection = tableView.dequeueReusableCell(withIdentifier: "cellCollection", for: indexPath) as? CollectionTableViewCell else {
@@ -146,18 +180,22 @@ extension CollectionViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.dataSorts.count
+        return viewModel.pitchFilterData.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
     }
 }
 
-// MARK: Extension
+// MARK: Extension: UITableView Delegate
 extension CollectionViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+    }
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let booking = bookingAction(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [booking])
     }
 }
 
@@ -177,10 +215,11 @@ extension CollectionViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("Search text is \(searchText)")
         if searchText.isEmpty {
-            viewModel.dataSorts = viewModel.datas
+            viewModel.pitchFilterData = viewModel.pitchData
         } else {
-            viewModel.dataSorts =  viewModel.dataSorts.filter{($0.name?.contains(searchText) ?? false)}
+            viewModel.pitchFilterData =  viewModel.pitchFilterData.filter{($0.name?.contains(searchText) ?? false)}
         }
         tableView.reloadData()
     }
+    
 }

@@ -63,40 +63,11 @@
                             <constraint firstAttribute="height" constant="29" id="gd5-JH-vrz"/>
                         </constraints>
                     </imageView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jx6-si-MLQ">
-                        <rect key="frame" x="398" y="62" width="50" height="71"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50C-ka-VWc">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="55"/>
-                                <state key="normal" image="ic_Detail_booking"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Đặt Sân" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vW-7m-seN">
-                                <rect key="frame" x="0.0" y="55" width="50" height="16"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="5vW-7m-seN" firstAttribute="top" secondItem="50C-ka-VWc" secondAttribute="bottom" id="33v-WF-pmp"/>
-                            <constraint firstAttribute="bottom" secondItem="5vW-7m-seN" secondAttribute="bottom" id="5RW-wQ-sIv"/>
-                            <constraint firstItem="5vW-7m-seN" firstAttribute="leading" secondItem="Jx6-si-MLQ" secondAttribute="leading" id="JfD-fn-wDt"/>
-                            <constraint firstItem="50C-ka-VWc" firstAttribute="top" secondItem="Jx6-si-MLQ" secondAttribute="top" id="LEs-fx-xcO"/>
-                            <constraint firstAttribute="trailing" secondItem="50C-ka-VWc" secondAttribute="trailing" id="Mrq-ob-hdK"/>
-                            <constraint firstAttribute="trailing" secondItem="5vW-7m-seN" secondAttribute="trailing" id="N9D-1I-8KS"/>
-                            <constraint firstAttribute="height" constant="71" id="h5B-ml-APj"/>
-                            <constraint firstAttribute="width" constant="50" id="sWM-he-Sp1"/>
-                            <constraint firstItem="5vW-7m-seN" firstAttribute="top" secondItem="50C-ka-VWc" secondAttribute="bottom" id="uxV-PL-hWl"/>
-                            <constraint firstItem="50C-ka-VWc" firstAttribute="leading" secondItem="Jx6-si-MLQ" secondAttribute="leading" id="uyH-ZA-GCb"/>
-                        </constraints>
-                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="M8m-Zg-Rfw" firstAttribute="top" secondItem="93l-Ng-q7V" secondAttribute="top" multiplier="0.95" id="0Lu-2T-ec2"/>
                     <constraint firstItem="93l-Ng-q7V" firstAttribute="leading" secondItem="M8m-Zg-Rfw" secondAttribute="trailing" constant="3" id="1eb-cn-JLN"/>
                     <constraint firstAttribute="trailing" secondItem="EiR-Wl-Pvk" secondAttribute="trailing" constant="9" id="2rb-B6-JGq"/>
-                    <constraint firstItem="Jx6-si-MLQ" firstAttribute="top" secondItem="EiR-Wl-Pvk" secondAttribute="bottom" constant="15" id="3gv-Ih-tDp"/>
                     <constraint firstItem="A3r-f9-Fwl" firstAttribute="leading" secondItem="Knq-1v-Dfk" secondAttribute="leading" id="4sy-hb-l7t"/>
                     <constraint firstItem="Knq-1v-Dfk" firstAttribute="leading" secondItem="euu-hZ-FLX" secondAttribute="trailing" constant="3" id="6Lf-YS-RdE"/>
                     <constraint firstItem="Knq-1v-Dfk" firstAttribute="trailing" secondItem="A3r-f9-Fwl" secondAttribute="trailing" id="7UF-k3-WVY"/>
@@ -110,7 +81,6 @@
                     <constraint firstItem="euu-hZ-FLX" firstAttribute="leading" secondItem="GuY-Sg-eOj" secondAttribute="trailing" constant="3" id="iA3-Fw-hgF"/>
                     <constraint firstItem="A3r-f9-Fwl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="jbz-1S-zqu"/>
                     <constraint firstItem="93l-Ng-q7V" firstAttribute="top" secondItem="Knq-1v-Dfk" secondAttribute="bottom" constant="30" id="kzP-XJ-r8y"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="Jx6-si-MLQ" secondAttribute="trailing" constant="10" id="po5-cA-VEW"/>
                     <constraint firstItem="93l-Ng-q7V" firstAttribute="trailing" secondItem="Knq-1v-Dfk" secondAttribute="trailing" id="qGt-Ex-u4b"/>
                     <constraint firstAttribute="bottom" secondItem="GuY-Sg-eOj" secondAttribute="bottom" constant="6" id="uJ0-uz-Tuh"/>
                     <constraint firstItem="93l-Ng-q7V" firstAttribute="leading" secondItem="Knq-1v-Dfk" secondAttribute="leading" id="yyE-FB-8PX"/>
@@ -131,7 +101,6 @@
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="ic_Collection_clock" width="100" height="100"/>
         <image name="ic_Collection_location" width="50" height="50"/>
-        <image name="ic_Detail_booking" width="50" height="50"/>
         <image name="img_Collection_soccer" width="960" height="540"/>
     </resources>
 </document>
