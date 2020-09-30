@@ -103,9 +103,9 @@ class CollectionViewController: UIViewController {
     
     // MARK: Swipe booking button
     func bookingAction(at indexPath: IndexPath) -> UIContextualAction {
-        let booking = viewModel.pitchData[indexPath.row]
+        //        let booking = viewModel.pitchData[indexPath.row]
         let action = UIContextualAction(style: .normal, title: "Booking") { (action, view, completion) in
-            self.createDatePicker()
+           self.createDatePicker()
             completion(true)
         }
         action.image = #imageLiteral(resourceName: "ic_Detail_booking.png")
@@ -113,25 +113,38 @@ class CollectionViewController: UIViewController {
         return action
     }
     
-    func createDatePicker() {
-        // DatePicker
-        self.datePicker = UIDatePicker(frame:CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 216))
-        self.datePicker.backgroundColor = UIColor.white
-        self.datePicker.datePickerMode = .dateAndTime
-        // ToolBar
-        let toolBar = UIToolbar()
-        toolBar.barStyle = .default
-        toolBar.isTranslucent = true
-        toolBar.tintColor = UIColor(red: 92/255, green: 216/255, blue: 255/255, alpha: 1)
-        toolBar.sizeToFit()
-
-        // Adding Button ToolBar
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.doneClick))
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.cancelClick))
-        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
-        toolBar.isUserInteractionEnabled = true
+    // func booking when choose date from datepicker
+    @objc func bookingPitch() {
+        print("da pick")
     }
+    
+    func createDatePicker() {
+        datePicker.datePickerMode = .dateAndTime
+        
+        let toolbar = UIToolbar()
+        toolbar.barStyle = UIBarStyle.default
+        toolbar.isTranslucent = true
+        toolbar.tintColor = UIColor(red: 189/255, green: 194/255, blue: 201/255, alpha: 1)
+        toolbar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.plain, target: self, action: nil)
+        doneButton.tintColor = UIColor.black
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: nil)
+        cancelButton.tintColor = UIColor.black
+        
+        toolbar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+        toolbar.isUserInteractionEnabled = true
+        datePicker.frame = CGRect(x: 0, y: view.frame.height - 260, width: view.frame.width, height: 260)
+        toolbar.frame = CGRect(x: 0, y: 0, width: view.frame.width - 220, height: 40)
+        datePicker.addTarget(self, action: #selector(bookingPitch), for: .valueChanged)
+        
+        //add the picker to your view or tableView if you use UITableViewController
+        tableView.addSubview(datePicker)
+        tableView.addSubview(toolbar)
+        tableView.bringSubviewToFront(datePicker)
+    }
+    
     @objc func cancelClick() {
         view.resignFirstResponder()
     }
@@ -194,6 +207,22 @@ extension CollectionViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
+    //    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+    ////            let postpone = UITableViewRowAction(style: .normal, title: "Postpone"){(UITableViewRowAction,NSIndexPath) -> Void in
+    ////            self.tasks[indexPath.row].status = "postpone"
+    ////            let encodedData = NSKeyedArchiver.archivedData(withRootObject: self.tasks)
+    ////            UserDefaults.standard.removeObject(forKey: "taskList")
+    ////            UserDefaults.standard.set(encodedData, forKey: "taskList")
+    ////            self.taskTableView.reloadData()
+    ////
+    ////            //show your date picker
+    ////            self.createDatePicker()
+    ////
+    ////        }
+    ////        postpone.backgroundColor = UIColor.init(red: 222/255, green: 119/255, blue: 49/255, alpha: 1)
+    ////
+    ////        return [done, cancel, postpone]
+    //    }
 }
 
 // MARK: Extension: UITableView Delegate
