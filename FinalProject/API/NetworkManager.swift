@@ -13,7 +13,7 @@ import ObjectMapper
 final class NetworkManager: Networkable {
     // MARK: Properties
     static var shared: NetworkManager = NetworkManager()
-    var provider = MoyaProvider<APIService>()
+    var provider = MoyaProvider<ServiceAPI>()
     
     // MARK: Function
     func login(phone: String, pw: String, completion: @escaping CompletionResult<Customer>) {

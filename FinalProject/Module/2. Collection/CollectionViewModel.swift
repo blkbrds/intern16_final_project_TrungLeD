@@ -1,5 +1,5 @@
 //
-//  HomeViewModel.swift
+//  CollectionViewModel.swift
 //  FinalProject
 //
 //  Created by Trung Le D. on 9/21/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class HomeViewModel {
+class CollectionViewModel {
     // MARK: Properties
     var datas: [Pitch] = []
     var dataSorts: [Pitch] = []
@@ -51,9 +51,9 @@ class HomeViewModel {
         return datas.count
     }
     
-    func viewModelForCell(at indexPath: IndexPath) -> HomeCellViewModel {
+    func viewModelForCell(at indexPath: IndexPath) -> CollectionCellViewModel {
         let item = dataSorts[indexPath.row]
-        let viewModel = HomeCellViewModel(item: item)
+        let viewModel = CollectionCellViewModel(item: item)
         return viewModel
     }
 }

@@ -1,5 +1,5 @@
 //
-//  HomeCellViewModel.swift
+//  CollectionCellViewModel.swift
 //  FinalProject
 //
 //  Created by Trung Le D. on 9/28/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-final class HomeCellViewModel {
+final class CollectionCellViewModel {
     
     // MARK: Properties
     var item: Pitch

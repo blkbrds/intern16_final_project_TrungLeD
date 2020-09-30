@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  CollectionViewController.swift
 //  FinalProject
 //
 //  Created by Trung Le D. on 9/17/20.
@@ -9,7 +9,7 @@
 import UIKit
 import SideMenu
 
-class HomeViewController: UIViewController {
+class CollectionViewController: UIViewController {
     
     // MARK: IBOutlet
     @IBOutlet weak var scrollView: UIScrollView!
@@ -19,7 +19,7 @@ class HomeViewController: UIViewController {
     let searchBar = UISearchBar()
     var menu: SideMenuNavigationController?
     var inputDate: [Date] = []
-    private var viewModel: HomeViewModel = HomeViewModel()
+    private var viewModel: CollectionViewModel = CollectionViewModel()
     
     // MARK: Life Cycle
     override func viewDidLoad() {
@@ -77,8 +77,8 @@ class HomeViewController: UIViewController {
     }
     
     func configTableView() {
-        let nib = UINib(nibName: "HomeTableViewCell", bundle: Bundle.main)
-        tableView.register(nib, forCellReuseIdentifier: "cellHome")
+        let nib = UINib(nibName: "CollectionTableViewCell", bundle: Bundle.main)
+        tableView.register(nib, forCellReuseIdentifier: "cellCollection")
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -136,13 +136,13 @@ class MenuListController: UITableViewController {
 }
 
 // MARK: UITableView Delegate, UITableView DataSource
-extension HomeViewController: UITableViewDataSource {
+extension CollectionViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cellHome = tableView.dequeueReusableCell(withIdentifier: "cellHome", for: indexPath) as? HomeTableViewCell else {
+        guard let cellCollection = tableView.dequeueReusableCell(withIdentifier: "cellCollection", for: indexPath) as? CollectionTableViewCell else {
             return UITableViewCell()
         }
-        cellHome.viewModel = viewModel.viewModelForCell(at: indexPath)
-        return cellHome
+        cellCollection.viewModel = viewModel.viewModelForCell(at: indexPath)
+        return cellCollection
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -154,7 +154,7 @@ extension HomeViewController: UITableViewDataSource {
 }
 
 // MARK: Extension
-extension HomeViewController: UITableViewDelegate {
+extension CollectionViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -166,7 +166,7 @@ extension HomeViewController: UITableViewDelegate {
     //    }
 }
 
-extension HomeViewController: UISearchBarDelegate {
+extension CollectionViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         print("Search bar editing did begin..")
     }

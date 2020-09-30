@@ -9,7 +9,7 @@
 import Moya
 
 protocol Networkable {
-    var provider: MoyaProvider<APIService> { get }
+    var provider: MoyaProvider<ServiceAPI> { get }
     
     // MARK: Function
     func login(phone: String, pw: String, completion: @escaping CompletionResult<Customer>)

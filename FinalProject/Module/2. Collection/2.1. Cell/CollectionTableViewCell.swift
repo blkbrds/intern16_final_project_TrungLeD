@@ -1,5 +1,5 @@
 //
-//  HomeTableViewCell.swift
+//  CollectionTableViewCell.swift
 //  FinalProject
 //
 //  Created by Trung Le D. on 9/17/20.
@@ -18,7 +18,7 @@ enum DateFormatType: String {
     //Date
     case date = "dd-MM-yyyy"
 }
-final class HomeTableViewCell: UITableViewCell {
+final class CollectionTableViewCell: UITableViewCell {
     
     // MARK: IBOutlet
     @IBOutlet weak var namePitch: UILabel!
@@ -31,7 +31,7 @@ final class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var dateBookingLabel: UILabel!
     
     // MARK: Properties
-    var viewModel: HomeCellViewModel? {
+    var viewModel: CollectionCellViewModel? {
         didSet {
             updateView()
         }
