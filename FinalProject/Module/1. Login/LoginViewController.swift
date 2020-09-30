@@ -9,7 +9,7 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-
+    
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var passWordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -21,20 +21,22 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         setupElements()
     }
-        
-   // MARK: - Function
+    
+    // MARK: - Function
     private func setupElements() {
-        Utilities.styleTextFiend(phoneTextField)
-        Utilities.styleTextFiend(passWordTextField)
-        Utilities.styleFilledButton(loginButton)
         errorLabel.isHidden = true
+        phoneTextField.drawLine()
+        passWordTextField.drawLine()
+        loginButton.drawColor()
+        loginButton.styleHollowButton()
     }
-
+    
     @IBAction func loginPressed(_ sender: UIButton) {
         login()
     }
 }
 
+    // MARK: - Extension
 extension LoginViewController {
     
     private func login() {
@@ -42,15 +44,13 @@ extension LoginViewController {
         viewModel.login(phone: phone, pw: pw) { result in
             switch result {
             case .success:
-                 AppDelegate.shared.changeRoot(rootType: .collection)
+                AppDelegate.shared.changeRoot(rootType: .collection)
             case .failure(let error):
                 print(error)
                 self.errorLabel.isHidden = false
                 self.errorLabel.text = "Sai thông tin đăng nhập"
-                 self.showAlert(alertText: "Lỗi Đăng Nhập", alertMessage: "Nhập lại mật khẩu hoặc số điện thoại")
-                break
+                self.showAlert(alertText: "Lỗi Đăng Nhập", alertMessage: "Nhập lại mật khẩu hoặc số điện thoại")
             }
-            
         }
     }
 }

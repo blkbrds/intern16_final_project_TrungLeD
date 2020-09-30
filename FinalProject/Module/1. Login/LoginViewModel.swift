@@ -17,7 +17,7 @@ final class LoginViewModel {
         self.networkManager = networkManager
     }
 
-    func login(phone: String, pw: String, completion: @escaping (APICompletion) -> Void ) {
+    func login(phone: String, pw: String, completion: @escaping APICompletion ) {
         networkManager.login(phone: phone, pw: pw) { result in
             switch result {
             case .success(let customer):
