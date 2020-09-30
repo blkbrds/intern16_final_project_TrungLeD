@@ -10,7 +10,7 @@ import UIKit
 import SideMenu
 enum RootType {
     case login
-    case home
+    case collection
 }
     @UIApplicationMain
 
@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        changeRoot(rootType: .login)
+        changeRoot(rootType: .collection)
         window?.makeKeyAndVisible()
         return true
     }
@@ -27,8 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         switch rootType {
         case .login:
             window?.rootViewController = LoginViewController()
-        case .home:
-            window?.rootViewController = HomeViewController()
+        case .collection:
+            let navi = UINavigationController(rootViewController: CollectionViewController())
+            window?.rootViewController = navi
         }
     }
     
