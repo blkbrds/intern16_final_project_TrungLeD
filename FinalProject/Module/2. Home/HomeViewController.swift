@@ -46,7 +46,7 @@ class HomeViewController: UIViewController {
         }
     }
     @objc func handleShowSearchBar() {
-        searchBar.placeholder = "Nhập Khu Vực"
+        searchBar.placeholder = "Nhập Tên Sân"
         searchBar.becomeFirstResponder()
         search(shouldShow: true)
     }
@@ -141,7 +141,7 @@ extension HomeViewController: UITableViewDataSource {
         guard let cellHome = tableView.dequeueReusableCell(withIdentifier: "cellHome", for: indexPath) as? HomeTableViewCell else {
             return UITableViewCell()
         }
-        cellHome.viewModel = viewModel.viewModelForCellByDefault(at: indexPath)
+        cellHome.viewModel = viewModel.viewModelForCell(at: indexPath)
         return cellHome
     }
     
@@ -181,9 +181,11 @@ extension HomeViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("Search text is \(searchText)")
-        var temp:[String]!
-        if !searchText.isEmpty {
-
+        if searchText.isEmpty {
+            viewModel.dataSorts = viewModel.datas
+        } else {
+           viewModel.dataSorts =  viewModel.dataSorts.filter{($0.name?.contains(searchText) ?? false)}
         }
+        tableView.reloadData()
     }
 }

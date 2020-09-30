@@ -29,12 +29,6 @@ class HomeViewModel {
                 completion( .failure(error))
             case .success(let result):
                 this.datas = result
-                
-//                this.dataSorts = this.datas.sorted(by: {
-//                    guard let name = name else { return }
-//                    $0.name.localizedStandardCompare($1.name!) == .orderedAscending
-//                })
-                
                 this.nameSort = this.datas.compactMap({ $0.name })
                 this.nameSort = this.nameSort.sorted { $0.compare($1) == .orderedAscending }
                 for i in 0..<this.datas.count {
@@ -52,9 +46,6 @@ class HomeViewModel {
         }
     }
     
-    func numberOfRowsInSection() -> Int {
-        return dataSorts.count
-    }
     
     func numberOfRowInSectionByDefault() -> Int {
         return datas.count
@@ -62,12 +53,6 @@ class HomeViewModel {
     
     func viewModelForCell(at indexPath: IndexPath) -> HomeCellViewModel {
         let item = dataSorts[indexPath.row]
-        let viewModel = HomeCellViewModel(item: item)
-        return viewModel
-    }
-    
-    func viewModelForCellByDefault(at indexPath: IndexPath) -> HomeCellViewModel {
-        let item = datas[indexPath.row]
         let viewModel = HomeCellViewModel(item: item)
         return viewModel
     }
