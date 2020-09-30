@@ -16,7 +16,7 @@ class CollectionViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: Properties
-    let datePicker = UIDatePicker()
+    var datePicker = UIDatePicker()
     let searchBar = UISearchBar()
     var menu: SideMenuNavigationController?
     var inputDate: [Date] = []
@@ -105,7 +105,8 @@ class CollectionViewController: UIViewController {
     func bookingAction(at indexPath: IndexPath) -> UIContextualAction {
         let booking = viewModel.pitchData[indexPath.row]
         let action = UIContextualAction(style: .normal, title: "Booking") { (action, view, completion) in
-            
+            self.createDatePicker()
+            completion(true)
         }
         action.image = #imageLiteral(resourceName: "ic_Detail_booking.png")
         action.backgroundColor = #colorLiteral(red: 0.7821254493, green: 0.8392576644, blue: 1, alpha: 1)
@@ -113,21 +114,29 @@ class CollectionViewController: UIViewController {
     }
     
     func createDatePicker() {
-        datePicker.datePickerMode = .dateAndTime
-        // toolbar
-        var toolbar = UIToolbar()
-        toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44))
-        toolbar.sizeToFit()
-        let cancelBtn = UIBarButtonItem(title: "cancel", style: .plain, target: self, action: #selector(self.cancelPressed))
-        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(self.donePressed))
-        let flexibleBtn = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        toolbar.setItems([cancelBtn,flexibleBtn,doneBtn], animated: true)
+        // DatePicker
+        self.datePicker = UIDatePicker(frame:CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 216))
+        self.datePicker.backgroundColor = UIColor.white
+        self.datePicker.datePickerMode = .dateAndTime
+        // ToolBar
+        let toolBar = UIToolbar()
+        toolBar.barStyle = .default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor(red: 92/255, green: 216/255, blue: 255/255, alpha: 1)
+        toolBar.sizeToFit()
+
+        // Adding Button ToolBar
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(self.doneClick))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(self.cancelClick))
+        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
     }
-    @objc func cancelPressed() {
+    @objc func cancelClick() {
         view.resignFirstResponder()
     }
     
-    @objc func donePressed() {
+    @objc func doneClick() {
         print(datePicker.date)
         self.view.endEditing(true)
         view.resignFirstResponder()
@@ -183,7 +192,7 @@ extension CollectionViewController: UITableViewDataSource {
         return viewModel.pitchFilterData.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 130
+        return 80
     }
 }
 

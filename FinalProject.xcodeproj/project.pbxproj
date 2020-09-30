@@ -289,6 +289,7 @@
 		B0F8378025245F36008F08C3 /* 2. Collection */ = {
 			isa = PBXGroup;
 			children = (
+				B0F837A225249294008F08C3 /* 2.2 DatePicker */,
 				B0F8378125245F36008F08C3 /* 2.1. Cell */,
 				B0F8378525245F36008F08C3 /* CollectionViewController.xib */,
 				B0F8378625245F36008F08C3 /* CollectionViewModel.swift */,
@@ -305,6 +306,13 @@
 				B0F8378425245F36008F08C3 /* Collection CellViewModel.swift */,
 			);
 			path = "2.1. Cell";
+			sourceTree = "<group>";
+		};
+		B0F837A225249294008F08C3 /* 2.2 DatePicker */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "2.2 DatePicker";
 			sourceTree = "<group>";
 		};
 		D2E67B09594A769705B6FA29 /* Pods */ = {
