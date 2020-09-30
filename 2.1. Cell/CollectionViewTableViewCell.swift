@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class HomeTableViewCell: UITableViewCell {
+final class CollectionViewTableViewCell: UITableViewCell {
     
     // MARK: IBOutlet
     @IBOutlet weak var namePitch: UILabel!
@@ -21,7 +21,7 @@ final class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var dateBookingLabel: UILabel!
     
     // MARK: Properties
-    var viewModel: HomeCellViewModel? {
+    var viewModel: CollectionViewCellViewModel? {
         didSet {
             updateView()
         }

@@ -10,7 +10,7 @@ import UIKit
 import SideMenu
 enum RootType {
     case login
-    case home
+    case collection
 }
     @UIApplicationMain
 
@@ -27,8 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         switch rootType {
         case .login:
             window?.rootViewController = LoginViewController()
-        case .home:
-            window?.rootViewController = HomeViewController()
+        case .collection:
+            window?.rootViewController = CollectionViewController()
         }
     }
     

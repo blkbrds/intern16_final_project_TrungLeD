@@ -20,9 +20,8 @@
 		B04CBDF0251C66020092D49F /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04CBDEF251C66020092D49F /* Customer.swift */; };
 		B063606E251CAA1200C21C33 /* UIVIewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B063606D251CAA1200C21C33 /* UIVIewControllerExt.swift */; };
 		B080EBD8251AF82300C6EFDB /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B080EBD7251AF82300C6EFDB /* Utilities.swift */; };
-		B09515D1252426D800948EC9 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B09515CE252426D700948EC9 /* HomeTableViewCell.xib */; };
-		B09515D2252426D800948EC9 /* HomeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09515CF252426D700948EC9 /* HomeCellViewModel.swift */; };
-		B09515D3252426D800948EC9 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09515D0252426D800948EC9 /* HomeTableViewCell.swift */; };
+		B09515D1252426D800948EC9 /* CollectionViewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B09515CE252426D700948EC9 /* CollectionViewTableViewCell.xib */; };
+		B09515D3252426D800948EC9 /* CollectionViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09515D0252426D800948EC9 /* CollectionViewTableViewCell.swift */; };
 		B09515D52524274400948EC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B09515D42524274400948EC9 /* Assets.xcassets */; };
 		B0A4A4192513560300E39134 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B0A4A4182513560300E39134 /* GoogleService-Info.plist */; };
 		B0A4A41A2513560300E39134 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B0A4A4182513560300E39134 /* GoogleService-Info.plist */; };
@@ -62,9 +61,8 @@
 		B04CBDEF251C66020092D49F /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 		B063606D251CAA1200C21C33 /* UIVIewControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVIewControllerExt.swift; sourceTree = "<group>"; };
 		B080EBD7251AF82300C6EFDB /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		B09515CE252426D700948EC9 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HomeTableViewCell.xib; path = "2.1. Cell/HomeTableViewCell.xib"; sourceTree = SOURCE_ROOT; };
-		B09515CF252426D700948EC9 /* HomeCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeCellViewModel.swift; path = "2.1. Cell/HomeCellViewModel.swift"; sourceTree = SOURCE_ROOT; };
-		B09515D0252426D800948EC9 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeTableViewCell.swift; path = "2.1. Cell/HomeTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
+		B09515CE252426D700948EC9 /* CollectionViewTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CollectionViewTableViewCell.xib; path = "2.1. Cell/CollectionViewTableViewCell.xib"; sourceTree = SOURCE_ROOT; };
+		B09515D0252426D800948EC9 /* CollectionViewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewTableViewCell.swift; path = "2.1. Cell/CollectionViewTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
 		B09515D42524274400948EC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../../Documents/final _ project _ HOME/intern16_final_project_TrungLeD/FinalProject/Resource/Assets.xcassets"; sourceTree = "<group>"; };
 		B0A4A4182513560300E39134 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B0C3AF652512059B00959BDD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -145,7 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				B0C3AF642512058700959BDD /* 1. Login */,
-				0EBA374F2511D18E003465DD /* 2. Home */,
+				0EBA374F2511D18E003465DD /* 2. CollectionView */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -221,12 +219,12 @@
 			path = API;
 			sourceTree = "<group>";
 		};
-		0EBA374F2511D18E003465DD /* 2. Home */ = {
+		0EBA374F2511D18E003465DD /* 2. CollectionView */ = {
 			isa = PBXGroup;
 			children = (
 				B0121B1A25136A350035E4F2 /* 2.1. Cell */,
 			);
-			path = "2. Home";
+			path = "2. CollectionView";
 			sourceTree = "<group>";
 		};
 		9684E36BDD3F8E27F43C5591 /* Frameworks */ = {
@@ -241,9 +239,8 @@
 		B0121B1A25136A350035E4F2 /* 2.1. Cell */ = {
 			isa = PBXGroup;
 			children = (
-				B09515CF252426D700948EC9 /* HomeCellViewModel.swift */,
-				B09515D0252426D800948EC9 /* HomeTableViewCell.swift */,
-				B09515CE252426D700948EC9 /* HomeTableViewCell.xib */,
+				B09515D0252426D800948EC9 /* CollectionViewTableViewCell.swift */,
+				B09515CE252426D700948EC9 /* CollectionViewTableViewCell.xib */,
 			);
 			path = "2.1. Cell";
 			sourceTree = "<group>";
@@ -377,7 +374,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0C3AF682512059B00959BDD /* LoginViewController.xib in Resources */,
-				B09515D1252426D800948EC9 /* HomeTableViewCell.xib in Resources */,
+				B09515D1252426D800948EC9 /* CollectionViewTableViewCell.xib in Resources */,
 				B09515D52524274400948EC9 /* Assets.xcassets in Resources */,
 				B0A4A4192513560300E39134 /* GoogleService-Info.plist in Resources */,
 			);
@@ -483,9 +480,8 @@
 				0EBA37442511C97B003465DD /* NetworkManager.swift in Sources */,
 				0EBA37422511C97B003465DD /* Error.swift in Sources */,
 				B063606E251CAA1200C21C33 /* UIVIewControllerExt.swift in Sources */,
-				B09515D2252426D800948EC9 /* HomeCellViewModel.swift in Sources */,
 				0EBA37462511C97B003465DD /* APIService.swift in Sources */,
-				B09515D3252426D800948EC9 /* HomeTableViewCell.swift in Sources */,
+				B09515D3252426D800948EC9 /* CollectionViewTableViewCell.swift in Sources */,
 				B080EBD8251AF82300C6EFDB /* Utilities.swift in Sources */,
 				0EBA374B2511CA7A003465DD /* App.swift in Sources */,
 				0EBA37452511C97B003465DD /* Networkable.swift in Sources */,
