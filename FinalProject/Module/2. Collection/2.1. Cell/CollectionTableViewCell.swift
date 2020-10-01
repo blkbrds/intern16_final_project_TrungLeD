@@ -31,6 +31,7 @@ final class CollectionTableViewCell: UITableViewCell {
     @IBOutlet weak var dateBookingLabel: UILabel!
     
     // MARK: Properties
+    var pitch: [Pitch]?
     var viewModel: CollectionCellViewModel? {
         didSet {
             updateView()

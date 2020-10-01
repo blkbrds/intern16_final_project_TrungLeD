@@ -21,6 +21,7 @@ class CollectionViewController: UIViewController {
     var menu: SideMenuNavigationController?
     var inputDate: [Date] = []
     private var viewModel: CollectionViewModel = CollectionViewModel()
+    var pitch: [Pitch]?
     
     // MARK: Life Cycle
     override func viewDidLoad() {
@@ -191,6 +192,13 @@ extension CollectionViewController: UITableViewDataSource {
 extension CollectionViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath)
+        let detailVC = DetailViewController()
+        detailVC.viewModel.id = viewModel.pitchData[indexPath.row].id
+        guard let cell = tableView.cellForRow(at: indexPath) as? CollectionTableViewCell  else {
+            return
+        }
+//        detailVC.viewModel.pitch?[indexPath] = cell.viewModel.pitch?[indexPath]
         
     }
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

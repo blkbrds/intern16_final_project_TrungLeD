@@ -14,6 +14,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: Properties
+    var pitch:[Pitch]?
     var viewModel: DetailViewModel = DetailViewModel()
     // MARK: Life Cycle
     override func viewDidLoad() {

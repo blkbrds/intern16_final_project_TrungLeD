@@ -16,7 +16,9 @@ enum TypeSection {
 }
 final class DetailViewModel {
     
+    var pitch: [Pitch]?
     // MARK: Properties
+    var id: Int?
     var lat: Int?
     var long: Int?
     var pitchName: String?
