@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -16,26 +16,21 @@
                 <rect key="frame" x="0.0" y="0.0" width="368" height="83"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_Collection_soccer" translatesAutoresizingMaskIntoConstraints="NO" id="GuY-Sg-eOj">
-                        <rect key="frame" x="5" y="16.5" width="50" height="50"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_collection_soccer" translatesAutoresizingMaskIntoConstraints="NO" id="GuY-Sg-eOj">
+                        <rect key="frame" x="5" y="16.5" width="90" height="50"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="50" id="Tqt-UH-PC9"/>
+                            <constraint firstAttribute="width" constant="90" id="Tqt-UH-PC9"/>
                             <constraint firstAttribute="height" constant="50" id="glS-V6-I4r"/>
                         </constraints>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EiR-Wl-Pvk" userLabel="HeartButton">
-                        <rect key="frame" x="304" y="18" width="44" height="37"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <state key="normal" image="heart" catalog="system"/>
-                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dia Chi" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Knq-1v-Dfk">
-                        <rect key="frame" x="87" y="28" width="40.5" height="14.5"/>
+                        <rect key="frame" x="128" y="28" width="40.5" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thoi Gian" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="93l-Ng-q7V" userLabel="Booking">
-                        <rect key="frame" x="88" y="53" width="54" height="15"/>
+                        <rect key="frame" x="129" y="53" width="54" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="3xi-IV-hPq"/>
                         </constraints>
@@ -44,32 +39,40 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Da Nang" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A3r-f9-Fwl" userLabel="KhuVuc">
-                        <rect key="frame" x="80" y="5" width="59.5" height="20"/>
+                        <rect key="frame" x="110" y="5" width="59.5" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="l5x-AF-ZUJ"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_Collection_location" translatesAutoresizingMaskIntoConstraints="NO" id="euu-hZ-FLX">
-                        <rect key="frame" x="70" y="11" width="13" height="50"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_collection_location" translatesAutoresizingMaskIntoConstraints="NO" id="euu-hZ-FLX">
+                        <rect key="frame" x="109" y="11" width="15" height="50"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="13" id="FhU-BL-w0y"/>
+                            <constraint firstAttribute="width" constant="15" id="FhU-BL-w0y"/>
                             <constraint firstAttribute="height" constant="50" id="gcC-36-g8B"/>
                         </constraints>
                     </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_Collection_clock" translatesAutoresizingMaskIntoConstraints="NO" id="M8m-Zg-Rfw">
-                        <rect key="frame" x="68" y="53" width="15" height="15"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_collection_clock" translatesAutoresizingMaskIntoConstraints="NO" id="M8m-Zg-Rfw">
+                        <rect key="frame" x="108" y="53" width="15" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="15" id="fvc-ip-faQ"/>
                             <constraint firstAttribute="height" constant="15" id="t4N-cO-nwa"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EiR-Wl-Pvk" userLabel="HeartButton">
+                        <rect key="frame" x="314" y="23" width="44" height="37"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="37" id="I1e-Qf-aaG"/>
+                            <constraint firstAttribute="width" constant="44" id="fag-VL-w4a"/>
+                        </constraints>
+                        <state key="normal" image="heart" catalog="system"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="GuY-Sg-eOj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="4v6-XP-mxj"/>
-                    <constraint firstItem="A3r-f9-Fwl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="80" id="6et-wg-Voz"/>
+                    <constraint firstItem="A3r-f9-Fwl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="110" id="6et-wg-Voz"/>
                     <constraint firstItem="93l-Ng-q7V" firstAttribute="top" secondItem="Knq-1v-Dfk" secondAttribute="bottom" constant="10.5" id="7Ge-9G-ezz"/>
                     <constraint firstItem="A3r-f9-Fwl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="99l-cp-GXl"/>
                     <constraint firstItem="Knq-1v-Dfk" firstAttribute="leading" secondItem="euu-hZ-FLX" secondAttribute="trailing" constant="4" id="Cbx-bz-oM7"/>
@@ -78,8 +81,10 @@
                     <constraint firstItem="M8m-Zg-Rfw" firstAttribute="leading" secondItem="GuY-Sg-eOj" secondAttribute="trailing" constant="13" id="QPR-If-ozd"/>
                     <constraint firstItem="GuY-Sg-eOj" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="VjU-Gc-DdS"/>
                     <constraint firstItem="93l-Ng-q7V" firstAttribute="leading" secondItem="euu-hZ-FLX" secondAttribute="trailing" constant="5" id="dfj-px-htx"/>
+                    <constraint firstItem="euu-hZ-FLX" firstAttribute="leading" secondItem="GuY-Sg-eOj" secondAttribute="trailing" constant="14" id="fQs-8Z-8Ly"/>
+                    <constraint firstAttribute="trailing" secondItem="EiR-Wl-Pvk" secondAttribute="trailing" constant="10" id="t9L-9c-wLw"/>
                     <constraint firstItem="M8m-Zg-Rfw" firstAttribute="top" secondItem="A3r-f9-Fwl" secondAttribute="bottom" constant="28" id="x7g-oj-xvv"/>
-                    <constraint firstItem="euu-hZ-FLX" firstAttribute="leading" secondItem="GuY-Sg-eOj" secondAttribute="trailing" constant="15" id="yRn-mB-ufR"/>
+                    <constraint firstItem="EiR-Wl-Pvk" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="x9j-kE-SCX"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -96,8 +101,8 @@
     </objects>
     <resources>
         <image name="heart" catalog="system" width="128" height="109"/>
-        <image name="ic_Collection_clock" width="100" height="100"/>
-        <image name="ic_Collection_location" width="50" height="50"/>
-        <image name="img_Collection_soccer" width="960" height="540"/>
+        <image name="ic_collection_clock" width="50" height="50"/>
+        <image name="ic_collection_location" width="50" height="50"/>
+        <image name="img_collection_soccer" width="960" height="540"/>
     </resources>
 </document>

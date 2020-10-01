@@ -43,7 +43,7 @@ final class CollectionTableViewCell: UITableViewCell {
     // MARK: Function
     private func updateView() {
         namePitch.text = viewModel?.name
-        address.text = viewModel?.districtOwner
+        address.text = viewModel?.addressOwner
         dateBookingLabel.text = viewModel?.timeUser
         imageView1.layer.cornerRadius = 10
     }
