@@ -15,7 +15,6 @@
 		0EBA37442511C97B003465DD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA373F2511C97B003465DD /* NetworkManager.swift */; };
 		0EBA37452511C97B003465DD /* Networkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA37402511C97B003465DD /* Networkable.swift */; };
 		0EBA374B2511CA7A003465DD /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA374A2511CA7A003465DD /* App.swift */; };
-		51FA5EAD2524CB0700FD1C2A /* UIVIewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FA5EAC2524CB0700FD1C2A /* UIVIewControllerExt.swift */; };
 		B04CBDF0251C66020092D49F /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04CBDEF251C66020092D49F /* Customer.swift */; };
 		B080EBD8251AF82300C6EFDB /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B080EBD7251AF82300C6EFDB /* Utilities.swift */; };
 		B0A4A4192513560300E39134 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B0A4A4182513560300E39134 /* GoogleService-Info.plist */; };
@@ -37,6 +36,7 @@
 		B0F8379725246016008F08C3 /* ServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F8379625246016008F08C3 /* ServiceAPI.swift */; };
 		B0F8379E252461CF008F08C3 /* UIButtonExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F83799252461CF008F08C3 /* UIButtonExt.swift */; };
 		B0F837A1252461CF008F08C3 /* UITextFieldExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F8379C252461CF008F08C3 /* UITextFieldExt.swift */; };
+		B0F837A825256A07008F08C3 /* UIVIewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F837A725256A06008F08C3 /* UIVIewControllerExt.swift */; };
 		F4720D14B3CB84E1BAB98518 /* Pods_FinalProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D97DEEDD346F0153F1862A73 /* Pods_FinalProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,7 +64,6 @@
 		0EBA374A2511CA7A003465DD /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		2706D3E383C00F904DD7790D /* Pods-FinalProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.release.xcconfig"; path = "Target Support Files/Pods-FinalProject/Pods-FinalProject.release.xcconfig"; sourceTree = "<group>"; };
 		36763DE98DFBD511196E59ED /* Pods-FinalProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProjectTests.release.xcconfig"; path = "Target Support Files/Pods-FinalProjectTests/Pods-FinalProjectTests.release.xcconfig"; sourceTree = "<group>"; };
-		51FA5EAC2524CB0700FD1C2A /* UIVIewControllerExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIVIewControllerExt.swift; path = ../../../../../trungld/intern16_final_project_TrungLeD/FinalProject/Library/Ext/UIVIewControllerExt.swift; sourceTree = "<group>"; };
 		71B484E88DEE2FED67A1E072 /* Pods-FinalProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.debug.xcconfig"; path = "Target Support Files/Pods-FinalProject/Pods-FinalProject.debug.xcconfig"; sourceTree = "<group>"; };
 		B04CBDEF251C66020092D49F /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 		B080EBD7251AF82300C6EFDB /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -86,6 +85,7 @@
 		B0F8379625246016008F08C3 /* ServiceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAPI.swift; sourceTree = "<group>"; };
 		B0F83799252461CF008F08C3 /* UIButtonExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExt.swift; sourceTree = "<group>"; };
 		B0F8379C252461CF008F08C3 /* UITextFieldExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExt.swift; sourceTree = "<group>"; };
+		B0F837A725256A06008F08C3 /* UIVIewControllerExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIVIewControllerExt.swift; sourceTree = "<group>"; };
 		B6DCA56A3C4C06E3A0ADEC3A /* Pods-FinalProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-FinalProjectTests/Pods-FinalProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D97DEEDD346F0153F1862A73 /* Pods_FinalProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinalProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA793CAF2D9C7A41645277D2 /* Pods_FinalProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinalProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,7 +186,7 @@
 		0EBA37372511C890003465DD /* Ext */ = {
 			isa = PBXGroup;
 			children = (
-				51FA5EAC2524CB0700FD1C2A /* UIVIewControllerExt.swift */,
+				B0F837A725256A06008F08C3 /* UIVIewControllerExt.swift */,
 				B0F83799252461CF008F08C3 /* UIButtonExt.swift */,
 				B0F8379C252461CF008F08C3 /* UITextFieldExt.swift */,
 				B080EBD7251AF82300C6EFDB /* Utilities.swift */,
@@ -513,7 +513,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51FA5EAD2524CB0700FD1C2A /* UIVIewControllerExt.swift in Sources */,
+				B0F837A825256A07008F08C3 /* UIVIewControllerExt.swift in Sources */,
 				0EBA37442511C97B003465DD /* NetworkManager.swift in Sources */,
 				0EBA37422511C97B003465DD /* Error.swift in Sources */,
 				B0F8378825245F36008F08C3 /* CollectionTableViewCell.swift in Sources */,
@@ -679,7 +679,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7QAVMNKXN5;
 				INFOPLIST_FILE = FinalProject/Supports/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -699,7 +699,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7QAVMNKXN5;
 				INFOPLIST_FILE = FinalProject/Supports/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
