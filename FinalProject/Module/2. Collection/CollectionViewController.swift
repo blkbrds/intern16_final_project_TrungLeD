@@ -35,12 +35,10 @@ class CollectionViewController: UIViewController {
             guard let this = self else { return }
             switch result {
             case .success:
-                DispatchQueue.main.async {
                     this.tableView.reloadData()
-                }
+                
             case .failure(let error):
-                DispatchQueue.main.async {
-                }
+                this.showAlert(alertText: "Error", alertMessage:"error:\(error)")
             }
         }
     }

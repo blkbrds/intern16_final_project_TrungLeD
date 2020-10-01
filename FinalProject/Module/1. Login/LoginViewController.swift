@@ -40,12 +40,12 @@ class LoginViewController: UIViewController {
 extension LoginViewController {
     private func login() {
         guard let phone = phoneTextField.text, let pw = passWordTextField.text else { return }
-        viewModel.login(phone: phone, pw: pw) { result in
+        viewModel.login(phone: phone, pw: pw) { [weak self] result  in
             switch result {
             case .success:
                 AppDelegate.shared.changeRoot(rootType: .collection)
             case .failure(let error):
-                self.showAlert(alertText: "Lỗi Đăng Nhập", alertMessage: "Nhập lại mật khẩu hoặc số điện thoại")
+                self?.showAlert(alertText: "Lỗi Đăng Nhập", alertMessage: "Nhập lại mật khẩu hoặc số điện thoại")
             }
         }
     }
