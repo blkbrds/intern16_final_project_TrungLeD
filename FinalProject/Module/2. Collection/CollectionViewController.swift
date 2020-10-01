@@ -10,7 +10,6 @@ import UIKit
 import SideMenu
 
 class CollectionViewController: UIViewController {
-    
     // MARK: IBOutlet
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tableView: UITableView!

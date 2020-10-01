@@ -2,7 +2,6 @@ import Foundation
 import ObjectMapper
 
 final class Pitch: Mappable {
-    
     // MARK: Properties
     var id: Int?
     var pitchType: PitchType?
@@ -26,7 +25,6 @@ final class Pitch: Mappable {
     
     // MARK: Function
     func mapping(map: Map) {
-        
         id <- map["id"]
         pitchType <- map["pitchType"]
         name <- map["name"]

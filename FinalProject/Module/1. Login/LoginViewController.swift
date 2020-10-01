@@ -9,14 +9,15 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-    
+    // MARK: IBoutlet
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var passWordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var errorLabel: UILabel!
     
+    // MARK: Properties
     var viewModel: LoginViewModel = LoginViewModel()
     
+    // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupElements()
@@ -24,7 +25,6 @@ class LoginViewController: UIViewController {
     
     // MARK: - Function
     private func setupElements() {
-        errorLabel.isHidden = true
         phoneTextField.drawLine()
         passWordTextField.drawLine()
         loginButton.drawColor()
@@ -38,7 +38,6 @@ class LoginViewController: UIViewController {
 
     // MARK: - Extension
 extension LoginViewController {
-    
     private func login() {
         guard let phone = phoneTextField.text, let pw = passWordTextField.text else { return }
         viewModel.login(phone: phone, pw: pw) { result in
@@ -46,9 +45,6 @@ extension LoginViewController {
             case .success:
                 AppDelegate.shared.changeRoot(rootType: .collection)
             case .failure(let error):
-                print(error)
-                self.errorLabel.isHidden = false
-                self.errorLabel.text = "Sai thông tin đăng nhập"
                 self.showAlert(alertText: "Lỗi Đăng Nhập", alertMessage: "Nhập lại mật khẩu hoặc số điện thoại")
             }
         }

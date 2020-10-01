@@ -9,7 +9,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="FinalProject" customModuleProvider="target">
             <connections>
-                <outlet property="errorLabel" destination="DGV-T3-jA5" id="puU-Lm-feD"/>
                 <outlet property="loginButton" destination="hgP-8k-M0s" id="FBi-Ll-46T"/>
                 <outlet property="passWordTextField" destination="rru-Qs-STY" id="bpN-dq-J6I"/>
                 <outlet property="phoneTextField" destination="4ao-js-GRz" id="dAj-6A-HWu"/>
@@ -71,16 +70,6 @@
                         <action selector="loginPressed:" destination="-1" eventType="touchUpInside" id="daU-0A-i6c"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DGV-T3-jA5">
-                    <rect key="frame" x="61" y="684" width="314" height="46"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="314" id="Xw4-rB-a7g"/>
-                        <constraint firstAttribute="height" constant="46" id="mrp-gO-u7d"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" red="1" green="0.0" blue="0.01208707165" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
@@ -88,14 +77,11 @@
                 <constraint firstItem="rru-Qs-STY" firstAttribute="trailing" secondItem="4ao-js-GRz" secondAttribute="trailing" id="EZQ-Tw-fke"/>
                 <constraint firstItem="rru-Qs-STY" firstAttribute="width" secondItem="4ao-js-GRz" secondAttribute="width" id="KOM-F0-W38"/>
                 <constraint firstItem="rru-Qs-STY" firstAttribute="leading" secondItem="4ao-js-GRz" secondAttribute="leading" id="Qoh-y8-ipd"/>
-                <constraint firstItem="DGV-T3-jA5" firstAttribute="top" secondItem="hgP-8k-M0s" secondAttribute="bottom" constant="66" id="RsG-NK-eFW"/>
                 <constraint firstItem="4ao-js-GRz" firstAttribute="top" secondItem="c04-hJ-uay" secondAttribute="bottom" constant="27" id="Sus-wb-7SN"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="DGV-T3-jA5" secondAttribute="trailing" constant="39" id="Tis-Cp-9xV"/>
                 <constraint firstItem="rru-Qs-STY" firstAttribute="top" secondItem="4ao-js-GRz" secondAttribute="bottom" constant="44" id="cWp-Of-WEe"/>
                 <constraint firstItem="c04-hJ-uay" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" multiplier="0.7" id="e38-LV-s9V"/>
                 <constraint firstItem="4ao-js-GRz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="68" id="f2H-H5-UHh"/>
                 <constraint firstItem="hgP-8k-M0s" firstAttribute="top" secondItem="rru-Qs-STY" secondAttribute="bottom" constant="45" id="hT8-wx-66u"/>
-                <constraint firstItem="DGV-T3-jA5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="61" id="hoh-HH-ez4"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hgP-8k-M0s" secondAttribute="trailing" constant="45" id="jAe-Yq-w0M"/>
                 <constraint firstItem="c04-hJ-uay" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" multiplier="0.8" id="k4B-ud-gPh"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="4ao-js-GRz" secondAttribute="trailing" constant="45" id="zMQ-Vb-1Qs"/>
