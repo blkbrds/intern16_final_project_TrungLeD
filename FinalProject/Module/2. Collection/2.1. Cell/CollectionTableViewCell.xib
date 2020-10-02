@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -62,35 +62,49 @@
                         </constraints>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EiR-Wl-Pvk" userLabel="HeartButton">
-                        <rect key="frame" x="314" y="23" width="44" height="37"/>
+                        <rect key="frame" x="330" y="5" width="30" height="30"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="37" id="I1e-Qf-aaG"/>
-                            <constraint firstAttribute="width" constant="44" id="fag-VL-w4a"/>
+                            <constraint firstAttribute="height" constant="30" id="5mF-5u-N2E"/>
+                            <constraint firstAttribute="width" constant="30" id="rap-nw-7AC"/>
                         </constraints>
                         <state key="normal" image="heart" catalog="system"/>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uam-Ed-cYT">
+                        <rect key="frame" x="330" y="45" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="9Af-rK-aBX"/>
+                            <constraint firstAttribute="height" constant="30" id="GgT-eJ-4d7"/>
+                        </constraints>
+                        <state key="normal" image="ic_detail_booking"/>
+                        <connections>
+                            <action selector="bookingTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="1GV-pr-Xez"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="EiR-Wl-Pvk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="40J-Rt-0mN"/>
                     <constraint firstItem="GuY-Sg-eOj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="4v6-XP-mxj"/>
                     <constraint firstItem="A3r-f9-Fwl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="110" id="6et-wg-Voz"/>
                     <constraint firstItem="93l-Ng-q7V" firstAttribute="top" secondItem="Knq-1v-Dfk" secondAttribute="bottom" constant="10.5" id="7Ge-9G-ezz"/>
                     <constraint firstItem="A3r-f9-Fwl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="99l-cp-GXl"/>
                     <constraint firstItem="Knq-1v-Dfk" firstAttribute="leading" secondItem="euu-hZ-FLX" secondAttribute="trailing" constant="4" id="Cbx-bz-oM7"/>
+                    <constraint firstAttribute="bottom" secondItem="Uam-Ed-cYT" secondAttribute="bottom" constant="8" id="Imc-x8-mtd"/>
                     <constraint firstItem="euu-hZ-FLX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="KMv-PV-Zcd"/>
                     <constraint firstItem="Knq-1v-Dfk" firstAttribute="top" secondItem="A3r-f9-Fwl" secondAttribute="bottom" constant="3" id="KnP-mw-3lU"/>
+                    <constraint firstAttribute="trailing" secondItem="EiR-Wl-Pvk" secondAttribute="trailing" constant="8" id="MMi-a7-kGa"/>
                     <constraint firstItem="M8m-Zg-Rfw" firstAttribute="leading" secondItem="GuY-Sg-eOj" secondAttribute="trailing" constant="13" id="QPR-If-ozd"/>
                     <constraint firstItem="GuY-Sg-eOj" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="VjU-Gc-DdS"/>
                     <constraint firstItem="93l-Ng-q7V" firstAttribute="leading" secondItem="euu-hZ-FLX" secondAttribute="trailing" constant="5" id="dfj-px-htx"/>
                     <constraint firstItem="euu-hZ-FLX" firstAttribute="leading" secondItem="GuY-Sg-eOj" secondAttribute="trailing" constant="14" id="fQs-8Z-8Ly"/>
-                    <constraint firstAttribute="trailing" secondItem="EiR-Wl-Pvk" secondAttribute="trailing" constant="10" id="t9L-9c-wLw"/>
+                    <constraint firstAttribute="trailing" secondItem="Uam-Ed-cYT" secondAttribute="trailing" constant="8" id="fci-gf-jnw"/>
                     <constraint firstItem="M8m-Zg-Rfw" firstAttribute="top" secondItem="A3r-f9-Fwl" secondAttribute="bottom" constant="28" id="x7g-oj-xvv"/>
-                    <constraint firstItem="EiR-Wl-Pvk" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="x9j-kE-SCX"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="address" destination="Knq-1v-Dfk" id="XKo-M5-YIl"/>
+                <outlet property="bookingButton" destination="Uam-Ed-cYT" id="ZhM-cf-mqR"/>
                 <outlet property="dateBookingLabel" destination="93l-Ng-q7V" id="mTF-hg-T4D"/>
                 <outlet property="favoritesButton" destination="EiR-Wl-Pvk" id="Cil-Fq-FU6"/>
                 <outlet property="imageView1" destination="GuY-Sg-eOj" id="Jmi-Dp-Zbl"/>
@@ -103,6 +117,7 @@
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="ic_collection_clock" width="50" height="50"/>
         <image name="ic_collection_location" width="50" height="50"/>
+        <image name="ic_detail_booking" width="50" height="50"/>
         <image name="img_collection_soccer" width="960" height="540"/>
     </resources>
 </document>

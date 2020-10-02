@@ -99,24 +99,6 @@ class CollectionViewController: UIViewController {
         present(menu, animated: true)
     }
     
-    // MARK: Swipe booking button
-    func bookingAction(at indexPath: IndexPath) -> UIContextualAction {
-        //        let booking = viewModel.pitchData[indexPath.row]
-        let action = UIContextualAction(style: .normal, title: "Booking") { (action, view, completion) in
-            self.loadDatePicker()
-            self.tableView.alpha = 0.5
-            completion(true)
-        }
-        action.image = #imageLiteral(resourceName: "ic_Detail_booking.png")
-        action.backgroundColor = #colorLiteral(red: 0.7821254493, green: 0.8392576644, blue: 1, alpha: 1)
-        return action
-    }
-    
-    // func booking when choose date from datepicker
-    @objc func bookingPitch() {
-        print("da pick")
-    }
-    
     func loadDatePicker() {
         let datePicker = DatePickerViewController()
         self.present(datePicker, animated: true) {
@@ -176,12 +158,13 @@ extension CollectionViewController: UITableViewDataSource {
         guard let cellCollection = tableView.dequeueReusableCell(withIdentifier: "cellCollection", for: indexPath) as? CollectionTableViewCell else {
             return UITableViewCell()
         }
+        cellCollection.delegate = self
         cellCollection.viewModel = viewModel.viewModelForCell(at: indexPath)
         return cellCollection
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.pitchFilterData.count
+        return viewModel.tmpPitchData.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
@@ -192,18 +175,10 @@ extension CollectionViewController: UITableViewDataSource {
 extension CollectionViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath)
         let detailVC = DetailViewController()
-        detailVC.viewModel.id = viewModel.pitchData[indexPath.row].id
-        guard let cell = tableView.cellForRow(at: indexPath) as? CollectionTableViewCell  else {
-            return
-        }
-//        detailVC.viewModel.pitch?[indexPath] = cell.viewModel.pitch?[indexPath]
+        detailVC.viewModel = viewModel.getInforPitch(at: indexPath)
+        navigationController?.pushViewController(detailVC, animated: true)
         
-    }
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let booking = bookingAction(at: indexPath)
-        return UISwipeActionsConfiguration(actions: [booking])
     }
 }
 
@@ -223,11 +198,17 @@ extension CollectionViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("Search text is \(searchText)")
         if searchText.isEmpty {
-            viewModel.pitchFilterData = viewModel.pitchData
+            viewModel.tmpPitchData = viewModel.pitchData
         } else {
-            viewModel.pitchFilterData =  viewModel.pitchFilterData.filter{($0.name?.contains(searchText) ?? false)}
+            viewModel.tmpPitchData =  viewModel.tmpPitchData.filter{($0.name.contains(searchText) ?? false)}
         }
         tableView.reloadData()
     }
     
+}
+
+extension CollectionViewController: CollectionViewControllerDelegate {
+    func bookingButton(view: CollectionTableViewCell) {
+        loadDatePicker()
+    }
 }

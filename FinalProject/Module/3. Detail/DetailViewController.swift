@@ -14,7 +14,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: Properties
-    var pitch:[Pitch]?
+    var pitch: [Pitch]?
     var viewModel: DetailViewModel = DetailViewModel()
     // MARK: Life Cycle
     override func viewDidLoad() {
@@ -37,7 +37,7 @@ class DetailViewController: UIViewController {
         tableView.delegate = self
     }
     
-    private func configNavi(){
+    private func configNavi() {
         let backBtn = UIBarButtonItem(image: UIImage(named:"ic_detail_back"), style: .plain, target: self, action: #selector(backCollectVC))
         backBtn.tintColor = .orange
         navigationItem.leftBarButtonItem = backBtn
@@ -65,21 +65,25 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellHeader", for: indexPath) as? DetailHeaderTableViewCell else {
                 return UITableViewCell()
             }
+            cell.viewModel = viewModel.viewModelForHeaderCell(at: indexPath)
             return cell
         case .body:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellBody", for: indexPath) as? DetailBodyTableViewCell else {
                 return UITableViewCell()
             }
+            cell.viewModel = viewModel.viewModelForBody(at: indexPath)
             return cell
         case .infor:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellInfor", for: indexPath) as? DetailCellInforTableViewCell else {
                 return UITableViewCell()
             }
+            cell.viewModel = viewModel.viewModelForInfor(at: indexPath)
             return cell
         case .history:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellHistory", for: indexPath) as? DetailCellHistoryTableViewCell else {
                 return UITableViewCell()
             }
+            cell.viewModel = viewModel.viewModelForHistory(at: indexPath)
             return cell
         }
     }

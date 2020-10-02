@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+class DetailHeaderCellViewModel {
+    var lat: Double = 0.0
+    var long: Double = 0.0
+    
+    init( lat: Double = 0.0, long: Double = 0.0) {
+        self.lat = lat
+        self.long = long
+    }
+}

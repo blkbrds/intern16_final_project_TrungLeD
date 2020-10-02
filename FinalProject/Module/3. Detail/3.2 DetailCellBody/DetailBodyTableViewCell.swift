@@ -18,8 +18,12 @@ class DetailBodyTableViewCell: UITableViewCell {
     
     
     // MARK: Properties
+    var viewModel: DetailBodyCellViewModel? {
+           didSet {
+               updateView()
+           }
+       }
     
-    //
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -30,5 +34,10 @@ class DetailBodyTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+    private func updateView() {
+           namePitchLabel.text = viewModel?.namePitch
+           addressPitchLabel.text = viewModel?.address
+           phoneLabel.text = viewModel?.phoneNumber
+        timeActiveLabel.text = viewModel?.timeActive
+       }
 }

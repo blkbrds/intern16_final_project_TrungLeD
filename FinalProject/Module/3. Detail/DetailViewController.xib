@@ -18,15 +18,15 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7Xl-ik-fiy">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7Xl-ik-fiy">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
+                <constraint firstItem="7Xl-ik-fiy" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Yp2-DQ-oTT"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7Xl-ik-fiy" secondAttribute="trailing" id="jaq-zT-UcZ"/>
-                <constraint firstItem="7Xl-ik-fiy" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="lN3-5T-mqW"/>
                 <constraint firstItem="7Xl-ik-fiy" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="mZc-6x-35E"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="7Xl-ik-fiy" secondAttribute="bottom" id="oIa-ql-P6l"/>
             </constraints>

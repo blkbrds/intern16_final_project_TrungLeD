@@ -10,9 +10,9 @@ import Foundation
 
 class CollectionViewModel {
     // MARK: Properties
-    var item : Pitch?
+    var item : Pitch = Pitch()
     var pitchData: [Pitch] = []
-    var pitchFilterData: [Pitch] = []
+    var tmpPitchData: [Pitch] = []
     var nameSort: [String] = []
     let networkManager: NetworkManager
     var isBooking: Bool = false
@@ -30,18 +30,19 @@ class CollectionViewModel {
                 completion( .failure(error))
             case .success(let result):
                 this.pitchData = result
-                this.nameSort = this.pitchData.compactMap({ $0.name })
-                this.nameSort = this.nameSort.sorted { $0.compare($1) == .orderedAscending }
-                for i in 0..<this.pitchData.count {
-                    let value = Pitch(id: this.pitchData.first(where: { $0.name == this.nameSort[i] })?.id,
-                                      pitchType: this.pitchData.first(where: { $0.name == this.nameSort[i] })?.pitchType,
-                                      name: this.pitchData.first(where: { $0.name == this.nameSort[i] })?.name,
-                                      description: this.pitchData.first(where: { $0.name == this.nameSort[i] })?.description,
-                                      timeUse: this.pitchData.first(where: { $0.name == this.nameSort[i] })?.timeUse,
-                                      count: this.pitchData.first(where: { $0.name == this.nameSort[i] })?.count,
-                                      isUse: this.pitchData.first(where: { $0.name == this.nameSort[i] })?.isUse)
-                    this.pitchFilterData.append(value)
-                }
+                this.tmpPitchData = this.pitchData
+//                this.nameSort = this.pitchData.compactMap({ $0.name })
+//                this.nameSort = this.nameSort.sorted { $0.compare($1) == .orderedAscending }
+//                for i in 0..<this.pitchData.count {
+//                    let value = Pitch(id: this.pitchData.first(where: { $0.name == this.nameSort[i] }).id,
+//                                      pitchType: this.pitchData.first(where: { $0.name == this.nameSort[i] })?.pitchType,
+//                                      name: this.pitchData.first(where: { $0.name == this.nameSort[i] }).name,
+//                                      description: this.pitchData.first(where: { $0.name == this.nameSort[i] }).description,
+//                                      timeUse: this.pitchData.first(where: { $0.name == this.nameSort[i] }).timeUse,
+//                                      count: this.pitchData.first(where: { $0.name == this.nameSort[i] }).count,
+//                                      isUse: this.pitchData.first(where: { $0.name == this.nameSort[i] }).isUse)
+//                    this.pitchFilterData.append(value)
+//                }
                 completion( .success)
             }
         }
@@ -52,8 +53,14 @@ class CollectionViewModel {
     }
     
     func viewModelForCell(at indexPath: IndexPath) -> CollectionCellViewModel {
-        let item = pitchFilterData[indexPath.row]
+        let item = tmpPitchData[indexPath.row]
         let viewModel = CollectionCellViewModel(item: item)
         return viewModel
+    }
+    
+    func getInforPitch(at indexPath: IndexPath) -> DetailViewModel {
+        let item = pitchData[indexPath.row]
+        let detail = DetailViewModel(lat: item.pitchType.owner.lat,  long: item.pitchType.owner.lng, pitchName: item.name, address: item.pitchType.owner.address, phoneNumber: item.pitchType.owner.phone, timeAction: item.timeUse, typePitch: item.pitchType.name,  description: item.description)
+        return detail
     }
 }
