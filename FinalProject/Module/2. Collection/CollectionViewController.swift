@@ -148,6 +148,15 @@ class MenuListController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.row == 0 {
+            let homeVc = HomeViewController()
+              navigationController?.pushViewController(homeVc, animated: true)
+        }
+        if indexPath.row == 1 {
+            let collectVC = CollectionViewController()
+            navigationController?.pushViewController(collectVC, animated: true)
+        }
+        
     }
     
 }
@@ -178,7 +187,6 @@ extension CollectionViewController: UITableViewDelegate {
         let detailVC = DetailViewController()
         detailVC.viewModel = viewModel.getInforPitch(at: indexPath)
         navigationController?.pushViewController(detailVC, animated: true)
-        
     }
 }
 

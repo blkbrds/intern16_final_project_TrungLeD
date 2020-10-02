@@ -18,6 +18,7 @@ enum DateFormatType: String {
     //Date
     case date = "dd-MM-yyyy"
 }
+
 protocol CollectionViewControllerDelegate {
     func bookingButton(view: CollectionTableViewCell)
 }

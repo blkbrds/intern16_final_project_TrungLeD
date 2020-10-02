@@ -10,7 +10,7 @@ import Foundation
 
 class CollectionViewModel {
     // MARK: Properties
-    var item : Pitch = Pitch()
+    var item: Pitch = Pitch()
     var pitchData: [Pitch] = []
     var tmpPitchData: [Pitch] = []
     var nameSort: [String] = []
