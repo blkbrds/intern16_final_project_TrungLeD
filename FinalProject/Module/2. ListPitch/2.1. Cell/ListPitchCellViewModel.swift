@@ -1,5 +1,5 @@
 //
-//  CollectionCellViewModel.swift
+//  ListPitchCellViewModel.swift
 //  FinalProject
 //
 //  Created by Trung Le D. on 9/28/20.
@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-final class CollectionCellViewModel {
+final class ListPitchCellViewModel {
     
     // MARK: Properties
     var item: Pitch

@@ -1,5 +1,5 @@
 //
-//  CollectionViewController.swift
+//  ListPitchViewController.swift
 //  FinalProject
 //
 //  Created by Trung Le D. on 9/17/20.
@@ -9,7 +9,7 @@
 import UIKit
 import SideMenu
 
-class CollectionViewController: UIViewController {
+class ListPitchViewController: UIViewController {
     
     // MARK: IBOutlet
     @IBOutlet weak var scrollView: UIScrollView!
@@ -20,7 +20,7 @@ class CollectionViewController: UIViewController {
     let searchBar = UISearchBar()
     var menu: SideMenuNavigationController?
     var inputDate: [Date] = []
-    private var viewModel: CollectionViewModel = CollectionViewModel()
+    private var viewModel: ListPitchViewModel = ListPitchViewModel()
     var pitch: [Pitch]?
     
     // MARK: Life Cycle
@@ -76,14 +76,14 @@ class CollectionViewController: UIViewController {
     }
     
     func configTableView() {
-        let nib = UINib(nibName: "CollectionTableViewCell", bundle: Bundle.main)
-        tableView.register(nib, forCellReuseIdentifier: "cellCollection")
+        let nib = UINib(nibName: "ListPitchTableViewCell", bundle: Bundle.main)
+        tableView.register(nib, forCellReuseIdentifier: "ListPitchTableViewCell")
         tableView.delegate = self
         tableView.dataSource = self
     }
     
     func configSideMenu() {
-        let menu = SideMenuNavigationController(rootViewController: MenuListController(with: ["HOME", "COLLECTION", "SCHEDULE", "FAVORITES"]))
+        let menu = SideMenuNavigationController(rootViewController: MenuListController(with: ["HOME", "LISTPITCH", "SCHEDULE", "FAVORITES"]))
         menu.leftSide = true
         let leftItem = UIBarButtonItem(image: UIImage(systemName: "text.justify"), style: .plain, target: self, action: #selector(didTapMenu))
         leftItem.tintColor = #colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1)
@@ -153,14 +153,14 @@ class MenuListController: UITableViewController {
 }
 
 // MARK: Extension: UITableView DataSource
-extension CollectionViewController: UITableViewDataSource {
+extension ListPitchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cellCollection = tableView.dequeueReusableCell(withIdentifier: "cellCollection", for: indexPath) as? CollectionTableViewCell else {
+        guard let cellListPitch = tableView.dequeueReusableCell(withIdentifier: "ListPitchTableViewCell", for: indexPath) as? ListPitchTableViewCell else {
             return UITableViewCell()
         }
-        cellCollection.delegate = self
-        cellCollection.viewModel = viewModel.viewModelForCell(at: indexPath)
-        return cellCollection
+        cellListPitch.delegate = self
+        cellListPitch.viewModel = viewModel.viewModelForCell(at: indexPath)
+        return cellListPitch
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -172,7 +172,7 @@ extension CollectionViewController: UITableViewDataSource {
 }
 
 // MARK: Extension: UITableView Delegate
-extension CollectionViewController: UITableViewDelegate {
+extension ListPitchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
@@ -182,7 +182,7 @@ extension CollectionViewController: UITableViewDelegate {
     }
 }
 
-extension CollectionViewController: UISearchBarDelegate {
+extension ListPitchViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         print("Search bar editing did begin..")
     }
@@ -207,8 +207,8 @@ extension CollectionViewController: UISearchBarDelegate {
     
 }
 
-extension CollectionViewController: CollectionViewControllerDelegate {
-    func bookingButton(view: CollectionTableViewCell) {
+extension ListPitchViewController: ListPitchViewControllerDelegate {
+    func bookingButton(view: ListPitchTableViewCell) {
         loadDatePicker()
     }
 }

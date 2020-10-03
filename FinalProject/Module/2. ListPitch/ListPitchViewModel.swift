@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CollectionViewModel {
+class ListPitchViewModel {
     // MARK: Properties
     var item : Pitch = Pitch()
     var pitchData: [Pitch] = []
@@ -31,18 +31,6 @@ class CollectionViewModel {
             case .success(let result):
                 this.pitchData = result
                 this.tmpPitchData = this.pitchData
-//                this.nameSort = this.pitchData.compactMap({ $0.name })
-//                this.nameSort = this.nameSort.sorted { $0.compare($1) == .orderedAscending }
-//                for i in 0..<this.pitchData.count {
-//                    let value = Pitch(id: this.pitchData.first(where: { $0.name == this.nameSort[i] }).id,
-//                                      pitchType: this.pitchData.first(where: { $0.name == this.nameSort[i] })?.pitchType,
-//                                      name: this.pitchData.first(where: { $0.name == this.nameSort[i] }).name,
-//                                      description: this.pitchData.first(where: { $0.name == this.nameSort[i] }).description,
-//                                      timeUse: this.pitchData.first(where: { $0.name == this.nameSort[i] }).timeUse,
-//                                      count: this.pitchData.first(where: { $0.name == this.nameSort[i] }).count,
-//                                      isUse: this.pitchData.first(where: { $0.name == this.nameSort[i] }).isUse)
-//                    this.pitchFilterData.append(value)
-//                }
                 completion( .success)
             }
         }
@@ -52,9 +40,9 @@ class CollectionViewModel {
         return pitchData.count
     }
     
-    func viewModelForCell(at indexPath: IndexPath) -> CollectionCellViewModel {
+    func viewModelForCell(at indexPath: IndexPath) -> ListPitchCellViewModel {
         let item = tmpPitchData[indexPath.row]
-        let viewModel = CollectionCellViewModel(item: item)
+        let viewModel = ListPitchCellViewModel(item: item)
         return viewModel
     }
     

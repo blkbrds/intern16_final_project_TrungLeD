@@ -1,5 +1,5 @@
 //
-//  CollectionTableViewCell.swift
+//  ListPitchTableViewCell.swift
 //  FinalProject
 //
 //  Created by Trung Le D. on 9/17/20.
@@ -18,10 +18,10 @@ enum DateFormatType: String {
     //Date
     case date = "dd-MM-yyyy"
 }
-protocol CollectionViewControllerDelegate {
-    func bookingButton(view: CollectionTableViewCell)
+protocol ListPitchViewControllerDelegate {
+    func bookingButton(view: ListPitchTableViewCell)
 }
-final class CollectionTableViewCell: UITableViewCell {
+final class ListPitchTableViewCell: UITableViewCell {
     
     // MARK: IBOutlet
     @IBOutlet weak var namePitch: UILabel!
@@ -32,9 +32,9 @@ final class CollectionTableViewCell: UITableViewCell {
     @IBOutlet weak var dateBookingLabel: UILabel!
     
     // MARK: Properties
-    var delegate: CollectionViewControllerDelegate?
+    var delegate: ListPitchViewControllerDelegate?
     var pitch: [Pitch]?
-    var viewModel: CollectionCellViewModel? {
+    var viewModel: ListPitchCellViewModel? {
         didSet {
             updateView()
         }
