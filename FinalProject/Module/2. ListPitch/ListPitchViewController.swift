@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SideMenu
 
 class ListPitchViewController: UIViewController {
     
@@ -18,7 +17,6 @@ class ListPitchViewController: UIViewController {
     // MARK: Properties
     //    var datePicker = UIDatePicker()
     let searchBar = UISearchBar()
-    var menu: SideMenuNavigationController?
     var inputDate: [Date] = []
     private var viewModel: ListPitchViewModel = ListPitchViewModel()
     var pitch: [Pitch]?
@@ -26,7 +24,6 @@ class ListPitchViewController: UIViewController {
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        configSideMenu()
         configTableView()
         loadData()
         configureUI()
@@ -76,27 +73,11 @@ class ListPitchViewController: UIViewController {
     }
     
     func configTableView() {
+        title = "LIST PITCH"
         let nib = UINib(nibName: "ListPitchTableViewCell", bundle: Bundle.main)
         tableView.register(nib, forCellReuseIdentifier: "ListPitchTableViewCell")
         tableView.delegate = self
         tableView.dataSource = self
-    }
-    
-    func configSideMenu() {
-        let menu = SideMenuNavigationController(rootViewController: MenuListController(with: ["HOME", "LISTPITCH", "SCHEDULE", "FAVORITES"]))
-        menu.leftSide = true
-        let leftItem = UIBarButtonItem(image: UIImage(systemName: "text.justify"), style: .plain, target: self, action: #selector(didTapMenu))
-        leftItem.tintColor = #colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1)
-        navigationItem.leftBarButtonItem = leftItem
-        SideMenuManager.defaultManager.leftMenuNavigationController = menu
-        navigationController?.navigationBar.isHidden = false
-        SideMenuManager.defaultManager.addPanGestureToPresent(toView: self.view)
-        
-    }
-    
-    @objc func didTapMenu() {
-        guard let menu = SideMenuManager.defaultManager.leftMenuNavigationController else { return }
-        present(menu, animated: true)
     }
     
     func loadDatePicker() {
@@ -105,51 +86,6 @@ class ListPitchViewController: UIViewController {
             
         }
     }
-    
-    @objc func cancelClick() {
-        view.resignFirstResponder()
-    }
-    
-    @objc func doneClick() {
-        
-        self.view.endEditing(true)
-        view.resignFirstResponder()
-    }
-}
-
-// MARK: Side Menu
-class MenuListController: UITableViewController {
-    
-    private var items: [String]
-    init (with items: [String]) {
-        self.items = items
-        super.init( nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.delegate = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = items[indexPath.row]
-        return cell
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
 }
 
 // MARK: Extension: UITableView DataSource

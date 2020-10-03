@@ -36,7 +36,7 @@ typealias CompletionResult<Value> = (Result<Value>) -> Void
 extension ServiceAPI: TargetType {
     
     var baseURL: URL {
-        guard let url = URL(string: "http://18.188.45.34:8080/trungapi" ) else {
+        guard let url = URL(string: "http://3.137.149.94:8080/trungapi" ) else {
             fatalError("Invalid static URL string")
         }
         return url
