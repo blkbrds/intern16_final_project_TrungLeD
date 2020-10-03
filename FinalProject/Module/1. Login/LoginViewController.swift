@@ -44,7 +44,7 @@ extension LoginViewController {
         viewModel.login(phone: phone, pw: pw) { result in
             switch result {
             case .success:
-                AppDelegate.shared.changeRoot(rootType: .listPitch)
+                AppDelegate.shared.changeRoot(rootType: .tabbar)
             case .failure(let error):
                 print(error)
                 self.errorLabel.isHidden = false
