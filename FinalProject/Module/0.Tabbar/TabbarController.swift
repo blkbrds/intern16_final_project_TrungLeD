@@ -26,7 +26,7 @@ final class TabbarViewController: UITabBarController {
         
         let scheduleVC = UINavigationController(rootViewController: ScheduleViewController())
         scheduleVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "ic_tabbar_schedule"), selectedImage: UIImage(named: "ic_tabbar_schedule"))
-        viewControllers = [homeNavi, favouriteVC, scheduleVC]
+        viewControllers = [homeNavi, scheduleVC, favouriteVC]
         tabBar.tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
         tabBar.backgroundColor = .white
         tabBar.isTranslucent = true
