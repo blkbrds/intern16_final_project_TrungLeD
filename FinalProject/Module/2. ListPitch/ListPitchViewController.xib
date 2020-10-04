@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListPitchViewController">
             <connections>
+                <outlet property="mapKit" destination="fVE-3x-tEP" id="p6l-3P-33N"/>
                 <outlet property="tableView" destination="svV-86-F4H" id="McG-v9-sPU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -22,11 +23,18 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fVE-3x-tEP">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                </mapView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
+                <constraint firstItem="fVE-3x-tEP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="532-Mv-9pD"/>
+                <constraint firstItem="fVE-3x-tEP" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="E8p-jd-tUA"/>
                 <constraint firstItem="svV-86-F4H" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ETx-K0-brL"/>
+                <constraint firstItem="fVE-3x-tEP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="HPI-YQ-1Tp"/>
                 <constraint firstItem="svV-86-F4H" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="O3s-ch-nw0"/>
+                <constraint firstItem="fVE-3x-tEP" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="X50-QX-lo6"/>
                 <constraint firstItem="svV-86-F4H" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="deT-Wo-D8j"/>
                 <constraint firstItem="svV-86-F4H" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="xdZ-9z-VW9"/>
             </constraints>
