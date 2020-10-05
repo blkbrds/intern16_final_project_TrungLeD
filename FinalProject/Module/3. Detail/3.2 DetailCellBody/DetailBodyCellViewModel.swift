@@ -8,7 +8,6 @@
 
 import Foundation
 class DetailBodyCellViewModel {
-    
     // MARK: Properties
     var namePitch: String = ""
     var address: String = ""

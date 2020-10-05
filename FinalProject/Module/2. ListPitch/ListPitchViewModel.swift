@@ -9,7 +9,6 @@
 import Foundation
 
 class ListPitchViewModel {
-    
     // MARK: - Properties
     var item: Pitch = Pitch()
     var pitchData: [Pitch] = []

@@ -21,7 +21,6 @@ protocol ListPitchViewControllerDelegate: class {
 }
 
 final class ListPitchTableViewCell: UITableViewCell {
-    
     // MARK: - IBOutlet
     @IBOutlet weak var namePitch: UILabel!
     @IBOutlet weak var address: UILabel!

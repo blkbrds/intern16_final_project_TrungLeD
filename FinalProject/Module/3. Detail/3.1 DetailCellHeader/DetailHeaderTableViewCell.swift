@@ -9,7 +9,6 @@
 import UIKit
 
 class DetailHeaderTableViewCell: UITableViewCell {
-    
     // MARK: Properties
     var viewModel: DetailHeaderCellViewModel = DetailHeaderCellViewModel()
     override func awakeFromNib() {

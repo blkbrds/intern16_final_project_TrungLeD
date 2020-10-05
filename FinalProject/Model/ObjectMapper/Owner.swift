@@ -1,7 +1,6 @@
 import Foundation
 import ObjectMapper
 final class Owner: Mappable {
-    
     // MARK: Properties
 	var id: Int = 0
 	var name: String = ""

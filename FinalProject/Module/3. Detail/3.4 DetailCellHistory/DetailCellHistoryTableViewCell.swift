@@ -9,7 +9,6 @@
 import UIKit
 
 class DetailCellHistoryTableViewCell: UITableViewCell {
-    
     // MARK: Iboutlet
     @IBOutlet weak var description1: UILabel!
     
