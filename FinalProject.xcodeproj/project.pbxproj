@@ -15,6 +15,8 @@
 		0EBA37442511C97B003465DD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA373F2511C97B003465DD /* NetworkManager.swift */; };
 		0EBA37452511C97B003465DD /* Networkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA37402511C97B003465DD /* Networkable.swift */; };
 		0EBA374B2511CA7A003465DD /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA374A2511CA7A003465DD /* App.swift */; };
+		B00B7D8C252AC5BA007BC7E0 /* FavouritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00B7D8A252AC5BA007BC7E0 /* FavouritesTableViewCell.swift */; };
+		B00B7D8D252AC5BA007BC7E0 /* FavouritesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B00B7D8B252AC5BA007BC7E0 /* FavouritesTableViewCell.xib */; };
 		B04CBDF0251C66020092D49F /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04CBDEF251C66020092D49F /* Customer.swift */; };
 		B06B06E52526BB51002762B4 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06B06E42526BB51002762B4 /* DetailViewModel.swift */; };
 		B06B06E82526BB81002762B4 /* DetailCellHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06B06E62526BB81002762B4 /* DetailCellHistoryTableViewCell.swift */; };
@@ -89,6 +91,8 @@
 		2706D3E383C00F904DD7790D /* Pods-FinalProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.release.xcconfig"; path = "Target Support Files/Pods-FinalProject/Pods-FinalProject.release.xcconfig"; sourceTree = "<group>"; };
 		36763DE98DFBD511196E59ED /* Pods-FinalProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProjectTests.release.xcconfig"; path = "Target Support Files/Pods-FinalProjectTests/Pods-FinalProjectTests.release.xcconfig"; sourceTree = "<group>"; };
 		71B484E88DEE2FED67A1E072 /* Pods-FinalProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.debug.xcconfig"; path = "Target Support Files/Pods-FinalProject/Pods-FinalProject.debug.xcconfig"; sourceTree = "<group>"; };
+		B00B7D8A252AC5BA007BC7E0 /* FavouritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesTableViewCell.swift; sourceTree = "<group>"; };
+		B00B7D8B252AC5BA007BC7E0 /* FavouritesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavouritesTableViewCell.xib; sourceTree = "<group>"; };
 		B04CBDEF251C66020092D49F /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 		B06B06E42526BB51002762B4 /* DetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		B06B06E62526BB81002762B4 /* DetailCellHistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCellHistoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -334,6 +338,7 @@
 		51B896562528D10F0077EC8C /* 4.Favourites */ = {
 			isa = PBXGroup;
 			children = (
+				B00B7D89252AC58D007BC7E0 /* 4.1 Cell */,
 				B0C53866252AA9A800D707EE /* FavouriteViewController.swift */,
 				B0C53867252AA9A800D707EE /* FavouriteViewController.xib */,
 			);
@@ -356,6 +361,15 @@
 				DA793CAF2D9C7A41645277D2 /* Pods_FinalProjectTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B00B7D89252AC58D007BC7E0 /* 4.1 Cell */ = {
+			isa = PBXGroup;
+			children = (
+				B00B7D8A252AC5BA007BC7E0 /* FavouritesTableViewCell.swift */,
+				B00B7D8B252AC5BA007BC7E0 /* FavouritesTableViewCell.xib */,
+			);
+			path = "4.1 Cell";
 			sourceTree = "<group>";
 		};
 		B03FF5E72518B3770065C493 /* Components */ = {
@@ -553,6 +567,7 @@
 				B06B06EC2526BB8E002762B4 /* DetailCellInforTableViewCell.xib in Resources */,
 				B0F837C32525E179008F08C3 /* DetailHeaderTableViewCell.xib in Resources */,
 				B0A4A4192513560300E39134 /* GoogleService-Info.plist in Resources */,
+				B00B7D8D252AC5BA007BC7E0 /* FavouritesTableViewCell.xib in Resources */,
 				B0C53869252AA9AC00D707EE /* FavouriteViewController.xib in Resources */,
 				B0F8377F25245ED7008F08C3 /* Assets.xcassets in Resources */,
 				B0F8378925245F36008F08C3 /* ListPitchTableViewCell.xib in Resources */,
@@ -688,6 +703,7 @@
 				B06B06F92526DAC3002762B4 /* DetailHistoryViewModel.swift in Sources */,
 				B0C3AF672512059B00959BDD /* LoginViewController.swift in Sources */,
 				B06B06E82526BB81002762B4 /* DetailCellHistoryTableViewCell.swift in Sources */,
+				B00B7D8C252AC5BA007BC7E0 /* FavouritesTableViewCell.swift in Sources */,
 				B0F837B72525BBFD008F08C3 /* DatePickerViewController.swift in Sources */,
 				B0C5386B252AA9B600D707EE /* TabbarController.swift in Sources */,
 				B0F8379525245FA6008F08C3 /* APIError.swift in Sources */,
