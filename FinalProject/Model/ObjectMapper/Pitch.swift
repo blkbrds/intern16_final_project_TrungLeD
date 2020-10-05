@@ -3,17 +3,17 @@ import ObjectMapper
 
 final class Pitch: Mappable {
     // MARK: Properties
-    var id: Int?
-    var pitchType: PitchType?
-    var name: String?
-    var description: String?
-    var timeUse: String?
-    var count: Double?
-    var isUse: String?
+    var id: Int = 0
+    var pitchType: PitchType = PitchType()
+    var name: String = ""
+    var description: String = ""
+    var timeUse: String = ""
+    var count: Double = 0.0
+    var isUse: String = ""
     
     // MARK: Init
     init?(map: Map) {}
-    init(id: Int?, pitchType: PitchType?, name: String?, description: String?, timeUse: String?, count: Double?, isUse: String?) {
+    init(id: Int = 0, pitchType: PitchType = PitchType(), name: String = "", description: String = "", timeUse: String = "", count: Double = 0.0, isUse: String = "") {
         self.id = id
         self.pitchType = pitchType
         self.name = name

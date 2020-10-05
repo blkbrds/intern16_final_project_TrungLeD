@@ -12,9 +12,8 @@ enum ServiceAPI {
     case getAllDictrict
     case login(phone: String, pw: String)
     case getAllPitch(page: Int, pageSize: Int)
-    //    case updateAccount(id: Int, name: String, teamName: String, description: String)
-    //    case getFavoritePitch(id: Int)
 }
+
 // enum Result
 public enum Result<Value> {
     case success(Value)
@@ -33,8 +32,9 @@ enum APIResult {
 typealias CompletionResult<Value> = (Result<Value>) -> Void
 
 extension ServiceAPI: TargetType {
+    
     var baseURL: URL {
-        guard let url = URL(string: "http://18.188.45.34:8080/trungapi" ) else {
+        guard let url = URL(string: "http://18.224.180.166:8080/trungapi" ) else {
             fatalError("Invalid static URL string")
         }
         return url
@@ -48,8 +48,6 @@ extension ServiceAPI: TargetType {
             return "/common/login"
         case .getAllPitch:
             return "/common/get-all-pitch"
-            
-            
         }
     }
     var method: Moya.Method {

@@ -1,5 +1,5 @@
 //
-//  CollectionTableViewCell.swift
+//  ListPitchTableViewCell.swift
 //  FinalProject
 //
 //  Created by Trung Le D. on 9/17/20.
@@ -15,20 +15,24 @@ enum DateFormatType: String {
     //Date
     case date = "dd-MM-yyyy"
 }
-final class CollectionTableViewCell: UITableViewCell {
-    
-    // MARK: IBOutlet
+
+protocol ListPitchViewControllerDelegate: class {
+    func bookingButton(view: ListPitchTableViewCell)
+}
+
+final class ListPitchTableViewCell: UITableViewCell {
+    // MARK: - IBOutlet
     @IBOutlet weak var namePitch: UILabel!
     @IBOutlet weak var address: UILabel!
-    @IBOutlet weak var timeActive: UILabel!
     @IBOutlet weak var imageView1: UIImageView!
-    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var favoritesButton: UIButton!
     @IBOutlet weak var bookingButton: UIButton!
     @IBOutlet weak var dateBookingLabel: UILabel!
     
-    // MARK: Properties
-    var viewModel: CollectionCellViewModel? {
+    // MARK: - Properties
+    weak var delegate: ListPitchViewControllerDelegate?
+    var pitch: [Pitch]?
+    var viewModel: ListPitchCellViewModel? {
         didSet {
             updateView()
         }
@@ -37,22 +41,20 @@ final class CollectionTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    // MARK: Function
+    // MARK: - Function
     private func updateView() {
         namePitch.text = viewModel?.name
-        address.text = viewModel?.districtOwner
+        address.text = viewModel?.addressOwner
         dateBookingLabel.text = viewModel?.timeUser
         imageView1.layer.cornerRadius = 10
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
     }
     
     @IBAction func bookingTapped(_ sender: UIButton) {
-        
+        delegate?.bookingButton(view: self)
     }
 }
 
