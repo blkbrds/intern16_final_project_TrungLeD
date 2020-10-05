@@ -15,11 +15,6 @@
 		0EBA37442511C97B003465DD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA373F2511C97B003465DD /* NetworkManager.swift */; };
 		0EBA37452511C97B003465DD /* Networkable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA37402511C97B003465DD /* Networkable.swift */; };
 		0EBA374B2511CA7A003465DD /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA374A2511CA7A003465DD /* App.swift */; };
-		515C4654252890AD003CCCEB /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515C4653252890AD003CCCEB /* TabbarController.swift */; };
-		51B896592528D12E0077EC8C /* FavouriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B896572528D12E0077EC8C /* FavouriteViewController.swift */; };
-		51B8965A2528D12E0077EC8C /* FavouriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51B896582528D12E0077EC8C /* FavouriteViewController.xib */; };
-		51B8965E2528D6AC0077EC8C /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B8965C2528D6AC0077EC8C /* ScheduleViewController.swift */; };
-		51B8965F2528D6AC0077EC8C /* ScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51B8965D2528D6AC0077EC8C /* ScheduleViewController.xib */; };
 		B04CBDF0251C66020092D49F /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04CBDEF251C66020092D49F /* Customer.swift */; };
 		B06B06E52526BB51002762B4 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06B06E42526BB51002762B4 /* DetailViewModel.swift */; };
 		B06B06E82526BB81002762B4 /* DetailCellHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06B06E62526BB81002762B4 /* DetailCellHistoryTableViewCell.swift */; };
@@ -38,6 +33,11 @@
 		B0C3AF672512059B00959BDD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C3AF652512059B00959BDD /* LoginViewController.swift */; };
 		B0C3AF682512059B00959BDD /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0C3AF662512059B00959BDD /* LoginViewController.xib */; };
 		B0C3AF6A2512148300959BDD /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C3AF692512148300959BDD /* LoginViewModel.swift */; };
+		B0C53864252AA99C00D707EE /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C53862252AA99C00D707EE /* ScheduleViewController.swift */; };
+		B0C53865252AA99C00D707EE /* ScheduleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0C53863252AA99C00D707EE /* ScheduleViewController.xib */; };
+		B0C53868252AA9AC00D707EE /* FavouriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C53866252AA9A800D707EE /* FavouriteViewController.swift */; };
+		B0C53869252AA9AC00D707EE /* FavouriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0C53867252AA9A800D707EE /* FavouriteViewController.xib */; };
+		B0C5386B252AA9B600D707EE /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C5386A252AA9B600D707EE /* TabbarController.swift */; };
 		B0F8377F25245ED7008F08C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0F8377E25245ED7008F08C3 /* Assets.xcassets */; };
 		B0F8378825245F36008F08C3 /* ListPitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F8378225245F36008F08C3 /* ListPitchTableViewCell.swift */; };
 		B0F8378925245F36008F08C3 /* ListPitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0F8378325245F36008F08C3 /* ListPitchTableViewCell.xib */; };
@@ -87,11 +87,6 @@
 		0EBA374A2511CA7A003465DD /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		2706D3E383C00F904DD7790D /* Pods-FinalProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.release.xcconfig"; path = "Target Support Files/Pods-FinalProject/Pods-FinalProject.release.xcconfig"; sourceTree = "<group>"; };
 		36763DE98DFBD511196E59ED /* Pods-FinalProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProjectTests.release.xcconfig"; path = "Target Support Files/Pods-FinalProjectTests/Pods-FinalProjectTests.release.xcconfig"; sourceTree = "<group>"; };
-		515C4653252890AD003CCCEB /* TabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabbarController.swift; path = ../../../../../trungld/intern16_final_project_TrungLeD/FinalProject/Module/0.Tabbar/TabbarController.swift; sourceTree = "<group>"; };
-		51B896572528D12E0077EC8C /* FavouriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FavouriteViewController.swift; path = ../../../../../trungld/intern16_final_project_TrungLeD/FinalProject/Module/4.Favourites/FavouriteViewController.swift; sourceTree = "<group>"; };
-		51B896582528D12E0077EC8C /* FavouriteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = FavouriteViewController.xib; path = ../../../../../trungld/intern16_final_project_TrungLeD/FinalProject/Module/4.Favourites/FavouriteViewController.xib; sourceTree = "<group>"; };
-		51B8965C2528D6AC0077EC8C /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScheduleViewController.swift; path = ../../../../../trungld/intern16_final_project_TrungLeD/FinalProject/Module/5.Schedule/ScheduleViewController.swift; sourceTree = "<group>"; };
-		51B8965D2528D6AC0077EC8C /* ScheduleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ScheduleViewController.xib; path = ../../../../../trungld/intern16_final_project_TrungLeD/FinalProject/Module/5.Schedule/ScheduleViewController.xib; sourceTree = "<group>"; };
 		71B484E88DEE2FED67A1E072 /* Pods-FinalProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.debug.xcconfig"; path = "Target Support Files/Pods-FinalProject/Pods-FinalProject.debug.xcconfig"; sourceTree = "<group>"; };
 		B04CBDEF251C66020092D49F /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 		B06B06E42526BB51002762B4 /* DetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
@@ -110,6 +105,11 @@
 		B0C3AF652512059B00959BDD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B0C3AF662512059B00959BDD /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		B0C3AF692512148300959BDD /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		B0C53862252AA99C00D707EE /* ScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
+		B0C53863252AA99C00D707EE /* ScheduleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleViewController.xib; sourceTree = "<group>"; };
+		B0C53866252AA9A800D707EE /* FavouriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteViewController.swift; sourceTree = "<group>"; };
+		B0C53867252AA9A800D707EE /* FavouriteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavouriteViewController.xib; sourceTree = "<group>"; };
+		B0C5386A252AA9B600D707EE /* TabbarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
 		B0F8377E25245ED7008F08C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B0F8378225245F36008F08C3 /* ListPitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPitchTableViewCell.swift; sourceTree = "<group>"; };
 		B0F8378325245F36008F08C3 /* ListPitchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListPitchTableViewCell.xib; sourceTree = "<group>"; };
@@ -323,7 +323,7 @@
 		515C465025289026003CCCEB /* 0.Tabbar */ = {
 			isa = PBXGroup;
 			children = (
-				515C4653252890AD003CCCEB /* TabbarController.swift */,
+				B0C5386A252AA9B600D707EE /* TabbarController.swift */,
 			);
 			path = 0.Tabbar;
 			sourceTree = "<group>";
@@ -331,8 +331,8 @@
 		51B896562528D10F0077EC8C /* 4.Favourites */ = {
 			isa = PBXGroup;
 			children = (
-				51B896572528D12E0077EC8C /* FavouriteViewController.swift */,
-				51B896582528D12E0077EC8C /* FavouriteViewController.xib */,
+				B0C53866252AA9A800D707EE /* FavouriteViewController.swift */,
+				B0C53867252AA9A800D707EE /* FavouriteViewController.xib */,
 			);
 			path = 4.Favourites;
 			sourceTree = "<group>";
@@ -340,8 +340,8 @@
 		51B8965B2528D5CC0077EC8C /* 5.Schedule */ = {
 			isa = PBXGroup;
 			children = (
-				51B8965C2528D6AC0077EC8C /* ScheduleViewController.swift */,
-				51B8965D2528D6AC0077EC8C /* ScheduleViewController.xib */,
+				B0C53862252AA99C00D707EE /* ScheduleViewController.swift */,
+				B0C53863252AA99C00D707EE /* ScheduleViewController.xib */,
 			);
 			path = 5.Schedule;
 			sourceTree = "<group>";
@@ -541,18 +541,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51B8965A2528D12E0077EC8C /* FavouriteViewController.xib in Resources */,
 				B06B06F22526BB98002762B4 /* DetailBodyTableViewCell.xib in Resources */,
 				B0F837B82525BBFD008F08C3 /* DatePickerViewController.xib in Resources */,
+				B0C53865252AA99C00D707EE /* ScheduleViewController.xib in Resources */,
 				B0C3AF682512059B00959BDD /* LoginViewController.xib in Resources */,
 				B0F8378B25245F36008F08C3 /* ListPitchViewController.xib in Resources */,
 				B0F837C82525E494008F08C3 /* DetailViewController.xib in Resources */,
 				B06B06EC2526BB8E002762B4 /* DetailCellInforTableViewCell.xib in Resources */,
 				B0F837C32525E179008F08C3 /* DetailHeaderTableViewCell.xib in Resources */,
 				B0A4A4192513560300E39134 /* GoogleService-Info.plist in Resources */,
+				B0C53869252AA9AC00D707EE /* FavouriteViewController.xib in Resources */,
 				B0F8377F25245ED7008F08C3 /* Assets.xcassets in Resources */,
 				B0F8378925245F36008F08C3 /* ListPitchTableViewCell.xib in Resources */,
-				51B8965F2528D6AC0077EC8C /* ScheduleViewController.xib in Resources */,
 				B06B06E92526BB81002762B4 /* DetailCellHistoryTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -658,18 +658,18 @@
 				0EBA37442511C97B003465DD /* NetworkManager.swift in Sources */,
 				B06B06F52526BBA4002762B4 /* DetailHeaderCellViewModel.swift in Sources */,
 				0EBA37422511C97B003465DD /* Error.swift in Sources */,
-				51B896592528D12E0077EC8C /* FavouriteViewController.swift in Sources */,
 				B0F8378825245F36008F08C3 /* ListPitchTableViewCell.swift in Sources */,
 				B06B06F12526BB98002762B4 /* DetailBodyCellViewModel.swift in Sources */,
 				B080EBD8251AF82300C6EFDB /* Utilities.swift in Sources */,
 				B0F837C22525E179008F08C3 /* DetailHeaderTableViewCell.swift in Sources */,
 				B0F8379725246016008F08C3 /* ServiceAPI.swift in Sources */,
 				0EBA374B2511CA7A003465DD /* App.swift in Sources */,
+				B0C53864252AA99C00D707EE /* ScheduleViewController.swift in Sources */,
 				0EBA37452511C97B003465DD /* Networkable.swift in Sources */,
-				51B8965E2528D6AC0077EC8C /* ScheduleViewController.swift in Sources */,
 				B0F8378D25245F36008F08C3 /* ListPitchViewController.swift in Sources */,
 				B0C3AF6A2512148300959BDD /* LoginViewModel.swift in Sources */,
 				B0F8378A25245F36008F08C3 /* ListPitchCellViewModel.swift in Sources */,
+				B0C53868252AA9AC00D707EE /* FavouriteViewController.swift in Sources */,
 				B0F8379E252461CF008F08C3 /* UIButtonExt.swift in Sources */,
 				B0F837C72525E494008F08C3 /* DetailViewController.swift in Sources */,
 				0EBA37132511C6C2003465DD /* AppDelegate.swift in Sources */,
@@ -680,13 +680,13 @@
 				B06B06ED2526BB8E002762B4 /* DetailCellInforTableViewCell.swift in Sources */,
 				0EBA37152511C6C2003465DD /* SceneDelegate.swift in Sources */,
 				B0F837BE2525DECD008F08C3 /* UIDatePicker.swift in Sources */,
-				515C4654252890AD003CCCEB /* TabbarController.swift in Sources */,
 				B04CBDF0251C66020092D49F /* Customer.swift in Sources */,
 				B06B06F32526BB98002762B4 /* DetailBodyTableViewCell.swift in Sources */,
 				B06B06F92526DAC3002762B4 /* DetailHistoryViewModel.swift in Sources */,
 				B0C3AF672512059B00959BDD /* LoginViewController.swift in Sources */,
 				B06B06E82526BB81002762B4 /* DetailCellHistoryTableViewCell.swift in Sources */,
 				B0F837B72525BBFD008F08C3 /* DatePickerViewController.swift in Sources */,
+				B0C5386B252AA9B600D707EE /* TabbarController.swift in Sources */,
 				B0F8379525245FA6008F08C3 /* APIError.swift in Sources */,
 				B06B06E52526BB51002762B4 /* DetailViewModel.swift in Sources */,
 				B06B06F72526CE29002762B4 /* DetailInforCellViewModel.swift in Sources */,

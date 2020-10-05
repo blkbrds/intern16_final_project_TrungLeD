@@ -10,7 +10,7 @@ import Foundation
 
 class ListPitchViewModel {
     // MARK: Properties
-    var item : Pitch = Pitch()
+    var item: Pitch = Pitch()
     var pitchData: [Pitch] = []
     var tmpPitchData: [Pitch] = []
     var nameSort: [String] = []
@@ -48,7 +48,7 @@ class ListPitchViewModel {
     
     func getInforPitch(at indexPath: IndexPath) -> DetailViewModel {
         let item = pitchData[indexPath.row]
-        let detail = DetailViewModel(lat: item.pitchType.owner.lat,  long: item.pitchType.owner.lng, pitchName: item.name, address: item.pitchType.owner.address, phoneNumber: item.pitchType.owner.phone, timeAction: item.timeUse, typePitch: item.pitchType.name,  description: item.description)
+        let detail = DetailViewModel(lat: item.pitchType.owner.lat, long: item.pitchType.owner.lng, pitchName: item.name, address: item.pitchType.owner.address, phoneNumber: item.pitchType.owner.phone, timeAction: item.timeUse, typePitch: item.pitchType.name,  description: item.description)
         return detail
     }
 }

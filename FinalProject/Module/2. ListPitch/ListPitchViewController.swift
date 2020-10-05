@@ -136,7 +136,7 @@ extension ListPitchViewController: UISearchBarDelegate {
         if searchText.isEmpty {
             viewModel.tmpPitchData = viewModel.pitchData
         } else {
-            viewModel.tmpPitchData =  viewModel.tmpPitchData.filter{($0.name.contains(searchText) ?? false)}
+            viewModel.tmpPitchData =  viewModel.tmpPitchData.filter { ($0.name.contains(searchText))}
         }
         tableView.reloadData()
     }

@@ -16,7 +16,6 @@ enum TypeSection {
 }
 final class DetailViewModel {
     
-    
     var pitch: Pitch?
     // MARK: Properties
     var id: Int = 0
@@ -31,7 +30,6 @@ final class DetailViewModel {
     var description: String = ""
     
 
-    
     init(lat: Double = 0.0,
          long: Double = 0.0,
          pitchName: String = "",

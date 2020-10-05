@@ -38,7 +38,7 @@ class DetailViewController: UIViewController {
     }
     
     private func configNavi() {
-        let backBtn = UIBarButtonItem(image: UIImage(named:"ic_detail_back"), style: .plain, target: self, action: #selector(backCollectVC))
+        let backBtn = UIBarButtonItem(image: UIImage(named: "ic_detail_back"), style: .plain, target: self, action: #selector(backCollectVC))
         backBtn.tintColor = .orange
         navigationItem.leftBarButtonItem = backBtn
     }
