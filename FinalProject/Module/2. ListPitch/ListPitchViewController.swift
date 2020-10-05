@@ -9,7 +9,6 @@
 import UIKit
 
 class ListPitchViewController: UIViewController {
-    
     // MARK: - IBOutlet
     @IBOutlet weak var tableView: UITableView!
     // MARK: - Properties

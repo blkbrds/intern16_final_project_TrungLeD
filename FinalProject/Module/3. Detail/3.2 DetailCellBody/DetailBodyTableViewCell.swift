@@ -9,7 +9,6 @@
 import UIKit
 
 class DetailBodyTableViewCell: UITableViewCell {
-    
     // MARK: IBOutlet
     @IBOutlet weak var namePitchLabel: UILabel!
     @IBOutlet weak var addressPitchLabel: UILabel!

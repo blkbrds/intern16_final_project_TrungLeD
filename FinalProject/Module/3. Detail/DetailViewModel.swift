@@ -15,7 +15,6 @@ enum TypeSection {
     case history
 }
 final class DetailViewModel {
-    
     // MARK: Properties
     var pitch: Pitch?
     var id: Int = 0

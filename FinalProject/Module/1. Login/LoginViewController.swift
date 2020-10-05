@@ -9,7 +9,6 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-    
     // MARK: - IBoutlet
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var passWordTextField: UITextField!

@@ -9,7 +9,6 @@
 import UIKit
 
 class DetailCellInforTableViewCell: UITableViewCell {
-    
     // MARK: IBoutlet
     @IBOutlet weak var typePitchLabel: UILabel!
     

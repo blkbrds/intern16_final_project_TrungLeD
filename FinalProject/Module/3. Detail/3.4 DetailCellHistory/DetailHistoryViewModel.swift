@@ -8,7 +8,6 @@
 
 import Foundation
 class DetailHistoryViewModel {
-    
     // MARK: Properties
     var description: String = ""
     

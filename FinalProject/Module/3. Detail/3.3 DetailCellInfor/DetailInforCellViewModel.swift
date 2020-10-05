@@ -8,7 +8,6 @@
 
 import Foundation
 final class DetailInforCellViewModel {
-    
     // MARK: Properties
     var pitchType: String = ""
     
