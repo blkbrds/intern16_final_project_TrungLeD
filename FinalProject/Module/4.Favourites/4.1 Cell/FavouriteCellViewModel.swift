@@ -10,14 +10,9 @@ import Foundation
 
 final class FavouriteCellViewModel {
     // MARK: - Properties
-    var namePitch: String = ""
-    var timeAction: String = ""
-    var address: String = ""
-    
+    let pitch: Pitch
     // MARK: - Init
-    init(namePitch: String = "", timeAction: String = "", address: String = "") {
-        self.address = address
-        self.namePitch = namePitch
-        self.timeAction = timeAction
+    init(pitch: Pitch) {
+        self.pitch = pitch
     }
 }
