@@ -1,24 +1,25 @@
 import Foundation
 import ObjectMapper
-final class Owner: Mappable {
-    // MARK: Properties
-	var id: Int = 0
-	var name: String = ""
-	var phone: String = ""
-	var address: String = ""
-	var isBlock: String = ""
-	var isDelete: String = ""
-	var verify: String = ""
-	var rememberToken: String = ""
-	var district: String = ""
-	var lat: Double = 0.0
-	var lng: Double = 0.0
 
-    // MARK: Init
-    required init?(map: Map) {}
-    init() {}
+final class Owner: Mappable {
+    // MARK: - Properties
+    var id: Int = 0
+    var name: String = ""
+    var phone: String = ""
+    var address: String = ""
+    var isBlock: String = ""
+    var isDelete: String = ""
+    var verify: String = ""
+    var rememberToken: String = ""
+    var district: String = ""
+    var lat: Double = 0.0
+    var lng: Double = 0.0
     
-    // MARK: Function
+    // MARK: - Init
+    required init?(map: Map) { }
+    init() { }
+    
+    // MARK: - Function
     func mapping(map: Map) {
         id <- map["id"]
         name <- map["name"]
