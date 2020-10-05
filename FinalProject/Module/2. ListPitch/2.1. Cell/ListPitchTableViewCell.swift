@@ -8,13 +8,10 @@
 
 import UIKit
 enum DateFormatType: String {
-    
     // Time
     case time = "HH:mm"
-    
     //Date with hours
     case dateWithTime = "dd-mm-yyyy HH:mm"
-    
     //Date
     case date = "dd-MM-yyyy"
 }
@@ -60,18 +57,5 @@ final class ListPitchTableViewCell: UITableViewCell {
     @IBAction func bookingTapped(_ sender: UIButton) {
         delegate?.bookingButton(view: self)
     }
-    
-    func updateText(text: String, date: Date) {
-        dateBookingLabel.text = date.convertToString(dateFormat: .dateWithTime)
-    }
-    
 }
 
-extension Date {
-    func convertToString(dateFormat formatType: DateFormatType) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = formatType.rawValue
-        let newDate: String = dateFormatter.string(from: self)
-        return newDate
-    }
-}
