@@ -15,9 +15,11 @@ enum DateFormatType: String {
     //Date
     case date = "dd-MM-yyyy"
 }
-protocol ListPitchViewControllerDelegate {
+
+protocol ListPitchViewControllerDelegate: class {
     func bookingButton(view: ListPitchTableViewCell)
 }
+
 final class ListPitchTableViewCell: UITableViewCell {
     
     // MARK: IBOutlet
@@ -29,7 +31,7 @@ final class ListPitchTableViewCell: UITableViewCell {
     @IBOutlet weak var dateBookingLabel: UILabel!
     
     // MARK: Properties
-    var delegate: ListPitchViewControllerDelegate?
+    weak var delegate: ListPitchViewControllerDelegate?
     var pitch: [Pitch]?
     var viewModel: ListPitchCellViewModel? {
         didSet {

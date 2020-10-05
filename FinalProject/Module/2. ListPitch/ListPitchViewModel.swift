@@ -25,7 +25,7 @@ class ListPitchViewModel {
     
     // MAKR: Function
     func getAllData(completion: @escaping APICompletion) {
-        networkManager.getAllPitch(page: 1, pageSize: 1000) { [weak self] result in
+        networkManager.getAllPitch(page: 1, pageSize: 100) { [weak self] result in
             guard let this = self else { return }
             switch result {
             case .failure(let error):
@@ -50,7 +50,14 @@ class ListPitchViewModel {
     
     func getInforPitch(at indexPath: IndexPath) -> DetailViewModel {
         let item = pitchData[indexPath.row]
-        let detail = DetailViewModel(lat: item.pitchType.owner.lat, long: item.pitchType.owner.lng, pitchName: item.name, address: item.pitchType.owner.address, phoneNumber: item.pitchType.owner.phone, timeAction: item.timeUse, typePitch: item.pitchType.name,  description: item.description)
+        let detail = DetailViewModel(lat: item.pitchType.owner.lat,
+                                     long: item.pitchType.owner.lng,
+                                     pitchName: item.name,
+                                     address: item.pitchType.owner.address,
+                                     phoneNumber: item.pitchType.owner.phone,
+                                     timeAction: item.timeUse,
+                                     typePitch: item.pitchType.name,
+                                     description: item.description)
         return detail
     }
 }

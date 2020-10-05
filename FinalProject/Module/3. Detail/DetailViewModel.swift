@@ -28,7 +28,6 @@ final class DetailViewModel {
     var typePitch: String = ""
     var description: String = ""
     
-    
     init(lat: Double = 0.0,
          long: Double = 0.0,
          pitchName: String = "",
@@ -36,7 +35,7 @@ final class DetailViewModel {
          phoneNumber: String = "",
          timeAction: String = "",
          typePitch: String = "",
-        description: String = "") {
+         description: String = "") {
         self.lat = lat
         self.long = long
         self.pitchName = pitchName

@@ -12,7 +12,6 @@ import UIKit
 final class LoginViewModel {
     // MARK: Properties
     let networkManager: NetworkManager
-    
     // MARK: Init
     init(networkManager: NetworkManager = NetworkManager.shared) {
         self.networkManager = networkManager
