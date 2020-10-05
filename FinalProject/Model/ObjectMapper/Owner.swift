@@ -12,8 +12,8 @@ final class Owner: Mappable {
 	var verify: String = ""
 	var rememberToken: String = ""
 	var district: String = ""
-    var lat: Double = 0.0
-    var lng: Double = 0.0
+	var lat: Double = 0.0
+	var lng: Double = 0.0
 
     // MARK: Init
     required init?(map: Map) {}
