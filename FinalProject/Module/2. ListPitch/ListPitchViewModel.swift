@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import MapKit
 class ListPitchViewModel {
     // MARK: - Properties
     var item: Pitch = Pitch()

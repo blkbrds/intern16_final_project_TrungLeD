@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import MapKit
 
 class ListPitchViewController: UIViewController {
     // MARK: - IBOutlet
+    @IBOutlet var mapKit: MKMapView!
     @IBOutlet weak var tableView: UITableView!
+    
     // MARK: - Properties
     var inputDate: [Date] = []
     private var viewModel: ListPitchViewModel = ListPitchViewModel()
@@ -22,6 +25,12 @@ class ListPitchViewController: UIViewController {
         configTableView()
         loadData()
         configureUI()
+        mapView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        tableView.reloadData()
     }
     
     // MARK: - Function
@@ -38,13 +47,39 @@ class ListPitchViewController: UIViewController {
     }
     
     // MARK: - Helper Functions
-    func configureUI() {
-        let searchBar1: UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 35, height: 0))
-        searchBar1.placeholder = "Nhập Tên Sân"
-        let leftNavBarButton = UIBarButtonItem(customView: searchBar1)
-        self.navigationItem.rightBarButtonItem = leftNavBarButton
-        view.backgroundColor = .white
-        searchBar1.delegate = self
+    private func configMapKit() {
+        let initLocation = CLLocation(latitude: 16.060440, longitude: 108.236290)
+        zoomOnMap(location: initLocation)
+    }
+    
+    // MARK: - Objc Function
+    var leftItem = UIBarButtonItem()
+    @objc private func mapView() {
+        leftItem = UIBarButtonItem(image: UIImage(named: "ic_listPitch_listView"), style: .plain, target: self, action: #selector(listView))
+        leftItem.tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        navigationItem.leftBarButtonItem = leftItem
+        tableView.isHidden = true
+        mapKit.isHidden = false
+    }
+    @objc private func listView() {
+        let leftItem = UIBarButtonItem(image: UIImage(named: "ic_listPitch_map"), style: .plain, target: self, action: #selector(mapView))
+        leftItem.tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        navigationItem.leftBarButtonItem = leftItem
+        tableView.isHidden = false
+        mapKit.isHidden = true
+    }
+    
+    private let regionRadius: CLLocationDistance = 10000 // 10 km
+    func zoomOnMap(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: regionRadius * 2, longitudinalMeters: regionRadius * 2 )
+        mapKit.setRegion(coordinateRegion, animated: true)
+    }
+    private func configureUI() {
+        let searchBar: UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 100, height: 0))
+        searchBar.placeholder = "Nhập Tên Sân"
+        let rightNavBarButton = UIBarButtonItem(customView: searchBar)
+        self.navigationItem.rightBarButtonItem = rightNavBarButton
+        searchBar.delegate = self
         navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.isTranslucent = true
     }
@@ -56,7 +91,7 @@ class ListPitchViewController: UIViewController {
         tableView.dataSource = self
     }
     
-    func loadDatePicker() {
+    private func loadDatePicker() {
         let datePicker = DatePickerViewController()
         self.present(datePicker, animated: true) {
         }

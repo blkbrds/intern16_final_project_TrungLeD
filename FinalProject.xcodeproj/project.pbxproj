@@ -42,13 +42,13 @@
 		B0C53868252AA9AC00D707EE /* FavouriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C53866252AA9A800D707EE /* FavouriteViewController.swift */; };
 		B0C53869252AA9AC00D707EE /* FavouriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0C53867252AA9A800D707EE /* FavouriteViewController.xib */; };
 		B0C5386B252AA9B600D707EE /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C5386A252AA9B600D707EE /* TabbarController.swift */; };
+		B0DD24A8252B0CEC00F02015 /* ListPitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DD24A6252B0CEC00F02015 /* ListPitchViewController.swift */; };
+		B0DD24A9252B0CEC00F02015 /* ListPitchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0DD24A7252B0CEC00F02015 /* ListPitchViewController.xib */; };
 		B0F8377F25245ED7008F08C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B0F8377E25245ED7008F08C3 /* Assets.xcassets */; };
 		B0F8378825245F36008F08C3 /* ListPitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F8378225245F36008F08C3 /* ListPitchTableViewCell.swift */; };
 		B0F8378925245F36008F08C3 /* ListPitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0F8378325245F36008F08C3 /* ListPitchTableViewCell.xib */; };
 		B0F8378A25245F36008F08C3 /* ListPitchCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F8378425245F36008F08C3 /* ListPitchCellViewModel.swift */; };
-		B0F8378B25245F36008F08C3 /* ListPitchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0F8378525245F36008F08C3 /* ListPitchViewController.xib */; };
 		B0F8378C25245F36008F08C3 /* ListPitchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F8378625245F36008F08C3 /* ListPitchViewModel.swift */; };
-		B0F8378D25245F36008F08C3 /* ListPitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F8378725245F36008F08C3 /* ListPitchViewController.swift */; };
 		B0F8379125245F5D008F08C3 /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F8378E25245F5C008F08C3 /* Owner.swift */; };
 		B0F8379225245F5D008F08C3 /* Pitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F8378F25245F5C008F08C3 /* Pitch.swift */; };
 		B0F8379325245F5D008F08C3 /* PitchType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F8379025245F5D008F08C3 /* PitchType.swift */; };
@@ -119,13 +119,13 @@
 		B0C53866252AA9A800D707EE /* FavouriteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteViewController.swift; sourceTree = "<group>"; };
 		B0C53867252AA9A800D707EE /* FavouriteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FavouriteViewController.xib; sourceTree = "<group>"; };
 		B0C5386A252AA9B600D707EE /* TabbarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbarController.swift; sourceTree = "<group>"; };
+		B0DD24A6252B0CEC00F02015 /* ListPitchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListPitchViewController.swift; sourceTree = "<group>"; };
+		B0DD24A7252B0CEC00F02015 /* ListPitchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListPitchViewController.xib; sourceTree = "<group>"; };
 		B0F8377E25245ED7008F08C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B0F8378225245F36008F08C3 /* ListPitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPitchTableViewCell.swift; sourceTree = "<group>"; };
 		B0F8378325245F36008F08C3 /* ListPitchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListPitchTableViewCell.xib; sourceTree = "<group>"; };
 		B0F8378425245F36008F08C3 /* ListPitchCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPitchCellViewModel.swift; sourceTree = "<group>"; };
-		B0F8378525245F36008F08C3 /* ListPitchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListPitchViewController.xib; sourceTree = "<group>"; };
 		B0F8378625245F36008F08C3 /* ListPitchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPitchViewModel.swift; sourceTree = "<group>"; };
-		B0F8378725245F36008F08C3 /* ListPitchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListPitchViewController.swift; sourceTree = "<group>"; };
 		B0F8378E25245F5C008F08C3 /* Owner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
 		B0F8378F25245F5C008F08C3 /* Pitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pitch.swift; sourceTree = "<group>"; };
 		B0F8379025245F5D008F08C3 /* PitchType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PitchType.swift; sourceTree = "<group>"; };
@@ -418,9 +418,9 @@
 			children = (
 				B0F837A225249294008F08C3 /* 2.2 DatePicker */,
 				B0F8378125245F36008F08C3 /* 2.1. Cell */,
-				B0F8378525245F36008F08C3 /* ListPitchViewController.xib */,
 				B0F8378625245F36008F08C3 /* ListPitchViewModel.swift */,
-				B0F8378725245F36008F08C3 /* ListPitchViewController.swift */,
+				B0DD24A6252B0CEC00F02015 /* ListPitchViewController.swift */,
+				B0DD24A7252B0CEC00F02015 /* ListPitchViewController.xib */,
 			);
 			path = "2. ListPitch";
 			sourceTree = "<group>";
@@ -568,10 +568,10 @@
 				B0F837B82525BBFD008F08C3 /* DatePickerViewController.xib in Resources */,
 				B0C53865252AA99C00D707EE /* ScheduleViewController.xib in Resources */,
 				B0C3AF682512059B00959BDD /* LoginViewController.xib in Resources */,
-				B0F8378B25245F36008F08C3 /* ListPitchViewController.xib in Resources */,
 				B0F837C82525E494008F08C3 /* DetailViewController.xib in Resources */,
 				B06B06EC2526BB8E002762B4 /* DetailCellInforTableViewCell.xib in Resources */,
 				B0F837C32525E179008F08C3 /* DetailHeaderTableViewCell.xib in Resources */,
+				B0DD24A9252B0CEC00F02015 /* ListPitchViewController.xib in Resources */,
 				B0A4A4192513560300E39134 /* GoogleService-Info.plist in Resources */,
 				B00B7D8D252AC5BA007BC7E0 /* FavouritesTableViewCell.xib in Resources */,
 				B0C53869252AA9AC00D707EE /* FavouriteViewController.xib in Resources */,
@@ -690,7 +690,6 @@
 				0EBA374B2511CA7A003465DD /* App.swift in Sources */,
 				B0C53864252AA99C00D707EE /* ScheduleViewController.swift in Sources */,
 				0EBA37452511C97B003465DD /* Networkable.swift in Sources */,
-				B0F8378D25245F36008F08C3 /* ListPitchViewController.swift in Sources */,
 				B0C3AF6A2512148300959BDD /* LoginViewModel.swift in Sources */,
 				B0F8378A25245F36008F08C3 /* ListPitchCellViewModel.swift in Sources */,
 				B0C53868252AA9AC00D707EE /* FavouriteViewController.swift in Sources */,
@@ -711,6 +710,7 @@
 				B0C3AF672512059B00959BDD /* LoginViewController.swift in Sources */,
 				B06B06E82526BB81002762B4 /* DetailCellHistoryTableViewCell.swift in Sources */,
 				B00B7D8C252AC5BA007BC7E0 /* FavouritesTableViewCell.swift in Sources */,
+				B0DD24A8252B0CEC00F02015 /* ListPitchViewController.swift in Sources */,
 				B0F837B72525BBFD008F08C3 /* DatePickerViewController.swift in Sources */,
 				B0C5386B252AA9B600D707EE /* TabbarController.swift in Sources */,
 				B0F8379525245FA6008F08C3 /* APIError.swift in Sources */,
