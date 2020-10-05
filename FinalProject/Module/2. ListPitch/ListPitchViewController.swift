@@ -10,15 +10,14 @@ import UIKit
 
 class ListPitchViewController: UIViewController {
     
-    // MARK: IBOutlet
+    // MARK: - IBOutlet
     @IBOutlet weak var tableView: UITableView!
-    // MARK: Properties
-    //    var datePicker = UIDatePicker()
+    // MARK: - Properties
     var inputDate: [Date] = []
     private var viewModel: ListPitchViewModel = ListPitchViewModel()
     var pitch: [Pitch]?
     
-    // MARK: Life Cycle
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
@@ -26,7 +25,7 @@ class ListPitchViewController: UIViewController {
         configureUI()
     }
     
-    // MARK: Function
+    // MARK: - Function
     private func loadData() {
         viewModel.getAllData { [weak self] result in
             guard let this = self else { return }
@@ -41,7 +40,7 @@ class ListPitchViewController: UIViewController {
     
     // MARK: - Helper Functions
     func configureUI() {
-         let searchBar1: UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 35, height: 0))
+        let searchBar1: UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 35, height: 0))
         searchBar1.placeholder = "Nhập Tên Sân"
         let leftNavBarButton = UIBarButtonItem(customView: searchBar1)
         self.navigationItem.rightBarButtonItem = leftNavBarButton
@@ -61,12 +60,11 @@ class ListPitchViewController: UIViewController {
     func loadDatePicker() {
         let datePicker = DatePickerViewController()
         self.present(datePicker, animated: true) {
-            
         }
     }
 }
 
-// MARK: Extension: UITableView DataSource
+// MARK: Extension: - UITableView DataSource
 extension ListPitchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cellListPitch = tableView.dequeueReusableCell(withIdentifier: "ListPitchTableViewCell", for: indexPath) as? ListPitchTableViewCell else {
@@ -85,14 +83,13 @@ extension ListPitchViewController: UITableViewDataSource {
     }
 }
 
-// MARK: Extension: UITableView Delegate
+// MARK: Extension: - UITableView Delegate
 extension ListPitchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
         detailVC.viewModel = viewModel.getInforPitch(at: indexPath)
         navigationController?.pushViewController(detailVC, animated: true)
-        
     }
 }
 
@@ -117,7 +114,6 @@ extension ListPitchViewController: UISearchBarDelegate {
         }
         tableView.reloadData()
     }
-    
 }
 
 extension ListPitchViewController: ListPitchViewControllerDelegate {

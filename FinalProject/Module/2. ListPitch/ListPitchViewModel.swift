@@ -10,7 +10,7 @@ import Foundation
 
 class ListPitchViewModel {
     
-    // MARK: Properties
+    // MARK: - Properties
     var item: Pitch = Pitch()
     var pitchData: [Pitch] = []
     var tmpPitchData: [Pitch] = []
@@ -18,12 +18,12 @@ class ListPitchViewModel {
     let networkManager: NetworkManager
     var isBooking: Bool = false
     
-    // MARK: Init
+    // MARK: - Init
     init(networkManager: NetworkManager = NetworkManager.shared) {
         self.networkManager = networkManager
     }
     
-    // MAKR: Function
+    // MAKR: - Function
     func getAllData(completion: @escaping APICompletion) {
         networkManager.getAllPitch(page: 1, pageSize: 100) { [weak self] result in
             guard let this = self else { return }

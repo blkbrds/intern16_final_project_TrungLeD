@@ -9,24 +9,25 @@
 import UIKit
 
 class DetailCellHistoryTableViewCell: UITableViewCell {
-
+    
     // MARK: Iboutlet
     @IBOutlet weak var description1: UILabel!
     
     // MARK: Properties
-         var viewModel: DetailHistoryViewModel? {
-                didSet {
-                    updateView()
-                }
-            }
+    var viewModel: DetailHistoryViewModel? {
+        didSet {
+            updateView()
+        }
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
+    // MARK: - Function
     func updateView() {
         description1.text = viewModel?.description
     }

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 final class ListPitchCellViewModel {
     
-    // MARK: Properties
+    // MARK: - Properties
     var item: Pitch
     var phoneOwner: String {
         return item.pitchType.owner.phone

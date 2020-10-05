@@ -22,7 +22,7 @@ protocol ListPitchViewControllerDelegate: class {
 
 final class ListPitchTableViewCell: UITableViewCell {
     
-    // MARK: IBOutlet
+    // MARK: - IBOutlet
     @IBOutlet weak var namePitch: UILabel!
     @IBOutlet weak var address: UILabel!
     @IBOutlet weak var imageView1: UIImageView!
@@ -30,7 +30,7 @@ final class ListPitchTableViewCell: UITableViewCell {
     @IBOutlet weak var bookingButton: UIButton!
     @IBOutlet weak var dateBookingLabel: UILabel!
     
-    // MARK: Properties
+    // MARK: - Properties
     weak var delegate: ListPitchViewControllerDelegate?
     var pitch: [Pitch]?
     var viewModel: ListPitchCellViewModel? {
@@ -42,7 +42,7 @@ final class ListPitchTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    // MARK: Function
+    // MARK: - Function
     private func updateView() {
         namePitch.text = viewModel?.name
         address.text = viewModel?.addressOwner

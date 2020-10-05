@@ -9,22 +9,22 @@
 import UIKit
 
 class DetailCellInforTableViewCell: UITableViewCell {
-
+    
     // MARK: IBoutlet
     @IBOutlet weak var typePitchLabel: UILabel!
     
     // MARK: Properties
-      var viewModel: DetailInforCellViewModel? {
-             didSet {
-                 updateView()
-             }
-         }
+    var viewModel: DetailInforCellViewModel? {
+        didSet {
+            updateView()
+        }
+    }
     
     // MARK: Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }

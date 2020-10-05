@@ -28,6 +28,7 @@ final class DetailViewModel {
     var typePitch: String = ""
     var description: String = ""
     
+    // MARK: - Init
     init(lat: Double = 0.0,
          long: Double = 0.0,
          pitchName: String = "",
