@@ -9,6 +9,7 @@ target 'FinalProject' do
   pod 'Moya/RxSwift'
   pod 'SwiftLint'
   pod 'SideMenu'
+  pod 'RealmSwift'
   pod 'ObjectMapper', '~> 3.5'
   target 'FinalProjectTests' do
     inherit! :search_paths
