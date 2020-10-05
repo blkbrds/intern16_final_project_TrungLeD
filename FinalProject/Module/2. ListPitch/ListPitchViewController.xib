@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListPitchViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListPitchViewController" customModule="FinalProject" customModuleProvider="target">
             <connections>
-                <outlet property="mapKit" destination="fVE-3x-tEP" id="p6l-3P-33N"/>
-                <outlet property="tableView" destination="svV-86-F4H" id="McG-v9-sPU"/>
+                <outlet property="mapKit" destination="rhu-6x-M47" id="WPc-HV-RFT"/>
+                <outlet property="tableView" destination="iMK-4T-y4R" id="6kZ-ce-ldd"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,31 +19,27 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="svV-86-F4H">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iMK-4T-y4R">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
-                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fVE-3x-tEP">
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rhu-6x-M47">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                 </mapView>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
-<<<<<<< HEAD
-                <constraint firstItem="fVE-3x-tEP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="532-Mv-9pD"/>
-                <constraint firstItem="fVE-3x-tEP" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="E8p-jd-tUA"/>
-=======
-                <constraint firstItem="svV-86-F4H" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="4Fu-Y0-NIt"/>
->>>>>>> master
-                <constraint firstItem="svV-86-F4H" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ETx-K0-brL"/>
-                <constraint firstItem="fVE-3x-tEP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="HPI-YQ-1Tp"/>
-                <constraint firstItem="svV-86-F4H" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="O3s-ch-nw0"/>
-                <constraint firstItem="fVE-3x-tEP" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="X50-QX-lo6"/>
-                <constraint firstItem="svV-86-F4H" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="deT-Wo-D8j"/>
+                <constraint firstItem="rhu-6x-M47" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="7pr-9V-ZID"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="iMK-4T-y4R" secondAttribute="bottom" id="8T0-x5-LNq"/>
+                <constraint firstItem="iMK-4T-y4R" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="AZD-wp-Vae"/>
+                <constraint firstItem="rhu-6x-M47" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="HAc-xr-AIO"/>
+                <constraint firstItem="iMK-4T-y4R" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="h8H-6X-H12"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rhu-6x-M47" secondAttribute="trailing" id="iQA-cm-WNj"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="iMK-4T-y4R" secondAttribute="trailing" id="iR3-Q8-eBB"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="rhu-6x-M47" secondAttribute="bottom" id="uGu-xa-sag"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="131.8840579710145" y="150.66964285714286"/>
+            <point key="canvasLocation" x="186" y="224"/>
         </view>
-        <barButtonItem title="Item" id="9qe-7M-2lh"/>
     </objects>
 </document>

@@ -25,6 +25,7 @@ class ListPitchViewController: UIViewController {
         configTableView()
         loadData()
         configureUI()
+        mapView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,33 +52,33 @@ class ListPitchViewController: UIViewController {
         zoomOnMap(location: initLocation)
     }
     
-    // MARK:  - Objc Function
+    // MARK: - Objc Function
+    var leftItem = UIBarButtonItem()
     @objc private func mapView() {
-        showSearchBarButton(shouldShow: false)
-        let leftItem = UIBarButtonItem(image: UIImage(named: "ic_listPitch_map"), style: .plain, target: self, action: #selector(listView))
+        leftItem = UIBarButtonItem(image: UIImage(named: "ic_listPitch_listView"), style: .plain, target: self, action: #selector(listView))
         leftItem.tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
         navigationItem.leftBarButtonItem = leftItem
         tableView.isHidden = true
         mapKit.isHidden = false
     }
-    let leftItem = UIBarButtonItem()
     @objc private func listView() {
-        let leftItem = UIBarButtonItem(image: UIImage(systemName: "text.justify"), style: .plain, target: self, action: #selector(mapView))
+        let leftItem = UIBarButtonItem(image: UIImage(named: "ic_listPitch_map"), style: .plain, target: self, action: #selector(mapView))
         leftItem.tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
         navigationItem.leftBarButtonItem = leftItem
         tableView.isHidden = false
         mapKit.isHidden = true
     }
+    
     private let regionRadius: CLLocationDistance = 10000 // 10 km
     func zoomOnMap(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: regionRadius * 2, longitudinalMeters: regionRadius * 2 )
         mapKit.setRegion(coordinateRegion, animated: true)
     }
     private func configureUI() {
-        let searchBar: UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 35, height: 0))
+        let searchBar: UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 100, height: 0))
         searchBar.placeholder = "Nhập Tên Sân"
-        let leftNavBarButton = UIBarButtonItem(customView: searchBar)
-        self.navigationItem.leftBarButtonItem = leftNavBarButton
+        let rightNavBarButton = UIBarButtonItem(customView: searchBar)
+        self.navigationItem.rightBarButtonItem = rightNavBarButton
         searchBar.delegate = self
         navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.isTranslucent = true
@@ -95,7 +96,7 @@ class ListPitchViewController: UIViewController {
         self.present(datePicker, animated: true) {
         }
     }
-    
+}
 
 // MARK: Extension: - UITableView DataSource
 extension ListPitchViewController: UITableViewDataSource {
