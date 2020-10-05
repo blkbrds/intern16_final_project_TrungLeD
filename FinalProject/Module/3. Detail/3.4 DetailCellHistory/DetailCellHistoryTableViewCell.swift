@@ -10,7 +10,9 @@ import UIKit
 
 class DetailCellHistoryTableViewCell: UITableViewCell {
 
+    // MARK: Iboutlet
     @IBOutlet weak var description1: UILabel!
+    
     // MARK: Properties
          var viewModel: DetailHistoryViewModel? {
                 didSet {
@@ -19,13 +21,10 @@ class DetailCellHistoryTableViewCell: UITableViewCell {
             }
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func updateView() {

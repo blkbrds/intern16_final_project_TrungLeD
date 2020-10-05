@@ -9,6 +9,7 @@
 import Foundation
 
 class ListPitchViewModel {
+    
     // MARK: Properties
     var item: Pitch = Pitch()
     var pitchData: [Pitch] = []
@@ -16,6 +17,7 @@ class ListPitchViewModel {
     var nameSort: [String] = []
     let networkManager: NetworkManager
     var isBooking: Bool = false
+    
     // MARK: Init
     init(networkManager: NetworkManager = NetworkManager.shared) {
         self.networkManager = networkManager

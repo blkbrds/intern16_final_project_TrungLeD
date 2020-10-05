@@ -9,6 +9,7 @@
 import UIKit
 
 class LoginViewController: UIViewController {
+    
     // MARK: IBoutlet
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var passWordTextField: UITextField!
@@ -36,7 +37,7 @@ class LoginViewController: UIViewController {
     }
 }
 
-    // MARK: - Extension
+// MARK: - Extension
 extension LoginViewController {
     private func login() {
         guard let phone = phoneTextField.text, let pw = passWordTextField.text else { return }

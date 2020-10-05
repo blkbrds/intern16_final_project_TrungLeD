@@ -16,6 +16,7 @@ class DetailViewController: UIViewController {
     // MARK: Properties
     var pitch: [Pitch]?
     var viewModel: DetailViewModel = DetailViewModel()
+    
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +24,6 @@ class DetailViewController: UIViewController {
     }
     
     // MARK: Private Function
-    
     private func configTableView() {
         let nibHeader = UINib(nibName: "DetailHeaderTableViewCell", bundle: Bundle.main)
         tableView.register(nibHeader, forCellReuseIdentifier: "cellHeader")
