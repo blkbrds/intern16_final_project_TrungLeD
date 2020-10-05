@@ -9,9 +9,11 @@
 import Foundation
 
 class DetailHeaderCellViewModel {
+    // MARK: Properties
     var lat: Double = 0.0
     var long: Double = 0.0
     
+    // MARK: Init
     init( lat: Double = 0.0, long: Double = 0.0) {
         self.lat = lat
         self.long = long

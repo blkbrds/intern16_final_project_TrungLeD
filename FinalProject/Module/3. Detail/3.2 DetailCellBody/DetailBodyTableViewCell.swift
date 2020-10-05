@@ -9,35 +9,32 @@
 import UIKit
 
 class DetailBodyTableViewCell: UITableViewCell {
-
     // MARK: IBOutlet
     @IBOutlet weak var namePitchLabel: UILabel!
     @IBOutlet weak var addressPitchLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
     @IBOutlet weak var timeActiveLabel: UILabel!
     
-    
     // MARK: Properties
     var viewModel: DetailBodyCellViewModel? {
-           didSet {
-               updateView()
-           }
-       }
+        didSet {
+            updateView()
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
+    
+    // MARK: Function
     private func updateView() {
-           namePitchLabel.text = viewModel?.namePitch
-           addressPitchLabel.text = viewModel?.address
-           phoneLabel.text = viewModel?.phoneNumber
+        namePitchLabel.text = viewModel?.namePitch
+        addressPitchLabel.text = viewModel?.address
+        phoneLabel.text = viewModel?.phoneNumber
         timeActiveLabel.text = viewModel?.timeActive
-       }
+    }
 }

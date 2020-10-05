@@ -2,7 +2,6 @@ import Foundation
 import ObjectMapper
 
 final class PitchType: Mappable {
-    
     // MARK: Properties
     var id: Int = 0
     var owner: Owner = Owner()

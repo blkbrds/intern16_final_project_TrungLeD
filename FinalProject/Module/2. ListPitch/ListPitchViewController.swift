@@ -10,19 +10,16 @@ import UIKit
 import MapKit
 
 class ListPitchViewController: UIViewController {
-    
-    // MARK: IBOutlet
+    // MARK: - IBOutlet
     @IBOutlet var mapKit: MKMapView!
     @IBOutlet weak var tableView: UITableView!
     
-    // MARK: Properties
-    //    var datePicker = UIDatePicker()
-    let searchBar = UISearchBar()
+    // MARK: - Properties
     var inputDate: [Date] = []
     private var viewModel: ListPitchViewModel = ListPitchViewModel()
     var pitch: [Pitch]?
     
-    // MARK: Life Cycle
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
@@ -35,7 +32,7 @@ class ListPitchViewController: UIViewController {
         tableView.reloadData()
     }
     
-    // MARK: Function
+    // MARK: - Function
     private func loadData() {
         viewModel.getAllData { [weak self] result in
             guard let this = self else { return }
@@ -47,11 +44,6 @@ class ListPitchViewController: UIViewController {
             }
         }
     }
-    @objc func handleShowSearchBar() {
-        searchBar.placeholder = "Nhập Tên Sân"
-        searchBar.becomeFirstResponder()
-        search(shouldShow: true)
-    }
     
     // MARK: - Helper Functions
     private func configMapKit() {
@@ -60,7 +52,6 @@ class ListPitchViewController: UIViewController {
     }
     
     // MARK:  - Objc Function
-    
     @objc private func mapView() {
         showSearchBarButton(shouldShow: false)
         let leftItem = UIBarButtonItem(image: UIImage(named: "ic_listPitch_map"), style: .plain, target: self, action: #selector(listView))
@@ -83,30 +74,16 @@ class ListPitchViewController: UIViewController {
         mapKit.setRegion(coordinateRegion, animated: true)
     }
     private func configureUI() {
-        view.backgroundColor = .white
+        let searchBar: UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 35, height: 0))
+        searchBar.placeholder = "Nhập Tên Sân"
+        let leftNavBarButton = UIBarButtonItem(customView: searchBar)
+        self.navigationItem.leftBarButtonItem = leftNavBarButton
         searchBar.delegate = self
-        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.isTranslucent = true
-        showSearchBarButton(shouldShow: true)
     }
     
-    private func showSearchBarButton(shouldShow: Bool) {
-        if shouldShow {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(handleShowSearchBar))
-        } else {
-            navigationItem.rightBarButtonItem = nil
-        }
-    }
-    
-    private func search(shouldShow: Bool) {
-        showSearchBarButton(shouldShow: !shouldShow)
-        searchBar.showsCancelButton = shouldShow
-        navigationItem.titleView = shouldShow ? searchBar : nil
-    }
-    
-    private func configTableView() {
-        title = "LIST PITCH"
+    func configTableView() {
         let nib = UINib(nibName: "ListPitchTableViewCell", bundle: Bundle.main)
         tableView.register(nib, forCellReuseIdentifier: "ListPitchTableViewCell")
         tableView.delegate = self
@@ -116,12 +93,11 @@ class ListPitchViewController: UIViewController {
     private func loadDatePicker() {
         let datePicker = DatePickerViewController()
         self.present(datePicker, animated: true) {
-            
         }
     }
-}
+    
 
-// MARK: Extension: UITableView DataSource
+// MARK: Extension: - UITableView DataSource
 extension ListPitchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cellListPitch = tableView.dequeueReusableCell(withIdentifier: "ListPitchTableViewCell", for: indexPath) as? ListPitchTableViewCell else {
@@ -140,14 +116,13 @@ extension ListPitchViewController: UITableViewDataSource {
     }
 }
 
-// MARK: Extension: UITableView Delegate
+// MARK: Extension: - UITableView Delegate
 extension ListPitchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
         detailVC.viewModel = viewModel.getInforPitch(at: indexPath)
         navigationController?.pushViewController(detailVC, animated: true)
-        
     }
 }
 
@@ -161,7 +136,6 @@ extension ListPitchViewController: UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        search(shouldShow: false)
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -169,11 +143,10 @@ extension ListPitchViewController: UISearchBarDelegate {
         if searchText.isEmpty {
             viewModel.tmpPitchData = viewModel.pitchData
         } else {
-            viewModel.tmpPitchData =  viewModel.tmpPitchData.filter{($0.name.contains(searchText) ?? false)}
+            viewModel.tmpPitchData = viewModel.tmpPitchData.filter { ($0.name.contains(searchText)) }
         }
         tableView.reloadData()
     }
-    
 }
 
 extension ListPitchViewController: ListPitchViewControllerDelegate {

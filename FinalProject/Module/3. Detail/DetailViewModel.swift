@@ -15,10 +15,8 @@ enum TypeSection {
     case history
 }
 final class DetailViewModel {
-    
-    
-    var pitch: Pitch?
     // MARK: Properties
+    var pitch: Pitch?
     var id: Int = 0
     var lat: Double = 0.0
     var long: Double = 0.0
@@ -27,11 +25,9 @@ final class DetailViewModel {
     var phoneNumber: String = ""
     var timeAction: String = ""
     var typePitch: String = ""
-//    var price: String?
     var description: String = ""
     
-
-    
+    // MARK: - Init
     init(lat: Double = 0.0,
          long: Double = 0.0,
          pitchName: String = "",
@@ -39,7 +35,6 @@ final class DetailViewModel {
          phoneNumber: String = "",
          timeAction: String = "",
          typePitch: String = "",
-//         price: String,
          description: String = "") {
         self.lat = lat
         self.long = long
@@ -48,10 +43,10 @@ final class DetailViewModel {
         self.phoneNumber = phoneNumber
         self.timeAction = timeAction
         self.typePitch = typePitch
-//        self.price = price
         self.description = description
     }
     
+    // MARK: Function
     func typeSectionLoad(number: Int) -> TypeSection {
         switch number {
         case 0:
@@ -76,9 +71,9 @@ final class DetailViewModel {
     }
     
     func viewModelForInfor(at indexPath: IndexPath) -> DetailInforCellViewModel {
-           let viewModel = DetailInforCellViewModel(pitchType: typePitch)
-           return viewModel
-       }
+        let viewModel = DetailInforCellViewModel(pitchType: typePitch)
+        return viewModel
+    }
     
     func viewModelForHistory(at indexPath: IndexPath) -> DetailHistoryViewModel {
         let viewModel = DetailHistoryViewModel(description: description)

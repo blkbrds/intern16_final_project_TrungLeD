@@ -9,13 +9,13 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-    
     // MARK: IBoutlet
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: Properties
     var pitch: [Pitch]?
     var viewModel: DetailViewModel = DetailViewModel()
+    
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +23,6 @@ class DetailViewController: UIViewController {
     }
     
     // MARK: Private Function
-    
     private func configTableView() {
         let nibHeader = UINib(nibName: "DetailHeaderTableViewCell", bundle: Bundle.main)
         tableView.register(nibHeader, forCellReuseIdentifier: "cellHeader")
@@ -38,12 +37,19 @@ class DetailViewController: UIViewController {
     }
     
     private func configNavi() {
-        let backBtn = UIBarButtonItem(image: UIImage(named:"ic_detail_back"), style: .plain, target: self, action: #selector(backCollectVC))
+        let backBtn = UIBarButtonItem(image: UIImage(named: "ic_detail_back"), style: .plain, target: self, action: #selector(backListVC))
+        let favouriteBtn = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_Detail_favorite.png"), style: .plain, target: self, action: #selector(favouriteClicked))
         backBtn.tintColor = .orange
+        favouriteBtn.tintColor = .systemPink
         navigationItem.leftBarButtonItem = backBtn
+        navigationItem.rightBarButtonItem = favouriteBtn
     }
     
-    @objc func backCollectVC() {
+    @objc func favouriteClicked() {
+        
+    }
+    
+    @objc func backListVC() {
         navigationController?.popViewController(animated: true)
     }
 }

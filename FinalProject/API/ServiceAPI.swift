@@ -12,10 +12,8 @@ enum ServiceAPI {
     case getAllDictrict
     case login(phone: String, pw: String)
     case getAllPitch(page: Int, pageSize: Int)
-    //  case bookingPitch(date: Date, idCustomer: String, idPitch: String, idPrice: String, idTime: String)
-    //        case updateAccount(id: Int, name: String, teamName: String, description: String)
-    //        case getFavoritePitch(id: Int)
 }
+
 // enum Result
 public enum Result<Value> {
     case success(Value)
@@ -36,7 +34,7 @@ typealias CompletionResult<Value> = (Result<Value>) -> Void
 extension ServiceAPI: TargetType {
     
     var baseURL: URL {
-        guard let url = URL(string: "http://3.137.149.94:8080/trungapi" ) else {
+        guard let url = URL(string: "http://18.224.180.166:8080/trungapi" ) else {
             fatalError("Invalid static URL string")
         }
         return url
@@ -50,15 +48,6 @@ extension ServiceAPI: TargetType {
             return "/common/login"
         case .getAllPitch:
             return "/common/get-all-pitch"
-            //  case .bookingPitch:
-            //       return "/personal/reserve-pitch"
-            //        case .bookingPitch(date: let date, idCustomer: let idCustomer, idPitch: let idPitch, idPrice: let idPrice, idTime: let idTime):
-            //            <#code#>
-            //        case .updateAccount(id: let id, name: let name, teamName: let teamName, description: let description):
-            //            <#code#>
-            //        case .getFavoritePitch(id: let id):
-            //            <#code#>
-            //        }
         }
     }
     var method: Moya.Method {
@@ -67,10 +56,6 @@ extension ServiceAPI: TargetType {
             return .get
         case .login:
             return .post
-            //case .bookingPitch(_, _, _, _, _):
-            //   return .post
-            //        case .bookingPitch(date: let date, idCustomer: let idCustomer, idPitch: let idPitch, idPrice: let idPrice, idTime: let idTime):
-            //            <#code#>
         }
     }
     
@@ -94,10 +79,6 @@ extension ServiceAPI: TargetType {
             params["page"] = page
             params["pageSize"] = pageSize
             return .requestParameters(parameters:["page": page, "pageSize": pageSize], encoding: URLEncoding.default)
-            // case .bookingPitch(let date, let idCustomer, let idPitch, let idTime): break
-            //        case .bookingPitch(date: let date, idCustomer: let idCustomer, idPitch: let idPitch, idPrice: let idPrice, idTime: let idTime):
-            //            <#code#>
-            //        }
         }
     }
     

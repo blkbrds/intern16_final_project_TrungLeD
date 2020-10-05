@@ -8,12 +8,11 @@
 
 import Foundation
 class DetailBodyCellViewModel {
-    
     // MARK: Properties
     var namePitch: String = ""
     var address: String = ""
     var phoneNumber: String = ""
-    var timeActive : String = ""
+    var timeActive: String = ""
     
     // MARK: Init
     init(namePitch: String = "", address: String = "", phoneNumber: String = "", timeActive: String = "") {

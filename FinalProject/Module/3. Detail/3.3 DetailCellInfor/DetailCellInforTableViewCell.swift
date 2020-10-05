@@ -9,25 +9,26 @@
 import UIKit
 
 class DetailCellInforTableViewCell: UITableViewCell {
-
+    // MARK: IBoutlet
     @IBOutlet weak var typePitchLabel: UILabel!
     
     // MARK: Properties
-      var viewModel: DetailInforCellViewModel? {
-             didSet {
-                 updateView()
-             }
-         }
+    var viewModel: DetailInforCellViewModel? {
+        didSet {
+            updateView()
+        }
+    }
+    
+    // MARK: Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
+    
+    // MARK: Function
     func updateView() {
         typePitchLabel.text = viewModel?.pitchType
     }

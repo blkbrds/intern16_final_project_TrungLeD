@@ -9,7 +9,6 @@
 import UIKit
 
 final class TabbarViewController: UITabBarController {
-    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +29,5 @@ final class TabbarViewController: UITabBarController {
         tabBar.tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
         tabBar.backgroundColor = .white
         tabBar.isTranslucent = true
-        
     }
 }

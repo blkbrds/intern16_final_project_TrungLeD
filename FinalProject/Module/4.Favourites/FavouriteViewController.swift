@@ -9,11 +9,14 @@
 import UIKit
 
 class FavouriteViewController: UIViewController {
-
+    
+    // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configNavi()
     }
+    
+    // MARK: Function
     func configNavi() {
         title = "Favourites"
     }
