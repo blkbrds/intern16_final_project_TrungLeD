@@ -10,15 +10,15 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    // MARK: IBoutlet
+    // MARK: - IBoutlet
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var passWordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     
-    // MARK: Properties
+    // MARK: - Properties
     var viewModel: LoginViewModel = LoginViewModel()
     
-    // MARK: Life Cycle
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupElements()
@@ -32,6 +32,7 @@ class LoginViewController: UIViewController {
         loginButton.styleHollowButton()
     }
     
+    // MARK: - IBAction
     @IBAction func loginPressed(_ sender: UIButton) {
         login()
     }
