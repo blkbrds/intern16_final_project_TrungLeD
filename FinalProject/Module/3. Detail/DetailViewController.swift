@@ -38,12 +38,19 @@ class DetailViewController: UIViewController {
     }
     
     private func configNavi() {
-        let backBtn = UIBarButtonItem(image: UIImage(named: "ic_detail_back"), style: .plain, target: self, action: #selector(backCollectVC))
+        let backBtn = UIBarButtonItem(image: UIImage(named: "ic_detail_back"), style: .plain, target: self, action: #selector(backListVC))
+        let favouriteBtn = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_Detail_favorite.png"), style: .plain, target: self, action: #selector(favouriteClicked))
         backBtn.tintColor = .orange
+        favouriteBtn.tintColor = .systemPink
         navigationItem.leftBarButtonItem = backBtn
+        navigationItem.rightBarButtonItem = favouriteBtn
     }
     
-    @objc func backCollectVC() {
+    @objc func favouriteClicked() {
+        
+    }
+    
+    @objc func backListVC() {
         navigationController?.popViewController(animated: true)
     }
 }

@@ -11,12 +11,9 @@ import UIKit
 class ListPitchViewController: UIViewController {
     
     // MARK: IBOutlet
-    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tableView: UITableView!
-    
     // MARK: Properties
     //    var datePicker = UIDatePicker()
-    let searchBar = UISearchBar()
     var inputDate: [Date] = []
     private var viewModel: ListPitchViewModel = ListPitchViewModel()
     var pitch: [Pitch]?
@@ -41,39 +38,20 @@ class ListPitchViewController: UIViewController {
             }
         }
     }
-    @objc func handleShowSearchBar() {
-        searchBar.placeholder = "Nhập Tên Sân"
-        searchBar.becomeFirstResponder()
-        search(shouldShow: true)
-    }
     
     // MARK: - Helper Functions
-    
     func configureUI() {
+         let searchBar1: UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 35, height: 0))
+        searchBar1.placeholder = "Nhập Tên Sân"
+        let leftNavBarButton = UIBarButtonItem(customView: searchBar1)
+        self.navigationItem.rightBarButtonItem = leftNavBarButton
         view.backgroundColor = .white
-        searchBar.delegate = self
-        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        navigationController?.navigationBar.tintColor = .white
+        searchBar1.delegate = self
+        navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.isTranslucent = true
-        showSearchBarButton(shouldShow: true)
-    }
-    
-    func showSearchBarButton(shouldShow: Bool) {
-        if shouldShow {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(handleShowSearchBar))
-        } else {
-            navigationItem.rightBarButtonItem = nil
-        }
-    }
-    
-    func search(shouldShow: Bool) {
-        showSearchBarButton(shouldShow: !shouldShow)
-        searchBar.showsCancelButton = shouldShow
-        navigationItem.titleView = shouldShow ? searchBar : nil
     }
     
     func configTableView() {
-        title = "LIST PITCH"
         let nib = UINib(nibName: "ListPitchTableViewCell", bundle: Bundle.main)
         tableView.register(nib, forCellReuseIdentifier: "ListPitchTableViewCell")
         tableView.delegate = self
@@ -128,7 +106,6 @@ extension ListPitchViewController: UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        search(shouldShow: false)
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
