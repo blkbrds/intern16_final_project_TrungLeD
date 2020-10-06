@@ -12,7 +12,6 @@ import RealmSwift
     dynamic var count: Double = 0.0
     dynamic var isUse: String = ""
     
-    
     // MARK: Init
     required init?(map: Map) {}
     init(id: Int = 0, pitchType: PitchType = PitchType(), name: String = "", description1: String = "", timeUse: String = "", count: Double = 0.0, isUse: String = "") {
@@ -25,9 +24,7 @@ import RealmSwift
         self.isUse = isUse
     }
     
-    override required init() {
-        fatalError("init() has not been implemented")
-    }
+    override required init() {}
     
     override static func primaryKey() -> String? {
         return "id"
