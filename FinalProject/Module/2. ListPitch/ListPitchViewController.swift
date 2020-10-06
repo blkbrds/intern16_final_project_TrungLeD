@@ -10,11 +10,6 @@ import UIKit
 import MapKit
 
 class ListPitchViewController: UIViewController {
-    // MARK: - Enum
-    enum TypeDisplay {
-        case tableView
-        case mapView
-    }
     // MARK: - IBOutlet
     @IBOutlet var mapKit: MKMapView!
     @IBOutlet weak var tableView: UITableView!
@@ -37,6 +32,7 @@ class ListPitchViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         tableView.reloadData()
+        viewModel.fetchRealmData()
     }
     
     // MARK: - Function
@@ -125,7 +121,7 @@ extension ListPitchViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.tmpPitchData.count
+        return viewModel.pitchs.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
@@ -157,9 +153,9 @@ extension ListPitchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("Search text is \(searchText)")
         if searchText.isEmpty {
-            viewModel.tmpPitchData = viewModel.pitchData
+            viewModel.pitchs = viewModel.pitchTotals
         } else {
-            viewModel.tmpPitchData = viewModel.tmpPitchData.filter { ($0.name.contains(searchText)) }
+            viewModel.pitchs = viewModel.pitchs.filter { ($0.name.contains(searchText)) }
         }
         tableView.reloadData()
     }
@@ -170,20 +166,17 @@ extension ListPitchViewController: ListPitchTableViewCellDelegate {
         
     }
     
-    func handleFavoriteTableView(cell: ListPitchTableViewCell, pitchID: Int, isFavorite: Bool) {
+    func handleFavoriteTableView(cell: ListPitchTableViewCell, id: String, isFavorite: Bool) {
         if isFavorite {
-            viewModel.unfavorite(pitchID: pitchID)
+            viewModel.unfavorite(id: id)
         } else {
-            viewModel.addFavorite(pitchID: cell.viewModel?.id ?? 1, namePitch: cell.viewModel?.name ?? "", addressPitch: cell.viewModel?.addressOwner ?? "", timeUse: cell.viewModel?.timeUser ?? "")
+            viewModel.addFavorite(id: cell.viewModel?.id ?? "", namePitch: cell.viewModel?.name ?? "", addressPitch: cell.viewModel?.addressOwner ?? "", timeUse: cell.viewModel?.timeUser ?? "")
         }
         tableView.reloadData()
     }
 }
 extension ListPitchViewController: ListPitchViewModelDelegate {
     func syncFavorite(viewModel: ListPitchViewModel, needperformAction action: ListPitchViewModel.Action) {
-        switch action {
-        case .loadFavorite:
-            tableView.reloadData()
-        }
+        tableView.reloadData()
     }
 }

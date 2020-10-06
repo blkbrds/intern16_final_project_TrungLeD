@@ -3,7 +3,7 @@ import ObjectMapper
 
 final class PitchType: Mappable {
     // MARK: Properties
-    var id: Int = 0
+    var id: String = ""
     var owner: Owner = Owner()
     var name: String = ""
     

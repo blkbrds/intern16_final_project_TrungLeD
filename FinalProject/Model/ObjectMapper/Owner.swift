@@ -3,7 +3,7 @@ import ObjectMapper
 
 final class Owner: Mappable {
     // MARK: - Properties
-    var id: Int = 0
+    var id: String = ""
     var name: String = ""
     var phone: String = ""
     var address: String = ""

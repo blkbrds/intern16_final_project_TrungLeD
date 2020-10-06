@@ -18,7 +18,7 @@ enum TypeSection {
 final class DetailViewModel {
     // MARK: Properties
     var pitch: Pitch?
-    var id: Int = 0
+    var id: String = ""
     var lat: Double = 0.0
     var long: Double = 0.0
     var pitchName: String = ""
@@ -27,7 +27,7 @@ final class DetailViewModel {
     var timeAction: String = ""
     var typePitch: String = ""
     var description: String = ""
-    
+    var status = Favorite.favorite
     // MARK: - Init
     init(lat: Double = 0.0,
          long: Double = 0.0,
@@ -64,7 +64,7 @@ final class DetailViewModel {
     func checkFavorite(completion: @escaping (Bool) -> Void) {
         do {
             let realm = try Realm()
-            let results = realm.objects(Pitch.self).filter("pitchID = '\(id)'")
+            let results = realm.objects(Pitch.self).filter("id = '\(id)'")
             if results.isEmpty {
                 completion(false)
             } else {
@@ -78,7 +78,7 @@ final class DetailViewModel {
     func unfavorite() {
         do {
             let realm = try Realm()
-            let result = realm.objects(Pitch.self).filter("pitchID = '\(id)'")
+            let result = realm.objects(Pitch.self).filter("id = '\(id)'")
             try realm.write {
                 realm.delete(result)
             }
@@ -87,11 +87,11 @@ final class DetailViewModel {
         }
     }
     
-    func addFavorite(pitchID: Int, namePitch: String, address: String, timeUse: String) {
+    func addFavorite(id: String, namePitch: String, address: String, timeUse: String) {
         do {
             let realm = try Realm()
             let pitch = Pitch()
-            pitch.idPitch = pitchID
+            pitch.id = id
             pitch.name = namePitch
             pitch.pitchType.owner.address = address
             pitch.timeUse = timeUse

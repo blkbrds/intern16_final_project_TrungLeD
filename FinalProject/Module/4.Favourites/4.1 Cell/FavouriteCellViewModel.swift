@@ -15,6 +15,6 @@ final class FavouriteCellViewModel {
     // MARK: - Init
     init(pitch: Pitch) {
         self.pitch = pitch
-        self.isFavorite = pitch.favorite
+        self.isFavorite = pitch.isFavorite
     }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 protocol FavouriteTableViewCellDelegate: class {
-    func handleFavorite(cell: FavouritesTableViewCell, pitchID: Int, isFavorite: Bool)
+    func handleFavorite(cell: FavouritesTableViewCell, id: String, isFavorite: Bool)
 }
 
 class FavouritesTableViewCell: UITableViewCell {
@@ -49,7 +49,7 @@ class FavouritesTableViewCell: UITableViewCell {
     @IBAction func cancelFavourites(_ sender: UIButton) {
         guard let viewModel = viewModel else { return }
         if let delegate = delegate {
-            delegate.handleFavorite(cell: self, pitchID: viewModel.pitch.idPitch, isFavorite: viewModel.isFavorite)
+            delegate.handleFavorite(cell: self, id: viewModel.pitch.id, isFavorite: viewModel.isFavorite)
         }
         updateView()
     }

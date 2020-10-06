@@ -36,8 +36,8 @@ final class ListPitchCellViewModel {
     var name: String {
         return item.name
     }
-    var id: Int {
-        return item.idPitch
+    var id: String {
+        return item.id
     }
     var timeUser: String {
         return item.timeUse
@@ -45,6 +45,6 @@ final class ListPitchCellViewModel {
     
     init(item: Pitch) {
         self.item = item
-        self.isFavorite = item.favorite
+        self.isFavorite = item.isFavorite
     }
 }
