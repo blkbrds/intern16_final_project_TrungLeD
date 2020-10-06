@@ -4,35 +4,37 @@ import RealmSwift
 
 @objcMembers class Pitch: Object, Mappable {
     // MARK: Properties
-    dynamic var id: Int = 0
+    dynamic var idPitch: Int = 0
     dynamic var pitchType: PitchType = PitchType()
     dynamic var name: String = ""
     dynamic var description1: String = ""
     dynamic var timeUse: String = ""
     dynamic var count: Double = 0.0
     dynamic var isUse: String = ""
+    dynamic var favorite: Bool = false
     
     // MARK: Init
     required init?(map: Map) {}
-    init(id: Int = 0, pitchType: PitchType = PitchType(), name: String = "", description1: String = "", timeUse: String = "", count: Double = 0.0, isUse: String = "") {
-        self.id = id
+    init(id: Int = 0, pitchType: PitchType = PitchType(), name: String = "", description1: String = "", timeUse: String = "", count: Double = 0.0, isUse: String = "", favorite: Bool) {
+        self.idPitch = id
         self.pitchType = pitchType
         self.name = name
         self.description1 = description1
         self.timeUse = timeUse
         self.count = count
         self.isUse = isUse
+        self.favorite = favorite
     }
     
     override required init() {}
     
     override static func primaryKey() -> String? {
-        return "id"
+        return "idPitch"
     }
     
     // MARK: Function
     func mapping(map: Map) {
-        id <- map["id"]
+        idPitch <- map["id"]
         pitchType <- map["pitchType"]
         name <- map["name"]
         description1 <- map["description"]

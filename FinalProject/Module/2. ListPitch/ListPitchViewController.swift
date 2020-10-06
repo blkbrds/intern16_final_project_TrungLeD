@@ -26,6 +26,7 @@ class ListPitchViewController: UIViewController {
         loadData()
         configureUI()
         mapView()
+        configSyncRealm()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,6 +35,10 @@ class ListPitchViewController: UIViewController {
     }
     
     // MARK: - Function
+    func configSyncRealm() {
+        viewModel.delegate = self
+        viewModel.setupObserve()
+    }
     private func loadData() {
         viewModel.getAllData { [weak self] result in
             guard let this = self else { return }
@@ -150,8 +155,25 @@ extension ListPitchViewController: UISearchBarDelegate {
     }
 }
 
-extension ListPitchViewController: ListPitchViewControllerDelegate {
+extension ListPitchViewController: ListPitchTableViewCellDelegate {
     func bookingButton(view: ListPitchTableViewCell) {
-        loadDatePicker()
+        
     }
+    
+    func handleFavoriteTableView(cell: ListPitchTableViewCell, pitchID: Int, isFavorite: Bool) {
+        if isFavorite {
+            viewModel.unfavorite(pitchID: pitchID)
+        } else {
+            viewModel.addFavorite(pitchID: cell.viewModel?.id ?? 1, namePitch: cell.viewModel?.name ?? "", addressPitch: cell.viewModel?.addressOwner ?? "", timeUse: cell.viewModel?.timeUser ?? "")
+        }
+        tableView.reloadData()
+    }
+}
+extension ListPitchViewController: ListPitchViewModelDelegate {
+    func loadFavorite(viewModel: ListPitchViewModel, needPerform action: ListPitchViewModel.Action) {
+        switch action {
+        case .loadFavorite:
+            tableView.reloadData()
+    }
+}
 }

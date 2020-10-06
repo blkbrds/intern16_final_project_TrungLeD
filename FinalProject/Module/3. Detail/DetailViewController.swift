@@ -35,7 +35,7 @@ class DetailViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
     }
-    
+
     private func configNavi() {
         let backBtn = UIBarButtonItem(image: UIImage(named: "ic_detail_back"), style: .plain, target: self, action: #selector(backListVC))
         let favouriteBtn = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_Detail_favorite.png"), style: .plain, target: self, action: #selector(favouriteClicked))

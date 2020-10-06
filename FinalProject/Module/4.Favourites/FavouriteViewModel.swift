@@ -67,7 +67,7 @@ class FavouriteViewModel {
         do {
             let realm = try Realm()
             let tempData = realm.objects(Pitch.self)
-            try realm.write{
+            try realm.write {
                 realm.delete(tempData)
             }
             completion(.success)

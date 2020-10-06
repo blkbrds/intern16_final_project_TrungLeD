@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 final class ListPitchCellViewModel {
     // MARK: - Properties
+    var isFavorite: Bool
     var item: Pitch
     var phoneOwner: String {
         return item.pitchType.owner.phone
@@ -36,7 +37,7 @@ final class ListPitchCellViewModel {
         return item.name
     }
     var id: Int {
-        return item.id
+        return item.idPitch
     }
     var timeUser: String {
         return item.timeUse
@@ -44,5 +45,6 @@ final class ListPitchCellViewModel {
     
     init(item: Pitch) {
         self.item = item
+        self.isFavorite = item.favorite
     }
 }

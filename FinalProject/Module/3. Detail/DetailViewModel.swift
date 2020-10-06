@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 enum TypeSection {
     case header
@@ -57,6 +58,48 @@ final class DetailViewModel {
             return .infor
         default:
             return .history
+        }
+    }
+    
+    func checkFavorite(completion: @escaping (Bool) -> Void) {
+        do {
+            let realm = try Realm()
+            let results = realm.objects(Pitch.self).filter("pitchID = '\(id)'")
+            if results.isEmpty {
+                completion(false)
+            } else {
+                completion(true)
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
+    func unfavorite() {
+        do {
+            let realm = try Realm()
+            let result = realm.objects(Pitch.self).filter("pitchID = '\(id)'")
+            try realm.write {
+                realm.delete(result)
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
+    func addFavorite(pitchID: Int, namePitch: String, address: String, timeUse: String) {
+        do {
+            let realm = try Realm()
+            let pitch = Pitch()
+            pitch.idPitch = pitchID
+            pitch.name = namePitch
+            pitch.pitchType.owner.address = address
+            pitch.timeUse = timeUse
+            try realm.write {
+                realm.add(pitch)
+            }
+        } catch {
+            print(error)
         }
     }
     

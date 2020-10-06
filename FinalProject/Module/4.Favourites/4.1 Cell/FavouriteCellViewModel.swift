@@ -11,8 +11,10 @@ import Foundation
 final class FavouriteCellViewModel {
     // MARK: - Properties
     let pitch: Pitch
+    var isFavorite: Bool
     // MARK: - Init
     init(pitch: Pitch) {
         self.pitch = pitch
+        self.isFavorite = pitch.favorite
     }
 }

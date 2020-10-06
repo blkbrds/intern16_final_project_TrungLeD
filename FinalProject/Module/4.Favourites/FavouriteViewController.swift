@@ -29,10 +29,39 @@ final class FavouriteViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
     }
+    
     func configNavi() {
-        title = "Favourites List"
-        let removeALlItem = UIBarButtonItem(image: UIImage(named: "ic_favourite_remove"), style: .plain, target: self, action: #selector(removeAllItem))
-        navigationItem.rightBarButtonItem = removeALlItem
+        let leftBarButton = UIBarButtonItem(image: UIImage(named: "ic-back"), style: .plain, target: self, action: #selector(backTouchUpInSide))
+        navigationItem.leftBarButtonItem = leftBarButton
+        
+        let rightBarButton = UIBarButtonItem(image: UIImage(systemName: "trash"), style: .plain, target: self, action: #selector(deleteTouchUpInSide))
+        navigationItem.rightBarButtonItem = rightBarButton
+    }
+    
+//    private func deleteAllItem() {
+//          viewModel.deleteAllItem { [weak self] (done) in
+//              guard let this = self else { return }
+//              if done {
+//                  this.fectchData()
+//              } else {
+//                  print("Delete failed")
+//              }
+//          }
+//      }
+    
+    @objc func deleteTouchUpInSide() {
+        let alert = UIAlertController(title: "Warning", message: "Delete all", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .destructive) { [weak self] (_) in
+            guard let this = self else { return }
+         //   this.deleteAllItem()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+    }
+    @objc func backTouchUpInSide() {
+        
     }
     func getDataFromRealm() {
         viewModel.getDataFromRealm { [weak self] (result) in
@@ -61,24 +90,13 @@ final class FavouriteViewController: UIViewController {
         }))
     }
 }
-// Extension
-extension FavouriteViewController: UITableViewDelegate, UITableViewDataSource {
+// MARK: - Extension
+extension FavouriteViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 100
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell()
-    }
-}
-
-extension FavouriteViewController: FavouriteTableViewCellDelegate {
-    func favourite(at view: FavouritesTableViewCell, needPerforms action: FavouritesTableViewCell.Action) {
-        switch action {
-        case .unfavourite:
-            break
-        default:
-            break
-        }
     }
 }

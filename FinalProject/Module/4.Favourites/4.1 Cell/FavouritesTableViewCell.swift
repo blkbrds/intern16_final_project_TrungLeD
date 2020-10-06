@@ -7,16 +7,11 @@
 //
 
 import UIKit
-protocol FavouriteTableViewCellDelegate {
-    func favourite(at view: FavouritesTableViewCell, needPerforms action: FavouritesTableViewCell.Action)
+protocol FavouriteTableViewCellDelegate: class {
+    func handleFavorite(cell: FavouritesTableViewCell, pitchID: Int, isFavorite: Bool)
 }
 
 class FavouritesTableViewCell: UITableViewCell {
-    // MARK: - Enum
-    enum Action {
-        case unfavourite
-    }
-    
     // MARK: - IBOutlet
     @IBOutlet weak var image1: UIImageView!
     @IBOutlet weak var namePitch: UILabel!
@@ -24,7 +19,7 @@ class FavouritesTableViewCell: UITableViewCell {
     @IBOutlet weak var address: UILabel!
     
     // MARK: - Properties
-    var delegate: FavouriteTableViewCellDelegate?
+    weak var delegate: FavouriteTableViewCellDelegate?
     var viewModel: FavouriteCellViewModel? {
         didSet {
             updateView()
@@ -34,6 +29,10 @@ class FavouritesTableViewCell: UITableViewCell {
     // MARK: - Life Cycle
     override func awakeFromNib() {
         super.awakeFromNib()
+        image1.layer.cornerRadius = 15
+        namePitch.layer.cornerRadius = 15
+        timeAction.layer.cornerRadius = 15
+        address.layer.cornerRadius = 15
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -41,14 +40,18 @@ class FavouritesTableViewCell: UITableViewCell {
     }
     
     private func updateView() {
-        image1.layer.cornerRadius = 2.5
-        namePitch.text = viewModel?.pitch.name
-        timeAction.text = viewModel?.pitch.timeUse
-        address.text = viewModel?.pitch.pitchType.owner.address
+        guard let viewModel = viewModel else { return }
+        namePitch.text = viewModel.pitch.name
+        timeAction.text = viewModel.pitch.timeUse
+        address.text = viewModel.pitch.pitchType.owner.address
     }
     // MARK: - IBAction
     @IBAction func cancelFavourites(_ sender: UIButton) {
-        delegate?.favourite(at: self, needPerforms: .unfavourite)
+        guard let viewModel = viewModel else { return }
+        if let delegate = delegate {
+            delegate.handleFavorite(cell: self, pitchID: viewModel.pitch.idPitch, isFavorite: viewModel.isFavorite)
+        }
+        updateView()
     }
     
     @IBAction func bookingClicked(_ sender: UIButton) {

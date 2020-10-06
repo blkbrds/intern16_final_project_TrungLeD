@@ -8,11 +8,23 @@
 
 import Foundation
 import MapKit
+import RealmSwift
+
+protocol ListPitchViewModelDelegate: class {
+    func loadFavorite(viewModel: ListPitchViewModel, needPerform action: ListPitchViewModel.Action)
+}
 class ListPitchViewModel {
+    // MARK: - Enum
+    enum Action {
+        case loadFavorite
+    }
     // MARK: - Properties
+    weak var delegate: ListPitchViewModelDelegate?
+    var notificationToken: NotificationToken?
     var item: Pitch = Pitch()
     var pitchData: [Pitch] = []
     var tmpPitchData: [Pitch] = []
+    var realmPitch: [Pitch] = []
     var nameSort: [String] = []
     let networkManager: NetworkManager
     var isBooking: Bool = false
@@ -56,7 +68,75 @@ class ListPitchViewModel {
                                      phoneNumber: item.pitchType.owner.phone,
                                      timeAction: item.timeUse,
                                      typePitch: item.pitchType.name,
-                                     description: item.description)
+                                     description: item.description1)
         return detail
+    }
+    
+    // MARK: - Realm
+    func setupObserve() {
+        do {
+            let realm = try Realm()
+            notificationToken = realm.objects(Pitch.self).observe({ [weak self] _ in
+                guard let this = self else { return }
+                if let delegate = this.delegate {
+                    this.fetchRealmData()
+                    for i in 0..<this.pitchData.count {
+                        this.pitchData[i].favorite =
+                            this.realmPitch.contains(where: { $0.idPitch == this.pitchData[i].idPitch })
+                    }
+                    delegate.loadFavorite(viewModel: this, needPerform: .loadFavorite)
+                }
+            })
+        } catch {
+            print(error)
+        }
+    }
+    
+    func fetchRealmData() {
+        do {
+            // Realm
+            let realm = try Realm()
+            // Create results
+            let results = realm.objects(Pitch.self)
+            // Convert to array
+            realmPitch = Array(results)
+        } catch {
+            print(error)
+        }
+    }
+    func checkFavorite(favorite: Bool, pitchID: Int) {
+        for item in pitchData where item.idPitch == pitchID {
+            item.favorite = favorite
+        }
+    }
+    
+    func addFavorite(pitchID: Int, namePitch: String, addressPitch: String, timeUse: String) {
+        do {
+            let realm = try Realm()
+            let pitch = Pitch()
+            pitch.idPitch = pitchID
+            pitch.name = namePitch
+            pitch.pitchType.owner.address = addressPitch
+            pitch.timeUse = timeUse
+            try realm.write {
+                realm.add(pitch, update: .all)
+                checkFavorite(favorite: true, pitchID: pitchID )
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
+    func unfavorite(pitchID: Int) {
+        do {
+            let realm = try Realm()
+            let result = realm.objects(Pitch.self).filter("idPitch1 = '\(pitchID)'")
+            try realm.write {
+                realm.delete(result)
+                checkFavorite(favorite: false, pitchID: pitchID)
+            }
+        } catch {
+            print(error)
+        }
     }
 }
