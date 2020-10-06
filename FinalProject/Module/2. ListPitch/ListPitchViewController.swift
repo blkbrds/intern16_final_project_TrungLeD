@@ -55,14 +55,14 @@ class ListPitchViewController: UIViewController {
     // MARK: - Objc Function
     var leftItem = UIBarButtonItem()
     @objc private func mapView() {
-        leftItem = UIBarButtonItem(image: UIImage(named: "ic_listPitch_listView"), style: .plain, target: self, action: #selector(listView))
+        leftItem = UIBarButtonItem(image: UIImage(named: "ic_listpitch_listview"), style: .plain, target: self, action: #selector(listView))
         leftItem.tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
         navigationItem.leftBarButtonItem = leftItem
         tableView.isHidden = true
         mapKit.isHidden = false
     }
     @objc private func listView() {
-        let leftItem = UIBarButtonItem(image: UIImage(named: "ic_listPitch_map"), style: .plain, target: self, action: #selector(mapView))
+        let leftItem = UIBarButtonItem(image: UIImage(named: "ic_listpitch_map"), style: .plain, target: self, action: #selector(mapView))
         leftItem.tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
         navigationItem.leftBarButtonItem = leftItem
         tableView.isHidden = false
