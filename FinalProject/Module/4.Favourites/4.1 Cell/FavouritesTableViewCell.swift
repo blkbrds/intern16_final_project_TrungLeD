@@ -7,7 +7,7 @@
 //
 
 import UIKit
-protocol FavouriteTableViewCellDelegate {
+protocol FavouriteTableViewCellDelegate: class {
     func favourite(at view: FavouritesTableViewCell, needPerforms action: FavouritesTableViewCell.Action)
 }
 
@@ -24,7 +24,7 @@ class FavouritesTableViewCell: UITableViewCell {
     @IBOutlet weak var address: UILabel!
     
     // MARK: - Properties
-    var delegate: FavouriteTableViewCellDelegate?
+    weak var delegate: FavouriteTableViewCellDelegate?
     var viewModel: FavouriteCellViewModel? {
         didSet {
             updateView()
