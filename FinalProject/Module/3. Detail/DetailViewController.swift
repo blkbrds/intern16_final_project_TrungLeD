@@ -70,7 +70,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         case .header:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellHeader", for: indexPath) as? DetailHeaderTableViewCell else {
                 return UITableViewCell()
-            }
+            }   
             cell.viewModel = viewModel.viewModelForHeaderCell(at: indexPath)
             return cell
         case .body:

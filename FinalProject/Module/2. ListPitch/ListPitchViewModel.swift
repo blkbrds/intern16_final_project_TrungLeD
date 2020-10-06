@@ -11,7 +11,7 @@ import MapKit
 import RealmSwift
 
 protocol ListPitchViewModelDelegate: class {
-    func loadFavorite(viewModel: ListPitchViewModel, needPerform action: ListPitchViewModel.Action)
+    func syncFavorite(viewModel: ListPitchViewModel, needperformAction action: ListPitchViewModel.Action)
 }
 class ListPitchViewModel {
     // MARK: - Enum
@@ -84,7 +84,7 @@ class ListPitchViewModel {
                         this.pitchData[i].favorite =
                             this.realmPitch.contains(where: { $0.idPitch == this.pitchData[i].idPitch })
                     }
-                    delegate.loadFavorite(viewModel: this, needPerform: .loadFavorite)
+                    delegate.syncFavorite(viewModel: this, needperformAction: .loadFavorite)
                 }
             })
         } catch {

@@ -10,6 +10,11 @@ import UIKit
 import MapKit
 
 class ListPitchViewController: UIViewController {
+    // MARK: - Enum
+    enum TypeDisplay {
+        case tableView
+        case mapView
+    }
     // MARK: - IBOutlet
     @IBOutlet var mapKit: MKMapView!
     @IBOutlet weak var tableView: UITableView!
@@ -23,10 +28,10 @@ class ListPitchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
-        loadData()
         configureUI()
         mapView()
         configSyncRealm()
+        getData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,6 +43,11 @@ class ListPitchViewController: UIViewController {
     func configSyncRealm() {
         viewModel.delegate = self
         viewModel.setupObserve()
+    }
+    func getData() {
+        viewModel.fetchRealmData()
+        loadData()
+        
     }
     private func loadData() {
         viewModel.getAllData { [weak self] result in
@@ -170,10 +180,10 @@ extension ListPitchViewController: ListPitchTableViewCellDelegate {
     }
 }
 extension ListPitchViewController: ListPitchViewModelDelegate {
-    func loadFavorite(viewModel: ListPitchViewModel, needPerform action: ListPitchViewModel.Action) {
+    func syncFavorite(viewModel: ListPitchViewModel, needperformAction action: ListPitchViewModel.Action) {
         switch action {
         case .loadFavorite:
             tableView.reloadData()
+        }
     }
-}
 }
