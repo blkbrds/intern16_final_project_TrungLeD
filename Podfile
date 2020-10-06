@@ -11,6 +11,7 @@ target 'FinalProject' do
   pod 'SideMenu'
   pod 'RealmSwift'
   pod 'ObjectMapper', '~> 3.5'
+  pod 'RealmSwift'
   target 'FinalProjectTests' do
     inherit! :search_paths
     # Pods for testing

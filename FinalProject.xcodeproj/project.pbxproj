@@ -17,6 +17,8 @@
 		0EBA374B2511CA7A003465DD /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EBA374A2511CA7A003465DD /* App.swift */; };
 		B00B7D8C252AC5BA007BC7E0 /* FavouritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00B7D8A252AC5BA007BC7E0 /* FavouritesTableViewCell.swift */; };
 		B00B7D8D252AC5BA007BC7E0 /* FavouritesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B00B7D8B252AC5BA007BC7E0 /* FavouritesTableViewCell.xib */; };
+		B00B7D8F252ADD8A007BC7E0 /* FavouriteCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00B7D8E252ADD8A007BC7E0 /* FavouriteCellViewModel.swift */; };
+		B00B7D91252ADE07007BC7E0 /* FavouriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00B7D90252ADE07007BC7E0 /* FavouriteViewModel.swift */; };
 		B04CBDF0251C66020092D49F /* Customer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04CBDEF251C66020092D49F /* Customer.swift */; };
 		B06B06E52526BB51002762B4 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06B06E42526BB51002762B4 /* DetailViewModel.swift */; };
 		B06B06E82526BB81002762B4 /* DetailCellHistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06B06E62526BB81002762B4 /* DetailCellHistoryTableViewCell.swift */; };
@@ -93,6 +95,8 @@
 		71B484E88DEE2FED67A1E072 /* Pods-FinalProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.debug.xcconfig"; path = "Target Support Files/Pods-FinalProject/Pods-FinalProject.debug.xcconfig"; sourceTree = "<group>"; };
 		B00B7D8A252AC5BA007BC7E0 /* FavouritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesTableViewCell.swift; sourceTree = "<group>"; };
 		B00B7D8B252AC5BA007BC7E0 /* FavouritesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavouritesTableViewCell.xib; sourceTree = "<group>"; };
+		B00B7D8E252ADD8A007BC7E0 /* FavouriteCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteCellViewModel.swift; sourceTree = "<group>"; };
+		B00B7D90252ADE07007BC7E0 /* FavouriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteViewModel.swift; sourceTree = "<group>"; };
 		B04CBDEF251C66020092D49F /* Customer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Customer.swift; sourceTree = "<group>"; };
 		B06B06E42526BB51002762B4 /* DetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		B06B06E62526BB81002762B4 /* DetailCellHistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCellHistoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -341,6 +345,7 @@
 				B00B7D89252AC58D007BC7E0 /* 4.1 Cell */,
 				B0C53866252AA9A800D707EE /* FavouriteViewController.swift */,
 				B0C53867252AA9A800D707EE /* FavouriteViewController.xib */,
+				B00B7D90252ADE07007BC7E0 /* FavouriteViewModel.swift */,
 			);
 			path = 4.Favourites;
 			sourceTree = "<group>";
@@ -368,6 +373,7 @@
 			children = (
 				B00B7D8A252AC5BA007BC7E0 /* FavouritesTableViewCell.swift */,
 				B00B7D8B252AC5BA007BC7E0 /* FavouritesTableViewCell.xib */,
+				B00B7D8E252ADD8A007BC7E0 /* FavouriteCellViewModel.swift */,
 			);
 			path = "4.1 Cell";
 			sourceTree = "<group>";
@@ -695,6 +701,7 @@
 				B0F8378C25245F36008F08C3 /* ListPitchViewModel.swift in Sources */,
 				B0F8379325245F5D008F08C3 /* PitchType.swift in Sources */,
 				B06B06ED2526BB8E002762B4 /* DetailCellInforTableViewCell.swift in Sources */,
+				B00B7D8F252ADD8A007BC7E0 /* FavouriteCellViewModel.swift in Sources */,
 				0EBA37152511C6C2003465DD /* SceneDelegate.swift in Sources */,
 				B0F837BE2525DECD008F08C3 /* UIDatePicker.swift in Sources */,
 				B04CBDF0251C66020092D49F /* Customer.swift in Sources */,
@@ -707,6 +714,7 @@
 				B0F837B72525BBFD008F08C3 /* DatePickerViewController.swift in Sources */,
 				B0C5386B252AA9B600D707EE /* TabbarController.swift in Sources */,
 				B0F8379525245FA6008F08C3 /* APIError.swift in Sources */,
+				B00B7D91252ADE07007BC7E0 /* FavouriteViewModel.swift in Sources */,
 				B06B06E52526BB51002762B4 /* DetailViewModel.swift in Sources */,
 				B06B06F72526CE29002762B4 /* DetailInforCellViewModel.swift in Sources */,
 				B0F837A1252461CF008F08C3 /* UITextFieldExt.swift in Sources */,
