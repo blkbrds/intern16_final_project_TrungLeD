@@ -17,7 +17,9 @@ class FavouriteViewModel {
     // MARK: - Enum
     enum Action {
         case loadData
-        case failure(Error)
+    }
+    init() {
+        setupObserve()
     }
     
     // MARK: - Properties
@@ -39,18 +41,22 @@ class FavouriteViewModel {
         return detailCell
     }
     
-    func getDataFromRealm(completion: @escaping APICompletion) {
+    func fetchRealmData(completion: @escaping (Bool) -> Void) {
         do {
+            // Realm
             let realm = try Realm()
-            let tempData = realm.objects(Pitch.self)
-            pitchs = Array(tempData)
-            completion(.success)
+            // Create results
+            let results = realm.objects(Pitch.self)
+            // Convert to array
+            pitchs = Array(results)
+            // Call back
+            completion(true)
         } catch {
-            completion(.failure(error))
+            completion(false)
         }
     }
     
-    func setupObserver() {
+    private func setupObserve() {
         do {
             let realm = try Realm()
             notificationToken = realm.objects(Pitch.self).observe({ (_) in
@@ -59,32 +65,41 @@ class FavouriteViewModel {
                 }
             })
         } catch {
-            delegate?.favourite(viewModel: self, needPerform: .failure(error))
+            print(error)
         }
     }
     
-    func removeAllItem(completion: @escaping APICompletion) {
+    func checkFavoriteData(completion: @escaping (Bool) -> Void) {
+        if pitchs.isEmpty {
+            completion(true)
+        } else {
+            completion(false)
+        }
+    }
+    
+    func deleteItemFavorite(id: String, completion: @escaping (Bool) -> Void) {
         do {
             let realm = try Realm()
-            let tempData = realm.objects(Pitch.self)
+            let results = realm.objects(Pitch.self).filter("id = '\(id)'")
             try realm.write {
-                realm.delete(tempData)
+                realm.delete(results)
             }
-            completion(.success)
+            completion(true)
         } catch {
-            completion(.failure(error))
+            completion(false)
         }
     }
-    
-    func removeFavouriteItem(id: String, completion: @escaping APICompletion) {
+
+    func deleteAllItem(completion: @escaping (Bool) -> Void) {
         do {
             let realm = try Realm()
-            let tempData = realm.objects(Pitch.self).filter("id = '\(id)'")
+            let results = realm.objects(Pitch.self)
             try realm.write {
-                realm.delete(tempData)
+                realm.delete(results)
             }
-            completion(.success)
-        } catch { completion(.failure(error))
+            completion(true)
+        } catch {
+            completion(false)
         }
     }
     

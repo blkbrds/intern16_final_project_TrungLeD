@@ -65,6 +65,7 @@ final class ListPitchTableViewCell: UITableViewCell {
         if let delegate = delegate {
             delegate.handleFavoriteTableView(cell: self, id: viewModel.id, isFavorite: viewModel.isFavorite)
         }
+        updateView()
     }
     
     @IBAction func bookingTapped(_ sender: UIButton) {

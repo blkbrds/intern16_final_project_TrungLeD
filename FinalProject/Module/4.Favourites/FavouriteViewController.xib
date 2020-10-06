@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FavouriteViewController" customModule="FinalProject" customModuleProvider="target">
             <connections>
+                <outlet property="notificationLabel" destination="HDN-j5-IG0" id="shH-mb-edI"/>
                 <outlet property="tableView" destination="DDu-X5-ErF" id="CKe-KN-kFk"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -22,12 +23,20 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HDN-j5-IG0">
+                    <rect key="frame" x="186" y="437.5" width="42" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.87058823529999996" green="0.0" blue="0.021042354030000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
+                <constraint firstItem="HDN-j5-IG0" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="2h8-3U-HDL"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="DDu-X5-ErF" secondAttribute="trailing" id="FSY-cb-lFK"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="DDu-X5-ErF" secondAttribute="bottom" id="JQZ-Hq-4WC"/>
                 <constraint firstItem="DDu-X5-ErF" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="MTt-Iy-Vie"/>
+                <constraint firstItem="HDN-j5-IG0" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="dUV-dq-ZlZ"/>
                 <constraint firstItem="DDu-X5-ErF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="raZ-n7-lWf"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

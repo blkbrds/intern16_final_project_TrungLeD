@@ -12,6 +12,7 @@ import RealmSwift
 final class FavouriteViewController: UIViewController {
     // MARK: - IBOutlet
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var notificationLabel: UILabel!
     
     // MARK: - Properties
     var viewModel = FavouriteViewModel()
@@ -20,14 +21,44 @@ final class FavouriteViewController: UIViewController {
         super.viewDidLoad()
         configNavi()
         configTableView()
+        fectchData()
+        configSyncRealmData()
     }
     
     // MARK: Function
+    
+    private func configSyncRealmData() {
+        viewModel.delegate = self
+    }
+    
+    private func checkFavoriteData() {
+        viewModel.checkFavoriteData { [weak self] (done) in
+            guard let this = self else { return }
+            if done {
+                this.notificationLabel.isHidden = false
+                this.notificationLabel.text = "No Favorite!"
+            } else {
+                this.notificationLabel.isHidden = true
+            }
+        }
+    }
+    
     func configTableView() {
         let nib = UINib(nibName: "FavouritesTableViewCell", bundle: Bundle.main)
         tableView.register(nib, forCellReuseIdentifier: "FavouritesTableViewCell")
         tableView.dataSource = self
         tableView.delegate = self
+    }
+    
+    private func fectchData() {
+        viewModel.fetchRealmData { [weak self] (done) in
+            guard let this = self else { return }
+            if done {
+                this.checkFavoriteData()
+            } else {
+                this.showAlert(alertText: "Loi", alertMessage: "loi roi")
+            }
+        }
     }
     
     func configNavi() {
@@ -38,65 +69,76 @@ final class FavouriteViewController: UIViewController {
         navigationItem.rightBarButtonItem = rightBarButton
     }
     
-//    private func deleteAllItem() {
-//          viewModel.deleteAllItem { [weak self] (done) in
-//              guard let this = self else { return }
-//              if done {
-//                  this.fectchData()
-//              } else {
-//                  print("Delete failed")
-//              }
-//          }
-//      }
+private func deleteItemFavorite(id: String) {
+     viewModel.deleteItemFavorite(id: id) { [weak self] (done) in
+         guard let this = self else { return }
+         if done {
+             this.fectchData()
+         } else {
+             print("Delete error")
+         }
+     }
+ }
+    
+    private func deleteAllItem() {
+        viewModel.deleteAllItem { [weak self] (done) in
+            guard let this = self else { return }
+            if done {
+                this.fectchData()
+            } else {
+                print("Delete failed")
+            }
+        }
+    }
     
     @objc func deleteTouchUpInSide() {
         let alert = UIAlertController(title: "Warning", message: "Delete all", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .destructive) { [weak self] (_) in
             guard let this = self else { return }
-         //   this.deleteAllItem()
+            this.deleteAllItem()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alert.addAction(okAction)
         alert.addAction(cancelAction)
         present(alert, animated: true, completion: nil)
     }
+    
     @objc func backTouchUpInSide() {
         
     }
-    func getDataFromRealm() {
-        viewModel.getDataFromRealm { [weak self] (result) in
-            guard let this = self else { return }
-            switch result {
-            case .success:
-                this.tableView.reloadData()
-            case .failure(let error):
-                this.showAlert(alertText: "loi roi", alertMessage: "loi: \(error)")
-            }
-        }
-    }
-    // MARK: - Objc func
-    @objc func removeAllItem() {
-        let showAlert = UIAlertController(title: "Xóa Tất Cả", message: "bạn có muốn xóa hết không?", preferredStyle: .alert)
-        showAlert.addAction(UIAlertAction(title: "Có", style: .default, handler: { (result) in
-            self.viewModel.removeAllItem { [weak self] (result) in
-                guard let this = self else { return }
-                switch result {
-                case .success:
-                    this.getDataFromRealm()
-                case .failure(let error):
-                    this.showAlert(alertText: "loi", alertMessage: "text:\(error)")
-                }
-            }
-        }))
-    }
+
 }
 // MARK: - Extension
 extension FavouriteViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
+        return viewModel.numberOfRowInSection()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "FavouritesTableViewCell", for: indexPath) as? FavouritesTableViewCell else {
+            return UITableViewCell()
+        }
+        cell.delegate = self
+        cell.viewModel = viewModel.cellForRowAt(indexPath: indexPath)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = DetailViewController()
+        vc.viewModel = viewModel.didSelectRowAt(indexPath: indexPath)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
+
+extension FavouriteViewController: FavouriteViewModelDelegate {
+    func favourite(viewModel: FavouriteViewModel, needPerform action: FavouriteViewModel.Action) {
+        fectchData()
+    }
+}
+
+extension FavouriteViewController: FavouriteTableViewCellDelegate {
+    func handleFavorite(cell: FavouritesTableViewCell, id: String, isFavorite: Bool) {
+        deleteItemFavorite(id: id)
+    }
+}
+
