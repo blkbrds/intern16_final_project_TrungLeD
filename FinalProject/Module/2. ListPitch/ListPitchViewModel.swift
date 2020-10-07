@@ -19,6 +19,18 @@ class ListPitchViewModel {
         case loadFavorite
     }
     // MARK: - Properties
+    var lat: Double {
+        return item.pitchType.owner.lat
+    }
+    var long: Double {
+        return item.pitchType.owner.lng
+    }
+    var namePitch: String {
+        return item.name
+    }
+    var addressPitch: String {
+        return item.pitchType.owner.address
+    }
     weak var delegate: ListPitchViewModelDelegate?
     var notificationToken: NotificationToken?
     var item: Pitch = Pitch()

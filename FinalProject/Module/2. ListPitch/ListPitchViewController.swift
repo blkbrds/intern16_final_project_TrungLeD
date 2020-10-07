@@ -16,7 +16,7 @@ class ListPitchViewController: UIViewController {
     
     // MARK: - Properties
     var inputDate: [Date] = []
-    private var viewModel: ListPitchViewModel = ListPitchViewModel()
+    var viewModel: ListPitchViewModel = ListPitchViewModel()
     var pitch: [Pitch]?
     
     // MARK: - Life Cycle
@@ -24,9 +24,13 @@ class ListPitchViewController: UIViewController {
         super.viewDidLoad()
         configTableView()
         configureUI()
-        mapView()
+        mapViewState()
         configSyncRealm()
         getData()
+        configMapKit()
+        addAnnotationPitch()
+        addAnnotationUserLocation()
+        configRouting()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,13 +63,55 @@ class ListPitchViewController: UIViewController {
     
     // MARK: - Helper Functions
     private func configMapKit() {
-        let initLocation = CLLocation(latitude: 16.060440, longitude: 108.236290)
-        zoomOnMap(location: initLocation)
+          guard let latitude = LocationManager.shared.currentLatitude, let longtitude = LocationManager.shared.currentLongitude else { return }
+          let location = CLLocation(latitude: (CLLocationDegrees(viewModel.lat) + latitude) / 2, longitude: (CLLocationDegrees(viewModel.long) + longtitude) / 2)
+          let span = MKCoordinateSpan(latitudeDelta: CLLocationDegrees(0.5), longitudeDelta: CLLocationDegrees(0.5))
+          let region = MKCoordinateRegion(center: location.coordinate, span: span)
+          mapKit.setRegion(region, animated: true)
+          mapKit.delegate = self
+    }
+    
+    private func addAnnotationPitch() {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(viewModel.lat), longitude: CLLocationDegrees(viewModel.long))
+        annotation.title = viewModel.namePitch
+        annotation.subtitle = viewModel.addressPitch
+        mapKit.addAnnotation(annotation)
+    }
+    
+    private func addAnnotationUserLocation() {
+        let annotation = MKPointAnnotation()
+        guard let latitude = LocationManager.shared.currentLatitude, let longtitude = LocationManager.shared.currentLongitude else { return }
+            annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longtitude)
+        annotation.title = "user's location"
+        mapKit.addAnnotation(annotation)
+    }
+    
+    private func routing(source: CLLocationCoordinate2D, destination: CLLocationCoordinate2D) {
+           let request = MKDirections.Request()
+           request.source = MKMapItem(placemark: MKPlacemark(coordinate: source, addressDictionary: nil))
+           request.destination = MKMapItem(placemark: MKPlacemark(coordinate: destination, addressDictionary: nil))
+           request.requestsAlternateRoutes = false
+           let directions = MKDirections(request: request)
+           directions.calculate { (response, _) in
+               guard let response = response else { return }
+               guard let route: MKRoute = response.routes.first else { return }
+               self.mapKit.addOverlay(route.polyline)
+               self.mapKit.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
+           }
+       }
+    
+    private func configRouting() {
+        let source = CLLocationCoordinate2D(latitude: CLLocationDegrees(viewModel.lat), longitude: CLLocationDegrees(viewModel.long))
+        guard let latitude = LocationManager.shared.currentLatitude, let longtitude = LocationManager.shared.currentLongitude else { return }
+              let destination = CLLocationCoordinate2D(latitude: latitude, longitude: longtitude)
+              routing(source: source, destination: destination)
+        routing(source: source, destination: destination)
     }
     
     // MARK: - Objc Function
     var leftItem = UIBarButtonItem()
-    @objc private func mapView() {
+    @objc private func mapViewState() {
         leftItem = UIBarButtonItem(image: UIImage(named: "ic_listpitch_listview"), style: .plain, target: self, action: #selector(listView))
         leftItem.tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
         navigationItem.leftBarButtonItem = leftItem
@@ -73,7 +119,7 @@ class ListPitchViewController: UIViewController {
         mapKit.isHidden = false
     }
     @objc private func listView() {
-        let leftItem = UIBarButtonItem(image: UIImage(named: "ic_listpitch_map"), style: .plain, target: self, action: #selector(mapView))
+        let leftItem = UIBarButtonItem(image: UIImage(named: "ic_listpitch_map"), style: .plain, target: self, action: #selector(mapViewState))
         leftItem.tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
         navigationItem.leftBarButtonItem = leftItem
         tableView.isHidden = false
@@ -179,4 +225,28 @@ extension ListPitchViewController: ListPitchViewModelDelegate {
     func syncFavorite(viewModel: ListPitchViewModel, needperformAction action: ListPitchViewModel.Action) {
         tableView.reloadData()
     }
+}
+
+// Extension: - MapKit
+extension ListPitchViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.strokeColor = .green
+        renderer.lineWidth = 3.0
+            return renderer
+    }
+
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "AnnotationView")
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "AnnotationView")
+        }
+        if annotation.title == viewModel.namePitch {
+            annotationView?.image = UIImage(named: "img_detail_pitch")
+        } else {
+            annotationView?.image = #imageLiteral(resourceName: "ic_listpitch_location")
+        }
+        annotationView?.canShowCallout = true
+        return annotationView
+        }
 }
