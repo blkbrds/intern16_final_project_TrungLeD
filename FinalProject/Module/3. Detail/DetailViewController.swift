@@ -14,22 +14,22 @@ enum Favorite {
     case unFavorite
 }
 class DetailViewController: UIViewController {
-    // MARK: IBoutlet
+    // MARK: - IBoutlet
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: Properties
     var pitch: [Pitch]?
-    var viewModel: DetailViewModel = DetailViewModel()
+    var viewModel: DetailViewModel = DetailViewModel(pitch: Pitch())
     var rightButton: UIBarButtonItem?
     
-    // MARK: Life Cycle
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
         configNavi()
     }
     
-    // MARK: Private Function
+    // MARK: - Private Function
     private func configTableView() {
         let nibHeader = UINib(nibName: "DetailHeaderTableViewCell", bundle: Bundle.main)
         tableView.register(nibHeader, forCellReuseIdentifier: "cellHeader")
@@ -47,30 +47,27 @@ class DetailViewController: UIViewController {
         let backBtn = UIBarButtonItem(image: UIImage(named: "ic_detail_back1"), style: .plain, target: self, action: #selector(backListVC))
         backBtn.tintColor = .orange
         navigationItem.leftBarButtonItem = backBtn
-        viewModel.checkFavorite(completion: { [weak self](done) in
-            guard let this = self else { return }
-            if done {
-                this.viewModel.status = .unFavorite
-                this.rightButton = UIBarButtonItem(image: UIImage(systemName: "heart.fill"), style: .plain, target: this, action: #selector(this.favouriteClicked))
-                this.navigationItem.rightBarButtonItem = this.rightButton
-            } else {
-                this.viewModel.status = .favorite
-                this.rightButton = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .plain, target: this, action: #selector(this.favouriteClicked))
-                this.navigationItem.rightBarButtonItem = this.rightButton
-            }
-        })
+        let isFavorite = viewModel.checkFavorite()
+        if isFavorite {
+            rightButton = UIBarButtonItem(image: UIImage(systemName: "heart.fill"), style: .plain, target: self, action: #selector(favouriteClicked))
+            navigationItem.rightBarButtonItem = rightButton
+        } else {
+            rightButton = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .plain, target: self, action: #selector(favouriteClicked))
+            navigationItem.rightBarButtonItem = rightButton
+        }
     }
     
     @objc func favouriteClicked() {
-        if viewModel.status == .favorite {
+        if !viewModel.checkFavorite() {
+            if let error = viewModel.addFavorite() {
+                showAlert(alertText: error.localizedDescription, alertMessage: "")
+            }
             rightButton?.image = UIImage(systemName: "heart.fill")
-            viewModel.status = .unFavorite
-            guard let pitch = viewModel.pitch else { return }
-            viewModel.addFavorite(id: pitch.id, namePitch: pitch.name, address: pitch.pitchType.owner.address, timeUse: pitch.timeUse)
         } else {
-            viewModel.unfavorite()
+            if let error = viewModel.unfavorite() {
+                showAlert(alertText: error.localizedDescription, alertMessage: "")
+            }
             rightButton?.image = UIImage(systemName: "heart")
-            viewModel.status = .favorite
         }
     }
     
@@ -79,7 +76,7 @@ class DetailViewController: UIViewController {
     }
 }
 
-// MARK: UITableViewDelegate
+// MARK: - UITableViewDelegate
 extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1

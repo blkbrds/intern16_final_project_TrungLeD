@@ -30,7 +30,7 @@ class ListPitchViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
         tableView.reloadData()
         viewModel.fetchRealmData()
     }
@@ -40,17 +40,20 @@ class ListPitchViewController: UIViewController {
         viewModel.delegate = self
         viewModel.setupObserve()
     }
+    
     func getData() {
         viewModel.fetchRealmData()
         loadData()
         
     }
+    
     private func loadData() {
         viewModel.getAllData { [weak self] result in
             guard let this = self else { return }
             switch result {
             case .success:
                 this.tableView.reloadData()
+                this.viewModel.setupObserve()
             case .failure(let error):
                 print(error)
             }
@@ -81,10 +84,13 @@ class ListPitchViewController: UIViewController {
     }
     
     private let regionRadius: CLLocationDistance = 10000 // 10 km
+    
+    // MARK: - Function
     func zoomOnMap(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: regionRadius * 2, longitudinalMeters: regionRadius * 2 )
         mapKit.setRegion(coordinateRegion, animated: true)
     }
+    
     private func configureUI() {
         let searchBar: UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 100, height: 0))
         searchBar.placeholder = "Nhập Tên Sân"
@@ -134,6 +140,7 @@ extension ListPitchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
         detailVC.viewModel = viewModel.getInforPitch(at: indexPath)
+        detailVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }
@@ -160,21 +167,28 @@ extension ListPitchViewController: UISearchBarDelegate {
         tableView.reloadData()
     }
 }
-
+// MARK: - Extension: - ListPitchTableViewCellDelegate
 extension ListPitchViewController: ListPitchTableViewCellDelegate {
     func bookingButton(view: ListPitchTableViewCell) {
         
     }
     
-    func handleFavoriteTableView(cell: ListPitchTableViewCell, id: String, isFavorite: Bool) {
+    func handleFavoriteTableView(cell: ListPitchTableViewCell, id: Int, isFavorite: Bool) {
         if isFavorite {
             viewModel.unfavorite(id: id)
         } else {
-            viewModel.addFavorite(id: cell.viewModel?.id ?? "", namePitch: cell.viewModel?.name ?? "", addressPitch: cell.viewModel?.addressOwner ?? "", timeUse: cell.viewModel?.timeUser ?? "")
+            viewModel.addFavorite(id: cell.viewModel?.id ?? 0,
+                                  namePitch: cell.viewModel?.name ?? "",
+                                  addressPitch: cell.viewModel?.addressOwner ?? "",
+                                  timeUse: cell.viewModel?.timeUser ?? "",
+                                  phone: cell.viewModel?.phoneOwner ?? "",
+                                  pitchType: cell.viewModel?.pitchType ?? "")
         }
         tableView.reloadData()
     }
 }
+
+// MARK: Extension: - ListPitchViewModelDelegate
 extension ListPitchViewController: ListPitchViewModelDelegate {
     func syncFavorite(viewModel: ListPitchViewModel, needperformAction action: ListPitchViewModel.Action) {
         tableView.reloadData()

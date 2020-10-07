@@ -61,14 +61,7 @@ class ListPitchViewModel {
     
     func getInforPitch(at indexPath: IndexPath) -> DetailViewModel {
         let item = pitchTotals[indexPath.row]
-        let detail = DetailViewModel(lat: item.pitchType.owner.lat,
-                                     long: item.pitchType.owner.lng,
-                                     pitchName: item.name,
-                                     address: item.pitchType.owner.address,
-                                     phoneNumber: item.pitchType.owner.phone,
-                                     timeAction: item.timeUse,
-                                     typePitch: item.pitchType.name,
-                                     description: item.description1)
+        let detail = DetailViewModel(pitch: item)
         return detail
     }
     
@@ -103,20 +96,23 @@ class ListPitchViewModel {
             print(error)
         }
     }
-    func checkFavorite(isFavorite: Bool, id: String) {
+
+    func checkFavorite(isFavorite: Bool, id: Int) {
         for item in pitchTotals where item.id == id {
             item.isFavorite = isFavorite
         }
     }
     
-    func addFavorite(id: String, namePitch: String, addressPitch: String, timeUse: String) {
+    func addFavorite(id: Int, namePitch: String, addressPitch: String, timeUse: String, phone: String, pitchType: String) {
         do {
             let realm = try Realm()
             let pitch = Pitch()
             pitch.id = id
             pitch.name = namePitch
-            pitch.pitchType.owner.address = addressPitch
             pitch.timeUse = timeUse
+            pitch.address = addressPitch
+            pitch.phone = phone
+            pitch.pitchType = pitchType
             try realm.write {
                 realm.add(pitch, update: .all)
                 checkFavorite(isFavorite: true, id: id )
@@ -126,10 +122,11 @@ class ListPitchViewModel {
         }
     }
     
-    func unfavorite(id: String) {
+    func unfavorite(id: Int) {
         do {
             let realm = try Realm()
-            let result = realm.objects(Pitch.self).filter("id = '\(id)'")
+            let predicate = NSPredicate(format: "id = \(id)")
+            let result = realm.objects(Pitch.self).filter(predicate)
             try realm.write {
                 realm.delete(result)
                 checkFavorite(isFavorite: false, id: id)

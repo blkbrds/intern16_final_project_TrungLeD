@@ -8,7 +8,7 @@
 
 import UIKit
 protocol FavouriteTableViewCellDelegate: class {
-    func handleFavorite(cell: FavouritesTableViewCell, id: String, isFavorite: Bool)
+    func handleFavorite(cell: FavouritesTableViewCell, id: Int, isFavorite: Bool)
 }
 
 class FavouritesTableViewCell: UITableViewCell {
@@ -34,7 +34,7 @@ class FavouritesTableViewCell: UITableViewCell {
         timeAction.layer.cornerRadius = 15
         address.layer.cornerRadius = 15
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
@@ -43,7 +43,8 @@ class FavouritesTableViewCell: UITableViewCell {
         guard let viewModel = viewModel else { return }
         namePitch.text = viewModel.pitch.name
         timeAction.text = viewModel.pitch.timeUse
-        address.text = viewModel.pitch.pitchType.owner.address
+        address.text = viewModel.pitch.address
+        
     }
     // MARK: - IBAction
     @IBAction func cancelFavourites(_ sender: UIButton) {
@@ -51,7 +52,6 @@ class FavouritesTableViewCell: UITableViewCell {
         if let delegate = delegate {
             delegate.handleFavorite(cell: self, id: viewModel.pitch.id, isFavorite: viewModel.isFavorite)
         }
-        updateView()
     }
     
     @IBAction func bookingClicked(_ sender: UIButton) {

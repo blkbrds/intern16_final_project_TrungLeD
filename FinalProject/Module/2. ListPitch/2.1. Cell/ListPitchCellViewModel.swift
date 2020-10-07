@@ -13,34 +13,37 @@ final class ListPitchCellViewModel {
     var isFavorite: Bool
     var item: Pitch
     var phoneOwner: String {
-        return item.pitchType.owner.phone
+        return item.type.owner.phone
     }
     var addressOwner: String {
-        return item.pitchType.owner.address
+        return item.type.owner.address
     }
     var districtOwner: String {
-        return item.pitchType.owner.district
+        return item.type.owner.district
     }
     var verify: String {
-        return item.pitchType.owner.verify
+        return item.type.owner.verify
     }
     var lat: Double {
-        return item.pitchType.owner.lat
+        return item.type.owner.lat
     }
     var long: Double {
-        return item.pitchType.owner.lng
+        return item.type.owner.lng
     }
     var nameOwer: String {
-        return item.pitchType.owner.name
+        return item.type.owner.name
     }
     var name: String {
         return item.name
     }
-    var id: String {
+    var id: Int {
         return item.id
     }
     var timeUser: String {
         return item.timeUse
+    }
+    var pitchType: String {
+        return item.type.name
     }
     
     init(item: Pitch) {

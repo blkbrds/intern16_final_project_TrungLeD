@@ -77,10 +77,11 @@ class FavouriteViewModel {
         }
     }
     
-    func deleteItemFavorite(id: String, completion: @escaping (Bool) -> Void) {
+    func deleteItemFavorite(id: Int, completion: @escaping (Bool) -> Void) {
         do {
             let realm = try Realm()
-            let results = realm.objects(Pitch.self).filter("id = '\(id)'")
+            let predicate = NSPredicate(format: "id = \(id)")
+            let results = realm.objects(Pitch.self).filter(predicate)
             try realm.write {
                 realm.delete(results)
             }
@@ -105,14 +106,7 @@ class FavouriteViewModel {
     
     func didSelectRowAt(indexPath: IndexPath) -> DetailViewModel {
         let item = pitchs[indexPath.row]
-        let detail = DetailViewModel(lat: item.pitchType.owner.lat,
-                                     long: item.pitchType.owner.lng,
-                                     pitchName: item.name,
-                                     address: item.pitchType.owner.address,
-                                     phoneNumber: item.pitchType.owner.phone,
-                                     timeAction: item.timeUse,
-                                     typePitch: item.pitchType.name,
-                                     description: item.description)
+        let detail = DetailViewModel(pitch: item)
         return detail
     }
 }

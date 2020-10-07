@@ -15,39 +15,17 @@ enum TypeSection {
     case infor
     case history
 }
+
 final class DetailViewModel {
-    // MARK: Properties
-    var pitch: Pitch?
-    var id: String = ""
-    var lat: Double = 0.0
-    var long: Double = 0.0
-    var pitchName: String = ""
-    var address: String = ""
-    var phoneNumber: String = ""
-    var timeAction: String = ""
-    var typePitch: String = ""
-    var description: String = ""
-    var status = Favorite.favorite
+    // MARK: - Properties
+    var pitch: Pitch
+
     // MARK: - Init
-    init(lat: Double = 0.0,
-         long: Double = 0.0,
-         pitchName: String = "",
-         address: String =  "",
-         phoneNumber: String = "",
-         timeAction: String = "",
-         typePitch: String = "",
-         description: String = "") {
-        self.lat = lat
-        self.long = long
-        self.pitchName = pitchName
-        self.address = address
-        self.phoneNumber = phoneNumber
-        self.timeAction = timeAction
-        self.typePitch = typePitch
-        self.description = description
+    init(pitch: Pitch) {
+        self.pitch = pitch
     }
     
-    // MARK: Function
+    // MARK: - Function
     func typeSectionLoad(number: Int) -> TypeSection {
         switch number {
         case 0:
@@ -61,65 +39,38 @@ final class DetailViewModel {
         }
     }
     
-    func checkFavorite(completion: @escaping (Bool) -> Void) {
-        do {
-            let realm = try Realm()
-            let results = realm.objects(Pitch.self).filter("id = '\(id)'")
-            if results.isEmpty {
-                completion(false)
-            } else {
-                completion(true)
-            }
-        } catch {
-            print(error)
-        }
+    func checkFavorite() -> Bool {
+        return Pitch.getByIdInRealms(id: pitch.id) != nil
     }
     
-    func unfavorite() {
-        do {
-            let realm = try Realm()
-            let result = realm.objects(Pitch.self).filter("id = '\(id)'")
-            try realm.write {
-                realm.delete(result)
-            }
-        } catch {
-            print(error)
-        }
+    func unfavorite() -> Error? {
+        return pitch.removeInRealms()
     }
     
-    func addFavorite(id: String, namePitch: String, address: String, timeUse: String) {
-        do {
-            let realm = try Realm()
-            let pitch = Pitch()
-            pitch.id = id
-            pitch.name = namePitch
-            pitch.pitchType.owner.address = address
-            pitch.timeUse = timeUse
-            try realm.write {
-                realm.add(pitch)
-            }
-        } catch {
-            print(error)
-        }
+    func addFavorite() -> Error? {
+        return pitch.addInRealms()
     }
     
     func viewModelForHeaderCell(at indexPath: IndexPath) -> DetailHeaderCellViewModel {
-        let viewModel = DetailHeaderCellViewModel(lat: lat, long: long)
+        let viewModel = DetailHeaderCellViewModel(lat: pitch.type.owner.lat, long: pitch.type.owner.lng)
         return viewModel
     }
     
     func viewModelForBody(at indexPath: IndexPath) -> DetailBodyCellViewModel {
-        let viewModel = DetailBodyCellViewModel(namePitch: pitchName, address: address, phoneNumber: phoneNumber, timeActive: timeAction)
+        let viewModel = DetailBodyCellViewModel(namePitch: pitch.name,
+                                                address: pitch.address,
+                                                phoneNumber: pitch.phone,
+                                                timeActive: pitch.timeUse)
         return viewModel
     }
     
     func viewModelForInfor(at indexPath: IndexPath) -> DetailInforCellViewModel {
-        let viewModel = DetailInforCellViewModel(pitchType: typePitch)
+        let viewModel = DetailInforCellViewModel(pitchType: pitch.pitchType)
         return viewModel
     }
     
     func viewModelForHistory(at indexPath: IndexPath) -> DetailHistoryViewModel {
-        let viewModel = DetailHistoryViewModel(description: description)
+        let viewModel = DetailHistoryViewModel(description: pitch.description1)
         return viewModel
     }
 }

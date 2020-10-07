@@ -17,7 +17,7 @@ enum DateFormatType: String {
 }
 protocol ListPitchTableViewCellDelegate: class {
     func bookingButton(view: ListPitchTableViewCell)
-    func handleFavoriteTableView( cell: ListPitchTableViewCell, id: String, isFavorite: Bool)
+    func handleFavoriteTableView( cell: ListPitchTableViewCell, id: Int, isFavorite: Bool)
 }
 
 final class ListPitchTableViewCell: UITableViewCell {
@@ -65,7 +65,6 @@ final class ListPitchTableViewCell: UITableViewCell {
         if let delegate = delegate {
             delegate.handleFavoriteTableView(cell: self, id: viewModel.id, isFavorite: viewModel.isFavorite)
         }
-        updateView()
     }
     
     @IBAction func bookingTapped(_ sender: UIButton) {

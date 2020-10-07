@@ -4,7 +4,7 @@ import ObjectMapper
 final class PitchType: Mappable {
     // MARK: Properties
     var id: String = ""
-    var owner: Owner = Owner()
+    dynamic var owner: Owner = Owner()
     var name: String = ""
     
     // MARK: Init

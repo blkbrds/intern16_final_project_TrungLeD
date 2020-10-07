@@ -17,6 +17,14 @@ final class FavouriteViewController: UIViewController {
     // MARK: - Properties
     var viewModel = FavouriteViewModel()
     // MARK: Life Cycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let nav = self.navigationController?.navigationBar
+        nav?.barStyle = .black
+        nav?.tintColor = .white
+        nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configNavi()
@@ -36,7 +44,7 @@ final class FavouriteViewController: UIViewController {
             guard let this = self else { return }
             if done {
                 this.notificationLabel.isHidden = false
-                this.notificationLabel.text = "No Favorite!"
+                this.notificationLabel.text = "No Favorite Pitch!"
             } else {
                 this.notificationLabel.isHidden = true
             }
@@ -55,36 +63,37 @@ final class FavouriteViewController: UIViewController {
             guard let this = self else { return }
             if done {
                 this.checkFavoriteData()
+                this.tableView.reloadData()
             } else {
-                this.showAlert(alertText: "Loi", alertMessage: "loi roi")
+                this.showAlert(alertText: "Error Get Data", alertMessage: "error data from realm")
             }
         }
     }
     
     func configNavi() {
-        let leftBarButton = UIBarButtonItem(image: UIImage(named: "ic-back"), style: .plain, target: self, action: #selector(backTouchUpInSide))
-        navigationItem.leftBarButtonItem = leftBarButton
-        
+        navigationItem.title = "Favorite List"
         let rightBarButton = UIBarButtonItem(image: UIImage(systemName: "trash"), style: .plain, target: self, action: #selector(deleteTouchUpInSide))
         navigationItem.rightBarButtonItem = rightBarButton
     }
     
-private func deleteItemFavorite(id: String) {
-     viewModel.deleteItemFavorite(id: id) { [weak self] (done) in
-         guard let this = self else { return }
-         if done {
-             this.fectchData()
-         } else {
-             print("Delete error")
-         }
-     }
- }
+    private func deleteItemFavorite(id: Int) {
+        viewModel.deleteItemFavorite(id: id) { [weak self] (done) in
+            guard let this = self else { return }
+            if done {
+                this.fectchData()
+                this.tableView.reloadData()
+            } else {
+                print("Delete error")
+            }
+        }
+    }
     
     private func deleteAllItem() {
         viewModel.deleteAllItem { [weak self] (done) in
             guard let this = self else { return }
             if done {
                 this.fectchData()
+                this.tableView.reloadData()
             } else {
                 print("Delete failed")
             }
@@ -106,7 +115,7 @@ private func deleteItemFavorite(id: String) {
     @objc func backTouchUpInSide() {
         
     }
-
+    
 }
 // MARK: - Extension
 extension FavouriteViewController: UITableViewDataSource, UITableViewDelegate {
@@ -137,7 +146,7 @@ extension FavouriteViewController: FavouriteViewModelDelegate {
 }
 
 extension FavouriteViewController: FavouriteTableViewCellDelegate {
-    func handleFavorite(cell: FavouritesTableViewCell, id: String, isFavorite: Bool) {
+    func handleFavorite(cell: FavouritesTableViewCell, id: Int, isFavorite: Bool) {
         deleteItemFavorite(id: id)
     }
 }
