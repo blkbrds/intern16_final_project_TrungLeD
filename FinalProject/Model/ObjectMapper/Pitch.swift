@@ -52,7 +52,7 @@ import RealmSwift
 
 // MARK: - Realms query
 extension Pitch {
-
+    
     static func getByIdInRealms(id: Int) -> Pitch? {
         do {
             let realm = try Realm()
@@ -62,7 +62,7 @@ extension Pitch {
             return nil
         }
     }
-
+    
     func removeInRealms() -> Error? {
         do {
             let realm = try Realm()
