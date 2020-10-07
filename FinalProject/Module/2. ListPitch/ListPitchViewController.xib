@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -26,13 +26,26 @@
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rhu-6x-M47">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                 </mapView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRY-Go-aYb">
+                    <rect key="frame" x="254" y="822" width="150" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="150" id="4tS-GF-HeO"/>
+                        <constraint firstAttribute="height" constant="30" id="TrH-VC-1ov"/>
+                    </constraints>
+                    <state key="normal" title="Your Location Current"/>
+                    <connections>
+                        <action selector="getLocationCurrent:" destination="-1" eventType="touchUpInside" id="gsi-jx-gVw"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
                 <constraint firstItem="rhu-6x-M47" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="7pr-9V-ZID"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="iMK-4T-y4R" secondAttribute="bottom" id="8T0-x5-LNq"/>
                 <constraint firstItem="iMK-4T-y4R" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="AZD-wp-Vae"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="DRY-Go-aYb" secondAttribute="trailing" constant="10" id="AyY-VV-W65"/>
                 <constraint firstItem="rhu-6x-M47" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="HAc-xr-AIO"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="DRY-Go-aYb" secondAttribute="bottom" constant="10" id="bne-1d-nup"/>
                 <constraint firstItem="iMK-4T-y4R" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="h8H-6X-H12"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rhu-6x-M47" secondAttribute="trailing" id="iQA-cm-WNj"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="iMK-4T-y4R" secondAttribute="trailing" id="iR3-Q8-eBB"/>
