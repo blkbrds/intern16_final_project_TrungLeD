@@ -55,7 +55,7 @@ class ListPitchViewController: UIViewController {
                 this.tableView.reloadData()
                 this.viewModel.setupObserve()
             case .failure(let error):
-                print(error)
+                this.showAlert(alertText: "Error", alertMessage: "error loadData \(error)")
             }
         }
     }
