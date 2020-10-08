@@ -105,7 +105,7 @@ class ListPitchViewModel {
         }
     }
     
-    func addFavorite(id: Int, namePitch: String, addressPitch: String, timeUse: String, phone: String, pitchType: String, pitchImage: String) -> Error? {
+    func addFavorite(id: Int, namePitch: String, addressPitch: String, timeUse: String, phone: String, pitchType: String, pitchImage: String, description1: String) -> Error? {
         do {
             let realm = try Realm()
             let pitch = Pitch()
@@ -116,6 +116,7 @@ class ListPitchViewModel {
             pitch.address = addressPitch
             pitch.phone = phone
             pitch.pitchType = pitchType
+            pitch.description1 = description1
             try realm.write {
                 realm.add(pitch, update: .all)
                 checkFavorite(isFavorite: true, id: id )
