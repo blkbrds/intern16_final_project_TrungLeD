@@ -13,6 +13,7 @@ class ListPitchViewController: UIViewController {
     // MARK: - IBOutlet
     @IBOutlet var mapKit: MKMapView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var locationCurrentBtn: UIButton!
     
     // MARK: - Properties
     var pins: [MyPin] = []
@@ -60,8 +61,7 @@ class ListPitchViewController: UIViewController {
     
     func addAnnotation() {
         let annotation = MKPointAnnotation()
-        annotation.coordinate = CLLocationCoordinate2D(latitude: 16.071763,
-                                                       longitude: 108.223963)
+        annotation.coordinate = CLLocationCoordinate2D(latitude: 16.071763, longitude: 108.223963)
         annotation.title = "Point 0001"
         annotation.subtitle = "subtitle 0001"
         //add Anotation
@@ -116,32 +116,42 @@ class ListPitchViewController: UIViewController {
         }
     }
     
-    // MARK: - Helper Functions
-    
     // MARK: - Objc Function
     var leftItem = UIBarButtonItem()
     @objc private func mapView1() {
         leftItem = UIBarButtonItem(image: UIImage(named: "ic_listpitch_listview"), style: .plain, target: self, action: #selector(listView))
         leftItem.tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
         navigationItem.leftBarButtonItem = leftItem
+        ///
+        navigationItem.rightBarButtonItem = nil
+        ///
         tableView.isHidden = true
         mapKit.isHidden = false
+        locationCurrentBtn.isHidden = false
     }
     @objc private func listView() {
+        locationCurrentBtn.isHidden = true
         let leftItem = UIBarButtonItem(image: UIImage(named: "ic_listpitch_map"), style: .plain, target: self, action: #selector(mapView1))
         leftItem.tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
         navigationItem.leftBarButtonItem = leftItem
+        ///
+        let searchBar: UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 100, height: 0))
+        searchBar.placeholder = "Nhập Tên Sân"
+        let rightNavBarButton = UIBarButtonItem(customView: searchBar)
+        self.navigationItem.rightBarButtonItem = rightNavBarButton
+        searchBar.delegate = self
+        ///
         tableView.isHidden = false
         mapKit.isHidden = true
     }
     
     // MARK: - Function
     private func configureUI() {
-        let searchBar: UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 100, height: 0))
-        searchBar.placeholder = "Nhập Tên Sân"
-        let rightNavBarButton = UIBarButtonItem(customView: searchBar)
-        self.navigationItem.rightBarButtonItem = rightNavBarButton
-        searchBar.delegate = self
+//        let searchBar: UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 100, height: 0))
+//        searchBar.placeholder = "Nhập Tên Sân"
+//        let rightNavBarButton = UIBarButtonItem(customView: searchBar)
+//        self.navigationItem.rightBarButtonItem = rightNavBarButton
+//        searchBar.delegate = self
         navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.isTranslucent = true
     }

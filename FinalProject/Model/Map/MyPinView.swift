@@ -17,7 +17,7 @@ class MyPinView: MKPinAnnotationView {
  
         self.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         self.imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        self.imageView.image = UIImage(named: "img_listpitch_pitch")
+        self.imageView.image = UIImage(named: "ic_listpitch_pitch")
         self.addSubview(self.imageView)
  
         self.imageView.layer.cornerRadius = 5.0
