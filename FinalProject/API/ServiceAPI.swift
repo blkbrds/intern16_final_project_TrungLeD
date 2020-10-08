@@ -8,6 +8,7 @@
 
 import Moya
 // MARK: - Defines
+private var token = ""
 enum ServiceAPI {
     case getAllDictrict
     case login(phone: String, pw: String)

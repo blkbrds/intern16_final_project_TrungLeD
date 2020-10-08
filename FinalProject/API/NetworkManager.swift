@@ -11,6 +11,11 @@ import RxSwift
 import ObjectMapper
 
 final class NetworkManager: Networkable {
+    // MARK: - Function request
+    // Access Token Auth
+    let token = "eyeAm.AJsoN.weBTOKen"
+    let authPlugin = AccessTokenPlugin { _ in token }
+    let provider1 = MoyaProvider<BookingPitch>(plugins: [authPlugin])
     func bookingThePitch(date: Date, idCustomer: Int, idPitch: Int, idPrice: Int, idTime: Int, completion: @escaping CompletionResult<BookingPitch>) {
         provider.request(.bookingPitch(date: date, idCustomer: idCustomer, idPitch: idPitch, idPrice: idPrice, idTime: idTime)) {
          (result) in
@@ -80,3 +85,24 @@ final class NetworkManager: Networkable {
         }
     }
 }
+
+// MARK: - Extension
+//extension BookingPitch: TargetType, AccessTokenAuthorizable {
+//    case targetThatNeedsBearerAuth
+//    case targetThatNeedsBasicAuth
+//    case targetThatNeedsCustomAuth
+//    case targetDoesNotNeedAuth
+//
+//    var authorizationType: AuthorizationType? {
+//        switch self {
+//            case .targetThatNeedsBearerAuth:
+//                return .bearer
+//            case .targetThatNeedsBasicAuth:
+//                return .basic
+//            case .targetThatNeedsCustomAuth:
+//                return .custom("CustomAuthorizationType")
+//            case .targetDoesNotNeedAuth:
+//                return nil
+//            }
+//        }
+//}
