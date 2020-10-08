@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 protocol FavouriteTableViewCellDelegate: class {
     func handleFavorite(cell: FavouritesTableViewCell, id: Int, isFavorite: Bool)
 }
@@ -41,10 +42,11 @@ class FavouritesTableViewCell: UITableViewCell {
     
     private func updateView() {
         guard let viewModel = viewModel else { return }
+        let imageURL = URL(string: viewModel.pitch.imagePitch)
         namePitch.text = viewModel.pitch.name
         timeAction.text = viewModel.pitch.timeUse
         address.text = viewModel.pitch.address
-        
+        image1.sd_setImage(with: imageURL)
     }
     // MARK: - IBAction
     @IBAction func cancelFavourites(_ sender: UIButton) {

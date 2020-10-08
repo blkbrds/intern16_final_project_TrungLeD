@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 enum DateFormatType: String {
     // Time
     case time = "HH:mm"
@@ -24,10 +25,10 @@ final class ListPitchTableViewCell: UITableViewCell {
     // MARK: - IBOutlet
     @IBOutlet weak var namePitch: UILabel!
     @IBOutlet weak var address: UILabel!
-    @IBOutlet weak var imageView1: UIImageView!
     @IBOutlet weak var favoritesButton: UIButton!
     @IBOutlet weak var bookingButton: UIButton!
     @IBOutlet weak var dateBookingLabel: UILabel!
+    @IBOutlet weak var imagePitch: UIImageView!
     
     // MARK: - Properties
     weak var delegate: ListPitchTableViewCellDelegate?
@@ -39,7 +40,7 @@ final class ListPitchTableViewCell: UITableViewCell {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
-        imageView1.layer.cornerRadius = 15
+        imagePitch.layer.cornerRadius = 15
         namePitch.layer.cornerRadius = 15
         address.layer.cornerRadius = 15
         dateBookingLabel.layer.cornerRadius = 15
@@ -50,6 +51,8 @@ final class ListPitchTableViewCell: UITableViewCell {
         guard let viewModel = viewModel else {
             return
         }
+        let imageURl = URL(string: viewModel.imagePitch)
+        imagePitch.sd_setImage(with: imageURl)
         namePitch.text = viewModel.name
         address.text = viewModel.addressOwner
         dateBookingLabel.text = viewModel.timeUser

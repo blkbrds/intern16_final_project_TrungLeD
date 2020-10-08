@@ -223,7 +223,8 @@ extension ListPitchViewController: ListPitchTableViewCellDelegate {
                                   addressPitch: cell.viewModel?.addressOwner ?? "",
                                   timeUse: cell.viewModel?.timeUser ?? "",
                                   phone: cell.viewModel?.phoneOwner ?? "",
-                                  pitchType: cell.viewModel?.pitchType ?? "")
+                                  pitchType: cell.viewModel?.pitchType ?? "",
+                                  pitchImage: cell.viewModel?.imagePitch ?? "")
         }
         tableView.reloadData()
     }

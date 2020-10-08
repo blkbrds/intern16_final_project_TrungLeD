@@ -43,7 +43,7 @@ import RealmSwift
         description1 <- map["description"]
         timeUse <- map["is_use"]
         count <- map["count"]
-        imagePitch <- map["is_use"]
+        imagePitch <- map["image"]
         phone = type.owner.phone
         address = type.owner.address
         pitchType = type.name

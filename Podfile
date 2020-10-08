@@ -12,6 +12,7 @@ target 'FinalProject' do
   pod 'RealmSwift'
   pod 'ObjectMapper', '~> 3.5'
   pod 'RealmSwift'
+  pod 'SDWebImage', '~> 5.0'
   target 'FinalProjectTests' do
     inherit! :search_paths
     # Pods for testing
