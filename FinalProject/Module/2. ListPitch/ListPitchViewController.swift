@@ -76,9 +76,9 @@ class ListPitchViewController: UIViewController {
     
     func configMapView() {
         mapKit.delegate = self
-        // This is coordinate of Eiffel Tower of Pari city.
-        let eiffelTowerLocation = CLLocation(latitude: 48.858042, longitude: 2.294793)
-        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
+        // This is coordinate of Da Nang city.
+        let eiffelTowerLocation = CLLocation(latitude: 16.05228, longitude: 108.1919426)
+        let span = MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
         let region = MKCoordinateRegion(center: eiffelTowerLocation.coordinate, span: span)
         mapKit.region = region
     }
