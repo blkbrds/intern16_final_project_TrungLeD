@@ -21,6 +21,16 @@ class ListPitchViewController: UIViewController {
     private var viewModel: ListPitchViewModel = ListPitchViewModel()
     var pitch: [Pitch]?
     // MARK: - Life Cycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let nav = self.navigationController?.navigationBar
+        nav?.barStyle = .black
+        nav?.tintColor = .white
+        nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
+        tableView.reloadData()
+        viewModel.fetchRealmData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
@@ -30,12 +40,6 @@ class ListPitchViewController: UIViewController {
         getData()
         addAnnotations()
         configMapView()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tableView.reloadData()
-        viewModel.fetchRealmData()
     }
     
     // MARK: - Function
@@ -54,18 +58,8 @@ class ListPitchViewController: UIViewController {
         mapKit.setRegion(region, animated: true)
         //show current location
         mapKit.showsUserLocation = true
-        //add Anotation
         //addAnnotation()
         mapKit.addAnnotations(pins)
-    }
-    
-    func addAnnotation() {
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = CLLocationCoordinate2D(latitude: 16.071763, longitude: 108.223963)
-        annotation.title = "Point 0001"
-        annotation.subtitle = "subtitle 0001"
-        //add Anotation
-        mapKit.addAnnotation(annotation)
     }
     
     @IBAction func getLocationCurrent(_ sender: UIButton) {
@@ -120,11 +114,9 @@ class ListPitchViewController: UIViewController {
     var leftItem = UIBarButtonItem()
     @objc private func mapView1() {
         leftItem = UIBarButtonItem(image: UIImage(named: "ic_listpitch_listview"), style: .plain, target: self, action: #selector(listView))
-        leftItem.tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        leftItem.tintColor = #colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)
         navigationItem.leftBarButtonItem = leftItem
-        ///
         navigationItem.rightBarButtonItem = nil
-        ///
         tableView.isHidden = true
         mapKit.isHidden = false
         locationCurrentBtn.isHidden = false
@@ -132,26 +124,19 @@ class ListPitchViewController: UIViewController {
     @objc private func listView() {
         locationCurrentBtn.isHidden = true
         let leftItem = UIBarButtonItem(image: UIImage(named: "ic_listpitch_map"), style: .plain, target: self, action: #selector(mapView1))
-        leftItem.tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        leftItem.tintColor = #colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)
         navigationItem.leftBarButtonItem = leftItem
-        ///
         let searchBar: UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 100, height: 0))
         searchBar.placeholder = "Nhập Tên Sân"
         let rightNavBarButton = UIBarButtonItem(customView: searchBar)
         self.navigationItem.rightBarButtonItem = rightNavBarButton
         searchBar.delegate = self
-        ///
         tableView.isHidden = false
         mapKit.isHidden = true
     }
     
     // MARK: - Function
     private func configureUI() {
-//        let searchBar: UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 100, height: 0))
-//        searchBar.placeholder = "Nhập Tên Sân"
-//        let rightNavBarButton = UIBarButtonItem(customView: searchBar)
-//        self.navigationItem.rightBarButtonItem = rightNavBarButton
-//        searchBar.delegate = self
         navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.isTranslucent = true
     }
@@ -261,7 +246,7 @@ extension ListPitchViewController: MKMapViewDelegate {
             view = dequeuedView
         } else {
             view = MyPinView(annotation: annotation, reuseIdentifier: identifier)
-           // view.image = UIImage(named: "img_listpitch_pitch")
+            // view.image = UIImage(named: "img_listpitch_pitch")
             view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             view.leftCalloutAccessoryView = UIImageView(image: UIImage(named: "ic_listpitch_pin"))
             view.canShowCallout = true
