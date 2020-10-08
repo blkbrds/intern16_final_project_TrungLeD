@@ -52,7 +52,7 @@ final class DetailViewModel {
     }
     
     func viewModelForHeaderCell(at indexPath: IndexPath) -> DetailHeaderCellViewModel {
-        let viewModel = DetailHeaderCellViewModel(lat: pitch.type.owner.lat, long: pitch.type.owner.lng)
+        let viewModel = DetailHeaderCellViewModel(lat: pitch.type.owner.lat, long: pitch.type.owner.lng, address: pitch.type.owner.address)
         return viewModel
     }
     

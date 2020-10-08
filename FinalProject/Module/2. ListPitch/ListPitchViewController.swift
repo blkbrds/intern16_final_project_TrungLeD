@@ -13,32 +13,82 @@ class ListPitchViewController: UIViewController {
     // MARK: - IBOutlet
     @IBOutlet var mapKit: MKMapView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var locationCurrentBtn: UIButton!
     
     // MARK: - Properties
+    var pins: [MyPin] = []
     var inputDate: [Date] = []
     private var viewModel: ListPitchViewModel = ListPitchViewModel()
     var pitch: [Pitch]?
-    
     // MARK: - Life Cycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let nav = self.navigationController?.navigationBar
+        nav?.barStyle = .black
+        nav?.tintColor = .white
+        nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
+        tableView.reloadData()
+        viewModel.fetchRealmData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
         configureUI()
-        mapView()
+        mapView1()
         configSyncRealm()
         getData()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tableView.reloadData()
-        viewModel.fetchRealmData()
+        addAnnotations()
+        configMapView()
     }
     
     // MARK: - Function
     func configSyncRealm() {
         viewModel.delegate = self
         viewModel.setupObserve()
+    }
+    
+    // MARK: - get data for pin mapView
+    func center(location: CLLocation) {
+        //center
+        mapKit.setCenter(location.coordinate, animated: true)
+        //zoom
+        let span = MKCoordinateSpan(latitudeDelta: 0.04, longitudeDelta: 0.04)
+        let region = MKCoordinateRegion(center: location.coordinate, span: span)
+        mapKit.setRegion(region, animated: true)
+        //show current location
+        mapKit.showsUserLocation = true
+        //addAnnotation()
+        mapKit.addAnnotations(pins)
+    }
+    
+    @IBAction func getLocationCurrent(_ sender: UIButton) {
+        LocationManager.shared().getCurrentLocation { (location) in
+            self.center(location: location)
+        }
+    }
+    
+    func configMapView() {
+        mapKit.delegate = self
+        // This is coordinate of Da Nang city.
+        let eiffelTowerLocation = CLLocation(latitude: 16.05228, longitude: 108.1919426)
+        let span = MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+        let region = MKCoordinateRegion(center: eiffelTowerLocation.coordinate, span: span)
+        mapKit.region = region
+    }
+    
+    func getDataPin() {
+        for i in 0..<viewModel.pitchTotals.count {
+            let pin = MyPin(title: viewModel.pitchTotals[i].name,
+                            locationName: viewModel.pitchTotals[i].address,
+                            coordinate: CLLocationCoordinate2D(latitude: viewModel.pitchTotals[i].type.owner.lat, longitude: viewModel.pitchTotals[i].type.owner.lng))
+            pins.append(pin)
+        }
+        print(pins)
+    }
+    
+    func addAnnotations() {
+        mapKit.addAnnotations(pins)
     }
     
     func getData() {
@@ -53,49 +103,41 @@ class ListPitchViewController: UIViewController {
             case .success:
                 this.tableView.reloadData()
                 this.viewModel.setupObserve()
+                this.getDataPin()
             case .failure(let error):
                 this.showAlert(alertText: "Error", alertMessage: "error loadData \(error)")
             }
         }
     }
     
-    // MARK: - Helper Functions
-    private func configMapKit() {
-        let initLocation = CLLocation(latitude: 16.060440, longitude: 108.236290)
-        zoomOnMap(location: initLocation)
-    }
-    
     // MARK: - Objc Function
     var leftItem = UIBarButtonItem()
-    @objc private func mapView() {
+    @objc private func mapView1() {
         leftItem = UIBarButtonItem(image: UIImage(named: "ic_listpitch_listview"), style: .plain, target: self, action: #selector(listView))
-        leftItem.tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        leftItem.tintColor = #colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)
         navigationItem.leftBarButtonItem = leftItem
+        navigationItem.rightBarButtonItem = nil
         tableView.isHidden = true
         mapKit.isHidden = false
+        locationCurrentBtn.isHidden = false
     }
     
     @objc private func listView() {
-        let leftItem = UIBarButtonItem(image: UIImage(named: "ic_listpitch_map"), style: .plain, target: self, action: #selector(mapView))
-        leftItem.tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        locationCurrentBtn.isHidden = true
+        let leftItem = UIBarButtonItem(image: UIImage(named: "ic_listpitch_map"), style: .plain, target: self, action: #selector(mapView1))
+        leftItem.tintColor = #colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)
         navigationItem.leftBarButtonItem = leftItem
-        tableView.isHidden = false
-        mapKit.isHidden = true
-    }
-    
-    private let regionRadius: CLLocationDistance = 10000 // 10 km
-    // MARK: - Function
-    func zoomOnMap(location: CLLocation) {
-        let coordinateRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: regionRadius * 2, longitudinalMeters: regionRadius * 2 )
-        mapKit.setRegion(coordinateRegion, animated: true)
-    }
-    
-    private func configureUI() {
         let searchBar: UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 100, height: 0))
         searchBar.placeholder = "Nhập Tên Sân"
         let rightNavBarButton = UIBarButtonItem(customView: searchBar)
         self.navigationItem.rightBarButtonItem = rightNavBarButton
         searchBar.delegate = self
+        tableView.isHidden = false
+        mapKit.isHidden = true
+    }
+    
+    // MARK: - Function
+    private func configureUI() {
         navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.isTranslucent = true
     }
@@ -191,5 +233,25 @@ extension ListPitchViewController: ListPitchTableViewCellDelegate {
 extension ListPitchViewController: ListPitchViewModelDelegate {
     func syncFavorite(viewModel: ListPitchViewModel, needperformAction action: ListPitchViewModel.Action) {
         tableView.reloadData()
+    }
+}
+
+// MARK: Extension: - MapView
+extension ListPitchViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard let annotation = annotation as? MyPin else { return nil }
+        let identifier = "mypin"
+        var view: MyPinView
+        if let dequeuedView = mapKit.dequeueReusableAnnotationView(withIdentifier: identifier) as? MyPinView {
+            dequeuedView.annotation = annotation
+            view = dequeuedView
+        } else {
+            view = MyPinView(annotation: annotation, reuseIdentifier: identifier)
+            // view.image = UIImage(named: "img_listpitch_pitch")
+            view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            view.leftCalloutAccessoryView = UIImageView(image: UIImage(named: "ic_listpitch_pin"))
+            view.canShowCallout = true
+        }
+        return view
     }
 }

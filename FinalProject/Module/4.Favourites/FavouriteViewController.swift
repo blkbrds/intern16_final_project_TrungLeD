@@ -16,6 +16,7 @@ final class FavouriteViewController: UIViewController {
     
     // MARK: - Properties
     var viewModel = FavouriteViewModel()
+    
     // MARK: Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -34,7 +35,6 @@ final class FavouriteViewController: UIViewController {
     }
     
     // MARK: Function
-    
     private func configSyncRealmData() {
         viewModel.delegate = self
     }
@@ -100,6 +100,7 @@ final class FavouriteViewController: UIViewController {
         }
     }
     
+    // MARK: - Objc Function
     @objc func deleteTouchUpInSide() {
         let alert = UIAlertController(title: "Warning", message: "Delete all", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .destructive) { [weak self] (_) in
@@ -111,12 +112,8 @@ final class FavouriteViewController: UIViewController {
         alert.addAction(cancelAction)
         present(alert, animated: true, completion: nil)
     }
-    
-    @objc func backTouchUpInSide() {
-        
-    }
-    
 }
+
 // MARK: - Extension
 extension FavouriteViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

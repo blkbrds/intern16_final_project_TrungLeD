@@ -41,7 +41,7 @@ import RealmSwift
         type <- map["pitchType"]
         name <- map["name"]
         description1 <- map["description"]
-        timeUse <- map["image"]
+        timeUse <- map["is_use"]
         count <- map["count"]
         isUse <- map["is_use"]
         phone = type.owner.phone
