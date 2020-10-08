@@ -3,17 +3,17 @@ import ObjectMapper
 
 final class Owner: Mappable {
     // MARK: - Properties
-    var id: Int = 0
-    var name: String = ""
-    var phone: String = ""
-    var address: String = ""
+    var id: String = ""
+    dynamic var name: String = ""
+    dynamic var phone: String = ""
+    dynamic var address: String = ""
     var isBlock: String = ""
     var isDelete: String = ""
     var verify: String = ""
     var rememberToken: String = ""
-    var district: String = ""
-    var lat: Double = 0.0
-    var lng: Double = 0.0
+    dynamic var district: String = ""
+    dynamic var lat: Double = 0.0
+    dynamic var lng: Double = 0.0
     
     // MARK: - Init
     required init?(map: Map) { }

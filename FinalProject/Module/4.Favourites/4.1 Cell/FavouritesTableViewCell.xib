@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -113,6 +113,12 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="address" destination="OcG-Iz-NNx" id="18n-x8-xxC"/>
+                <outlet property="image1" destination="Zq9-jK-aIV" id="WiT-ZN-qmV"/>
+                <outlet property="namePitch" destination="W2S-04-eV3" id="VcM-cf-iRN"/>
+                <outlet property="timeAction" destination="woT-WK-AaH" id="bMa-2M-ogc"/>
+            </connections>
             <point key="canvasLocation" x="-156.52173913043478" y="8.7053571428571423"/>
         </tableViewCell>
     </objects>

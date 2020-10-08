@@ -23,25 +23,38 @@ class ListPitchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
-        loadData()
         configureUI()
         mapView()
+        configSyncRealm()
+        getData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
         tableView.reloadData()
+        viewModel.fetchRealmData()
     }
     
     // MARK: - Function
+    func configSyncRealm() {
+        viewModel.delegate = self
+        viewModel.setupObserve()
+    }
+    
+    func getData() {
+        viewModel.fetchRealmData()
+        loadData()
+    }
+    
     private func loadData() {
         viewModel.getAllData { [weak self] result in
             guard let this = self else { return }
             switch result {
             case .success:
                 this.tableView.reloadData()
+                this.viewModel.setupObserve()
             case .failure(let error):
-                print(error)
+                this.showAlert(alertText: "Error", alertMessage: "error loadData \(error)")
             }
         }
     }
@@ -61,6 +74,7 @@ class ListPitchViewController: UIViewController {
         tableView.isHidden = true
         mapKit.isHidden = false
     }
+    
     @objc private func listView() {
         let leftItem = UIBarButtonItem(image: UIImage(named: "ic_listpitch_map"), style: .plain, target: self, action: #selector(mapView))
         leftItem.tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
@@ -70,10 +84,12 @@ class ListPitchViewController: UIViewController {
     }
     
     private let regionRadius: CLLocationDistance = 10000 // 10 km
+    // MARK: - Function
     func zoomOnMap(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: regionRadius * 2, longitudinalMeters: regionRadius * 2 )
         mapKit.setRegion(coordinateRegion, animated: true)
     }
+    
     private func configureUI() {
         let searchBar: UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 100, height: 0))
         searchBar.placeholder = "Nhập Tên Sân"
@@ -110,7 +126,7 @@ extension ListPitchViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.tmpPitchData.count
+        return viewModel.pitchs.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
@@ -123,6 +139,7 @@ extension ListPitchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
         detailVC.viewModel = viewModel.getInforPitch(at: indexPath)
+        detailVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }
@@ -142,16 +159,37 @@ extension ListPitchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("Search text is \(searchText)")
         if searchText.isEmpty {
-            viewModel.tmpPitchData = viewModel.pitchData
+            viewModel.pitchs = viewModel.pitchTotals
         } else {
-            viewModel.tmpPitchData = viewModel.tmpPitchData.filter { ($0.name.contains(searchText)) }
+            viewModel.pitchs = viewModel.pitchs.filter { ($0.name.contains(searchText)) }
+        }
+        tableView.reloadData()
+    }
+}
+// MARK: - Extension: - ListPitchTableViewCellDelegate
+extension ListPitchViewController: ListPitchTableViewCellDelegate {
+    func bookingButton(view: ListPitchTableViewCell) {
+        
+    }
+    
+    func handleFavoriteTableView(cell: ListPitchTableViewCell, id: Int, isFavorite: Bool) {
+        if isFavorite {
+            viewModel.unfavorite(id: id)
+        } else {
+            viewModel.addFavorite(id: cell.viewModel?.id ?? 0,
+                                  namePitch: cell.viewModel?.name ?? "",
+                                  addressPitch: cell.viewModel?.addressOwner ?? "",
+                                  timeUse: cell.viewModel?.timeUser ?? "",
+                                  phone: cell.viewModel?.phoneOwner ?? "",
+                                  pitchType: cell.viewModel?.pitchType ?? "")
         }
         tableView.reloadData()
     }
 }
 
-extension ListPitchViewController: ListPitchViewControllerDelegate {
-    func bookingButton(view: ListPitchTableViewCell) {
-        loadDatePicker()
+// MARK: Extension: - ListPitchViewModelDelegate
+extension ListPitchViewController: ListPitchViewModelDelegate {
+    func syncFavorite(viewModel: ListPitchViewModel, needperformAction action: ListPitchViewModel.Action) {
+        tableView.reloadData()
     }
 }

@@ -15,9 +15,9 @@ enum DateFormatType: String {
     //Date
     case date = "dd-MM-yyyy"
 }
-
-protocol ListPitchViewControllerDelegate: class {
+protocol ListPitchTableViewCellDelegate: class {
     func bookingButton(view: ListPitchTableViewCell)
+    func handleFavoriteTableView( cell: ListPitchTableViewCell, id: Int, isFavorite: Bool)
 }
 
 final class ListPitchTableViewCell: UITableViewCell {
@@ -30,7 +30,7 @@ final class ListPitchTableViewCell: UITableViewCell {
     @IBOutlet weak var dateBookingLabel: UILabel!
     
     // MARK: - Properties
-    weak var delegate: ListPitchViewControllerDelegate?
+    weak var delegate: ListPitchTableViewCellDelegate?
     var pitch: [Pitch]?
     var viewModel: ListPitchCellViewModel? {
         didSet {
@@ -39,18 +39,32 @@ final class ListPitchTableViewCell: UITableViewCell {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
+        imageView1.layer.cornerRadius = 15
+        namePitch.layer.cornerRadius = 15
+        address.layer.cornerRadius = 15
+        dateBookingLabel.layer.cornerRadius = 15
     }
     
     // MARK: - Function
     private func updateView() {
-        namePitch.text = viewModel?.name
-        address.text = viewModel?.addressOwner
-        dateBookingLabel.text = viewModel?.timeUser
-        imageView1.layer.cornerRadius = 10
+        guard let viewModel = viewModel else {
+            return
+        }
+        namePitch.text = viewModel.name
+        address.text = viewModel.addressOwner
+        dateBookingLabel.text = viewModel.timeUser
+        favoritesButton.isSelected = viewModel.isFavorite
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    @IBAction func favoriteTapped(_ sender: UIButton) {
+        guard let viewModel = viewModel else { return }
+        if let delegate = delegate {
+            delegate.handleFavoriteTableView(cell: self, id: viewModel.id, isFavorite: viewModel.isFavorite)
+        }
     }
     
     @IBAction func bookingTapped(_ sender: UIButton) {
