@@ -44,7 +44,6 @@ class ListPitchViewController: UIViewController {
     func getData() {
         viewModel.fetchRealmData()
         loadData()
-        
     }
     
     private func loadData() {
@@ -75,6 +74,7 @@ class ListPitchViewController: UIViewController {
         tableView.isHidden = true
         mapKit.isHidden = false
     }
+    
     @objc private func listView() {
         let leftItem = UIBarButtonItem(image: UIImage(named: "ic_listpitch_map"), style: .plain, target: self, action: #selector(mapView))
         leftItem.tintColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
@@ -84,7 +84,6 @@ class ListPitchViewController: UIViewController {
     }
     
     private let regionRadius: CLLocationDistance = 10000 // 10 km
-    
     // MARK: - Function
     func zoomOnMap(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: regionRadius * 2, longitudinalMeters: regionRadius * 2 )
