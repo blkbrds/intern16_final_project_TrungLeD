@@ -17,6 +17,7 @@ class ListPitchViewModel {
     // MARK: - Enum
     enum Action {
         case loadFavorite
+        case failure(Error)
     }
     // MARK: - Properties
     weak var delegate: ListPitchViewModelDelegate?
@@ -80,11 +81,11 @@ class ListPitchViewModel {
                 }
             })
         } catch {
-            print(error)
+            delegate?.syncFavorite(viewModel: self, needperformAction: .failure(error))
         }
     }
     
-    func fetchRealmData() {
+    func fetchRealmData() -> Error? {
         do {
             // Realm
             let realm = try Realm()
@@ -92,18 +93,19 @@ class ListPitchViewModel {
             let results = realm.objects(Pitch.self)
             // Convert to array
             realmPitch = Array(results)
+            return nil
         } catch {
-            print(error)
+            return error
         }
     }
-
+    
     func checkFavorite(isFavorite: Bool, id: Int) {
         for item in pitchTotals where item.id == id {
             item.isFavorite = isFavorite
         }
     }
     
-    func addFavorite(id: Int, namePitch: String, addressPitch: String, timeUse: String, phone: String, pitchType: String) {
+    func addFavorite(id: Int, namePitch: String, addressPitch: String, timeUse: String, phone: String, pitchType: String) -> Error? {
         do {
             let realm = try Realm()
             let pitch = Pitch()
@@ -117,12 +119,13 @@ class ListPitchViewModel {
                 realm.add(pitch, update: .all)
                 checkFavorite(isFavorite: true, id: id )
             }
+            return nil
         } catch {
-            print(error)
+            return error
         }
     }
     
-    func unfavorite(id: Int) {
+    func unfavorite(id: Int) -> Error? {
         do {
             let realm = try Realm()
             let predicate = NSPredicate(format: "id = \(id)")
@@ -131,8 +134,9 @@ class ListPitchViewModel {
                 realm.delete(result)
                 checkFavorite(isFavorite: false, id: id)
             }
+            return nil
         } catch {
-            print(error)
+            return error
         }
     }
 }

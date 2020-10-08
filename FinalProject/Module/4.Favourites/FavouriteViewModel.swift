@@ -17,6 +17,7 @@ class FavouriteViewModel {
     // MARK: - Enum
     enum Action {
         case loadData
+        case failure(Error)
     }
     init() {
         setupObserve()
@@ -65,7 +66,7 @@ class FavouriteViewModel {
                 }
             })
         } catch {
-            print(error)
+            delegate?.favourite(viewModel: self, needPerform: .failure(error))
         }
     }
     

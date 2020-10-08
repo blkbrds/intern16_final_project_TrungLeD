@@ -105,7 +105,7 @@ class ListPitchViewController: UIViewController {
                 this.viewModel.setupObserve()
                 this.getDataPin()
             case .failure(let error):
-                print(error)
+                this.showAlert(alertText: "Error", alertMessage: "error loadData \(error)")
             }
         }
     }
@@ -121,6 +121,7 @@ class ListPitchViewController: UIViewController {
         mapKit.isHidden = false
         locationCurrentBtn.isHidden = false
     }
+    
     @objc private func listView() {
         locationCurrentBtn.isHidden = true
         let leftItem = UIBarButtonItem(image: UIImage(named: "ic_listpitch_map"), style: .plain, target: self, action: #selector(mapView1))

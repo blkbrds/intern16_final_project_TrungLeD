@@ -83,7 +83,7 @@ final class FavouriteViewController: UIViewController {
                 this.fectchData()
                 this.tableView.reloadData()
             } else {
-                print("Delete error")
+                this.showAlert(alertText: "error delete", alertMessage: "error data from realm)")
             }
         }
     }
@@ -95,7 +95,7 @@ final class FavouriteViewController: UIViewController {
                 this.fectchData()
                 this.tableView.reloadData()
             } else {
-                print("Delete failed")
+                this.showAlert(alertText: "error deleteAll", alertMessage: "error data from realm)")
             }
         }
     }
