@@ -12,10 +12,12 @@ class DetailHeaderCellViewModel {
     // MARK: - Properties
     var lat: Double = 0.0
     var long: Double = 0.0
+    var address: String = ""
     
     // MARK: - Init
-    init( lat: Double = 0.0, long: Double = 0.0) {
-        self.lat = lat
+    init(lat: Double, long: Double, address: String = "") {
         self.long = long
+        self.lat = lat
+        self.address = address
     }
 }

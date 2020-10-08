@@ -9,6 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListPitchViewController" customModule="FinalProject" customModuleProvider="target">
             <connections>
+                <outlet property="locationCurrentBtn" destination="DRY-Go-aYb" id="oaF-yQ-gof"/>
                 <outlet property="mapKit" destination="rhu-6x-M47" id="WPc-HV-RFT"/>
                 <outlet property="tableView" destination="iMK-4T-y4R" id="6kZ-ce-ldd"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -26,6 +27,17 @@
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rhu-6x-M47">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                 </mapView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRY-Go-aYb">
+                    <rect key="frame" x="342" y="790" width="62" height="62"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="62" id="O7W-Rc-IBk"/>
+                        <constraint firstAttribute="width" constant="62" id="qWl-R0-til"/>
+                    </constraints>
+                    <state key="normal" image="ic_listpitch_currentlocation"/>
+                    <connections>
+                        <action selector="getLocationCurrent:" destination="-1" eventType="touchUpInside" id="gsi-jx-gVw"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
             <constraints>
@@ -33,13 +45,18 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="iMK-4T-y4R" secondAttribute="bottom" id="8T0-x5-LNq"/>
                 <constraint firstItem="iMK-4T-y4R" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="AZD-wp-Vae"/>
                 <constraint firstItem="rhu-6x-M47" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="HAc-xr-AIO"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="DRY-Go-aYb" secondAttribute="bottom" constant="10" id="Xig-pf-eyq"/>
                 <constraint firstItem="iMK-4T-y4R" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="h8H-6X-H12"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rhu-6x-M47" secondAttribute="trailing" id="iQA-cm-WNj"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="iMK-4T-y4R" secondAttribute="trailing" id="iR3-Q8-eBB"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="rhu-6x-M47" secondAttribute="bottom" id="uGu-xa-sag"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="DRY-Go-aYb" secondAttribute="trailing" constant="10" id="yuF-J9-vhF"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="186" y="224"/>
+            <point key="canvasLocation" x="185.50724637681162" y="223.66071428571428"/>
         </view>
     </objects>
+    <resources>
+        <image name="ic_listpitch_currentlocation" width="32" height="32"/>
+    </resources>
 </document>

@@ -12,7 +12,7 @@ enum RootType {
     case login
     case tabbar
 }
-    @UIApplicationMain
+@UIApplicationMain
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         changeRoot(rootType: .tabbar)
         window?.makeKeyAndVisible()
+        LocationManager.shared().request()
         return true
     }
     
@@ -32,7 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.rootViewController = navi
         }
     }
-    
     static let shared: AppDelegate = {
         guard let shared = UIApplication.shared.delegate as? AppDelegate else {
             fatalError("Cannot cast `UIApplication.shared.delegate` to `AppDelegate`.")
@@ -40,3 +40,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return shared
     }()
 }
+
