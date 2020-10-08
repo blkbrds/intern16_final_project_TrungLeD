@@ -12,6 +12,7 @@ enum ServiceAPI {
     case getAllDictrict
     case login(phone: String, pw: String)
     case getAllPitch(page: Int, pageSize: Int)
+    case bookingPitch(date: Date, idCustomer: Int, idPitch: Int, idPrice: Int, idTime: Int)
 }
 
 // enum Result
@@ -48,13 +49,15 @@ extension ServiceAPI: TargetType {
             return "/common/login"
         case .getAllPitch:
             return "/common/get-all-pitch"
+        case .bookingPitch:
+            return "/personal/reserve-pitch"
         }
     }
     var method: Moya.Method {
         switch self {
         case .getAllDictrict, .getAllPitch(_, _):
             return .get
-        case .login:
+        case .login, .bookingPitch(_, _, _, _,_):
             return .post
         }
     }
@@ -79,6 +82,14 @@ extension ServiceAPI: TargetType {
             params["page"] = page
             params["pageSize"] = pageSize
             return .requestParameters(parameters:["page": page, "pageSize": pageSize], encoding: URLEncoding.default)
+        case .bookingPitch(let date, let idCustomer, let idPitch,let idPrice, let idTime):
+            var params: [String: Any] = [:]
+            params["date"] = date
+            params["idCustomer"] = idCustomer
+            params["idPitch"] = idPitch
+            params["idPrice"] = idPrice
+            params["idTime"] = idTime
+            return .requestParameters(parameters: params, encoding: URLEncoding.default)
         }
     }
     

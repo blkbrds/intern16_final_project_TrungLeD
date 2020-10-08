@@ -11,6 +11,29 @@ import RxSwift
 import ObjectMapper
 
 final class NetworkManager: Networkable {
+    func bookingThePitch(date: Date, idCustomer: Int, idPitch: Int, idPrice: Int, idTime: Int, completion: @escaping CompletionResult<BookingPitch>) {
+        provider.request(.bookingPitch(date: date, idCustomer: idCustomer, idPitch: idPitch, idPrice: idPrice, idTime: idTime)) {
+         (result) in
+            switch result {
+            case .success(let respone):
+                do {
+                    if let json = try respone.mapJSON() as? [String: Any],
+                        let dataJS = json["data"] as? String {
+                        guard let resultBooking = Mapper<BookingPitch>().map(JSONObject: dataJS) else {
+                            completion(.failure(NSError(domain: "", code: 400, userInfo: nil)))
+                            return
+                        }
+                        completion(.success(resultBooking))
+                    }
+                } catch {
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
     // MARK: Properties
     static var shared: NetworkManager = NetworkManager()
     var provider = MoyaProvider<ServiceAPI>()

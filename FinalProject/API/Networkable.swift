@@ -15,5 +15,6 @@ protocol Networkable {
     func login(phone: String, pw: String, completion: @escaping CompletionResult<Customer>)
     
     func getAllPitch(page: Int, pageSize: Int, completion: @escaping CompletionResult<[Pitch]>)
-
+    
+    func bookingThePitch(date: Date, idCustomer: Int, idPitch: Int, idPrice: Int, idTime: Int, completion: @escaping CompletionResult<BookingPitch>)
 }
