@@ -30,7 +30,9 @@ class ListPitchViewModel {
     var nameSort: [String] = []
     let networkManager: NetworkManager
     var isBooking: Bool = false
-    
+    var dateBooking: String = ""
+    var timeBooking: String = ""
+    var idTime: Int = 0
     // MARK: - Init
     init(networkManager: NetworkManager = NetworkManager.shared) {
         self.networkManager = networkManager
@@ -52,7 +54,7 @@ class ListPitchViewModel {
     }
     
     func bookingThePitch(completion: @escaping APICompletion) {
-        networkManager.bookingThePitch(date: "2020-12-19", idCustomer: 1, idPitch: 1, idPrice: 1, idTime: 1) { [weak self](result) in
+        networkManager.bookingThePitch(date: dateBooking, idCustomer: 1, idPitch: item.id, idPrice: 1, idTime: idTime) { [weak self](result) in
             guard let this = self else { return }
             switch result {
             case .failure(let error):

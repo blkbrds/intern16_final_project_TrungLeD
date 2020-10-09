@@ -20,7 +20,14 @@ import RealmSwift
     
     // MARK: Init
     required init?(map: Map) {}
-    init(id: Int = 0, pitchType: PitchType = PitchType(), name: String = "", description1: String = "", timeUse: String = "", count: Double = 0.0, imagePitch: String = "", isFavorite: Bool, lat: Double, long: Double) {
+    init(id: Int = 0, pitchType: PitchType = PitchType(),
+         name: String = "",
+         description1: String = "",
+         timeUse: String = "",
+         count: Double = 0.0,
+         imagePitch: String = "",
+         isFavorite: Bool,
+         lat: Double, long: Double) {
         self.id = id
         self.long = long
         self.lat = lat

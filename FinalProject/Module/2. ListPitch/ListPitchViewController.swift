@@ -15,6 +15,7 @@ class ListPitchViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var locationCurrentBtn: UIButton!
     @IBOutlet weak var datePicker1: UIDatePicker!
+    @IBOutlet var viewContainerDatePicker: UIView!
     
     // MARK: - Properties
     var hidenDatePicker: Bool = false
@@ -30,7 +31,7 @@ class ListPitchViewController: UIViewController {
         nav?.tintColor = .white
         nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
         tableView.reloadData()
-     //   viewModel.fetchRealmData()
+        //   viewModel.fetchRealmData()
     }
     
     override func viewDidLoad() {
@@ -42,6 +43,75 @@ class ListPitchViewController: UIViewController {
         getData()
         addAnnotations()
         configMapView()
+        configDatePicker()
+    }
+    // MARK: - Function DatePicker
+    private func configDatePicker() {
+        viewContainerDatePicker.isHidden = true
+        datePicker1.minimumDate = Date()
+    }
+    
+    private func stateDatePickerDefault() {
+        UIView.transition(with: viewContainerDatePicker , duration: 0.5,
+                          options: .transitionCrossDissolve,
+                          animations: {
+                            self.tabBarController?.tabBar.isHidden = false
+                            self.viewContainerDatePicker.isHidden = true
+                            self.tableView.alpha = 1
+                            self.tableView.allowsSelection = true
+        })
+        
+    }
+    
+    // MARK: - Function Check Time
+    func checkTime() -> Int {
+        let hour = datePicker1.date.getTime().hour
+        let minute = datePicker1.date.getTime().minute
+        if hour < 6 && hour > 22 { return 0 }
+        else if  hour == 6 && minute == 30 { return 1 }
+        else if  hour == 6 && minute == 30 { return 2 }
+        else if  hour == 7 && minute == 30 { return 3 }
+        else if  hour == 8 && minute == 30 { return 4 }
+        else if  hour == 9 && minute == 30 { return 5 }
+        else if  hour == 10 && minute == 30 { return 6 }
+        else if  hour == 11 && minute == 30 { return 7 }
+        else if  hour == 12 && minute == 30 { return 8 }
+        else if  hour == 13 && minute == 30 { return 9 }
+        else if  hour == 14 && minute == 30 { return 10 }
+        else if  hour == 15 && minute == 30 { return 11 }
+        else if  hour == 16 && minute == 30 { return 12 }
+        else if  hour == 17 && minute == 30 { return 13 }
+        else if  hour == 18 && minute == 30 { return 14 }
+        else if  hour == 19 && minute == 30 { return 15 }
+        else if  hour == 20 && minute == 30 { return 16 }
+        else { return 0 }
+    }
+    
+    @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
+        stateDatePickerDefault()
+    }
+    
+    @IBAction func doneTapped(_ sender: UIBarButtonItem) {
+         checkTime()
+        viewModel.idTime = checkTime()
+        viewModel.dateBooking = String(datePicker1.date.getDate())
+        viewModel.bookingThePitch { (result) in
+            switch result {
+            case .success:
+//                if result == "Lịch đã được đặt" {
+//                    self.showAlert(alertText: "Tình Trạng", alertMessage: result)
+//                } else {
+//                    self.showAlert(alertText: "Đặt Sân Thành Công", alertMessage: result)
+//                }
+                self.showAlert(alertText: "Đã Đặt", alertMessage: "Đã Đặt")
+            case .failure(let error):
+                self.showAlert(alertText: "Error", alertMessage: "Error: \(error)")
+            }
+           
+        }
+        stateDatePickerDefault()
+        print(viewModel.dateBooking)
+        
     }
     
     // MARK: - Function
@@ -94,7 +164,7 @@ class ListPitchViewController: UIViewController {
     }
     
     func getData() {
-     //   viewModel.fetchRealmData()
+        //   viewModel.fetchRealmData()
         loadData()
     }
     
@@ -163,26 +233,13 @@ class ListPitchViewController: UIViewController {
         tableView.dataSource = self
     }
     // MARK: - Func Load Date Picker
-    let datePicker = Bundle.main.loadNibNamed("DatePickerUIView", owner: self, options: nil)?.first as? DatePickerUIView
+    //    let datePicker = Bundle.main.loadNibNamed("DatePickerUIView", owner: self, options: nil)?.first as? DatePickerUIView
     private func loadDatePicker() {
         UIView.animate(withDuration: 0.3, animations: {
-            self.datePicker?.isHidden = false
+            self.tabBarController?.tabBar.isHidden = true
+            self.viewContainerDatePicker.isHidden = false
             self.tableView.alpha = 0.5
             self.tableView.allowsSelection = false
-            self.datePicker?.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - 348, width: self.view.frame.width, height: 348)
-            self.datePicker?.delegate = self
-            self.datePicker?.backgroundColor = .white
-            self.view.addSubview(self.datePicker ?? UIView())
-        })
-    }
-    
-    private func hideDatePicker() {
-        UIView.transition(with: datePicker ?? UIView(), duration: 0.4,
-                          options: .transitionCrossDissolve,
-                          animations: {
-                            self.datePicker?.isHidden = true
-                            self.tableView.alpha = 1
-                            self.tableView.allowsSelection = true
         })
     }
 }
@@ -286,16 +343,5 @@ extension ListPitchViewController: MKMapViewDelegate {
             view.canShowCallout = true
         }
         return view
-    }
-}
-
-extension ListPitchViewController: DatePickerUIViewDelegate {
-    func handleButtonToolbar(at: DatePickerUIView, needPerform action: DatePickerUIView.Action) {
-        switch action {
-        case .cancel:
-            hideDatePicker()
-        case .done:
-            hideDatePicker()
-        }
     }
 }
