@@ -14,6 +14,7 @@ class ListPitchViewController: UIViewController {
     @IBOutlet var mapKit: MKMapView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var locationCurrentBtn: UIButton!
+    @IBOutlet weak var datePicker1: UIDatePicker!
     
     // MARK: - Properties
     var hidenDatePicker: Bool = false
@@ -29,7 +30,7 @@ class ListPitchViewController: UIViewController {
         nav?.tintColor = .white
         nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
         tableView.reloadData()
-        viewModel.fetchRealmData()
+     //   viewModel.fetchRealmData()
     }
     
     override func viewDidLoad() {
@@ -93,7 +94,7 @@ class ListPitchViewController: UIViewController {
     }
     
     func getData() {
-        viewModel.fetchRealmData()
+     //   viewModel.fetchRealmData()
         loadData()
     }
     
