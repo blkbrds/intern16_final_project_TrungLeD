@@ -16,6 +16,7 @@ class ListPitchViewController: UIViewController {
     @IBOutlet weak var locationCurrentBtn: UIButton!
     
     // MARK: - Properties
+    var hidenDatePicker: Bool = false
     var pins: [MyPin] = []
     var inputDate: [Date] = []
     private var viewModel: ListPitchViewModel = ListPitchViewModel()
@@ -71,9 +72,9 @@ class ListPitchViewController: UIViewController {
     func configMapView() {
         mapKit.delegate = self
         // This is coordinate of Da Nang city.
-        let eiffelTowerLocation = CLLocation(latitude: 16.05228, longitude: 108.1919426)
+        let daNangLocation = CLLocation(latitude: 16.05228, longitude: 108.1919426)
         let span = MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
-        let region = MKCoordinateRegion(center: eiffelTowerLocation.coordinate, span: span)
+        let region = MKCoordinateRegion(center: daNangLocation.coordinate, span: span)
         mapKit.region = region
     }
     
@@ -97,6 +98,16 @@ class ListPitchViewController: UIViewController {
     }
     
     private func loadData() {
+        viewModel.bookingThePitch { [weak self] (done) in
+            guard let this = self else { return }
+            switch done {
+            case .success:
+                print(done)
+            case .failure(let error):
+                print("loi roi------- \(error)")
+            }
+        }
+        
         viewModel.getAllData { [weak self] result in
             guard let this = self else { return }
             switch result {
@@ -131,6 +142,7 @@ class ListPitchViewController: UIViewController {
         searchBar.placeholder = "Nhập Tên Sân"
         let rightNavBarButton = UIBarButtonItem(customView: searchBar)
         self.navigationItem.rightBarButtonItem = rightNavBarButton
+        searchBar.searchTextField.textColor = .white
         searchBar.delegate = self
         tableView.isHidden = false
         mapKit.isHidden = true
@@ -140,6 +152,7 @@ class ListPitchViewController: UIViewController {
     private func configureUI() {
         navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.isTranslucent = true
+        navigationItem.hidesSearchBarWhenScrolling = true
     }
     
     func configTableView() {
@@ -148,11 +161,28 @@ class ListPitchViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
-    
+    // MARK: - Func Load Date Picker
+    let datePicker = Bundle.main.loadNibNamed("DatePickerUIView", owner: self, options: nil)?.first as? DatePickerUIView
     private func loadDatePicker() {
-        let datePicker = DatePickerViewController()
-        self.present(datePicker, animated: true) {
-        }
+        UIView.animate(withDuration: 0.3, animations: {
+            self.datePicker?.isHidden = false
+            self.tableView.alpha = 0.5
+            self.tableView.allowsSelection = false
+            self.datePicker?.frame = CGRect(x: 0, y: UIScreen.main.bounds.height - 348, width: self.view.frame.width, height: 348)
+            self.datePicker?.delegate = self
+            self.datePicker?.backgroundColor = .white
+            self.view.addSubview(self.datePicker ?? UIView())
+        })
+    }
+    
+    private func hideDatePicker() {
+        UIView.transition(with: datePicker ?? UIView(), duration: 0.4,
+                          options: .transitionCrossDissolve,
+                          animations: {
+                            self.datePicker?.isHidden = true
+                            self.tableView.alpha = 1
+                            self.tableView.allowsSelection = true
+        })
     }
 }
 
@@ -211,7 +241,7 @@ extension ListPitchViewController: UISearchBarDelegate {
 // MARK: - Extension: - ListPitchTableViewCellDelegate
 extension ListPitchViewController: ListPitchTableViewCellDelegate {
     func bookingButton(view: ListPitchTableViewCell) {
-        
+        loadDatePicker()
     }
     
     func handleFavoriteTableView(cell: ListPitchTableViewCell, id: Int, isFavorite: Bool) {
@@ -224,7 +254,8 @@ extension ListPitchViewController: ListPitchTableViewCellDelegate {
                                   timeUse: cell.viewModel?.timeUser ?? "",
                                   phone: cell.viewModel?.phoneOwner ?? "",
                                   pitchType: cell.viewModel?.pitchType ?? "",
-                                  pitchImage: cell.viewModel?.imagePitch ?? "")
+                                  pitchImage: cell.viewModel?.imagePitch ?? "",
+                                  description1: cell.viewModel?.description1 ?? "")
         }
         tableView.reloadData()
     }
@@ -254,5 +285,16 @@ extension ListPitchViewController: MKMapViewDelegate {
             view.canShowCallout = true
         }
         return view
+    }
+}
+
+extension ListPitchViewController: DatePickerUIViewDelegate {
+    func handleButtonToolbar(at: DatePickerUIView, needPerform action: DatePickerUIView.Action) {
+        switch action {
+        case .cancel:
+            hideDatePicker()
+        case .done:
+            hideDatePicker()
+        }
     }
 }

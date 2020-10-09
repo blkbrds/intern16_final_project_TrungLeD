@@ -13,22 +13,23 @@ import ObjectMapper
 final class NetworkManager: Networkable {
     // MARK: - Function request
     // Access Token Auth
-    let token = "eyeAm.AJsoN.weBTOKen"
-    let authPlugin = AccessTokenPlugin { _ in token }
-    let provider1 = MoyaProvider<BookingPitch>(plugins: [authPlugin])
-    func bookingThePitch(date: Date, idCustomer: Int, idPitch: Int, idPrice: Int, idTime: Int, completion: @escaping CompletionResult<BookingPitch>) {
+  //  let token = "eyeAm.AJsoN.weBTOKen"
+   // let authPlugin = AccessTokenPlugin { _ in token }
+  //  let provider1 = MoyaProvider<BookingPitch>(plugins: [authPlugin])
+    func bookingThePitch(date: String, idCustomer: Int, idPitch: Int, idPrice: Int, idTime: Int, completion: @escaping CompletionResult<BookingPitch>) {
         provider.request(.bookingPitch(date: date, idCustomer: idCustomer, idPitch: idPitch, idPrice: idPrice, idTime: idTime)) {
          (result) in
             switch result {
             case .success(let respone):
                 do {
-                    if let json = try respone.mapJSON() as? [String: Any],
-                        let dataJS = json["data"] as? String {
-                        guard let resultBooking = Mapper<BookingPitch>().map(JSONObject: dataJS) else {
+                    if let json = try respone.mapJSON() as? JSON,
+                        let dataJS = json["data"] as? JSON {
+                        guard let resultBooking = Mapper<BookingPitch>().map(JSON: dataJS ) else {
                             completion(.failure(NSError(domain: "", code: 400, userInfo: nil)))
                             return
                         }
                         completion(.success(resultBooking))
+                        print(resultBooking)
                     }
                 } catch {
                     completion(.failure(error))

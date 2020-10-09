@@ -30,6 +30,7 @@ class DetailHeaderTableViewCell: UITableViewCell {
     }
     
     func updateView() {
+        bookingBtn.layer.cornerRadius = 15
         addAnnotation()
         mapView.delegate = self
     }

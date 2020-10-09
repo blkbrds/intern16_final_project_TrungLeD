@@ -9,13 +9,19 @@
 import Foundation
 import ObjectMapper
 
-struct BookingPitch : Mappable {
+struct BookingPitch: Mappable {
     // MARK: - Properties
-    var status : String?
+    var status: String?
     
     // MARK: - Init
     init?(map: Map) {
     }
+    
+    init(status: String) {
+        self.status = status
+    }
+    
+    init() {}
     mutating func mapping(map: Map) {
         status <- map["status"]
     }

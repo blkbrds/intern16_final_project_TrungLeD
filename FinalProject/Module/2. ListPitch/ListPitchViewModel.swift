@@ -23,6 +23,7 @@ class ListPitchViewModel {
     weak var delegate: ListPitchViewModelDelegate?
     var notificationToken: NotificationToken?
     var item: Pitch = Pitch()
+    var resultBooking: BookingPitch = BookingPitch()
     var pitchTotals: [Pitch] = []
     var pitchs: [Pitch] = []
     var realmPitch: [Pitch] = []
@@ -46,6 +47,20 @@ class ListPitchViewModel {
                 this.pitchTotals = result
                 this.pitchs = this.pitchTotals
                 completion( .success)
+            }
+        }
+    }
+    
+    func bookingThePitch(completion: @escaping APICompletion) {
+        networkManager.bookingThePitch(date: "2020-12-19", idCustomer: 1, idPitch: 1, idPrice: 1, idTime: 1) { [weak self](result) in
+            guard let this = self else { return }
+            switch result {
+            case .failure(let error):
+                completion( .failure(error))
+            case .success(let result):
+                this.resultBooking = result
+                print("----BOOKINGGGG: \(result)")
+                completion(.success)
             }
         }
     }
@@ -105,7 +120,7 @@ class ListPitchViewModel {
         }
     }
     
-    func addFavorite(id: Int, namePitch: String, addressPitch: String, timeUse: String, phone: String, pitchType: String, pitchImage: String) -> Error? {
+    func addFavorite(id: Int, namePitch: String, addressPitch: String, timeUse: String, phone: String, pitchType: String, pitchImage: String, description1: String) -> Error? {
         do {
             let realm = try Realm()
             let pitch = Pitch()
@@ -116,6 +131,7 @@ class ListPitchViewModel {
             pitch.address = addressPitch
             pitch.phone = phone
             pitch.pitchType = pitchType
+            pitch.description1 = description1
             try realm.write {
                 realm.add(pitch, update: .all)
                 checkFavorite(isFavorite: true, id: id )

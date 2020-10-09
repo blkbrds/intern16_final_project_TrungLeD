@@ -14,7 +14,6 @@ class MyPinView: MKPinAnnotationView {
     
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
- 
         self.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         self.imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         self.imageView.image = UIImage(named: "ic_listpitch_pitch")

@@ -13,7 +13,7 @@ enum ServiceAPI {
     case getAllDictrict
     case login(phone: String, pw: String)
     case getAllPitch(page: Int, pageSize: Int)
-    case bookingPitch(date: Date, idCustomer: Int, idPitch: Int, idPrice: Int, idTime: Int)
+    case bookingPitch(date: String, idCustomer: Int, idPitch: Int, idPrice: Int, idTime: Int)
 }
 
 // enum Result
@@ -95,9 +95,17 @@ extension ServiceAPI: TargetType {
     }
     
     var headers: [String: String]? {
-        var headers: [String: String] = [:]
-        headers["Content-type"] = "application/json"
-        return headers
+        switch self {
+        case .bookingPitch:
+            var headers: [String: String] = [:]
+            headers["authorization"] = "eyJhbGciOiJIUzI1NiJ9.eyJwaG9uZSI6IjAxMjM0NTY3ODkiLCJleHAiOjE2MDIyOTk0NDR9.rlH-qv7pAncRHEm_SOEWEfu-2eLFH6p_Tgy61zT0AjM"
+//             headers["Host"] = "<calculated when request is sent>"
+            return headers
+        default:
+            var headers: [String: String] = [:]
+            headers["Content-type"] = "application/json"
+            return headers
+        }
     }
 }
 

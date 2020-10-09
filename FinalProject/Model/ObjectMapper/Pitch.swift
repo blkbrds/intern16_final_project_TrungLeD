@@ -15,11 +15,15 @@ import RealmSwift
     dynamic var phone: String = ""
     dynamic var address: String = ""
     dynamic var pitchType: String = ""
+    dynamic var lat: Double = 0.0
+    dynamic var long: Double = 0.0
     
     // MARK: Init
     required init?(map: Map) {}
-    init(id: Int = 0, pitchType: PitchType = PitchType(), name: String = "", description1: String = "", timeUse: String = "", count: Double = 0.0, imagePitch: String = "", isFavorite: Bool) {
+    init(id: Int = 0, pitchType: PitchType = PitchType(), name: String = "", description1: String = "", timeUse: String = "", count: Double = 0.0, imagePitch: String = "", isFavorite: Bool, lat: Double, long: Double) {
         self.id = id
+        self.long = long
+        self.lat = lat
         self.type = pitchType
         self.name = name
         self.description1 = description1
@@ -47,6 +51,8 @@ import RealmSwift
         phone = type.owner.phone
         address = type.owner.address
         pitchType = type.name
+        lat = type.owner.lat
+        long = type.owner.lng
     }
 }
 
