@@ -17,7 +17,7 @@ enum DateFormatType: String {
     case date = "dd-MM-yyyy"
 }
 protocol ListPitchTableViewCellDelegate: class {
-    func bookingButton(view: ListPitchTableViewCell)
+    func bookingButton(cell: ListPitchTableViewCell, id: Int)
     func handleFavoriteTableView( cell: ListPitchTableViewCell, id: Int, isFavorite: Bool)
 }
 
@@ -71,7 +71,10 @@ final class ListPitchTableViewCell: UITableViewCell {
     }
     
     @IBAction func bookingTapped(_ sender: UIButton) {
-        delegate?.bookingButton(view: self)
+        guard let viewModel = viewModel else { return }
+        if let delegate = delegate {
+            delegate.bookingButton(cell: self, id: viewModel.id)
+        }
     }
 }
 

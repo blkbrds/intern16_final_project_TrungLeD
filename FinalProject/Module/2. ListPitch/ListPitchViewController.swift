@@ -23,6 +23,7 @@ class ListPitchViewController: UIViewController {
     var inputDate: [Date] = []
     private var viewModel: ListPitchViewModel = ListPitchViewModel()
     var pitch: [Pitch]?
+    var idPitch: Int = 0
     // MARK: - Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -97,12 +98,22 @@ class ListPitchViewController: UIViewController {
     
     @IBAction func doneTapped(_ sender: UIBarButtonItem) {
         let idTime = checkTime()
+        if idTime == 0 {
+            showAlert(alertText: "Lỗi", alertMessage: "Vui lòng chọn trước 9h tối và sau 6h sáng")
+        }
         let date = String(datePicker1.date.getDate())
-        viewModel.bookingThePitch(date: date, idCustomer: 1, idPitch: 1, idPrice: 1, idTime: idTime) { [weak self] (result) in
+        let dateCurrent = Date()
+        let format = DateFormatter()
+        format.dateFormat = "yyyy-MM-dd"
+        let formattedDate = format.string(from: dateCurrent)
+        if formattedDate == date {
+            showAlert(alertText: "Lỗi", alertMessage: "Vui lòng đặt trước ít nhất 1 ngày")
+        }
+        viewModel.bookingThePitch(date: date, idCustomer: 1, idPitch: idPitch, idPrice: 1, idTime: idTime) { [weak self] (result) in
             guard let this = self else { return }
             switch result {
             case .success:
-                this.showAlert(alertText: "Đặt Sân", alertMessage: "Tình trạng:\(this.viewModel.resultBooking))")
+                this.showAlert(alertText: "Đặt Sân", alertMessage: "Tình trạng: \(this.viewModel.resultBooking.status)")
             case .failure(let error):
                 self?.showAlert(alertText: "loi dat san----", alertMessage: "loi dat san\(error)")
             }
@@ -283,8 +294,9 @@ extension ListPitchViewController: UISearchBarDelegate {
 }
 // MARK: - Extension: - ListPitchTableViewCellDelegate
 extension ListPitchViewController: ListPitchTableViewCellDelegate {
-    func bookingButton(view: ListPitchTableViewCell) {
+    func bookingButton(cell: ListPitchTableViewCell, id: Int) {
         loadDatePicker()
+        idPitch = id
     }
     
     func handleFavoriteTableView(cell: ListPitchTableViewCell, id: Int, isFavorite: Bool) {
