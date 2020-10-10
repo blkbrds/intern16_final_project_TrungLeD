@@ -11,7 +11,7 @@ import ObjectMapper
 
 struct BookingPitch: Mappable {
     // MARK: - Properties
-    var status: String?
+    var status: String = ""
     
     // MARK: - Init
     init?(map: Map) {

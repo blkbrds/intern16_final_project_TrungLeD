@@ -67,24 +67,28 @@ class ListPitchViewController: UIViewController {
     func checkTime() -> Int {
         let hour = datePicker1.date.getTime().hour
         let minute = datePicker1.date.getTime().minute
-        if hour < 6 && hour > 22 { return 0 }
+        if hour < 6 && hour > 22 {
+            showAlert(alertText: "Sai khung giờ", alertMessage: "Chọn lại khung giờ")
+            return 0
+        }
         else if  hour == 6 && minute == 30 { return 1 }
-        else if  hour == 6 && minute == 30 { return 2 }
-        else if  hour == 7 && minute == 30 { return 3 }
-        else if  hour == 8 && minute == 30 { return 4 }
-        else if  hour == 9 && minute == 30 { return 5 }
-        else if  hour == 10 && minute == 30 { return 6 }
-        else if  hour == 11 && minute == 30 { return 7 }
-        else if  hour == 12 && minute == 30 { return 8 }
-        else if  hour == 13 && minute == 30 { return 9 }
-        else if  hour == 14 && minute == 30 { return 10 }
-        else if  hour == 15 && minute == 30 { return 11 }
-        else if  hour == 16 && minute == 30 { return 12 }
-        else if  hour == 17 && minute == 30 { return 13 }
-        else if  hour == 18 && minute == 30 { return 14 }
-        else if  hour == 19 && minute == 30 { return 15 }
-        else if  hour == 20 && minute == 30 { return 16 }
-        else { return 0 }
+        else if  hour == 7 && minute == 30 { return 2 }
+        else if  hour == 8 && minute == 30 { return 3 }
+        else if  hour == 9 && minute == 30 { return 4 }
+        else if  hour == 10 && minute == 30 { return 5 }
+        else if  hour == 11 && minute == 30 { return 6 }
+        else if  hour == 12 && minute == 30 { return 7 }
+        else if  hour == 13 && minute == 30 { return 8 }
+        else if  hour == 14 && minute == 30 { return 9 }
+        else if  hour == 15 && minute == 30 { return 10 }
+        else if  hour == 16 && minute == 30 { return 11 }
+        else if  hour == 17 && minute == 30 { return 12 }
+        else if  hour == 18 && minute == 30 { return 13 }
+        else if  hour == 19 && minute == 30 { return 14 }
+        else if  hour == 20 && minute == 30 { return 15 }
+        else if minute == 0 { showAlert(alertText: "Sai Khung giờ", alertMessage: "Chọn Lại Giờ")
+            return 0
+        } else { return 0 }
     }
     
     @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
