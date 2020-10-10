@@ -92,26 +92,21 @@ class ListPitchViewController: UIViewController {
     }
     
     @IBAction func doneTapped(_ sender: UIBarButtonItem) {
-         checkTime()
-        viewModel.idTime = checkTime()
-        viewModel.dateBooking = String(datePicker1.date.getDate())
-        viewModel.bookingThePitch { (result) in
+        let idTime = checkTime()
+        let date = String(datePicker1.date.getDate())
+        viewModel.bookingThePitch(date: date, idCustomer: 1, idPitch: 1, idPrice: 1, idTime: idTime) { [weak self] (result) in
+            guard let this = self else { return }
             switch result {
             case .success:
-//                if result == "Lịch đã được đặt" {
-//                    self.showAlert(alertText: "Tình Trạng", alertMessage: result)
-//                } else {
-//                    self.showAlert(alertText: "Đặt Sân Thành Công", alertMessage: result)
-//                }
-                self.showAlert(alertText: "Đã Đặt", alertMessage: "Đã Đặt")
+                print("apppppppp \(this.viewModel.resultBooking)")
+                this.showAlert(alertText: "Đặt Sân", alertMessage: "Tình trạng:\(this.viewModel.resultBooking))")
             case .failure(let error):
-                self.showAlert(alertText: "Error", alertMessage: "Error: \(error)")
+                self?.showAlert(alertText: "loi dat san----", alertMessage: "loi dat san\(error)")
             }
-           
         }
         stateDatePickerDefault()
-        print(viewModel.dateBooking)
-        
+        print(idTime)
+        print(date)
     }
     
     // MARK: - Function
@@ -169,16 +164,6 @@ class ListPitchViewController: UIViewController {
     }
     
     private func loadData() {
-        viewModel.bookingThePitch { [weak self] (done) in
-            guard let this = self else { return }
-            switch done {
-            case .success:
-                print(done)
-            case .failure(let error):
-                print("loi roi------- \(error)")
-            }
-        }
-        
         viewModel.getAllData { [weak self] result in
             guard let this = self else { return }
             switch result {

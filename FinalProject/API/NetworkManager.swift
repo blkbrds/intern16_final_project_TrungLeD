@@ -17,8 +17,12 @@ final class NetworkManager: Networkable {
    // let authPlugin = AccessTokenPlugin { _ in token }
   //  let provider1 = MoyaProvider<BookingPitch>(plugins: [authPlugin])
     func bookingThePitch(date: String, idCustomer: Int, idPitch: Int, idPrice: Int, idTime: Int, completion: @escaping CompletionResult<BookingPitch>) {
-        provider.request(.bookingPitch(date: date, idCustomer: idCustomer, idPitch: idPitch, idPrice: idPrice, idTime: idTime)) {
-         (result) in
+        provider.request(.bookingPitch(date: date, idCustomer: idCustomer, idPitch: 1, idPrice: idPrice, idTime: idTime)) {  (result) in
+            print(date)
+            print(idCustomer)
+            print(idPitch)
+            print(idPrice)
+            print(idTime)
             switch result {
             case .success(let respone):
                 do {
