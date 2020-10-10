@@ -52,7 +52,7 @@ class ListPitchViewController: UIViewController {
     }
     
     private func stateDatePickerDefault() {
-        UIView.transition(with: viewContainerDatePicker , duration: 0.5,
+        UIView.transition(with: viewContainerDatePicker, duration: 0.5,
                           options: .transitionCrossDissolve,
                           animations: {
                             self.tabBarController?.tabBar.isHidden = false
@@ -69,24 +69,24 @@ class ListPitchViewController: UIViewController {
         let minute = datePicker1.date.getTime().minute
         if hour < 6 && hour > 22 {
             showAlert(alertText: "Sai khung giờ", alertMessage: "Chọn lại khung giờ")
-            return 0
-        }
-        else if  hour == 6 && minute == 30 { return 1 }
-        else if  hour == 7 && minute == 30 { return 2 }
-        else if  hour == 8 && minute == 30 { return 3 }
-        else if  hour == 9 && minute == 30 { return 4 }
-        else if  hour == 10 && minute == 30 { return 5 }
-        else if  hour == 11 && minute == 30 { return 6 }
-        else if  hour == 12 && minute == 30 { return 7 }
-        else if  hour == 13 && minute == 30 { return 8 }
-        else if  hour == 14 && minute == 30 { return 9 }
-        else if  hour == 15 && minute == 30 { return 10 }
-        else if  hour == 16 && minute == 30 { return 11 }
-        else if  hour == 17 && minute == 30 { return 12 }
-        else if  hour == 18 && minute == 30 { return 13 }
-        else if  hour == 19 && minute == 30 { return 14 }
-        else if  hour == 20 && minute == 30 { return 15 }
-        else if minute == 0 { showAlert(alertText: "Sai Khung giờ", alertMessage: "Chọn Lại Giờ")
+            return 0 } else if  hour == 6 && minute == 30 {
+            return 1
+        } else if  hour == 7 && minute == 30 {
+            return 2
+        } else if  hour == 8 && minute == 30 {
+            return 3 } else if  hour == 9 && minute == 30 {
+            return 4 } else if  hour == 10 && minute == 30 {
+            return 5 } else if  hour == 11 && minute == 30 {
+            return 6 } else if  hour == 12 && minute == 30 {
+            return 7 } else if  hour == 13 && minute == 30 {
+            return 8 } else if  hour == 14 && minute == 30 {
+            return 9 } else if  hour == 15 && minute == 30 {
+            return 10 } else if  hour == 16 && minute == 30 {
+            return 11 } else if  hour == 17 && minute == 30 {
+            return 12 } else if  hour == 18 && minute == 30 {
+            return 13 } else if  hour == 19 && minute == 30 {
+            return 14 } else if  hour == 20 && minute == 30 {
+            return 15 } else if minute == 0 { showAlert(alertText: "Sai Khung giờ", alertMessage: "Chọn Lại Giờ")
             return 0
         } else { return 0 }
     }
@@ -102,15 +102,12 @@ class ListPitchViewController: UIViewController {
             guard let this = self else { return }
             switch result {
             case .success:
-                print("apppppppp \(this.viewModel.resultBooking)")
                 this.showAlert(alertText: "Đặt Sân", alertMessage: "Tình trạng:\(this.viewModel.resultBooking))")
             case .failure(let error):
                 self?.showAlert(alertText: "loi dat san----", alertMessage: "loi dat san\(error)")
             }
         }
         stateDatePickerDefault()
-        print(idTime)
-        print(date)
     }
     
     // MARK: - Function
@@ -142,7 +139,7 @@ class ListPitchViewController: UIViewController {
     func configMapView() {
         mapKit.delegate = self
         // This is coordinate of Da Nang city.
-        let daNangLocation = CLLocation(latitude: 16.05228, longitude: 108.1919426)
+        let daNangLocation = CLLocation(latitude: 16.052_28, longitude: 108.191_942_6)
         let span = MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
         let region = MKCoordinateRegion(center: daNangLocation.coordinate, span: span)
         mapKit.region = region
@@ -155,7 +152,6 @@ class ListPitchViewController: UIViewController {
                             coordinate: CLLocationCoordinate2D(latitude: viewModel.pitchTotals[i].type.owner.lat, longitude: viewModel.pitchTotals[i].type.owner.lng))
             pins.append(pin)
         }
-        print(pins)
     }
     
     func addAnnotations() {

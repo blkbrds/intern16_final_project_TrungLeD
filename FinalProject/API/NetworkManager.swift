@@ -12,17 +12,28 @@ import ObjectMapper
 
 final class NetworkManager: Networkable {
     // MARK: - Function request
-    // Access Token Auth
-  //  let token = "eyeAm.AJsoN.weBTOKen"
-   // let authPlugin = AccessTokenPlugin { _ in token }
-  //  let provider1 = MoyaProvider<BookingPitch>(plugins: [authPlugin])
+    func getResever(idCustomer: Int, page: Int, pageSize: Int, completion: @escaping CompletionResult<[Reserve]>) {
+        provider.request(.getResever(idCustomer: idCustomer, page: 1, pageSize: 100)) {
+            (result) in
+            switch result {
+            case .success(let response):
+                do {
+                    if let json = try response.mapJSON() as? JSON, let data1JS = json["data"] as? JSArray {
+                        let reseverJS: [Reserve] = Mapper<Reserve>().mapArray(JSONArray: data1JS)
+                        completion(.success(reseverJS))
+                    }
+                    
+                } catch {
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
     func bookingThePitch(date: String, idCustomer: Int, idPitch: Int, idPrice: Int, idTime: Int, completion: @escaping CompletionResult<BookingPitch>) {
         provider.request(.bookingPitch(date: date, idCustomer: idCustomer, idPitch: 1, idPrice: idPrice, idTime: idTime)) {  (result) in
-            print(date)
-            print(idCustomer)
-            print(idPitch)
-            print(idPrice)
-            print(idTime)
             switch result {
             case .success(let respone):
                 do {
@@ -33,7 +44,6 @@ final class NetworkManager: Networkable {
                             return
                         }
                         completion(.success(resultBooking))
-                        print(resultBooking)
                     }
                 } catch {
                     completion(.failure(error))
@@ -55,7 +65,7 @@ final class NetworkManager: Networkable {
             case .success(let response):
                 do {
                     if let json = try response.mapJSON() as? [String: Any],
-                        let dataJS = json["data"] as? [String: Any],
+                        let dataJS = json["data"] as? JSON,
                         let customerJS = dataJS["customer"] as? [String: Any] {
                         guard let customer = Mapper<Customer>().map(JSONObject: customerJS) else {
                             completion(.failure(NSError(domain: "", code: 400, userInfo: nil)))

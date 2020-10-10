@@ -61,7 +61,6 @@ class ListPitchViewModel {
                 completion( .failure(error))
             case .success(let result):
                 this.resultBooking = result
-                print("----BOOKINGGGG: \(result)")
                 completion(.success)
             }
         }

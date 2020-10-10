@@ -14,6 +14,7 @@ enum ServiceAPI {
     case login(phone: String, pw: String)
     case getAllPitch(page: Int, pageSize: Int)
     case bookingPitch(date: String, idCustomer: Int, idPitch: Int, idPrice: Int, idTime: Int)
+    case getResever(idCustomer: Int, page: Int, pageSize: Int)
 }
 
 // enum Result
@@ -52,11 +53,13 @@ extension ServiceAPI: TargetType {
             return "/common/get-all-pitch"
         case .bookingPitch:
             return "/personal/reserve-pitch"
+        case .getResever:
+            return "/personal/get-reserve"
         }
     }
     var method: Moya.Method {
         switch self {
-        case .getAllDictrict, .getAllPitch(_, _):
+        case .getAllDictrict, .getAllPitch(_, _), .getResever(idCustomer: _, _, _):
             return .get
         case .login, .bookingPitch(_, _, _, _,_):
             return .post
@@ -91,12 +94,18 @@ extension ServiceAPI: TargetType {
             params["idPrice"] = idPrice
             params["idTime"] = idTime
             return .requestParameters(parameters: params, encoding: URLEncoding.default)
+        case .getResever(let idCustomer, let page, let pageSize):
+            var params: [String: Any] = [:]
+            params["idCustomer"] = idCustomer
+            params["page"] = page
+            params["pageSize"] = pageSize
+            return .requestParameters(parameters: params, encoding: URLEncoding.default)
         }
     }
     
     var headers: [String: String]? {
         switch self {
-        case .bookingPitch:
+        case .bookingPitch, .getResever:
             var headers: [String: String] = [:]
             headers["authorization"] = "eyJhbGciOiJIUzI1NiJ9.eyJwaG9uZSI6IjAxMjM0NTY3ODkiLCJleHAiOjE2MDIzOTQyMTR9.T59tEnh_wVJxSaKQXHKPqRl5biapH6e4ffZYx0R_Prg"
 //             headers["Host"] = "<calculated when request is sent>"

@@ -17,4 +17,6 @@ protocol Networkable {
     func getAllPitch(page: Int, pageSize: Int, completion: @escaping CompletionResult<[Pitch]>)
     
     func bookingThePitch(date: String, idCustomer: Int, idPitch: Int, idPrice: Int, idTime: Int, completion: @escaping CompletionResult<BookingPitch>)
+    
+    func getResever(idCustomer: Int, page: Int, pageSize: Int, completion: @escaping CompletionResult<[Reserve]>)
 }
