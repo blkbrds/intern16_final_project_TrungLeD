@@ -106,8 +106,8 @@ class FavouriteViewModel {
     }
     
     func didSelectRowAt(indexPath: IndexPath) -> DetailViewModel {
-        let item = pitchs[indexPath.row]
-        let detail = DetailViewModel(pitch: item)
-        return detail
+        let pitch = pitchs[indexPath.row]
+        let viewModel = DetailViewModel(pitch: pitch)
+        return viewModel
     }
 }

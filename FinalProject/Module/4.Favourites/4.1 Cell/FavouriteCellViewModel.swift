@@ -17,4 +17,18 @@ final class FavouriteCellViewModel {
         self.pitch = pitch
         self.isFavorite = pitch.isFavorite
     }
+    
+//    func deleteItemFavorite(completion: @escaping APICompletion) {
+//        do {
+//            let realm = try Realm()
+//            let predicate = NSPredicate(format: "id = \(id)")
+//            let result = realm.objects(Pitch.self).filter(predicate)
+//            try realm.write {
+//                realm.delete(result)
+//            }
+//            completion(.success)
+//        } catch {
+//            completion(.failure(error))
+//        }
+//    }
 }

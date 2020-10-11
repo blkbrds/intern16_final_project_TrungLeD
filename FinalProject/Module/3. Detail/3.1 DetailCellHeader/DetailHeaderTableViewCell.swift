@@ -8,14 +8,16 @@
 
 import UIKit
 import MapKit
-
+protocol DetailHeaderTableViewCellDelegate: class {
+    func bookingPitch(cell: DetailHeaderTableViewCell)
+}
 class DetailHeaderTableViewCell: UITableViewCell {
     // MARK: - IBOutlet
     @IBOutlet var bookingBtn: UIButton!
     @IBOutlet var mapView: MKMapView!
     
     // MARK: Properties
-    
+    var delegate: DetailHeaderTableViewCellDelegate?
     var viewModel: DetailHeaderCellViewModel? {
         didSet {
             updateView()
@@ -48,8 +50,10 @@ class DetailHeaderTableViewCell: UITableViewCell {
         
     }
     
-    @IBAction func bookingtapped(_ sender: Any) {
-        
+    @IBAction func bookingtapped(_ sender: UIButton) {
+        if let delegate = delegate {
+            delegate.bookingPitch(cell: self)
+        }
     }
 }
 

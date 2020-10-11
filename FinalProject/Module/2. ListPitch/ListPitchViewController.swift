@@ -265,7 +265,7 @@ extension ListPitchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
         detailVC.viewModel = viewModel.getInforPitch(at: indexPath)
-        detailVC.hidesBottomBarWhenPushed = true
+      //  detailVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }
@@ -294,26 +294,54 @@ extension ListPitchViewController: UISearchBarDelegate {
 }
 // MARK: - Extension: - ListPitchTableViewCellDelegate
 extension ListPitchViewController: ListPitchTableViewCellDelegate {
+    func handleFavoriteTableView(cell: ListPitchTableViewCell, needPerform action: ListPitchTableViewCell.Action) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        switch action {
+        case .favorite(let isFavorite):
+            if isFavorite {
+                viewModel.unfavorite(id: indexPath.row) { [weak self] result in
+                    guard let this = self else { return }
+                    switch result {
+                    case .success:
+                        this.tableView.reloadData()
+                    case.failure(let error):
+                        this.showAlert(alertText: "Error favorite", alertMessage: "error From realm \(error)")
+                    }
+                }
+            } else {
+                viewModel.addFavorite(index: indexPath.row) { [weak self] result in
+                    guard let this = self else { return }
+                    switch result {
+                    case .success:
+                        this.tableView.reloadData()
+                    case .failure(let error):
+                        this.showAlert(alertText: "Error add favorite", alertMessage: "error From realm \(error)")
+                    }
+                }
+            }
+        }
+    }
+    
     func bookingButton(cell: ListPitchTableViewCell, id: Int) {
         loadDatePicker()
         idPitch = id
     }
     
-    func handleFavoriteTableView(cell: ListPitchTableViewCell, id: Int, isFavorite: Bool) {
-        if isFavorite {
-            viewModel.unfavorite(id: id)
-        } else {
-            viewModel.addFavorite(id: cell.viewModel?.id ?? 0,
-                                  namePitch: cell.viewModel?.name ?? "",
-                                  addressPitch: cell.viewModel?.addressOwner ?? "",
-                                  timeUse: cell.viewModel?.timeUser ?? "",
-                                  phone: cell.viewModel?.phoneOwner ?? "",
-                                  pitchType: cell.viewModel?.pitchType ?? "",
-                                  pitchImage: cell.viewModel?.imagePitch ?? "",
-                                  description1: cell.viewModel?.description1 ?? "")
-        }
-        tableView.reloadData()
-    }
+//    func handleFavoriteTableView(cell: ListPitchTableViewCell, id: Int, isFavorite: Bool) {
+//        if isFavorite {
+//            viewModel.unfavorite(id: id)
+//        } else {
+//            viewModel.addFavorite(id: cell.viewModel?.id ?? 0,
+//                                  namePitch: cell.viewModel?.name ?? "",
+//                                  addressPitch: cell.viewModel?.addressOwner ?? "",
+//                                  timeUse: cell.viewModel?.timeUser ?? "",
+//                                  phone: cell.viewModel?.phoneOwner ?? "",
+//                                  pitchType: cell.viewModel?.pitchType ?? "",
+//                                  pitchImage: cell.viewModel?.imagePitch ?? "",
+//                                  description1: cell.viewModel?.description1 ?? "")
+//        }
+//        tableView.reloadData()
+//    }
 }
 
 // MARK: Extension: - ListPitchViewModelDelegate

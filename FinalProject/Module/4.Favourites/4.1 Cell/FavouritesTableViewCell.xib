@@ -69,17 +69,6 @@
                             <constraint firstAttribute="width" constant="15" id="wqE-RY-2XQ"/>
                         </constraints>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Ls-34-A5g">
-                        <rect key="frame" x="290" y="41" width="25" height="25"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="25" id="6bc-yu-WvB"/>
-                            <constraint firstAttribute="width" constant="25" id="Ft3-nd-noM"/>
-                        </constraints>
-                        <state key="normal" title="Button" image="ic_detail_booking"/>
-                        <connections>
-                            <action selector="bookingClicked:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="znt-LN-MbA"/>
-                        </connections>
-                    </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LsI-2D-nAU">
                         <rect key="frame" x="300" y="5" width="15" height="15"/>
                         <constraints>
@@ -99,13 +88,11 @@
                     <constraint firstItem="woT-WK-AaH" firstAttribute="top" secondItem="OcG-Iz-NNx" secondAttribute="bottom" id="3Cc-fN-QGa"/>
                     <constraint firstItem="LsI-2D-nAU" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="6f5-JF-8D1"/>
                     <constraint firstItem="OcG-Iz-NNx" firstAttribute="leading" secondItem="nci-wR-QOW" secondAttribute="trailing" constant="3" id="EmS-Jo-DlF"/>
-                    <constraint firstAttribute="trailing" secondItem="8Ls-34-A5g" secondAttribute="trailing" constant="5" id="H1q-wz-BkS"/>
                     <constraint firstAttribute="trailing" secondItem="LsI-2D-nAU" secondAttribute="trailing" constant="5" id="Jzm-4D-S1Q"/>
                     <constraint firstAttribute="bottom" secondItem="Zq9-jK-aIV" secondAttribute="bottom" constant="5" id="MRI-nB-tFm"/>
                     <constraint firstItem="W2S-04-eV3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="Urk-BB-PSw"/>
                     <constraint firstItem="nci-wR-QOW" firstAttribute="top" secondItem="W2S-04-eV3" secondAttribute="bottom" constant="5" id="Zwr-zQ-Rz9"/>
                     <constraint firstItem="OcG-Iz-NNx" firstAttribute="top" secondItem="W2S-04-eV3" secondAttribute="bottom" constant="1" id="bNZ-ae-wPL"/>
-                    <constraint firstAttribute="bottom" secondItem="8Ls-34-A5g" secondAttribute="bottom" constant="10" id="i6A-IM-s76"/>
                     <constraint firstItem="nci-wR-QOW" firstAttribute="leading" secondItem="Zq9-jK-aIV" secondAttribute="trailing" constant="8" id="kXu-fX-QuU"/>
                     <constraint firstItem="Jbm-pR-Ffb" firstAttribute="leading" secondItem="nci-wR-QOW" secondAttribute="leading" id="oUV-ze-6FO"/>
                     <constraint firstItem="Jbm-pR-Ffb" firstAttribute="top" secondItem="nci-wR-QOW" secondAttribute="bottom" constant="5" id="pU5-xb-3wv"/>
@@ -123,7 +110,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="ic_detail_booking" width="50" height="50"/>
         <image name="ic_detail_clock" width="256" height="256"/>
         <image name="ic_detail_location" width="50" height="50"/>
         <image name="ic_favourite_close" width="20" height="20"/>

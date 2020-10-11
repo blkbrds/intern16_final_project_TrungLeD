@@ -30,9 +30,6 @@ class ListPitchViewModel {
     var nameSort: [String] = []
     let networkManager: NetworkManager
     var isBooking: Bool = false
-//    var dateBooking: String = ""
-//    var timeBooking: String = ""
-//    var idTime: Int = 0
     // MARK: - Init
     init(networkManager: NetworkManager = NetworkManager.shared) {
         self.networkManager = networkManager
@@ -121,29 +118,30 @@ class ListPitchViewModel {
         }
     }
     
-    func addFavorite(id: Int, namePitch: String, addressPitch: String, timeUse: String, phone: String, pitchType: String, pitchImage: String, description1: String) -> Error? {
+    func addFavorite(index: Int, completion: @escaping APICompletion) {
         do {
             let realm = try Realm()
-            let pitch = Pitch()
-            pitch.imagePitch = pitchImage
-            pitch.id = id
-            pitch.name = namePitch
-            pitch.timeUse = timeUse
-            pitch.address = addressPitch
-            pitch.phone = phone
-            pitch.pitchType = pitchType
-            pitch.description1 = description1
+            let pitchTemp = pitchTotals[index]
+            let pitchRealm = Pitch(id: pitchTemp.id,
+                                   type: pitchTemp.type,
+                                   name: pitchTemp.name,
+                                   description1: pitchTemp.description1,
+                                   timeUse: pitchTemp.timeUse,
+                                   count: pitchTemp.count,
+                                   imagePitch: pitchTemp.imagePitch,
+                                   isFavorite: pitchTemp.isFavorite,
+                                   lat: pitchTemp.lat,
+                                   long: pitchTemp.long)
             try realm.write {
-                realm.add(pitch, update: .all)
-                checkFavorite(isFavorite: true, id: id )
+                realm.create(Pitch.self, value: pitchRealm, update: .all)
             }
-            return nil
+            completion(.success)
         } catch {
-            return error
+            completion(.failure(error))
         }
     }
     
-    func unfavorite(id: Int) -> Error? {
+    func unfavorite(id: Int, completion: @escaping APICompletion){
         do {
             let realm = try Realm()
             let predicate = NSPredicate(format: "id = \(id)")
@@ -152,9 +150,9 @@ class ListPitchViewModel {
                 realm.delete(result)
                 checkFavorite(isFavorite: false, id: id)
             }
-            return nil
+            completion(.success)
         } catch {
-            return error
+            completion(.failure(error))
         }
     }
 }

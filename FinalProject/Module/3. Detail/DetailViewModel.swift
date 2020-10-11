@@ -17,15 +17,33 @@ enum TypeSection {
 }
 
 final class DetailViewModel {
+    enum Action {
+        case reloadData
+    }
     // MARK: - Properties
     var pitch: Pitch
-
+    var resultBooking: BookingPitch = BookingPitch()
+    let networkManager: NetworkManager
     // MARK: - Init
-    init(pitch: Pitch) {
+    init(pitch: Pitch, networkManager: NetworkManager = NetworkManager.shared) {
         self.pitch = pitch
+        self.networkManager = networkManager
     }
     
     // MARK: - Function
+    func bookingThePitch(date: String, idCustomer: Int, idPitch: Int, idPrice: Int, idTime: Int, completion: @escaping APICompletion) {
+        networkManager.bookingThePitch(date: date, idCustomer: 1, idPitch: idPitch, idPrice: 1, idTime: idTime) { [weak self](result) in
+            guard let this = self else { return }
+            switch result {
+            case .failure(let error):
+                completion( .failure(error))
+            case .success(let result):
+                this.resultBooking = result
+                completion(.success)
+            }
+        }
+    }
+    
     func typeSectionLoad(number: Int) -> TypeSection {
         switch number {
         case 0:
@@ -65,7 +83,7 @@ final class DetailViewModel {
     }
     
     func viewModelForInfor(at indexPath: IndexPath) -> DetailInforCellViewModel {
-        let viewModel = DetailInforCellViewModel(pitchType: pitch.pitchType)
+        let viewModel = DetailInforCellViewModel(pitchType: pitch.capacity)
         return viewModel
     }
     
