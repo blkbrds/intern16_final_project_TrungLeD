@@ -15,6 +15,7 @@ enum ServiceAPI {
     case getAllPitch(page: Int, pageSize: Int)
     case bookingPitch(date: String, idCustomer: Int, idPitch: Int, idPrice: Int, idTime: Int)
     case getResever(idCustomer: Int, page: Int, pageSize: Int)
+    case cancelResever(idCustomer: Int, idReserve: Int)
 }
 
 // enum Result
@@ -55,6 +56,8 @@ extension ServiceAPI: TargetType {
             return "/personal/reserve-pitch"
         case .getResever:
             return "/personal/get-reserve"
+        case .cancelResever:
+            return "/personal/cancel-reserve"
         }
     }
     var method: Moya.Method {
@@ -63,6 +66,8 @@ extension ServiceAPI: TargetType {
             return .get
         case .login, .bookingPitch(_, _, _, _,_):
             return .post
+        case .cancelResever(_,_):
+            return .delete
         }
     }
     
@@ -100,15 +105,19 @@ extension ServiceAPI: TargetType {
             params["page"] = page
             params["pageSize"] = pageSize
             return .requestParameters(parameters: params, encoding: URLEncoding.default)
+        case .cancelResever(let idCustomer, let idReserve):
+            var params: [String: Any] = [:]
+            params["idCustomer"] = idCustomer
+            params["idReserve"] = idReserve
+            return .requestParameters(parameters: params, encoding: URLEncoding.default)
         }
     }
     
     var headers: [String: String]? {
         switch self {
-        case .bookingPitch, .getResever:
+        case .bookingPitch, .getResever, .cancelResever:
             var headers: [String: String] = [:]
             headers["authorization"] = "eyJhbGciOiJIUzI1NiJ9.eyJwaG9uZSI6IjAxMjM0NTY3ODkiLCJleHAiOjE2MDI1MTAwNjV9.ez06trsIAibyi3BaAMgSAoNtCmTAO6bEDrBKYVw1orc"
-//             headers["Host"] = "<calculated when request is sent>"
             return headers
         default:
             var headers: [String: String] = [:]

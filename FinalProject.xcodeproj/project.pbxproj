@@ -19,6 +19,10 @@
 		513D174A2531A92000156C1A /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513D17432531A92000156C1A /* Time.swift */; };
 		513D174B2531A92000156C1A /* Reserve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513D17442531A92000156C1A /* Reserve.swift */; };
 		513D174E2531BD6000156C1A /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513D174D2531BD6000156C1A /* ScheduleViewModel.swift */; };
+		5148F3892533656C009D5C23 /* Cancel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5148F3882533656C009D5C23 /* Cancel.swift */; };
+		51A733062533445100BBE5B4 /* ScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A733042533445100BBE5B4 /* ScheduleCell.swift */; };
+		51A733072533445100BBE5B4 /* ScheduleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51A733052533445100BBE5B4 /* ScheduleCell.xib */; };
+		51A733092533480600BBE5B4 /* ScheduleCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A733082533480600BBE5B4 /* ScheduleCellModel.swift */; };
 		A60B0B08D1A3DB52D7F3C114 /* Pods_FinalProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E200185B9A7477CBBC2CA9 /* Pods_FinalProject.framework */; };
 		B00B7D8C252AC5BA007BC7E0 /* FavouritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00B7D8A252AC5BA007BC7E0 /* FavouritesTableViewCell.swift */; };
 		B00B7D8D252AC5BA007BC7E0 /* FavouritesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B00B7D8B252AC5BA007BC7E0 /* FavouritesTableViewCell.xib */; };
@@ -102,6 +106,10 @@
 		513D17432531A92000156C1A /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		513D17442531A92000156C1A /* Reserve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reserve.swift; sourceTree = "<group>"; };
 		513D174D2531BD6000156C1A /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScheduleViewModel.swift; path = ../../../../../trungld/intern16_final_project_TrungLeD/FinalProject/Module/5.Schedule/ScheduleViewModel.swift; sourceTree = "<group>"; };
+		5148F3882533656C009D5C23 /* Cancel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Cancel.swift; path = ../../../../../trungld/intern16_final_project_TrungLeD/FinalProject/Model/ModelResever/Cancel.swift; sourceTree = "<group>"; };
+		51A733042533445100BBE5B4 /* ScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScheduleCell.swift; path = "../../../../../../trungld/intern16_final_project_TrungLeD/FinalProject/Module/5.Schedule/5.1 Cell/ScheduleCell.swift"; sourceTree = "<group>"; };
+		51A733052533445100BBE5B4 /* ScheduleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ScheduleCell.xib; path = "../../../../../../trungld/intern16_final_project_TrungLeD/FinalProject/Module/5.Schedule/5.1 Cell/ScheduleCell.xib"; sourceTree = "<group>"; };
+		51A733082533480600BBE5B4 /* ScheduleCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ScheduleCellModel.swift; path = "../../../../../../trungld/intern16_final_project_TrungLeD/FinalProject/Module/5.Schedule/5.1 Cell/ScheduleCellModel.swift"; sourceTree = "<group>"; };
 		A9141D71461BAD6FBA92C021 /* Pods_FinalProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinalProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B00B7D8A252AC5BA007BC7E0 /* FavouritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesTableViewCell.swift; sourceTree = "<group>"; };
 		B00B7D8B252AC5BA007BC7E0 /* FavouritesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavouritesTableViewCell.xib; sourceTree = "<group>"; };
@@ -330,6 +338,7 @@
 				513D17442531A92000156C1A /* Reserve.swift */,
 				513D173F2531A91F00156C1A /* Price.swift */,
 				513D17432531A92000156C1A /* Time.swift */,
+				5148F3882533656C009D5C23 /* Cancel.swift */,
 			);
 			path = ModelResever;
 			sourceTree = "<group>";
@@ -372,6 +381,16 @@
 			path = 0.Tabbar;
 			sourceTree = "<group>";
 		};
+		51A73303253343AC00BBE5B4 /* 5.1 Cell */ = {
+			isa = PBXGroup;
+			children = (
+				51A733042533445100BBE5B4 /* ScheduleCell.swift */,
+				51A733052533445100BBE5B4 /* ScheduleCell.xib */,
+				51A733082533480600BBE5B4 /* ScheduleCellModel.swift */,
+			);
+			path = "5.1 Cell";
+			sourceTree = "<group>";
+		};
 		51B896562528D10F0077EC8C /* 4.Favourites */ = {
 			isa = PBXGroup;
 			children = (
@@ -386,6 +405,7 @@
 		51B8965B2528D5CC0077EC8C /* 5.Schedule */ = {
 			isa = PBXGroup;
 			children = (
+				51A73303253343AC00BBE5B4 /* 5.1 Cell */,
 				B0C53862252AA99C00D707EE /* ScheduleViewController.swift */,
 				B0C53863252AA99C00D707EE /* ScheduleViewController.xib */,
 				513D174D2531BD6000156C1A /* ScheduleViewModel.swift */,
@@ -590,6 +610,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51A733072533445100BBE5B4 /* ScheduleCell.xib in Resources */,
 				B06B06F22526BB98002762B4 /* DetailBodyTableViewCell.xib in Resources */,
 				B0C53865252AA99C00D707EE /* ScheduleViewController.xib in Resources */,
 				B0C3AF682512059B00959BDD /* LoginViewController.xib in Resources */,
@@ -706,6 +727,7 @@
 				B062BBFF252EA3650083BA0B /* LocationManager.swift in Sources */,
 				B0F837A825256A07008F08C3 /* UIVIewControllerExt.swift in Sources */,
 				0EBA37442511C97B003465DD /* NetworkManager.swift in Sources */,
+				5148F3892533656C009D5C23 /* Cancel.swift in Sources */,
 				B06B06F52526BBA4002762B4 /* DetailHeaderCellViewModel.swift in Sources */,
 				0EBA37422511C97B003465DD /* Error.swift in Sources */,
 				B0F8378825245F36008F08C3 /* ListPitchTableViewCell.swift in Sources */,
@@ -733,6 +755,7 @@
 				B00B7D8F252ADD8A007BC7E0 /* FavouriteCellViewModel.swift in Sources */,
 				0EBA37152511C6C2003465DD /* SceneDelegate.swift in Sources */,
 				513D174B2531A92000156C1A /* Reserve.swift in Sources */,
+				51A733092533480600BBE5B4 /* ScheduleCellModel.swift in Sources */,
 				B062BBFE252EA3650083BA0B /* MyPinView.swift in Sources */,
 				B0F837BE2525DECD008F08C3 /* UIDatePicker.swift in Sources */,
 				B04CBDF0251C66020092D49F /* Customer.swift in Sources */,
@@ -748,6 +771,7 @@
 				B00B7D91252ADE07007BC7E0 /* FavouriteViewModel.swift in Sources */,
 				513D174E2531BD6000156C1A /* ScheduleViewModel.swift in Sources */,
 				B06B06E52526BB51002762B4 /* DetailViewModel.swift in Sources */,
+				51A733062533445100BBE5B4 /* ScheduleCell.swift in Sources */,
 				B06B06F72526CE29002762B4 /* DetailInforCellViewModel.swift in Sources */,
 				B0F837A1252461CF008F08C3 /* UITextFieldExt.swift in Sources */,
 				B0F837AA252570C3008F08C3 /* DateExt.swift in Sources */,

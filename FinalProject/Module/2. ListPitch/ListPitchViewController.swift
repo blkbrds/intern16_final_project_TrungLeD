@@ -89,7 +89,7 @@ class ListPitchViewController: UIViewController {
             return 14 } else if  hour == 20 && minute == 30 {
             return 15 } else if minute == 0 { showAlert(alertText: "Sai Khung giờ", alertMessage: "Chọn Lại Giờ")
             return 0
-        } else { return 0 }
+        } else { return -1  }
     }
     
     @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
@@ -98,7 +98,7 @@ class ListPitchViewController: UIViewController {
     
     @IBAction func doneTapped(_ sender: UIBarButtonItem) {
         let idTime = checkTime()
-        if idTime == 0 {
+        if idTime == 0 || idTime == -1 {
             showAlert(alertText: "Lỗi", alertMessage: "Vui lòng chọn trước 9h tối và sau 6h sáng")
         }
         let date = String(datePicker1.date.getDate())
