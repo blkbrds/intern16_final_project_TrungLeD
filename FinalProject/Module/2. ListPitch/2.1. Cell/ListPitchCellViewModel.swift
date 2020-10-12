@@ -45,7 +45,12 @@ final class ListPitchCellViewModel {
     var pitchType: String {
         return item.type.name
     }
-    
+    var imagePitch: String {
+        return item.imagePitch
+    }
+    var description1: String {
+        return item.description1
+    }
     init(item: Pitch) {
         self.item = item
         self.isFavorite = item.isFavorite

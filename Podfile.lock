@@ -12,6 +12,9 @@ PODS:
   - RealmSwift (5.4.7):
     - Realm (= 5.4.7)
   - RxSwift (5.1.1)
+  - SDWebImage (5.9.2):
+    - SDWebImage/Core (= 5.9.2)
+  - SDWebImage/Core (5.9.2)
   - SideMenu (6.4.9)
   - SwiftLint (0.40.2)
 
@@ -19,6 +22,7 @@ DEPENDENCIES:
   - Moya/RxSwift
   - ObjectMapper (~> 3.5)
   - RealmSwift
+  - SDWebImage (~> 5.0)
   - SideMenu
   - SwiftLint
 
@@ -30,6 +34,7 @@ SPEC REPOS:
     - Realm
     - RealmSwift
     - RxSwift
+    - SDWebImage
     - SideMenu
     - SwiftLint
 
@@ -40,9 +45,10 @@ SPEC CHECKSUMS:
   Realm: 4bfc08e376b2e30c84ec3200ebe715574da05cc0
   RealmSwift: ed40f371b62e8677141939e05b44a0c1a0a2d965
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  SDWebImage: 0b42b8719ab0c5257177d5894306e8a336b21cbb
   SideMenu: 8ef57a3cfc024a2d3fc1c036c7fe98537baec9e0
   SwiftLint: 1216c910d27c2633ade33b4f071bb6b930982e62
 
-PODFILE CHECKSUM: 7cefab0f1889f5da0338154603a28fe518ba045f
+PODFILE CHECKSUM: 3793f941341e320cdcdeb612da08b985ddcc3a9b
 
 COCOAPODS: 1.9.3

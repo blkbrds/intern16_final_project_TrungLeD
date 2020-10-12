@@ -111,7 +111,7 @@
                 <outlet property="bookingButton" destination="Uam-Ed-cYT" id="ZhM-cf-mqR"/>
                 <outlet property="dateBookingLabel" destination="93l-Ng-q7V" id="mTF-hg-T4D"/>
                 <outlet property="favoritesButton" destination="EiR-Wl-Pvk" id="Cil-Fq-FU6"/>
-                <outlet property="imageView1" destination="GuY-Sg-eOj" id="Jmi-Dp-Zbl"/>
+                <outlet property="imagePitch" destination="GuY-Sg-eOj" id="18E-TO-3KU"/>
                 <outlet property="namePitch" destination="A3r-f9-Fwl" id="cAl-29-78H"/>
             </connections>
             <point key="canvasLocation" x="120.28985507246378" y="-7.7008928571428568"/>

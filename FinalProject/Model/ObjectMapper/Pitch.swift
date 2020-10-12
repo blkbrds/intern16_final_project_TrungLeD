@@ -10,7 +10,7 @@ import RealmSwift
     dynamic var description1: String = ""
     dynamic var timeUse: String = ""
     dynamic var count: Double = 0.0
-    dynamic var isUse: String = ""
+    dynamic var imagePitch: String = ""
     dynamic var isFavorite: Bool = false
     dynamic var phone: String = ""
     dynamic var address: String = ""
@@ -18,14 +18,14 @@ import RealmSwift
     
     // MARK: Init
     required init?(map: Map) {}
-    init(id: Int = 0, pitchType: PitchType = PitchType(), name: String = "", description1: String = "", timeUse: String = "", count: Double = 0.0, isUse: String = "", isFavorite: Bool) {
+    init(id: Int = 0, pitchType: PitchType = PitchType(), name: String = "", description1: String = "", timeUse: String = "", count: Double = 0.0, imagePitch: String = "", isFavorite: Bool) {
         self.id = id
         self.type = pitchType
         self.name = name
         self.description1 = description1
         self.timeUse = timeUse
         self.count = count
-        self.isUse = isUse
+        self.imagePitch = imagePitch
         self.isFavorite = isFavorite
     }
     
@@ -41,9 +41,9 @@ import RealmSwift
         type <- map["pitchType"]
         name <- map["name"]
         description1 <- map["description"]
-        timeUse <- map["image"]
+        timeUse <- map["is_use"]
         count <- map["count"]
-        isUse <- map["is_use"]
+        imagePitch <- map["image"]
         phone = type.owner.phone
         address = type.owner.address
         pitchType = type.name
