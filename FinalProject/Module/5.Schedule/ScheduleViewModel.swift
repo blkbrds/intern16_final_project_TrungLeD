@@ -12,22 +12,21 @@ final class ScheduleViewModel {
     // MARK: - Properties
     let networkManager: NetworkManager
     var reseverTotals: [Reserve] = []
-    var resultCancel: String = ""
+    var resultCancel: Cancel = Cancel()
     // MARK: - Init
     init(networkManager: NetworkManager = NetworkManager.shared) {
         self.networkManager = networkManager
     }
     // MARK: - Function
     func cancelReserver(idReserve: Int, completion: @escaping APICompletion) {
-        networkManager.cancelResever(idCustomer: 1, idReserve: 132) { [weak self](result) in
+        networkManager.cancelResever(idCustomer: 1, idReserve: idReserve) { [weak self](result) in
             guard let this = self else { return }
             switch result {
             case .failure(let error):
                 completion(.failure(error))
             case .success(let result):
                 completion(.success)
-                this.resultCancel = result[1]
-                print(result)
+                this.resultCancel = result
             }
         }
     }

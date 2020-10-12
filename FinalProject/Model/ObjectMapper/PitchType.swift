@@ -1,16 +1,17 @@
 import Foundation
 import ObjectMapper
+import RealmSwift
 
-final class PitchType: Mappable {
+@objcMembers class PitchType: Object, Mappable {
     // MARK: Properties
     var id: String = ""
-    dynamic var owner: Owner = Owner()
-    var name: String = ""
+    dynamic var owner: Owner?
+    dynamic var name: String = ""
     
     // MARK: Init
     required init?(map: Map) {}
     
-    init() {}
+    required init() {}
     
     // MARK: Function
     func mapping(map: Map) {

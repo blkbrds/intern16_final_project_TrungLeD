@@ -98,7 +98,7 @@ class ListPitchViewModel {
         }
     }
     
-    func fetchRealmData() -> Error? {
+    func fetchRealmData() {
         do {
             // Realm
             let realm = try Realm()
@@ -106,9 +106,8 @@ class ListPitchViewModel {
             let results = realm.objects(Pitch.self)
             // Convert to array
             realmPitch = Array(results)
-            return nil
         } catch {
-            return error
+            return
         }
     }
     
@@ -123,7 +122,7 @@ class ListPitchViewModel {
             let realm = try Realm()
             let pitchTemp = pitchTotals[index]
             let pitchRealm = Pitch(id: pitchTemp.id,
-                                   type: pitchTemp.type,
+                                   type: pitchTemp.type ?? PitchType(),
                                    name: pitchTemp.name,
                                    description1: pitchTemp.description1,
                                    timeUse: pitchTemp.timeUse,
@@ -141,7 +140,7 @@ class ListPitchViewModel {
         }
     }
     
-    func unfavorite(id: Int, completion: @escaping APICompletion){
+    func unfavorite(id: Int, completion: @escaping APICompletion) {
         do {
             let realm = try Realm()
             let predicate = NSPredicate(format: "id = \(id)")

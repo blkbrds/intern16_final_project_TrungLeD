@@ -24,6 +24,7 @@ final class DetailViewModel {
     var pitch: Pitch
     var resultBooking: BookingPitch = BookingPitch()
     let networkManager: NetworkManager
+    var isFavorite: Bool = false
     // MARK: - Init
     init(pitch: Pitch, networkManager: NetworkManager = NetworkManager.shared) {
         self.pitch = pitch
@@ -65,25 +66,39 @@ final class DetailViewModel {
         return pitch.removeInRealms()
     }
     
+    func updateFavorite() {
+        do {
+            let realm = try Realm()
+            if realm.objects(Pitch.self).filter(NSPredicate(format: "id = \(pitch.id)")).isEmpty {
+                isFavorite = false
+            } else {
+                isFavorite = true
+            }
+        } catch {
+            return 
+        }
+        
+    }
+    
     func addFavorite() -> Error? {
         return pitch.addInRealms()
     }
     
     func viewModelForHeaderCell(at indexPath: IndexPath) -> DetailHeaderCellViewModel {
-        let viewModel = DetailHeaderCellViewModel(lat: pitch.type.owner.lat, long: pitch.type.owner.lng, address: pitch.type.owner.address)
+        let viewModel = DetailHeaderCellViewModel(lat: pitch.type?.owner?.lat ?? 0.0, long: pitch.type?.owner?.lng ?? 0.0, address: pitch.type?.owner?.address ?? "")
         return viewModel
     }
     
     func viewModelForBody(at indexPath: IndexPath) -> DetailBodyCellViewModel {
         let viewModel = DetailBodyCellViewModel(namePitch: pitch.name,
-                                                address: pitch.address,
-                                                phoneNumber: pitch.phone,
+                                                address: pitch.type?.owner?.address ?? "",
+                                                phoneNumber: pitch.type?.owner?.phone ?? "",
                                                 timeActive: pitch.timeUse)
         return viewModel
     }
     
     func viewModelForInfor(at indexPath: IndexPath) -> DetailInforCellViewModel {
-        let viewModel = DetailInforCellViewModel(pitchType: pitch.capacity)
+        let viewModel = DetailInforCellViewModel(pitchType: pitch.type?.name ?? "")
         return viewModel
     }
     

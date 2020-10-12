@@ -20,5 +20,5 @@ protocol Networkable {
     
     func getResever(idCustomer: Int, page: Int, pageSize: Int, completion: @escaping CompletionResult<[Reserve]>)
     
-    func cancelResever(idCustomer: Int, idReserve: Int, completion: @escaping CompletionResult<JSON>)
+    func cancelResever(idCustomer: Int, idReserve: Int, completion: @escaping CompletionResult<Cancel>)
 }

@@ -89,7 +89,7 @@ class ListPitchViewController: UIViewController {
             return 14 } else if  hour == 20 && minute == 30 {
             return 15 } else if minute == 0 { showAlert(alertText: "Sai Khung giờ", alertMessage: "Chọn Lại Giờ")
             return 0
-        } else { return -1  }
+        } else { return -1 }
     }
     
     @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
@@ -159,8 +159,8 @@ class ListPitchViewController: UIViewController {
     func getDataPin() {
         for i in 0..<viewModel.pitchTotals.count {
             let pin = MyPin(title: viewModel.pitchTotals[i].name,
-                            locationName: viewModel.pitchTotals[i].address,
-                            coordinate: CLLocationCoordinate2D(latitude: viewModel.pitchTotals[i].type.owner.lat, longitude: viewModel.pitchTotals[i].type.owner.lng))
+                            locationName: viewModel.pitchTotals[i].type?.owner?.address ?? "",
+                            coordinate: CLLocationCoordinate2D(latitude: viewModel.pitchTotals[i].type?.owner?.lat ?? 0.0, longitude: viewModel.pitchTotals[i].type?.owner?.lng ?? 0.0))
             pins.append(pin)
         }
     }
@@ -326,22 +326,6 @@ extension ListPitchViewController: ListPitchTableViewCellDelegate {
         loadDatePicker()
         idPitch = id
     }
-    
-//    func handleFavoriteTableView(cell: ListPitchTableViewCell, id: Int, isFavorite: Bool) {
-//        if isFavorite {
-//            viewModel.unfavorite(id: id)
-//        } else {
-//            viewModel.addFavorite(id: cell.viewModel?.id ?? 0,
-//                                  namePitch: cell.viewModel?.name ?? "",
-//                                  addressPitch: cell.viewModel?.addressOwner ?? "",
-//                                  timeUse: cell.viewModel?.timeUser ?? "",
-//                                  phone: cell.viewModel?.phoneOwner ?? "",
-//                                  pitchType: cell.viewModel?.pitchType ?? "",
-//                                  pitchImage: cell.viewModel?.imagePitch ?? "",
-//                                  description1: cell.viewModel?.description1 ?? "")
-//        }
-//        tableView.reloadData()
-//    }
 }
 
 // MARK: Extension: - ListPitchViewModelDelegate
@@ -362,7 +346,6 @@ extension ListPitchViewController: MKMapViewDelegate {
             view = dequeuedView
         } else {
             view = MyPinView(annotation: annotation, reuseIdentifier: identifier)
-            // view.image = UIImage(named: "img_listpitch_pitch")
             view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             view.leftCalloutAccessoryView = UIImageView(image: UIImage(named: "ic_listpitch_pin"))
             view.canShowCallout = true

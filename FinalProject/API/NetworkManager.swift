@@ -12,18 +12,16 @@ import ObjectMapper
 
 final class NetworkManager: Networkable {
     // MARK: - Function request
-    func cancelResever(idCustomer: Int, idReserve: Int, completion: @escaping CompletionResult<JSON>) {
-        provider.request(.cancelResever(idCustomer: idCustomer, idReserve: idReserve)) {
-            (result) in
+    func cancelResever(idCustomer: Int, idReserve: Int, completion: @escaping CompletionResult<Cancel>) {
+        provider.request(.cancelResever(idCustomer: idCustomer, idReserve: idReserve)) { (result) in
             switch result {
             case .success(let response):
                 do {
                     if let result = try response.mapJSON() as? JSON {
-                        print(result)
-                        completion(.success(result))
+                        let data: Cancel = Mapper<Cancel>().map(JSONObject: result) ?? Cancel()
+                        completion(.success(data))
                     }
-                }
-                catch {
+                } catch {
                     completion(.failure(error))
                 }
             case .failure(let error):
@@ -32,10 +30,8 @@ final class NetworkManager: Networkable {
         }
     }
     
-    
     func getResever(idCustomer: Int, page: Int, pageSize: Int, completion: @escaping CompletionResult<[Reserve]>) {
-        provider.request(.getResever(idCustomer: idCustomer, page: 1, pageSize: 100)) {
-            (result) in
+        provider.request(.getResever(idCustomer: idCustomer, page: 1, pageSize: 100)) { (result) in
             switch result {
             case .success(let response):
                 do {
@@ -121,24 +117,3 @@ final class NetworkManager: Networkable {
         }
     }
 }
-
-// MARK: - Extension
-//extension BookingPitch: TargetType, AccessTokenAuthorizable {
-//    case targetThatNeedsBearerAuth
-//    case targetThatNeedsBasicAuth
-//    case targetThatNeedsCustomAuth
-//    case targetDoesNotNeedAuth
-//
-//    var authorizationType: AuthorizationType? {
-//        switch self {
-//            case .targetThatNeedsBearerAuth:
-//                return .bearer
-//            case .targetThatNeedsBasicAuth:
-//                return .basic
-//            case .targetThatNeedsCustomAuth:
-//                return .custom("CustomAuthorizationType")
-//            case .targetDoesNotNeedAuth:
-//                return nil
-//            }
-//        }
-//}

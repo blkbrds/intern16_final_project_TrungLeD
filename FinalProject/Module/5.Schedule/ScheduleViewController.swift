@@ -14,12 +14,19 @@ class ScheduleViewController: UIViewController {
     @IBOutlet weak var notification: UILabel!
     
     // MARK: - Properties
+    var idResever: Int = 0
     var viewModel: ScheduleViewModel = ScheduleViewModel()
     let refreshControl = UIRefreshControl()
     // MARK: - Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        notification.isHidden = true
+        checkEmptyReserver()
+        loadData()
+        let nav = self.navigationController?.navigationBar
+        nav?.barStyle = .black
+        nav?.tintColor = .white
+        nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
+        navigationItem.title = "Schedule List"
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +40,7 @@ class ScheduleViewController: UIViewController {
             guard let this = self else { return }
             switch result {
             case .success:
+                this.checkEmptyReserver()
                 this.tableView.reloadData()
             case .failure(let error):
                 this.showAlert(alertText: "Loi", alertMessage: "Loi\(error)")
@@ -40,26 +48,14 @@ class ScheduleViewController: UIViewController {
         }
         
         // MARK: - Result cancel
-        viewModel.cancelReserver(idReserve: 130) { [weak self](result) in
-            guard let this = self else { return }
-            switch result {
-            case .failure(let error):
-                this.showAlert(alertText: "loi", alertMessage: "\(error)")
-            case .success:
-                print(result)
-            }
-        }
     }
     
     private func checkEmptyReserver() {
-        viewModel.checkIsEmptyReserver { [weak self] (done) in
-            guard let this = self else { return }
-            if done {
-                this.notification.isHidden = false
-                this.notification.text = "No Reserver Pitch!"
-            } else {
-                this.notification.isHidden = true
-            }
+        if viewModel.reseverTotals.isEmpty {
+            notification.isHidden = false
+            notification.text = "No Reserver Pitch!"
+        } else {
+            notification.isHidden = true
         }
     }
     
@@ -89,6 +85,7 @@ extension ScheduleViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleCell", for: indexPath) as? ScheduleCell else { return UITableViewCell() }
         cell.viewModel = viewModel.cellForRowAt(indexPath: indexPath)
+        cell.delegate = self
         return cell
     }
     
@@ -102,13 +99,30 @@ extension ScheduleViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func cancelAction(at indexPath: IndexPath) -> UIContextualAction {
-        let listReserver = viewModel.reseverTotals[indexPath.row]
-        let actionCancel = UIContextualAction(style: .normal, title: "Cancel") { (action, view, completion) in
-            print("trung ngu ngok")
+        let actionCancel = UIContextualAction(style: .normal, title: "Cancel") { (_, _, completion) in
+            self.viewModel.cancelReserver(idReserve: self.idResever) { [weak self](result) in
+                guard let this = self else { return }
+                switch result {
+                case .failure(let error):
+                    this.showAlert(alertText: "loi", alertMessage: "\(error)")
+                case .success:
+                    this.showAlert(alertText: "Huỷ Sân", alertMessage: "\(this.viewModel.resultCancel.data)")
+                    this.viewModel.reseverTotals.remove(at: indexPath.row)
+                    this.tableView.reloadData()
+                    this.checkEmptyReserver()
+                }
+            }
             completion(true)
         }
         actionCancel.image = UIImage(named: "ic_schedule_cancel")
         actionCancel.backgroundColor = .red
         return actionCancel
+    }
+}
+
+// MARK: - ScheduleViewController
+extension ScheduleViewController: ScheduleCellDelegate {
+    func cancelReserver(at: ScheduleCell, idResever: Int) {
+        self.idResever = idResever
     }
 }

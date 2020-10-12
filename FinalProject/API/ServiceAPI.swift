@@ -117,7 +117,7 @@ extension ServiceAPI: TargetType {
         switch self {
         case .bookingPitch, .getResever, .cancelResever:
             var headers: [String: String] = [:]
-            headers["authorization"] = "eyJhbGciOiJIUzI1NiJ9.eyJwaG9uZSI6IjAxMjM0NTY3ODkiLCJleHAiOjE2MDI1MTAwNjV9.ez06trsIAibyi3BaAMgSAoNtCmTAO6bEDrBKYVw1orc"
+            headers["authorization"] = "eyJhbGciOiJIUzI1NiJ9.eyJwaG9uZSI6IjAxMjM0NTY3ODkiLCJleHAiOjE2MDI1NTI4OTJ9.CA0zgdoPTi1RAmdKQLilUk7STIPUplo4jbsLRsU5Wac"
             return headers
         default:
             var headers: [String: String] = [:]

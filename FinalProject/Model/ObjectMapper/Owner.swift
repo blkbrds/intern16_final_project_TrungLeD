@@ -1,7 +1,8 @@
 import Foundation
 import ObjectMapper
+import RealmSwift
 
-final class Owner: Mappable {
+@objcMembers class Owner: Object, Mappable {
     // MARK: - Properties
     var id: String = ""
     dynamic var name: String = ""
@@ -17,7 +18,7 @@ final class Owner: Mappable {
     
     // MARK: - Init
     required init?(map: Map) { }
-    init() { }
+    required init() { }
     
     // MARK: - Function
     func mapping(map: Map) {

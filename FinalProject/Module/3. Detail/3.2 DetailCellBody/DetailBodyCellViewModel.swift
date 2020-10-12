@@ -9,6 +9,7 @@
 import Foundation
 class DetailBodyCellViewModel {
     // MARK: Properties
+//    var item: Pitch = Pitch()
     var namePitch: String = ""
     var address: String = ""
     var phoneNumber: String = ""

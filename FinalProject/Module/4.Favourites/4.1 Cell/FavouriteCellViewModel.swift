@@ -12,6 +12,12 @@ final class FavouriteCellViewModel {
     // MARK: - Properties
     let pitch: Pitch
     var isFavorite: Bool
+    var address: String {
+        return pitch.type?.owner?.address ?? ""
+    }
+    var phoneNumber: String {
+        return pitch.type?.owner?.phone ?? ""
+    }
     // MARK: - Init
     init(pitch: Pitch) {
         self.pitch = pitch

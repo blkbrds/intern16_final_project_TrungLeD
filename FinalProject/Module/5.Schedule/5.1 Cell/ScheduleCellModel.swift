@@ -9,10 +9,9 @@
 import Foundation
 class ScheduleCellModel {
     // MARK: - Properties
-    var resever: Reserve
-    
+    var resever: Reserve = Reserve()
     // MARK: - Init
-    init(resever: Reserve) {
+    init(resever: Reserve = Reserve()) {
         self.resever = resever
     }
 }

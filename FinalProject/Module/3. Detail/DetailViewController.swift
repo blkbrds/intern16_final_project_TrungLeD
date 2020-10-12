@@ -26,6 +26,21 @@ class DetailViewController: UIViewController {
     var rightButton: UIBarButtonItem?
     
     // MARK: - Life Cycle
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+        if viewModel.pitch.id != 0 {
+            viewModel.updateFavorite()
+        }
+        if viewModel.isFavorite {
+            rightButton = UIBarButtonItem(image: UIImage(systemName: "heart.fill"), style: .plain, target: self, action: #selector(favouriteClicked))
+            navigationItem.rightBarButtonItem = rightButton
+        } else {
+            rightButton = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .plain, target: self, action: #selector(favouriteClicked))
+            navigationItem.rightBarButtonItem = rightButton
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()

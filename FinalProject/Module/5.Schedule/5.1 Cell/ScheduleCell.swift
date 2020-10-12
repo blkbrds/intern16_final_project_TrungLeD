@@ -7,7 +7,9 @@
 //
 
 import UIKit
-
+protocol ScheduleCellDelegate: class {
+    func cancelReserver(at: ScheduleCell, idResever: Int )
+}
 class ScheduleCell: UITableViewCell {
     // MARK: - IBOutlet
     @IBOutlet var nameOfPitch: UILabel!
@@ -16,6 +18,7 @@ class ScheduleCell: UITableViewCell {
     @IBOutlet var timeOfPitch: UILabel!
     @IBOutlet var dateofPitch: UILabel!
     // MARK: - Properties
+    weak var delegate: ScheduleCellDelegate?
     var viewModel: ScheduleCellModel? {
         didSet {
             updateView()
@@ -32,10 +35,11 @@ class ScheduleCell: UITableViewCell {
     // MARK: - Function
     private func updateView() {
         nameOfPitch.text = viewModel?.resever.pitch.name
-        addressOfPitch.text = viewModel?.resever.pitch.address
+        addressOfPitch.text = viewModel?.resever.pitch.type?.owner?.address
         priceOfPitch.text = "\(viewModel?.resever.price.price ?? 0) VND"
         timeOfPitch.text = "\(viewModel?.resever.time.startTime ?? "") - \(viewModel?.resever.time.endTime ?? "")"
         dateofPitch.text = viewModel?.resever.date
+        delegate?.cancelReserver(at: self, idResever: viewModel?.resever.id ?? 0)
     }
     
 }
