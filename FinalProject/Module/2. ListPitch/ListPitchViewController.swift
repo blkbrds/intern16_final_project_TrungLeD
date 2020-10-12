@@ -346,10 +346,16 @@ extension ListPitchViewController: MKMapViewDelegate {
             view = dequeuedView
         } else {
             view = MyPinView(annotation: annotation, reuseIdentifier: identifier)
-            view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            let button = UIButton(type: .detailDisclosure)
+            button.addTarget(self, action: #selector(selectPinOnMap), for: .touchDown)
+            view.rightCalloutAccessoryView = button
             view.leftCalloutAccessoryView = UIImageView(image: UIImage(named: "ic_listpitch_pin"))
             view.canShowCallout = true
         }
         return view
+    }
+    
+    @objc func selectPinOnMap(_ sender: UIButton?) {
+        print("da chon")
     }
 }
