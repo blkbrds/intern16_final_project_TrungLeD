@@ -100,24 +100,3 @@ final class NetworkManager: Networkable {
         }
     }
 }
-
-// MARK: - Extension
-//extension BookingPitch: TargetType, AccessTokenAuthorizable {
-//    case targetThatNeedsBearerAuth
-//    case targetThatNeedsBasicAuth
-//    case targetThatNeedsCustomAuth
-//    case targetDoesNotNeedAuth
-//
-//    var authorizationType: AuthorizationType? {
-//        switch self {
-//            case .targetThatNeedsBearerAuth:
-//                return .bearer
-//            case .targetThatNeedsBasicAuth:
-//                return .basic
-//            case .targetThatNeedsCustomAuth:
-//                return .custom("CustomAuthorizationType")
-//            case .targetDoesNotNeedAuth:
-//                return nil
-//            }
-//        }
-//}
