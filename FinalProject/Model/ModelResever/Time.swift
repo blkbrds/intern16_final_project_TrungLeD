@@ -17,7 +17,7 @@ final class Time: Mappable {
     
     func mapping(map: Map) {
         id <- map["id"]
-		startTime <- map["start_time"]
-		endTime <- map["end_time"]
+        startTime <- map["start_time"]
+        endTime <- map["end_time"]
 	}
 }
