@@ -14,12 +14,16 @@ class ListPitchViewController: UIViewController {
     @IBOutlet var mapKit: MKMapView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var locationCurrentBtn: UIButton!
+    @IBOutlet weak var datePicker1: UIDatePicker!
+    @IBOutlet var viewContainerDatePicker: UIView!
     
     // MARK: - Properties
+    var hidenDatePicker: Bool = false
     var pins: [MyPin] = []
     var inputDate: [Date] = []
     private var viewModel: ListPitchViewModel = ListPitchViewModel()
     var pitch: [Pitch]?
+    var idPitch: Int = 0
     // MARK: - Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -28,7 +32,7 @@ class ListPitchViewController: UIViewController {
         nav?.tintColor = .white
         nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
         tableView.reloadData()
-        viewModel.fetchRealmData()
+        //   viewModel.fetchRealmData()
     }
     
     override func viewDidLoad() {
@@ -40,6 +44,81 @@ class ListPitchViewController: UIViewController {
         getData()
         addAnnotations()
         configMapView()
+        configDatePicker()
+    }
+    // MARK: - Function DatePicker
+    private func configDatePicker() {
+        viewContainerDatePicker.isHidden = true
+        datePicker1.minimumDate = Date()
+    }
+    
+    private func stateDatePickerDefault() {
+        UIView.transition(with: viewContainerDatePicker, duration: 0.5,
+                          options: .transitionCrossDissolve,
+                          animations: {
+                            self.tabBarController?.tabBar.isHidden = false
+                            self.viewContainerDatePicker.isHidden = true
+                            self.tableView.alpha = 1
+                            self.tableView.allowsSelection = true
+        })
+        
+    }
+    
+    // MARK: - Function Check Time
+    func checkTime() -> Int {
+        let hour = datePicker1.date.getTime().hour
+        let minute = datePicker1.date.getTime().minute
+        if hour < 6 && hour > 22 {
+            showAlert(alertText: "Sai khung giờ", alertMessage: "Chọn lại khung giờ")
+            return 0 } else if  hour == 6 && minute == 30 {
+            return 1
+        } else if  hour == 7 && minute == 30 {
+            return 2
+        } else if  hour == 8 && minute == 30 {
+            return 3 } else if  hour == 9 && minute == 30 {
+            return 4 } else if  hour == 10 && minute == 30 {
+            return 5 } else if  hour == 11 && minute == 30 {
+            return 6 } else if  hour == 12 && minute == 30 {
+            return 7 } else if  hour == 13 && minute == 30 {
+            return 8 } else if  hour == 14 && minute == 30 {
+            return 9 } else if  hour == 15 && minute == 30 {
+            return 10 } else if  hour == 16 && minute == 30 {
+            return 11 } else if  hour == 17 && minute == 30 {
+            return 12 } else if  hour == 18 && minute == 30 {
+            return 13 } else if  hour == 19 && minute == 30 {
+            return 14 } else if  hour == 20 && minute == 30 {
+            return 15 } else if minute == 0 { showAlert(alertText: "Sai Khung giờ", alertMessage: "Chọn Lại Giờ")
+            return 0
+        } else { return 0 }
+    }
+    
+    @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
+        stateDatePickerDefault()
+    }
+    
+    @IBAction func doneTapped(_ sender: UIBarButtonItem) {
+        let idTime = checkTime()
+        if idTime == 0 {
+            showAlert(alertText: "Lỗi", alertMessage: "Vui lòng chọn trước 9h tối và sau 6h sáng")
+        }
+        let date = String(datePicker1.date.getDate())
+        let dateCurrent = Date()
+        let format = DateFormatter()
+        format.dateFormat = "yyyy-MM-dd"
+        let formattedDate = format.string(from: dateCurrent)
+        if formattedDate == date {
+            showAlert(alertText: "Lỗi", alertMessage: "Vui lòng đặt trước ít nhất 1 ngày")
+        }
+        viewModel.bookingThePitch(date: date, idCustomer: 1, idPitch: idPitch, idPrice: 1, idTime: idTime) { [weak self] (result) in
+            guard let this = self else { return }
+            switch result {
+            case .success:
+                this.showAlert(alertText: "Đặt Sân", alertMessage: "Tình trạng: \(this.viewModel.resultBooking.status)")
+            case .failure(let error):
+                self?.showAlert(alertText: "loi dat san----", alertMessage: "loi dat san\(error)")
+            }
+        }
+        stateDatePickerDefault()
     }
     
     // MARK: - Function
@@ -71,9 +150,9 @@ class ListPitchViewController: UIViewController {
     func configMapView() {
         mapKit.delegate = self
         // This is coordinate of Da Nang city.
-        let eiffelTowerLocation = CLLocation(latitude: 16.05228, longitude: 108.1919426)
+        let daNangLocation = CLLocation(latitude: 16.052_28, longitude: 108.191_942_6)
         let span = MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
-        let region = MKCoordinateRegion(center: eiffelTowerLocation.coordinate, span: span)
+        let region = MKCoordinateRegion(center: daNangLocation.coordinate, span: span)
         mapKit.region = region
     }
     
@@ -84,7 +163,6 @@ class ListPitchViewController: UIViewController {
                             coordinate: CLLocationCoordinate2D(latitude: viewModel.pitchTotals[i].type.owner.lat, longitude: viewModel.pitchTotals[i].type.owner.lng))
             pins.append(pin)
         }
-        print(pins)
     }
     
     func addAnnotations() {
@@ -92,7 +170,7 @@ class ListPitchViewController: UIViewController {
     }
     
     func getData() {
-        viewModel.fetchRealmData()
+        //   viewModel.fetchRealmData()
         loadData()
     }
     
@@ -131,6 +209,7 @@ class ListPitchViewController: UIViewController {
         searchBar.placeholder = "Nhập Tên Sân"
         let rightNavBarButton = UIBarButtonItem(customView: searchBar)
         self.navigationItem.rightBarButtonItem = rightNavBarButton
+        searchBar.searchTextField.textColor = .white
         searchBar.delegate = self
         tableView.isHidden = false
         mapKit.isHidden = true
@@ -140,6 +219,7 @@ class ListPitchViewController: UIViewController {
     private func configureUI() {
         navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.isTranslucent = true
+        navigationItem.hidesSearchBarWhenScrolling = true
     }
     
     func configTableView() {
@@ -148,11 +228,15 @@ class ListPitchViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
-    
+    // MARK: - Func Load Date Picker
+    //    let datePicker = Bundle.main.loadNibNamed("DatePickerUIView", owner: self, options: nil)?.first as? DatePickerUIView
     private func loadDatePicker() {
-        let datePicker = DatePickerViewController()
-        self.present(datePicker, animated: true) {
-        }
+        UIView.animate(withDuration: 0.3, animations: {
+            self.tabBarController?.tabBar.isHidden = true
+            self.viewContainerDatePicker.isHidden = false
+            self.tableView.alpha = 0.5
+            self.tableView.allowsSelection = false
+        })
     }
 }
 
@@ -181,7 +265,6 @@ extension ListPitchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
         detailVC.viewModel = viewModel.getInforPitch(at: indexPath)
-        detailVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }
@@ -210,24 +293,37 @@ extension ListPitchViewController: UISearchBarDelegate {
 }
 // MARK: - Extension: - ListPitchTableViewCellDelegate
 extension ListPitchViewController: ListPitchTableViewCellDelegate {
-    func bookingButton(view: ListPitchTableViewCell) {
-        
-    }
-    
-    func handleFavoriteTableView(cell: ListPitchTableViewCell, id: Int, isFavorite: Bool) {
-        if isFavorite {
-            viewModel.unfavorite(id: id)
-        } else {
-            viewModel.addFavorite(id: cell.viewModel?.id ?? 0,
-                                  namePitch: cell.viewModel?.name ?? "",
-                                  addressPitch: cell.viewModel?.addressOwner ?? "",
-                                  timeUse: cell.viewModel?.timeUser ?? "",
-                                  phone: cell.viewModel?.phoneOwner ?? "",
-                                  pitchType: cell.viewModel?.pitchType ?? "",
-                                  pitchImage: cell.viewModel?.imagePitch ?? "",
-                                  description1: cell.viewModel?.description1 ?? "")
+    func handleFavoriteTableView(cell: ListPitchTableViewCell, needPerform action: ListPitchTableViewCell.Action) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        switch action {
+        case .favorite(let isFavorite):
+            if isFavorite {
+                viewModel.unfavorite(id: cell.viewModel?.id ?? 0) { [weak self] result in
+                    guard let this = self else { return }
+                    switch result {
+                    case .success:
+                        this.tableView.reloadData()
+                    case.failure(let error):
+                        this.showAlert(alertText: "Error favorite", alertMessage: "error From realm \(error)")
+                    }
+                }
+            } else {
+                viewModel.addFavorite(index: indexPath.row) { [weak self] result in
+                    guard let this = self else { return }
+                    switch result {
+                    case .success:
+                        this.tableView.reloadData()
+                    case .failure(let error):
+                        this.showAlert(alertText: "Error add favorite", alertMessage: "error From realm \(error)")
+                    }
+                }
+            }
         }
-        tableView.reloadData()
+    }
+  
+    func bookingButton(cell: ListPitchTableViewCell, id: Int) {
+        loadDatePicker()
+        idPitch = id
     }
 }
 
@@ -257,3 +353,4 @@ extension ListPitchViewController: MKMapViewDelegate {
         return view
     }
 }
+

@@ -46,7 +46,7 @@ extension LoginViewController {
             case .success:
                 AppDelegate.shared.changeRoot(rootType: .tabbar)
             case .failure(let error):
-                self?.showAlert(alertText: "Lỗi Đăng Nhập", alertMessage: "Nhập lại mật khẩu hoặc số điện thoại")
+                self?.showAlert(alertText: "Lỗi Đăng Nhập", alertMessage: "Nhập lại mật khẩu hoặc số điện thoại \(error)")
             }
         }
     }

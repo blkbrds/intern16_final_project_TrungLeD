@@ -23,13 +23,13 @@ class ListPitchViewModel {
     weak var delegate: ListPitchViewModelDelegate?
     var notificationToken: NotificationToken?
     var item: Pitch = Pitch()
+    var resultBooking: BookingPitch = BookingPitch()
     var pitchTotals: [Pitch] = []
     var pitchs: [Pitch] = []
     var realmPitch: [Pitch] = []
     var nameSort: [String] = []
     let networkManager: NetworkManager
     var isBooking: Bool = false
-    
     // MARK: - Init
     init(networkManager: NetworkManager = NetworkManager.shared) {
         self.networkManager = networkManager
@@ -46,6 +46,19 @@ class ListPitchViewModel {
                 this.pitchTotals = result
                 this.pitchs = this.pitchTotals
                 completion( .success)
+            }
+        }
+    }
+    
+    func bookingThePitch(date: String, idCustomer: Int, idPitch: Int, idPrice: Int, idTime: Int, completion: @escaping APICompletion) {
+        networkManager.bookingThePitch(date: date, idCustomer: 1, idPitch: idPitch, idPrice: 1, idTime: idTime) { [weak self](result) in
+            guard let this = self else { return }
+            switch result {
+            case .failure(let error):
+                completion( .failure(error))
+            case .success(let result):
+                this.resultBooking = result
+                completion(.success)
             }
         }
     }
@@ -87,11 +100,8 @@ class ListPitchViewModel {
     
     func fetchRealmData() -> Error? {
         do {
-            // Realm
             let realm = try Realm()
-            // Create results
             let results = realm.objects(Pitch.self)
-            // Convert to array
             realmPitch = Array(results)
             return nil
         } catch {
@@ -104,30 +114,31 @@ class ListPitchViewModel {
             item.isFavorite = isFavorite
         }
     }
-    
-    func addFavorite(id: Int, namePitch: String, addressPitch: String, timeUse: String, phone: String, pitchType: String, pitchImage: String, description1: String) -> Error? {
+  
+    func addFavorite(index: Int, completion: @escaping APICompletion) {
         do {
             let realm = try Realm()
-            let pitch = Pitch()
-            pitch.imagePitch = pitchImage
-            pitch.id = id
-            pitch.name = namePitch
-            pitch.timeUse = timeUse
-            pitch.address = addressPitch
-            pitch.phone = phone
-            pitch.pitchType = pitchType
-            pitch.description1 = description1
+            let pitchTemp = pitchTotals[index]
+            let pitchRealm = Pitch(id: pitchTemp.id,
+                                   type: pitchTemp.type,
+                                   name: pitchTemp.name,
+                                   description1: pitchTemp.description1,
+                                   timeUse: pitchTemp.timeUse,
+                                   count: pitchTemp.count,
+                                   imagePitch: pitchTemp.imagePitch,
+                                   isFavorite: pitchTemp.isFavorite,
+                                   lat: pitchTemp.lat,
+                                   long: pitchTemp.long)
             try realm.write {
-                realm.add(pitch, update: .all)
-                checkFavorite(isFavorite: true, id: id )
+                realm.create(Pitch.self, value: pitchRealm, update: .all)
             }
-            return nil
+            completion(.success)
         } catch {
-            return error
+            completion(.failure(error))
         }
     }
     
-    func unfavorite(id: Int) -> Error? {
+    func unfavorite(id: Int, completion: @escaping APICompletion) {
         do {
             let realm = try Realm()
             let predicate = NSPredicate(format: "id = \(id)")
@@ -136,9 +147,9 @@ class ListPitchViewModel {
                 realm.delete(result)
                 checkFavorite(isFavorite: false, id: id)
             }
-            return nil
+            completion(.success)
         } catch {
-            return error
+            completion(.failure(error))
         }
     }
 }

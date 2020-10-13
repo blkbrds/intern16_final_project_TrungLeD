@@ -6,12 +6,12 @@ final class PitchType: Mappable {
     var id: String = ""
     dynamic var owner: Owner = Owner()
     var name: String = ""
-    
+
     // MARK: Init
     required init?(map: Map) {}
-    
+
     init() {}
-    
+
     // MARK: Function
     func mapping(map: Map) {
         id <- map["id"]

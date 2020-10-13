@@ -138,7 +138,12 @@ extension FavouriteViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension FavouriteViewController: FavouriteViewModelDelegate {
     func favourite(viewModel: FavouriteViewModel, needPerform action: FavouriteViewModel.Action) {
-        fectchData()
+        switch action {
+        case .loadData:
+            fectchData()
+        case .failure(let error):
+            self.showAlert(alertText: "Loi", alertMessage: "Loi Load data \(error)")
+        }
     }
 }
 

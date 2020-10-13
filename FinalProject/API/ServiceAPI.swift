@@ -8,10 +8,13 @@
 
 import Moya
 // MARK: - Defines
+private var token = ""
 enum ServiceAPI {
     case getAllDictrict
     case login(phone: String, pw: String)
     case getAllPitch(page: Int, pageSize: Int)
+    case bookingPitch(date: String, idCustomer: Int, idPitch: Int, idPrice: Int, idTime: Int)
+    case getResever(idCustomer: Int, page: Int, pageSize: Int)
 }
 
 // enum Result
@@ -34,7 +37,7 @@ typealias CompletionResult<Value> = (Result<Value>) -> Void
 extension ServiceAPI: TargetType {
     
     var baseURL: URL {
-        guard let url = URL(string: "http://18.224.180.166:8080/trungapi" ) else {
+        guard let url = URL(string: "http://18.188.48.158:8080/trungapi" ) else {
             fatalError("Invalid static URL string")
         }
         return url
@@ -48,13 +51,17 @@ extension ServiceAPI: TargetType {
             return "/common/login"
         case .getAllPitch:
             return "/common/get-all-pitch"
+        case .bookingPitch:
+            return "/personal/reserve-pitch"
+        case .getResever:
+            return "/personal/get-reserve"
         }
     }
     var method: Moya.Method {
         switch self {
-        case .getAllDictrict, .getAllPitch(_, _):
+        case .getAllDictrict, .getAllPitch, .getResever:
             return .get
-        case .login:
+        case .login, .bookingPitch:
             return .post
         }
     }
@@ -79,18 +86,38 @@ extension ServiceAPI: TargetType {
             params["page"] = page
             params["pageSize"] = pageSize
             return .requestParameters(parameters:["page": page, "pageSize": pageSize], encoding: URLEncoding.default)
+        case .bookingPitch(let date, let idCustomer, let idPitch,let idPrice, let idTime):
+            var params: [String: Any] = [:]
+            params["date"] = date
+            params["idCustomer"] = idCustomer
+            params["idPitch"] = idPitch
+            params["idPrice"] = idPrice
+            params["idTime"] = idTime
+            return .requestParameters(parameters: params, encoding: URLEncoding.default)
+        case .getResever(let idCustomer, let page, let pageSize):
+            var params: [String: Any] = [:]
+            params["idCustomer"] = idCustomer
+            params["page"] = page
+            params["pageSize"] = pageSize
+            return .requestParameters(parameters: params, encoding: URLEncoding.default)
         }
     }
     
     var headers: [String: String]? {
-        var headers: [String: String] = [:]
-        headers["Content-type"] = "application/json"
-        return headers
+        switch self {
+        case .bookingPitch, .getResever:
+            var headers: [String: String] = [:]
+            headers["authorization"] = "eyJhbGciOiJIUzI1NiJ9.eyJwaG9uZSI6IjAxMjM0NTY3ODkiLCJleHAiOjE2MDI2MzgyODJ9.024WPMkf7FPvvVEaWhqGmzW-AboME3eTkTVMe1LMkf0"
+            return headers
+        default:
+            var headers: [String: String] = [:]
+            headers["Content-type"] = "application/json"
+            return headers
+        }
     }
 }
 
 extension Data {
-    
     init(forResouce name: String?, ofType ext: String?) {
         @objc class TestClass: NSObject { }
         let bundle = Bundle(for: TestClass.self)

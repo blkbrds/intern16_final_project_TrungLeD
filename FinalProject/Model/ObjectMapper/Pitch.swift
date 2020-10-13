@@ -14,13 +14,24 @@ import RealmSwift
     dynamic var isFavorite: Bool = false
     dynamic var phone: String = ""
     dynamic var address: String = ""
-    dynamic var pitchType: String = ""
-    
+    dynamic var capacity: String = ""
+    dynamic var lat: Double = 0.0
+    dynamic var long: Double = 0.0
+
     // MARK: Init
     required init?(map: Map) {}
-    init(id: Int = 0, pitchType: PitchType = PitchType(), name: String = "", description1: String = "", timeUse: String = "", count: Double = 0.0, imagePitch: String = "", isFavorite: Bool) {
+    init(id: Int = 0, type: PitchType = PitchType(),
+         name: String = "",
+         description1: String = "",
+         timeUse: String = "",
+         count: Double = 0.0,
+         imagePitch: String = "",
+         isFavorite: Bool,
+         lat: Double, long: Double) {
         self.id = id
-        self.type = pitchType
+        self.long = long
+        self.lat = lat
+        self.type = type
         self.name = name
         self.description1 = description1
         self.timeUse = timeUse
@@ -28,13 +39,13 @@ import RealmSwift
         self.imagePitch = imagePitch
         self.isFavorite = isFavorite
     }
-    
+
     required init() {}
-    
+
     override static func primaryKey() -> String? {
         return "id"
     }
-    
+
     // MARK: Function
     func mapping(map: Map) {
         id <- map["id"]
@@ -46,13 +57,15 @@ import RealmSwift
         imagePitch <- map["image"]
         phone = type.owner.phone
         address = type.owner.address
-        pitchType = type.name
+        capacity = type.name
+        lat = type.owner.lat
+        long = type.owner.lng
     }
 }
 
 // MARK: - Realms query
 extension Pitch {
-    
+
     static func getByIdInRealms(id: Int) -> Pitch? {
         do {
             let realm = try Realm()
@@ -62,7 +75,7 @@ extension Pitch {
             return nil
         }
     }
-    
+
     func removeInRealms() -> Error? {
         do {
             let realm = try Realm()
@@ -75,7 +88,7 @@ extension Pitch {
             return error
         }
     }
-    
+
     func addInRealms() -> Error? {
         do {
             let realm = try Realm()
@@ -87,7 +100,7 @@ extension Pitch {
             return error
         }
     }
-    
+
     func editInRealms(handler: () -> Void) -> Error? {
         do {
             let realm = try Realm()

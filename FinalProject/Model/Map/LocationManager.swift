@@ -42,7 +42,7 @@ final class LocationManager: NSObject {
     func request() {
         let status = CLLocationManager.authorizationStatus()
         
-        if  (status == .denied || status == .restricted || !CLLocationManager.locationServicesEnabled()) {
+        if status == .denied || status == .restricted || !CLLocationManager.locationServicesEnabled() {
             return
         }
         

@@ -48,6 +48,7 @@ class FavouritesTableViewCell: UITableViewCell {
         address.text = viewModel.pitch.address
         image1.sd_setImage(with: imageURL)
     }
+    
     // MARK: - IBAction
     @IBAction func cancelFavourites(_ sender: UIButton) {
         guard let viewModel = viewModel else { return }
@@ -55,8 +56,4 @@ class FavouritesTableViewCell: UITableViewCell {
             delegate.handleFavorite(cell: self, id: viewModel.pitch.id, isFavorite: viewModel.isFavorite)
         }
     }
-    
-    @IBAction func bookingClicked(_ sender: UIButton) {
-    }
-    
 }
