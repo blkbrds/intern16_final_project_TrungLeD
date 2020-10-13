@@ -265,7 +265,6 @@ extension ListPitchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
         detailVC.viewModel = viewModel.getInforPitch(at: indexPath)
-      //  detailVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }
@@ -325,21 +324,6 @@ extension ListPitchViewController: ListPitchTableViewCellDelegate {
     func bookingButton(cell: ListPitchTableViewCell, id: Int) {
         loadDatePicker()
         idPitch = id
-
-    func handleFavoriteTableView(cell: ListPitchTableViewCell, id: Int, isFavorite: Bool) {
-        if isFavorite {
-            viewModel.unfavorite(id: id)
-        } else {
-            viewModel.addFavorite(id: cell.viewModel?.id ?? 0,
-                                  namePitch: cell.viewModel?.name ?? "",
-                                  addressPitch: cell.viewModel?.addressOwner ?? "",
-                                  timeUse: cell.viewModel?.timeUser ?? "",
-                                  phone: cell.viewModel?.phoneOwner ?? "",
-                                  pitchType: cell.viewModel?.pitchType ?? "",
-                                  pitchImage: cell.viewModel?.imagePitch ?? "",
-                                  description1: cell.viewModel?.description1 ?? "")
-        }
-        tableView.reloadData()
     }
 }
 
@@ -369,3 +353,4 @@ extension ListPitchViewController: MKMapViewDelegate {
         return view
     }
 }
+

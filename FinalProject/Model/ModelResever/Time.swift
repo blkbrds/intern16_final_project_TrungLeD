@@ -5,7 +5,7 @@ final class Time: Mappable {
 	var id: Int = 0
 	var startTime: String = ""
 	var endTime: String = ""
-
+    
     init?(map: Map) {
 	}
     
@@ -14,12 +14,10 @@ final class Time: Mappable {
         self.startTime = startTime
         self.endTime = endTime
     }
-
+    
     func mapping(map: Map) {
-
-		id <- map["id"]
+        id <- map["id"]
 		startTime <- map["start_time"]
 		endTime <- map["end_time"]
 	}
-
 }

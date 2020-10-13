@@ -22,7 +22,6 @@ final class NetworkManager: Networkable {
                         let reseverJS: [Reserve] = Mapper<Reserve>().mapArray(JSONArray: data1JS)
                         completion(.success(reseverJS))
                     }
-                    
                 } catch {
                     completion(.failure(error))
                 }

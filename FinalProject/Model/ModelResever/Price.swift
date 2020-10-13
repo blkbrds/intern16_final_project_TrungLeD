@@ -20,7 +20,7 @@ final class Price: Mappable {
 	    self.price = price
 	    self.date = date
     }
-
+    
     func mapping(map: Map) {
 	    id <- map["id"]
 	    idType <- map["id_type"]
