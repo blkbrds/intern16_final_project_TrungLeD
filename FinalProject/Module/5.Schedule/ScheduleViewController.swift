@@ -12,11 +12,12 @@ class ScheduleViewController: UIViewController {
     // MARK: - IBoutlet
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var notification: UILabel!
-    
+
     // MARK: - Properties
     var idResever: Int = 0
     var viewModel: ScheduleViewModel = ScheduleViewModel()
     let refreshControl = UIRefreshControl()
+
     // MARK: - Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -33,7 +34,7 @@ class ScheduleViewController: UIViewController {
         loadData()
         configTableView()
     }
-    
+
     // MARK: - Function
     private func loadData() {
         viewModel.getReserver { [weak self](result) in

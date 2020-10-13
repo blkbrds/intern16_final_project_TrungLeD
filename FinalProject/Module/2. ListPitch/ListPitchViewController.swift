@@ -263,7 +263,6 @@ extension ListPitchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
         detailVC.viewModel = viewModel.getInforPitch(at: indexPath)
-        //  detailVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }
@@ -319,7 +318,6 @@ extension ListPitchViewController: ListPitchTableViewCellDelegate {
             }
         }
     }
-    
     func bookingButton(cell: ListPitchTableViewCell, id: Int) {
         loadDatePicker()
         idPitch = id
@@ -368,3 +366,4 @@ extension ListPitchViewController: MKMapViewDelegate {
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }
+

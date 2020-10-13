@@ -62,9 +62,9 @@ extension ServiceAPI: TargetType {
     }
     var method: Moya.Method {
         switch self {
-        case .getAllDictrict, .getAllPitch(_, _), .getResever(idCustomer: _, _, _):
+        case .getAllDictrict, .getAllPitch, .getResever:
             return .get
-        case .login, .bookingPitch(_, _, _, _,_):
+        case .login, .bookingPitch:
             return .post
         case .cancelResever(_,_):
             return .delete
@@ -128,7 +128,6 @@ extension ServiceAPI: TargetType {
 }
 
 extension Data {
-    
     init(forResouce name: String?, ofType ext: String?) {
         @objc class TestClass: NSObject { }
         let bundle = Bundle(for: TestClass.self)

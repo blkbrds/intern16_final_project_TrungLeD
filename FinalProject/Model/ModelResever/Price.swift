@@ -11,8 +11,7 @@ final class Price: Mappable {
     var updateAt: String = ""
     var rateOfChange: String = ""
     
-    init?(map: Map) {
-    }
+    init?(map: Map) { }
     init(id: Int = 0, idType: Int = 0, idTime: Int = 0, price: Double = 0.0, date: String = "") {
         self.id = id
         self.idType = idType

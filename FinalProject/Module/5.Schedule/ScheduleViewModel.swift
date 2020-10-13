@@ -17,6 +17,7 @@ final class ScheduleViewModel {
     init(networkManager: NetworkManager = NetworkManager.shared) {
         self.networkManager = networkManager
     }
+
     // MARK: - Function
     func cancelReserver(idReserve: Int, completion: @escaping APICompletion) {
         networkManager.cancelResever(idCustomer: 1, idReserve: idReserve) { [weak self](result) in

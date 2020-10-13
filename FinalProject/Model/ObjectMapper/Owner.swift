@@ -19,7 +19,6 @@ import RealmSwift
     // MARK: - Init
     required init?(map: Map) { }
     required init() { }
-    
     // MARK: - Function
     func mapping(map: Map) {
         id <- map["id"]

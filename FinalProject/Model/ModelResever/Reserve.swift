@@ -21,7 +21,7 @@ final class Reserve: Mappable {
         self.status = status
         self.date = date
     }
-
+    
     func mapping(map: Map) {
         id <- map["id"]
         type <- map["type"]

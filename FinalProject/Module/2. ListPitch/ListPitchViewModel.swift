@@ -100,11 +100,8 @@ class ListPitchViewModel {
 
     func fetchRealmData() {
         do {
-            // Realm
             let realm = try Realm()
-            // Create results
             let results = realm.objects(Pitch.self)
-            // Convert to array
             realmPitch = Array(results)
         } catch {
             return
@@ -116,7 +113,7 @@ class ListPitchViewModel {
             item.isFavorite = isFavorite
         }
     }
-
+    
     func addFavorite(index: Int, completion: @escaping APICompletion) {
         do {
             let realm = try Realm()
@@ -139,7 +136,7 @@ class ListPitchViewModel {
             completion(.failure(error))
         }
     }
-
+    
     func unfavorite(id: Int, completion: @escaping APICompletion) {
         do {
             let realm = try Realm()
