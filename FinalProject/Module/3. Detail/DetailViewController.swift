@@ -209,9 +209,9 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         return nib2
     }
     
-        func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-            return 44.0
-        }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 44.0
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let numberOfsection = viewModel.typeSectionLoad(number: indexPath.section)
