@@ -9,8 +9,8 @@
 import Moya
 
 protocol Networkable {
+    // MAKR: - Properties
     var provider: MoyaProvider<ServiceAPI> { get }
-    
     // MARK: Function
     func login(phone: String, pw: String, completion: @escaping CompletionResult<Customer>)
     

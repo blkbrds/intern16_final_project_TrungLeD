@@ -72,10 +72,8 @@ class ListPitchViewController: UIViewController {
         if hour < 6 && hour > 22 {
             showAlert(alertText: "Sai khung giờ", alertMessage: "Chọn lại khung giờ")
             return 0 } else if  hour == 6 && minute == 30 {
-            return 1
-        } else if  hour == 7 && minute == 30 {
-            return 2
-        } else if  hour == 8 && minute == 30 {
+            return 1 } else if  hour == 7 && minute == 30 {
+            return 2 } else if  hour == 8 && minute == 30 {
             return 3 } else if  hour == 9 && minute == 30 {
             return 4 } else if  hour == 10 && minute == 30 {
             return 5 } else if  hour == 11 && minute == 30 {
@@ -89,8 +87,7 @@ class ListPitchViewController: UIViewController {
             return 13 } else if  hour == 19 && minute == 30 {
             return 14 } else if  hour == 20 && minute == 30 {
             return 15 } else if minute == 0 { showAlert(alertText: "Sai Khung giờ", alertMessage: "Chọn Lại Giờ")
-            return 0
-        } else { return -1 }
+            return 0 } else { return -1 }
     }
     
     @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
@@ -266,7 +263,7 @@ extension ListPitchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
         detailVC.viewModel = viewModel.getInforPitch(at: indexPath)
-      //  detailVC.hidesBottomBarWhenPushed = true
+        //  detailVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }
@@ -322,7 +319,7 @@ extension ListPitchViewController: ListPitchTableViewCellDelegate {
             }
         }
     }
-  
+    
     func bookingButton(cell: ListPitchTableViewCell, id: Int) {
         loadDatePicker()
         idPitch = id
@@ -360,7 +357,7 @@ extension ListPitchViewController: MKMapViewDelegate {
     
     @objc func selectPinOnMap(_ sender: UIButton?) {
         print("alooooo")
-          
+        
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
@@ -368,6 +365,6 @@ extension ListPitchViewController: MKMapViewDelegate {
         let detailVC = DetailViewController()
         detailVC.viewModel = viewModel.getInforPitch(at: IndexPath(row: indexforMap, section: 0))
         //  detailVC.hidesBottomBarWhenPushed = true
-          navigationController?.pushViewController(detailVC, animated: true)
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }

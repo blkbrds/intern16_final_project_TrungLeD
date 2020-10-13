@@ -7,12 +7,12 @@ import RealmSwift
     var id: String = ""
     dynamic var owner: Owner?
     dynamic var name: String = ""
-    
+
     // MARK: Init
     required init?(map: Map) {}
-    
+
     required init() {}
-    
+
     // MARK: Function
     func mapping(map: Map) {
         id <- map["id"]

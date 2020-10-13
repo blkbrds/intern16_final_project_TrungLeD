@@ -34,7 +34,7 @@ class ListPitchViewModel {
     init(networkManager: NetworkManager = NetworkManager.shared) {
         self.networkManager = networkManager
     }
-    
+
     // MAKR: - Function
     func getAllData(completion: @escaping APICompletion) {
         networkManager.getAllPitch(page: 1, pageSize: 100) { [weak self] result in
@@ -49,7 +49,7 @@ class ListPitchViewModel {
             }
         }
     }
-    
+
     func bookingThePitch(date: String, idCustomer: Int, idPitch: Int, idPrice: Int, idTime: Int, completion: @escaping APICompletion) {
         networkManager.bookingThePitch(date: date, idCustomer: 1, idPitch: idPitch, idPrice: 1, idTime: idTime) { [weak self](result) in
             guard let this = self else { return }
@@ -62,7 +62,7 @@ class ListPitchViewModel {
             }
         }
     }
-    
+
     func numberOfRowInSectionByDefault() -> Int {
         return pitchTotals.count
     }
@@ -72,13 +72,13 @@ class ListPitchViewModel {
         let viewModel = ListPitchCellViewModel(item: item)
         return viewModel
     }
-    
+
     func getInforPitch(at indexPath: IndexPath) -> DetailViewModel {
         let item = pitchTotals[indexPath.row]
         let detail = DetailViewModel(pitch: item)
         return detail
     }
-    
+
     // MARK: - Realm
     func setupObserve() {
         do {
@@ -97,7 +97,7 @@ class ListPitchViewModel {
             delegate?.syncFavorite(viewModel: self, needperformAction: .failure(error))
         }
     }
-    
+
     func fetchRealmData() {
         do {
             // Realm
@@ -110,13 +110,13 @@ class ListPitchViewModel {
             return
         }
     }
-    
+
     func checkFavorite(isFavorite: Bool, id: Int) {
         for item in pitchTotals where item.id == id {
             item.isFavorite = isFavorite
         }
     }
-  
+
     func addFavorite(index: Int, completion: @escaping APICompletion) {
         do {
             let realm = try Realm()
@@ -139,7 +139,7 @@ class ListPitchViewModel {
             completion(.failure(error))
         }
     }
-    
+
     func unfavorite(id: Int, completion: @escaping APICompletion) {
         do {
             let realm = try Realm()

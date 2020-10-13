@@ -15,7 +15,6 @@ import RealmSwift
     dynamic var capacity: String = ""
     dynamic var lat: Double = 0.0
     dynamic var long: Double = 0.0
-    // dynamic var pitchTypeNew: PitchTypeNew?
     
     // MARK: Init
     required init?(map: Map) {}
@@ -29,7 +28,6 @@ import RealmSwift
          isFavorite: Bool,
          lat: Double,
          long: Double) {
-        //     pitchTypeNew: PitchTypeNew?) {
         self.id = id
         self.long = long
         self.lat = lat
@@ -40,7 +38,6 @@ import RealmSwift
         self.count = count
         self.imagePitch = imagePitch
         self.isFavorite = isFavorite
-        //        self.pitchTypeNew = pitchTypeNew
     }
     
     required init() {}
