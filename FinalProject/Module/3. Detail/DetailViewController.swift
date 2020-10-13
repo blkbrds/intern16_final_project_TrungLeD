@@ -23,6 +23,7 @@ class DetailViewController: UIViewController {
     var hidenDatePicker: Bool = false
     var pitch: [Pitch]?
     var viewModel: DetailViewModel = DetailViewModel(pitch: Pitch())
+    var viewModel1 = CustomHeaderViewModel()
     var rightButton: UIBarButtonItem?
     
     // MARK: - Life Cycle
@@ -132,8 +133,8 @@ class DetailViewController: UIViewController {
     }
     // MARK: - Private Function
     private func configTableView() {
-        let nib1 = UINib(nibName: "CustomHeader", bundle: .main)
-        tableView.register(nib1, forHeaderFooterViewReuseIdentifier: "CustomHeader")
+        let customHeader = UINib(nibName: "CustomHeader", bundle: Bundle.main)
+        tableView.register(customHeader, forHeaderFooterViewReuseIdentifier: "CustomHeader")
         let nibHeader = UINib(nibName: "DetailHeaderTableViewCell", bundle: Bundle.main)
         tableView.register(nibHeader, forCellReuseIdentifier: "cellHeader")
         let nibBody = UINib(nibName: "DetailBodyTableViewCell", bundle: Bundle.main)
@@ -190,12 +191,27 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = CustomHeader()
-        header.viewModel = viewModel.viewModelForCustomHeader(at: section)
-        header.backgroundColor = .yellow
-        header.titleLabel?.textColor = .red
-        return header
+        guard let nib2  = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CustomHeader") as? CustomHeader else { return UIView()}
+        if section == 0 {
+            nib2.titleLabel.text = "Map"
+        }
+        if section == 1 {
+            nib2.titleLabel.text = viewModel.pitch.name
+        }
+        if section == 2 {
+            nib2.titleLabel.text = "INFORMATION"
+        }
+        if section == 3  {
+            nib2.titleLabel.text = "250.000 VND - 300.000 VND"
+            nib2.titleLabel.textColor = .orange
+            nib2.titleLabel.font = UIFont.init(name: "System", size: 15)
+        }
+        return nib2
     }
+    
+        func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+            return 44.0
+        }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let numberOfsection = viewModel.typeSectionLoad(number: indexPath.section)

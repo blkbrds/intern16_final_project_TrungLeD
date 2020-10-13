@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CustomHeader: UIView {
+class CustomHeader: UITableViewHeaderFooterView {
     // MAKR: - IBOutlet
     @IBOutlet weak var titleLabel: UILabel!
     
