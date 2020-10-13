@@ -10,9 +10,11 @@ import Foundation
 final class DetailInforCellViewModel {
     // MARK: Properties
     var pitchType: String = ""
+    var inforPitch: String = ""
     
     // MARK: Init
-    init(pitchType: String = "") {
+    init(pitchType: String = "", inforPitch: String = "") {
         self.pitchType = pitchType
+        self.inforPitch = inforPitch
     }
 }

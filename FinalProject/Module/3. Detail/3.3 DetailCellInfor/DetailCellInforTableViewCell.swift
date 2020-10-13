@@ -11,6 +11,7 @@ import UIKit
 class DetailCellInforTableViewCell: UITableViewCell {
     // MARK: IBoutlet
     @IBOutlet weak var typePitchLabel: UILabel!
+    @IBOutlet weak var inforPitch: UILabel!
     
     // MARK: Properties
     var viewModel: DetailInforCellViewModel? {
@@ -31,5 +32,6 @@ class DetailCellInforTableViewCell: UITableViewCell {
     // MARK: Function
     func updateView() {
         typePitchLabel.text = viewModel?.pitchType
+        inforPitch.text = viewModel?.inforPitch
     }
 }

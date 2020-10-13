@@ -10,7 +10,7 @@ import RealmSwift
     dynamic var address: String = ""
     var isBlock: String = ""
     var isDelete: String = ""
-    var verify: String = ""
+    dynamic var verify: String = ""
     var rememberToken: String = ""
     dynamic var district: String = ""
     dynamic var lat: Double = 0.0

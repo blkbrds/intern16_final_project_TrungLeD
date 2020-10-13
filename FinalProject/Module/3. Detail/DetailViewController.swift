@@ -197,7 +197,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         if section == 2 {
             return "Information"
         } else {
-            return "History"
+            return "More Information"
         }
     }
     

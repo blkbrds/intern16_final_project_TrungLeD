@@ -98,7 +98,7 @@ final class DetailViewModel {
     }
     
     func viewModelForInfor(at indexPath: IndexPath) -> DetailInforCellViewModel {
-        let viewModel = DetailInforCellViewModel(pitchType: pitch.type?.name ?? "")
+        let viewModel = DetailInforCellViewModel(pitchType: pitch.type?.name ?? "", inforPitch: pitch.type?.owner?.verify ?? "")
         return viewModel
     }
     

@@ -108,6 +108,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="inforPitch" destination="oCi-nS-gn0" id="hOM-nW-BUT"/>
                 <outlet property="typePitchLabel" destination="WQX-Mj-GPb" id="Wvz-D9-VfQ"/>
             </connections>
             <point key="canvasLocation" x="-117.39130434782609" y="55.580357142857139"/>
