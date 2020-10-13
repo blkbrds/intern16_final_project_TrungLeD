@@ -18,6 +18,7 @@ class ListPitchViewController: UIViewController {
     @IBOutlet var viewContainerDatePicker: UIView!
     
     // MARK: - Properties
+    var indexforMap: Int = 1
     var hidenDatePicker: Bool = false
     var pins: [MyPin] = []
     var inputDate: [Date] = []
@@ -158,7 +159,7 @@ class ListPitchViewController: UIViewController {
     
     func getDataPin() {
         for i in 0..<viewModel.pitchTotals.count {
-            let pin = MyPin(title: viewModel.pitchTotals[i].name,
+            let pin = MyPin(id: viewModel.pitchTotals[i].id, title: viewModel.pitchTotals[i].name,
                             locationName: viewModel.pitchTotals[i].type?.owner?.address ?? "",
                             coordinate: CLLocationCoordinate2D(latitude: viewModel.pitchTotals[i].type?.owner?.lat ?? 0.0, longitude: viewModel.pitchTotals[i].type?.owner?.lng ?? 0.0))
             pins.append(pin)
@@ -339,6 +340,7 @@ extension ListPitchViewController: ListPitchViewModelDelegate {
 extension ListPitchViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard let annotation = annotation as? MyPin else { return nil }
+        
         let identifier = "mypin"
         var view: MyPinView
         if let dequeuedView = mapKit.dequeueReusableAnnotationView(withIdentifier: identifier) as? MyPinView {
@@ -351,10 +353,21 @@ extension ListPitchViewController: MKMapViewDelegate {
             view.rightCalloutAccessoryView = button
             view.leftCalloutAccessoryView = UIImageView(image: UIImage(named: "ic_listpitch_pin"))
             view.canShowCallout = true
+            indexforMap = annotation.id
         }
         return view
     }
     
     @objc func selectPinOnMap(_ sender: UIButton?) {
+        print("alooooo")
+          
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        print("hihi")
+        let detailVC = DetailViewController()
+        detailVC.viewModel = viewModel.getInforPitch(at: IndexPath(row: indexforMap, section: 0))
+        //  detailVC.hidesBottomBarWhenPushed = true
+          navigationController?.pushViewController(detailVC, animated: true)
     }
 }
