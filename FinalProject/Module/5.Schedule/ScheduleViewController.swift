@@ -29,6 +29,7 @@ class ScheduleViewController: UIViewController {
         nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
         navigationItem.title = "Schedule List"
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
@@ -47,8 +48,6 @@ class ScheduleViewController: UIViewController {
                 this.showAlert(alertText: "Loi", alertMessage: "Loi\(error)")
             }
         }
-        
-        // MARK: - Result cancel
     }
     
     private func checkEmptyReserver() {
@@ -77,6 +76,7 @@ class ScheduleViewController: UIViewController {
         tableView.reloadData()
     }
 }
+
 // MARK: - Extension
 extension ScheduleViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -31,7 +31,7 @@ final class ScheduleViewModel {
             }
         }
     }
-    
+
     func getReserver(completion: @escaping APICompletion) {
         networkManager.getResever(idCustomer: 1, page: 1, pageSize: 100) { [weak self] (result) in
             guard let this = self else { return }
@@ -44,7 +44,7 @@ final class ScheduleViewModel {
             }
         }
     }
-    
+
     func checkIsEmptyReserver(completion: @escaping (Bool) -> Void) {
         if reseverTotals.isEmpty {
             completion(true)
@@ -52,7 +52,7 @@ final class ScheduleViewModel {
             completion(false)
         }
     }
-    
+
     func numberRowOfSection() -> Int {
         return reseverTotals.count
     }
