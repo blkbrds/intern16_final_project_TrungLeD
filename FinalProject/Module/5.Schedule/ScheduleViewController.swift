@@ -26,7 +26,7 @@ class ScheduleViewController: UIViewController {
             guard let this = self else { return }
             switch result {
             case .success:
-                print("thanh cong")
+                this.showAlert(alertText: "Thanh cong", alertMessage: "thanh cong")
             case .failure(let error):
                 this.showAlert(alertText: "Loi", alertMessage: "Loi\(error)")
             }
