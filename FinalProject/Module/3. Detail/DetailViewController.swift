@@ -187,6 +187,20 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         return 4
     }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Map"
+        }
+        if section == 1 {
+            return "Address"
+        }
+        if section == 2 {
+            return "Information"
+        } else {
+            return "History"
+        }
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let numberOfsection = viewModel.typeSectionLoad(number: indexPath.section)
         switch numberOfsection {

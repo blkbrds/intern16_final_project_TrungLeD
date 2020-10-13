@@ -299,7 +299,7 @@ extension ListPitchViewController: ListPitchTableViewCellDelegate {
         switch action {
         case .favorite(let isFavorite):
             if isFavorite {
-                viewModel.unfavorite(id: indexPath.row) { [weak self] result in
+                viewModel.unfavorite(id: cell.viewModel?.id ?? 0) { [weak self] result in
                     guard let this = self else { return }
                     switch result {
                     case .success:
@@ -356,6 +356,5 @@ extension ListPitchViewController: MKMapViewDelegate {
     }
     
     @objc func selectPinOnMap(_ sender: UIButton?) {
-        print("da chon")
     }
 }
