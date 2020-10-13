@@ -106,4 +106,10 @@ final class DetailViewModel {
         let viewModel = DetailHistoryViewModel(description: pitch.description1)
         return viewModel
     }
+    
+    func viewModelForCustomHeader(at section: Int) -> CustomHeaderViewModel {
+        let item = pitch
+        let viewModel = CustomHeaderViewModel(title: item.name)
+        return viewModel
+    }
 }

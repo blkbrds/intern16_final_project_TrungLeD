@@ -132,6 +132,8 @@ class DetailViewController: UIViewController {
     }
     // MARK: - Private Function
     private func configTableView() {
+        let nib1 = UINib(nibName: "CustomHeader", bundle: .main)
+        tableView.register(nib1, forHeaderFooterViewReuseIdentifier: "CustomHeader")
         let nibHeader = UINib(nibName: "DetailHeaderTableViewCell", bundle: Bundle.main)
         tableView.register(nibHeader, forCellReuseIdentifier: "cellHeader")
         let nibBody = UINib(nibName: "DetailBodyTableViewCell", bundle: Bundle.main)
@@ -187,18 +189,12 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         return 4
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return "Map"
-        }
-        if section == 1 {
-            return "Address"
-        }
-        if section == 2 {
-            return "Information"
-        } else {
-            return "More Information"
-        }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = CustomHeader()
+        header.viewModel = viewModel.viewModelForCustomHeader(at: section)
+        header.backgroundColor = .yellow
+        header.titleLabel?.textColor = .red
+        return header
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -343,9 +343,7 @@ extension ListPitchViewController: MKMapViewDelegate {
             view = dequeuedView
         } else {
             view = MyPinView(annotation: annotation, reuseIdentifier: identifier)
-            let button = UIButton(type: .detailDisclosure)
-            button.addTarget(self, action: #selector(selectPinOnMap), for: .touchDown)
-            view.rightCalloutAccessoryView = button
+            view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             view.leftCalloutAccessoryView = UIImageView(image: UIImage(named: "ic_listpitch_pin"))
             view.canShowCallout = true
             indexforMap = annotation.id
@@ -353,17 +351,14 @@ extension ListPitchViewController: MKMapViewDelegate {
         return view
     }
     
-    @objc func selectPinOnMap(_ sender: UIButton?) {
-        print("alooooo")
-        
-    }
-    
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        print("hihi")
         let detailVC = DetailViewController()
-        detailVC.viewModel = viewModel.getInforPitch(at: IndexPath(row: indexforMap, section: 0))
-        //  detailVC.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(detailVC, animated: true)
+        guard let annotation = view.annotation else { return }
+        guard let name = annotation.title else { return }
+        for pitch in viewModel.pitchTotals where pitch.name == name {
+            detailVC.viewModel = DetailViewModel(pitch: pitch)
+            navigationController?.pushViewController(detailVC, animated: true)
+        }
     }
 }
 

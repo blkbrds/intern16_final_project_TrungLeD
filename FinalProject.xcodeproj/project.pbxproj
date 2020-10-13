@@ -76,6 +76,9 @@
 		B0F837C32525E179008F08C3 /* DetailHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0F837C12525E179008F08C3 /* DetailHeaderTableViewCell.xib */; };
 		B0F837C72525E494008F08C3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F837C52525E494008F08C3 /* DetailViewController.swift */; };
 		B0F837C82525E494008F08C3 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0F837C62525E494008F08C3 /* DetailViewController.xib */; };
+		B0FFBAEF2535A33900E89E05 /* CustomHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0FFBAEE2535A33900E89E05 /* CustomHeader.xib */; };
+		B0FFBAF12535A49400E89E05 /* CustomHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FFBAF02535A49400E89E05 /* CustomHeader.swift */; };
+		B0FFBAF32535A69E00E89E05 /* CustomHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FFBAF22535A69E00E89E05 /* CustomHeaderViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,6 +165,9 @@
 		B0F837C12525E179008F08C3 /* DetailHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		B0F837C52525E494008F08C3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		B0F837C62525E494008F08C3 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
+		B0FFBAEE2535A33900E89E05 /* CustomHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomHeader.xib; sourceTree = "<group>"; };
+		B0FFBAF02535A49400E89E05 /* CustomHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeader.swift; sourceTree = "<group>"; };
+		B0FFBAF22535A69E00E89E05 /* CustomHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderViewModel.swift; sourceTree = "<group>"; };
 		C61BA4D4E75E02FEDB8CFD8C /* Pods-FinalProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProject.debug.xcconfig"; path = "Target Support Files/Pods-FinalProject/Pods-FinalProject.debug.xcconfig"; sourceTree = "<group>"; };
 		D3E200185B9A7477CBBC2CA9 /* Pods_FinalProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinalProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC6FCCB45635B0CBA560C1F7 /* Pods-FinalProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinalProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-FinalProjectTests/Pods-FinalProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -493,6 +499,7 @@
 		B0F837BF2525E108008F08C3 /* 3. Detail */ = {
 			isa = PBXGroup;
 			children = (
+				B0FFBAED2535963100E89E05 /* 3.5 CellHeaderCustome */,
 				514BF5CC25261E94001C3610 /* 3.4 DetailCellHistory */,
 				514BF5C725261AD1001C3610 /* 3.3 DetailCellInfor */,
 				514BF5BA252603B0001C3610 /* 3.2 DetailCellBody */,
@@ -512,6 +519,16 @@
 				B0F837C12525E179008F08C3 /* DetailHeaderTableViewCell.xib */,
 			);
 			path = "3.1 DetailCellHeader";
+			sourceTree = "<group>";
+		};
+		B0FFBAED2535963100E89E05 /* 3.5 CellHeaderCustome */ = {
+			isa = PBXGroup;
+			children = (
+				B0FFBAEE2535A33900E89E05 /* CustomHeader.xib */,
+				B0FFBAF02535A49400E89E05 /* CustomHeader.swift */,
+				B0FFBAF22535A69E00E89E05 /* CustomHeaderViewModel.swift */,
+			);
+			path = "3.5 CellHeaderCustome";
 			sourceTree = "<group>";
 		};
 		D2E67B09594A769705B6FA29 /* Pods */ = {
@@ -612,6 +629,7 @@
 			files = (
 				B06B06F22526BB98002762B4 /* DetailBodyTableViewCell.xib in Resources */,
 				B0C53865252AA99C00D707EE /* ScheduleViewController.xib in Resources */,
+				B0FFBAEF2535A33900E89E05 /* CustomHeader.xib in Resources */,
 				B0C3AF682512059B00959BDD /* LoginViewController.xib in Resources */,
 				B0F837C82525E494008F08C3 /* DetailViewController.xib in Resources */,
 				B06B06EC2526BB8E002762B4 /* DetailCellInforTableViewCell.xib in Resources */,
@@ -749,6 +767,7 @@
 				B0F8379225245F5D008F08C3 /* Pitch.swift in Sources */,
 				513D174A2531A92000156C1A /* Time.swift in Sources */,
 				B0F8379125245F5D008F08C3 /* Owner.swift in Sources */,
+				B0FFBAF12535A49400E89E05 /* CustomHeader.swift in Sources */,
 				B0F8378C25245F36008F08C3 /* ListPitchViewModel.swift in Sources */,
 				513D17462531A92000156C1A /* Price.swift in Sources */,
 				B0F8379325245F5D008F08C3 /* PitchType.swift in Sources */,
@@ -765,6 +784,7 @@
 				B0C3AF672512059B00959BDD /* LoginViewController.swift in Sources */,
 				B06B06E82526BB81002762B4 /* DetailCellHistoryTableViewCell.swift in Sources */,
 				B06B766E252F217B00D6F5D2 /* BookingPitch.swift in Sources */,
+				B0FFBAF32535A69E00E89E05 /* CustomHeaderViewModel.swift in Sources */,
 				B00B7D8C252AC5BA007BC7E0 /* FavouritesTableViewCell.swift in Sources */,
 				B0DD24A8252B0CEC00F02015 /* ListPitchViewController.swift in Sources */,
 				B0C5386B252AA9B600D707EE /* TabbarController.swift in Sources */,
