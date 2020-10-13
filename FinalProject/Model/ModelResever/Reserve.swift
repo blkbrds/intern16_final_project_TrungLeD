@@ -35,5 +35,4 @@ final class Reserve: Mappable {
         createdAt <- map["createdAt"]
         updateAt <- map["updateAt"]
     }
-    
 }

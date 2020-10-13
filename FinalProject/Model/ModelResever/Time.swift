@@ -2,9 +2,9 @@ import Foundation
 import ObjectMapper
 
 final class Time: Mappable {
-	var id: Int = 0
-	var startTime: String = ""
-	var endTime: String = ""
+    var id: Int = 0
+    var startTime: String = ""
+    var endTime: String = ""
     
     init?(map: Map) {
 	}
@@ -19,5 +19,5 @@ final class Time: Mappable {
         id <- map["id"]
         startTime <- map["start_time"]
         endTime <- map["end_time"]
-	}
+    }
 }

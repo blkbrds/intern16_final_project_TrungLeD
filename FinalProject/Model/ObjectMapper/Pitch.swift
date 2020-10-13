@@ -17,7 +17,7 @@ import RealmSwift
     dynamic var capacity: String = ""
     dynamic var lat: Double = 0.0
     dynamic var long: Double = 0.0
-    
+
     // MARK: Init
     required init?(map: Map) {}
     init(id: Int = 0, type: PitchType = PitchType(),
@@ -39,13 +39,13 @@ import RealmSwift
         self.imagePitch = imagePitch
         self.isFavorite = isFavorite
     }
-    
+
     required init() {}
-    
+
     override static func primaryKey() -> String? {
         return "id"
     }
-    
+
     // MARK: Function
     func mapping(map: Map) {
         id <- map["id"]
@@ -65,7 +65,7 @@ import RealmSwift
 
 // MARK: - Realms query
 extension Pitch {
-    
+
     static func getByIdInRealms(id: Int) -> Pitch? {
         do {
             let realm = try Realm()
@@ -75,7 +75,7 @@ extension Pitch {
             return nil
         }
     }
-    
+
     func removeInRealms() -> Error? {
         do {
             let realm = try Realm()
@@ -88,7 +88,7 @@ extension Pitch {
             return error
         }
     }
-    
+
     func addInRealms() -> Error? {
         do {
             let realm = try Realm()
@@ -100,7 +100,7 @@ extension Pitch {
             return error
         }
     }
-    
+
     func editInRealms(handler: () -> Void) -> Error? {
         do {
             let realm = try Realm()

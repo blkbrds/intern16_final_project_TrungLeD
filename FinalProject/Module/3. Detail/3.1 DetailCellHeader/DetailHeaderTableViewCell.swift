@@ -17,7 +17,7 @@ class DetailHeaderTableViewCell: UITableViewCell {
     @IBOutlet var mapView: MKMapView!
     
     // MARK: Properties
-    var delegate: DetailHeaderTableViewCellDelegate?
+    weak var delegate: DetailHeaderTableViewCellDelegate?
     var viewModel: DetailHeaderCellViewModel? {
         didSet {
             updateView()

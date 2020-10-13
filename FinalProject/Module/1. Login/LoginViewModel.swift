@@ -21,7 +21,7 @@ final class LoginViewModel {
     func login(phone: String, pw: String, completion: @escaping APICompletion ) {
         networkManager.login(phone: phone, pw: pw) { result in
             switch result {
-            case .success( _):
+            case .success:
                 completion(.success)
             case .failure(let error):
                 completion(.failure(error))

@@ -100,11 +100,8 @@ class ListPitchViewModel {
     
     func fetchRealmData() -> Error? {
         do {
-            // Realm
             let realm = try Realm()
-            // Create results
             let results = realm.objects(Pitch.self)
-            // Convert to array
             realmPitch = Array(results)
             return nil
         } catch {
@@ -141,7 +138,7 @@ class ListPitchViewModel {
         }
     }
     
-    func unfavorite(id: Int, completion: @escaping APICompletion){
+    func unfavorite(id: Int, completion: @escaping APICompletion) {
         do {
             let realm = try Realm()
             let predicate = NSPredicate(format: "id = \(id)")

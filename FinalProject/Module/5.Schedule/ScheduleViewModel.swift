@@ -16,7 +16,7 @@ final class ScheduleViewModel {
     init(networkManager: NetworkManager = NetworkManager.shared) {
         self.networkManager = networkManager
     }
-    
+
     // MARK: - Function
     func getReserver(completion: @escaping APICompletion) {
         networkManager.getResever(idCustomer: 1, page: 1, pageSize: 100) { [weak self] (result) in

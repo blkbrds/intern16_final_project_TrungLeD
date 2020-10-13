@@ -13,8 +13,7 @@ import ObjectMapper
 final class NetworkManager: Networkable {
     // MARK: - Function request
     func getResever(idCustomer: Int, page: Int, pageSize: Int, completion: @escaping CompletionResult<[Reserve]>) {
-        provider.request(.getResever(idCustomer: idCustomer, page: 1, pageSize: 100)) {
-            (result) in
+        provider.request(.getResever(idCustomer: idCustomer, page: 1, pageSize: 100)) { (result) in
             switch result {
             case .success(let response):
                 do {

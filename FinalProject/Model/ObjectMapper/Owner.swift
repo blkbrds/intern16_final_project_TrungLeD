@@ -18,7 +18,7 @@ final class Owner: Mappable {
     // MARK: - Init
     required init?(map: Map) { }
     init() { }
-    
+
     // MARK: - Function
     func mapping(map: Map) {
         id <- map["id"]
