@@ -59,9 +59,9 @@ extension ServiceAPI: TargetType {
     }
     var method: Moya.Method {
         switch self {
-        case .getAllDictrict, .getAllPitch(_, _), .getResever(idCustomer: _, _, _):
+        case .getAllDictrict, .getAllPitch, .getResever:
             return .get
-        case .login, .bookingPitch(_, _, _, _,_):
+        case .login, .bookingPitch:
             return .post
         }
     }
