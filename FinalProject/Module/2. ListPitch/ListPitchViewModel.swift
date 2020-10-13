@@ -116,7 +116,7 @@ class ListPitchViewModel {
             item.isFavorite = isFavorite
         }
     }
-    
+  
     func addFavorite(index: Int, completion: @escaping APICompletion) {
         do {
             let realm = try Realm()

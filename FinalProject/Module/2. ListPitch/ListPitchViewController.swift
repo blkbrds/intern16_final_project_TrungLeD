@@ -321,7 +321,7 @@ extension ListPitchViewController: ListPitchTableViewCellDelegate {
             }
         }
     }
-    
+  
     func bookingButton(cell: ListPitchTableViewCell, id: Int) {
         loadDatePicker()
         idPitch = id
