@@ -11,10 +11,12 @@ final class DetailInforCellViewModel {
     // MARK: Properties
     var pitchType: String = ""
     var inforPitch: String = ""
+    var index: Int = 0
     
     // MARK: Init
-    init(pitchType: String = "", inforPitch: String = "") {
+    init(pitchType: String = "", inforPitch: String = "", index: Int = 0) {
         self.pitchType = pitchType
+        self.index = index
         self.inforPitch = inforPitch
     }
 }

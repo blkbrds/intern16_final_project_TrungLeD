@@ -11,6 +11,7 @@ import UIKit
 class CustomHeader: UITableViewHeaderFooterView {
     // MAKR: - IBOutlet
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var verifyIcon: UIImageView!
     
     // MARK: - Properties
     var viewModel = CustomHeaderViewModel() {
@@ -21,5 +22,6 @@ class CustomHeader: UITableViewHeaderFooterView {
     
     func updateView() {
         titleLabel?.text = viewModel.title
+        verifyIcon.isHidden = false
     }
 }

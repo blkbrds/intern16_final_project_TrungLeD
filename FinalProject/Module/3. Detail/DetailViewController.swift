@@ -23,7 +23,6 @@ class DetailViewController: UIViewController {
     var hidenDatePicker: Bool = false
     var pitch: [Pitch]?
     var viewModel: DetailViewModel = DetailViewModel(pitch: Pitch())
-    var viewModel1 = CustomHeaderViewModel()
     var rightButton: UIBarButtonItem?
     
     // MARK: - Life Cycle
@@ -138,7 +137,7 @@ class DetailViewController: UIViewController {
         let nibHeader = UINib(nibName: "DetailHeaderTableViewCell", bundle: Bundle.main)
         tableView.register(nibHeader, forCellReuseIdentifier: "cellHeader")
         let nibBody = UINib(nibName: "DetailBodyTableViewCell", bundle: Bundle.main)
-        tableView.register(nibBody, forCellReuseIdentifier: "cellBody")
+        tableView.register(nibBody, forCellReuseIdentifier: "cellAdressBody")
         let nibInfor = UINib(nibName: "DetailCellInforTableViewCell", bundle: Bundle.main)
         tableView.register(nibInfor, forCellReuseIdentifier: "cellInfor")
         let nibHistory = UINib(nibName: "DetailCellHistoryTableViewCell", bundle: Bundle.main)
@@ -183,7 +182,16 @@ class DetailViewController: UIViewController {
 // MARK: - UITableViewDelegate
 extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        switch section {
+        case 0:
+            return 1
+        case 1:
+            return 3
+        case 2:
+            return 5
+        default:
+            return 1
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -191,20 +199,21 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let nib2  = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CustomHeader") as? CustomHeader else { return UIView()}
+        guard let nib2 = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CustomHeader") as? CustomHeader else { return UIView() }
         if section == 0 {
             nib2.titleLabel.text = "Map"
+            nib2.verifyIcon.isHidden = true
         }
         if section == 1 {
             nib2.titleLabel.text = viewModel.pitch.name
         }
         if section == 2 {
-            nib2.titleLabel.text = "INFORMATION"
+            nib2.titleLabel.text = "Information"
+            nib2.verifyIcon.isHidden = true
         }
-        if section == 3  {
+        if section == 3 {
+            nib2.verifyIcon.isHidden = true
             nib2.titleLabel.text = "250.000 VND - 300.000 VND"
-            nib2.titleLabel.textColor = .orange
-            nib2.titleLabel.font = UIFont.init(name: "System", size: 15)
         }
         return nib2
     }
@@ -224,7 +233,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
             cell.delegate = self
             return cell
         case .body:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellBody", for: indexPath) as? DetailBodyTableViewCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellAdressBody", for: indexPath) as? DetailBodyTableViewCell else {
                 return UITableViewCell()
             }
             cell.viewModel = viewModel.viewModelForBody(at: indexPath)
@@ -250,9 +259,11 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
         case 0:
             return 270
         case 1:
-            return 130
+            return 48
+        case 2:
+            return UITableView.automaticDimension
         default:
-            return 130
+            return 40
         }
     }
 }

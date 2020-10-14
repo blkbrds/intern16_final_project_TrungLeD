@@ -38,7 +38,7 @@ typealias CompletionResult<Value> = (Result<Value>) -> Void
 extension ServiceAPI: TargetType {
     
     var baseURL: URL {
-        guard let url = URL(string: "http://18.188.48.158:8080/trungapi" ) else {
+        guard let url = URL(string: "http://18.219.210.189:8080/trungapi" ) else {
             fatalError("Invalid static URL string")
         }
         return url
@@ -117,7 +117,7 @@ extension ServiceAPI: TargetType {
         switch self {
         case .bookingPitch, .getResever, .cancelResever:
             var headers: [String: String] = [:]
-            headers["authorization"] = "eyJhbGciOiJIUzI1NiJ9.eyJwaG9uZSI6IjAxMjM0NTY3ODkiLCJleHAiOjE2MDI2MzgyODJ9.024WPMkf7FPvvVEaWhqGmzW-AboME3eTkTVMe1LMkf0"
+            headers["authorization"] = "eyJhbGciOiJIUzI1NiJ9.eyJwaG9uZSI6IjAxMjM0NTY3ODkiLCJleHAiOjE2MDI3MjY0Nzd9.15jsoZbaBVwDeJyLUU_pw3URftLa0wiio9DZuJ2fvF0"
             return headers
         default:
             var headers: [String: String] = [:]

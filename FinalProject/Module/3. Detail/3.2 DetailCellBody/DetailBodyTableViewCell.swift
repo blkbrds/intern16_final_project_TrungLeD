@@ -10,10 +10,8 @@ import UIKit
 
 class DetailBodyTableViewCell: UITableViewCell {
     // MARK: IBOutlet
-    @IBOutlet weak var namePitchLabel: UILabel!
     @IBOutlet weak var addressPitchLabel: UILabel!
-    @IBOutlet weak var phoneLabel: UILabel!
-    @IBOutlet weak var timeActiveLabel: UILabel!
+    @IBOutlet weak var iconLabel: UIImageView!
     
     // MARK: Properties
     var viewModel: DetailBodyCellViewModel? {
@@ -32,9 +30,16 @@ class DetailBodyTableViewCell: UITableViewCell {
     
     // MARK: Function
     private func updateView() {
-        namePitchLabel.text = viewModel?.namePitch
-        addressPitchLabel.text = viewModel?.address
-        phoneLabel.text = viewModel?.phoneNumber
-        timeActiveLabel.text = viewModel?.timeActive
+        if viewModel?.index == 0 {
+            iconLabel.image = UIImage(named: "ic_detail_location")
+            addressPitchLabel.text = viewModel?.address
+        } else if viewModel?.index == 1 {
+            addressPitchLabel.text = viewModel?.phoneNumber
+            iconLabel.image = UIImage(named: "ic_detail_phone")
+        } else {
+            iconLabel.image = UIImage(named: "ic_detail_clock")
+            addressPitchLabel.text = viewModel?.timeActive
+        }
+        
     }
 }

@@ -93,12 +93,14 @@ final class DetailViewModel {
         let viewModel = DetailBodyCellViewModel(namePitch: pitch.name,
                                                 address: pitch.type?.owner?.address ?? "",
                                                 phoneNumber: pitch.type?.owner?.phone ?? "",
-                                                timeActive: pitch.timeUse)
+                                                timeActive: pitch.timeUse, index: indexPath.row)
         return viewModel
     }
     
     func viewModelForInfor(at indexPath: IndexPath) -> DetailInforCellViewModel {
-        let viewModel = DetailInforCellViewModel(pitchType: pitch.type?.name ?? "", inforPitch: pitch.type?.owner?.verify ?? "")
+        let items = [pitch.type?.owner?.verify, pitch.type?.name, "Miễn Phí Thuê Bóng", "Cần Đặt Cọc", "Nước Miễn Phí" ]
+        let item = items[indexPath.row] ?? ""
+        let viewModel = DetailInforCellViewModel(pitchType: item, index: indexPath.row)
         return viewModel
     }
     
