@@ -186,11 +186,12 @@ class ListPitchViewController: UIViewController {
     var leftItem = UIBarButtonItem()
     @objc private func mapView1() {
         leftItem = UIBarButtonItem(image: UIImage(named: "ic_listpitch_listview"), style: .plain, target: self, action: #selector(listView))
-        leftItem.tintColor = #colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)
+        leftItem.tintColor = #colorLiteral(red: 0.6941176471, green: 0.6666666667, blue: 0.5490196078, alpha: 1)
         navigationItem.leftBarButtonItem = leftItem
         navigationItem.rightBarButtonItem = nil
         navigationItem.title = "Map View"
-        navigationController?.navigationBar.tintColor = .red
+        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.737254902, green: 0.6980392157, blue: 0.5176470588, alpha: 1)
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
         tableView.isHidden = true
         mapKit.isHidden = false
         locationCurrentBtn.isHidden = false
@@ -199,7 +200,7 @@ class ListPitchViewController: UIViewController {
     @objc private func listView() {
         locationCurrentBtn.isHidden = true
         let leftItem = UIBarButtonItem(image: UIImage(named: "ic_listpitch_map"), style: .plain, target: self, action: #selector(mapView1))
-        leftItem.tintColor = #colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)
+        leftItem.tintColor = #colorLiteral(red: 0.6941176471, green: 0.6666666667, blue: 0.5490196078, alpha: 1)
         navigationItem.leftBarButtonItem = leftItem
         navigationItem.title = ""
         let searchBar: UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 100, height: 0))
@@ -280,7 +281,7 @@ extension ListPitchViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("Search text is \(searchText)")
-        searchBar.searchTextField.textColor = .red
+        searchBar.searchTextField.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         if searchText.isEmpty {
             viewModel.pitchs = viewModel.pitchTotals
         } else {
