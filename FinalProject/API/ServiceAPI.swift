@@ -66,7 +66,7 @@ extension ServiceAPI: TargetType {
             return .get
         case .login, .bookingPitch:
             return .post
-        case .cancelResever(_,_):
+        case .cancelResever:
             return .delete
         }
     }
