@@ -29,8 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         case .login:
             window?.rootViewController = LoginViewController()
         case .tabbar:
-            let navi = UINavigationController(rootViewController: TabbarViewController())
-            window?.rootViewController = navi
+            window?.rootViewController = TabbarViewController()
         }
     }
     static let shared: AppDelegate = {

@@ -28,12 +28,8 @@ class ListPitchViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let nav = self.navigationController?.navigationBar
-        nav?.barStyle = .black
-        nav?.tintColor = .white
-        nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
         tableView.reloadData()
-        //   viewModel.fetchRealmData()
+        viewModel.fetchRealmData()
     }
     
     override func viewDidLoad() {
@@ -193,6 +189,8 @@ class ListPitchViewController: UIViewController {
         leftItem.tintColor = #colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)
         navigationItem.leftBarButtonItem = leftItem
         navigationItem.rightBarButtonItem = nil
+        navigationItem.title = "Map View"
+        navigationController?.navigationBar.tintColor = .red
         tableView.isHidden = true
         mapKit.isHidden = false
         locationCurrentBtn.isHidden = false
@@ -203,6 +201,7 @@ class ListPitchViewController: UIViewController {
         let leftItem = UIBarButtonItem(image: UIImage(named: "ic_listpitch_map"), style: .plain, target: self, action: #selector(mapView1))
         leftItem.tintColor = #colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)
         navigationItem.leftBarButtonItem = leftItem
+        navigationItem.title = ""
         let searchBar: UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 100, height: 0))
         searchBar.placeholder = "Nhập Tên Sân"
         let rightNavBarButton = UIBarButtonItem(customView: searchBar)
@@ -253,7 +252,7 @@ extension ListPitchViewController: UITableViewDataSource {
         return viewModel.pitchs.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 120
     }
 }
 
@@ -281,6 +280,7 @@ extension ListPitchViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("Search text is \(searchText)")
+        searchBar.searchTextField.textColor = .red
         if searchText.isEmpty {
             viewModel.pitchs = viewModel.pitchTotals
         } else {

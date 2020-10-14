@@ -23,11 +23,6 @@ class ScheduleViewController: UIViewController {
         super.viewWillAppear(animated)
         checkEmptyReserver()
         loadData()
-        let nav = self.navigationController?.navigationBar
-        nav?.barStyle = .black
-        nav?.tintColor = .white
-        nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
-        navigationItem.title = "Schedule List"
     }
     
     override func viewDidLoad() {
@@ -66,6 +61,7 @@ class ScheduleViewController: UIViewController {
     }
     
     func configTableView() {
+        navigationItem.title = "Schedule"
         let nib = UINib(nibName: "ScheduleCell", bundle: Bundle.main)
         tableView.register(nib, forCellReuseIdentifier: "ScheduleCell")
         tableView.dataSource = self
