@@ -20,7 +20,7 @@ final class FavouriteViewController: UIViewController {
     // MARK: Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.tintColor = .red
+        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.6950495243, green: 0.6684789658, blue: 0.547100842, alpha: 1)
     }
     
     override func viewDidLoad() {
@@ -69,6 +69,7 @@ final class FavouriteViewController: UIViewController {
     
     func configNavi() {
         navigationItem.title = "Favorite List"
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
         let rightBarButton = UIBarButtonItem(image: UIImage(systemName: "trash"), style: .plain, target: self, action: #selector(deleteTouchUpInSide))
         navigationItem.rightBarButtonItem = rightBarButton
     }
@@ -124,6 +125,10 @@ extension FavouriteViewController: UITableViewDataSource, UITableViewDelegate {
         cell.delegate = self
         cell.viewModel = viewModel.cellForRowAt(indexPath: indexPath)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

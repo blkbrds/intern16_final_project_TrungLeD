@@ -50,7 +50,6 @@ class DetailViewController: UIViewController {
     // MARK: - Function for DatePicker
     private func loadDatePicker() {
         UIView.animate(withDuration: 0.3, animations: {
-            self.tabBarController?.tabBar.isHidden = true
             self.viewContainerDatePicker.isHidden = false
             self.tableView.alpha = 0.5
             self.tableView.allowsSelection = false
@@ -66,7 +65,6 @@ class DetailViewController: UIViewController {
         UIView.transition(with: viewContainerDatePicker, duration: 0.5,
                           options: .transitionCrossDissolve,
                           animations: {
-                            self.tabBarController?.tabBar.isHidden = false
                             self.viewContainerDatePicker.isHidden = true
                             self.tableView.alpha = 1
                             self.tableView.allowsSelection = true

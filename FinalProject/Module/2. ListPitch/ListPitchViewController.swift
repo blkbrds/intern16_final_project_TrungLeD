@@ -50,7 +50,7 @@ class ListPitchViewController: UIViewController {
     }
     
     private func stateDatePickerDefault() {
-        UIView.transition(with: viewContainerDatePicker, duration: 0.5,
+        UIView.transition(with: viewContainerDatePicker, duration: 1,
                           options: .transitionCrossDissolve,
                           animations: {
                             self.tabBarController?.tabBar.isHidden = false
@@ -215,7 +215,6 @@ class ListPitchViewController: UIViewController {
     
     // MARK: - Function
     private func configureUI() {
-        navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.isTranslucent = true
         navigationItem.hidesSearchBarWhenScrolling = true
     }
@@ -229,8 +228,8 @@ class ListPitchViewController: UIViewController {
     // MARK: - Func Load Date Picker
     //    let datePicker = Bundle.main.loadNibNamed("DatePickerUIView", owner: self, options: nil)?.first as? DatePickerUIView
     private func loadDatePicker() {
-        UIView.animate(withDuration: 0.3, animations: {
-            self.tabBarController?.tabBar.isHidden = true
+        UIView.animate(withDuration: 0.5, animations: {
+//            self.tabBarController?.tabBar.isHidden = true
             self.viewContainerDatePicker.isHidden = false
             self.tableView.alpha = 0.5
             self.tableView.allowsSelection = false
