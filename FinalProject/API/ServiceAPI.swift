@@ -15,6 +15,7 @@ enum ServiceAPI {
     case getAllPitch(page: Int, pageSize: Int)
     case bookingPitch(date: String, idCustomer: Int, idPitch: Int, idPrice: Int, idTime: Int)
     case getResever(idCustomer: Int, page: Int, pageSize: Int)
+    case cancelResever(idCustomer: Int, idReserve: Int)
 }
 
 // enum Result
@@ -37,7 +38,7 @@ typealias CompletionResult<Value> = (Result<Value>) -> Void
 extension ServiceAPI: TargetType {
     
     var baseURL: URL {
-        guard let url = URL(string: "http://18.188.48.158:8080/trungapi" ) else {
+        guard let url = URL(string: "http://3.15.181.74:8080/trungapi" ) else {
             fatalError("Invalid static URL string")
         }
         return url
@@ -55,6 +56,8 @@ extension ServiceAPI: TargetType {
             return "/personal/reserve-pitch"
         case .getResever:
             return "/personal/get-reserve"
+        case .cancelResever:
+            return "/personal/cancel-reserve"
         }
     }
     var method: Moya.Method {
@@ -63,6 +66,8 @@ extension ServiceAPI: TargetType {
             return .get
         case .login, .bookingPitch:
             return .post
+        case .cancelResever:
+            return .delete
         }
     }
     
@@ -100,14 +105,19 @@ extension ServiceAPI: TargetType {
             params["page"] = page
             params["pageSize"] = pageSize
             return .requestParameters(parameters: params, encoding: URLEncoding.default)
+        case .cancelResever(let idCustomer, let idReserve):
+            var params: [String: Any] = [:]
+            params["idCustomer"] = idCustomer
+            params["idReserve"] = idReserve
+            return .requestParameters(parameters: params, encoding: URLEncoding.default)
         }
     }
     
     var headers: [String: String]? {
         switch self {
-        case .bookingPitch, .getResever:
+        case .bookingPitch, .getResever, .cancelResever:
             var headers: [String: String] = [:]
-            headers["authorization"] = "eyJhbGciOiJIUzI1NiJ9.eyJwaG9uZSI6IjAxMjM0NTY3ODkiLCJleHAiOjE2MDI2MzgyODJ9.024WPMkf7FPvvVEaWhqGmzW-AboME3eTkTVMe1LMkf0"
+            headers["authorization"] = "eyJhbGciOiJIUzI1NiJ9.eyJwaG9uZSI6IjAxMjM0NTY3ODkiLCJleHAiOjE2MDI3MjY0Nzd9.15jsoZbaBVwDeJyLUU_pw3URftLa0wiio9DZuJ2fvF0"
             return headers
         default:
             var headers: [String: String] = [:]

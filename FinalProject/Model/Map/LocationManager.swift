@@ -12,7 +12,6 @@ import CoreLocation
 typealias LocationCompletion = (CLLocation) -> Void
 
 final class LocationManager: NSObject {
-    
     //singleton
     private static var sharedLocationManager: LocationManager = {
         let locationManager = LocationManager()

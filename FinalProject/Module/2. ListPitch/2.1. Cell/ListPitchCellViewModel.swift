@@ -13,25 +13,25 @@ final class ListPitchCellViewModel {
     var isFavorite: Bool
     var item: Pitch
     var phoneOwner: String {
-        return item.type.owner.phone
+        return item.type?.owner?.phone ?? ""
     }
     var addressOwner: String {
-        return item.type.owner.address
+        return item.type?.owner?.address ?? ""
     }
     var districtOwner: String {
-        return item.type.owner.district
+        return item.type?.owner?.district ?? ""
     }
     var verify: String {
-        return item.type.owner.verify
+        return item.type?.owner?.verify ?? ""
     }
     var lat: Double {
-        return item.type.owner.lat
+        return item.type?.owner?.lat ?? 0.0
     }
     var long: Double {
-        return item.type.owner.lng
+        return item.type?.owner?.lng ?? 0.0
     }
     var nameOwer: String {
-        return item.type.owner.name
+        return item.type?.owner?.name ?? ""
     }
     var name: String {
         return item.name
@@ -43,7 +43,7 @@ final class ListPitchCellViewModel {
         return item.timeUse
     }
     var pitchType: String {
-        return item.type.name
+        return item.type?.name ?? ""
     }
     var imagePitch: String {
         return item.imagePitch

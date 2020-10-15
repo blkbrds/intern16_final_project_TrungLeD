@@ -25,18 +25,22 @@
                     </mapView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cUP-lp-ChR">
                         <rect key="frame" x="184" y="210" width="130" height="33"/>
-                        <color key="backgroundColor" red="0.87450980392156863" green="0.8784313725490196" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.018984107300000001" green="0.067794032389999995" blue="0.3115225136" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="33" id="4R8-j0-T7s"/>
                             <constraint firstAttribute="width" constant="130" id="Mpb-Xk-zgQ"/>
                         </constraints>
-                        <state key="normal" title="Đặt Sân"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <state key="normal" title="Đặt Sân">
+                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
                         <connections>
                             <action selector="bookingtapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="09U-fz-oHS"/>
                         </connections>
                     </button>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_detail_booking" translatesAutoresizingMaskIntoConstraints="NO" id="lfQ-6M-lGN">
                         <rect key="frame" x="190" y="216" width="20" height="20"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="Ofs-rg-Xcd"/>
                             <constraint firstAttribute="width" constant="20" id="iCt-LX-Cm8"/>

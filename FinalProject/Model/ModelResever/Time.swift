@@ -7,7 +7,7 @@ final class Time: Mappable {
     var endTime: String = ""
     
     init?(map: Map) {
-	}
+    }
     
     init(id: Int = 0, startTime: String = "", endTime: String = "") {
         self.id = id

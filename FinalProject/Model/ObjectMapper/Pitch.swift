@@ -5,29 +5,29 @@ import RealmSwift
 @objcMembers class Pitch: Object, Mappable {
     // MARK: Properties
     dynamic var id: Int = 0
-    dynamic var type: PitchType = PitchType()
+    dynamic var type: PitchType?
     dynamic var name: String = ""
     dynamic var description1: String = ""
     dynamic var timeUse: String = ""
     dynamic var count: Double = 0.0
     dynamic var imagePitch: String = ""
     dynamic var isFavorite: Bool = false
-    dynamic var phone: String = ""
-    dynamic var address: String = ""
     dynamic var capacity: String = ""
     dynamic var lat: Double = 0.0
     dynamic var long: Double = 0.0
 
     // MARK: Init
     required init?(map: Map) {}
-    init(id: Int = 0, type: PitchType = PitchType(),
+    init(id: Int = 0,
+         type: PitchType,
          name: String = "",
          description1: String = "",
          timeUse: String = "",
          count: Double = 0.0,
          imagePitch: String = "",
          isFavorite: Bool,
-         lat: Double, long: Double) {
+         lat: Double,
+         long: Double) {
         self.id = id
         self.long = long
         self.lat = lat
@@ -54,13 +54,7 @@ import RealmSwift
         description1 <- map["description"]
         timeUse <- map["is_use"]
         count <- map["count"]
-        imagePitch <- map["image"]
-        phone = type.owner.phone
-        address = type.owner.address
-        capacity = type.name
-        lat = type.owner.lat
-        long = type.owner.lng
-    }
+        imagePitch <- map["image"]    }
 }
 
 // MARK: - Realms query

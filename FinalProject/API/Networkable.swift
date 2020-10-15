@@ -9,8 +9,8 @@
 import Moya
 
 protocol Networkable {
+    // MAKR: - Properties
     var provider: MoyaProvider<ServiceAPI> { get }
-    
     // MARK: Function
     func login(phone: String, pw: String, completion: @escaping CompletionResult<Customer>)
     
@@ -19,4 +19,6 @@ protocol Networkable {
     func bookingThePitch(date: String, idCustomer: Int, idPitch: Int, idPrice: Int, idTime: Int, completion: @escaping CompletionResult<BookingPitch>)
     
     func getResever(idCustomer: Int, page: Int, pageSize: Int, completion: @escaping CompletionResult<[Reserve]>)
+    
+    func cancelResever(idCustomer: Int, idReserve: Int, completion: @escaping CompletionResult<Cancel>)
 }

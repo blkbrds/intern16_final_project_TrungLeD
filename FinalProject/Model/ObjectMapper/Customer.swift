@@ -17,7 +17,6 @@ final class Customer: Mappable {
 
     // MARK: - Init
     required init(map: Map) { }
-
     // MARK: - Function
     func mapping(map: Map) {
         id <- map["id"]

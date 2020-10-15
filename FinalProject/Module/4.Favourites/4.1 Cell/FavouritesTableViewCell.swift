@@ -45,7 +45,7 @@ class FavouritesTableViewCell: UITableViewCell {
         let imageURL = URL(string: viewModel.pitch.imagePitch)
         namePitch.text = viewModel.pitch.name
         timeAction.text = viewModel.pitch.timeUse
-        address.text = viewModel.pitch.address
+        address.text = viewModel.pitch.type?.owner?.address
         image1.sd_setImage(with: imageURL)
     }
     

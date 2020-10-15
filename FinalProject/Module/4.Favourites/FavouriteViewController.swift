@@ -20,10 +20,7 @@ final class FavouriteViewController: UIViewController {
     // MARK: Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let nav = self.navigationController?.navigationBar
-        nav?.barStyle = .black
-        nav?.tintColor = .white
-        nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
+        navigationController?.navigationBar.tintColor = .red
     }
     
     override func viewDidLoad() {
@@ -87,7 +84,7 @@ final class FavouriteViewController: UIViewController {
             }
         }
     }
-    
+
     private func deleteAllItem() {
         viewModel.deleteAllItem { [weak self] (done) in
             guard let this = self else { return }
@@ -99,7 +96,7 @@ final class FavouriteViewController: UIViewController {
             }
         }
     }
-    
+
     // MARK: - Objc Function
     @objc func deleteTouchUpInSide() {
         let alert = UIAlertController(title: "Warning", message: "Delete all", preferredStyle: .alert)
@@ -152,4 +149,3 @@ extension FavouriteViewController: FavouriteTableViewCellDelegate {
         deleteItemFavorite(id: id)
     }
 }
-

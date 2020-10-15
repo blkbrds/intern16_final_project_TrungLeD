@@ -18,6 +18,7 @@ class ListPitchViewController: UIViewController {
     @IBOutlet var viewContainerDatePicker: UIView!
     
     // MARK: - Properties
+    var indexforMap: Int = 1
     var hidenDatePicker: Bool = false
     var pins: [MyPin] = []
     var inputDate: [Date] = []
@@ -27,12 +28,8 @@ class ListPitchViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let nav = self.navigationController?.navigationBar
-        nav?.barStyle = .black
-        nav?.tintColor = .white
-        nav?.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
         tableView.reloadData()
-        //   viewModel.fetchRealmData()
+        viewModel.fetchRealmData()
     }
     
     override func viewDidLoad() {
@@ -71,10 +68,8 @@ class ListPitchViewController: UIViewController {
         if hour < 6 && hour > 22 {
             showAlert(alertText: "Sai khung giờ", alertMessage: "Chọn lại khung giờ")
             return 0 } else if  hour == 6 && minute == 30 {
-            return 1
-        } else if  hour == 7 && minute == 30 {
-            return 2
-        } else if  hour == 8 && minute == 30 {
+            return 1 } else if  hour == 7 && minute == 30 {
+            return 2 } else if  hour == 8 && minute == 30 {
             return 3 } else if  hour == 9 && minute == 30 {
             return 4 } else if  hour == 10 && minute == 30 {
             return 5 } else if  hour == 11 && minute == 30 {
@@ -88,8 +83,7 @@ class ListPitchViewController: UIViewController {
             return 13 } else if  hour == 19 && minute == 30 {
             return 14 } else if  hour == 20 && minute == 30 {
             return 15 } else if minute == 0 { showAlert(alertText: "Sai Khung giờ", alertMessage: "Chọn Lại Giờ")
-            return 0
-        } else { return 0 }
+            return 0 } else { return -1 }
     }
     
     @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
@@ -98,7 +92,7 @@ class ListPitchViewController: UIViewController {
     
     @IBAction func doneTapped(_ sender: UIBarButtonItem) {
         let idTime = checkTime()
-        if idTime == 0 {
+        if idTime == 0 || idTime == -1 {
             showAlert(alertText: "Lỗi", alertMessage: "Vui lòng chọn trước 9h tối và sau 6h sáng")
         }
         let date = String(datePicker1.date.getDate())
@@ -158,9 +152,9 @@ class ListPitchViewController: UIViewController {
     
     func getDataPin() {
         for i in 0..<viewModel.pitchTotals.count {
-            let pin = MyPin(title: viewModel.pitchTotals[i].name,
-                            locationName: viewModel.pitchTotals[i].address,
-                            coordinate: CLLocationCoordinate2D(latitude: viewModel.pitchTotals[i].type.owner.lat, longitude: viewModel.pitchTotals[i].type.owner.lng))
+            let pin = MyPin(id: viewModel.pitchTotals[i].id, title: viewModel.pitchTotals[i].name,
+                            locationName: viewModel.pitchTotals[i].type?.owner?.address ?? "",
+                            coordinate: CLLocationCoordinate2D(latitude: viewModel.pitchTotals[i].type?.owner?.lat ?? 0.0, longitude: viewModel.pitchTotals[i].type?.owner?.lng ?? 0.0))
             pins.append(pin)
         }
     }
@@ -192,9 +186,12 @@ class ListPitchViewController: UIViewController {
     var leftItem = UIBarButtonItem()
     @objc private func mapView1() {
         leftItem = UIBarButtonItem(image: UIImage(named: "ic_listpitch_listview"), style: .plain, target: self, action: #selector(listView))
-        leftItem.tintColor = #colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)
+        leftItem.tintColor = #colorLiteral(red: 0.6941176471, green: 0.6666666667, blue: 0.5490196078, alpha: 1)
         navigationItem.leftBarButtonItem = leftItem
         navigationItem.rightBarButtonItem = nil
+        navigationItem.title = "Map View"
+        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.737254902, green: 0.6980392157, blue: 0.5176470588, alpha: 1)
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
         tableView.isHidden = true
         mapKit.isHidden = false
         locationCurrentBtn.isHidden = false
@@ -203,8 +200,9 @@ class ListPitchViewController: UIViewController {
     @objc private func listView() {
         locationCurrentBtn.isHidden = true
         let leftItem = UIBarButtonItem(image: UIImage(named: "ic_listpitch_map"), style: .plain, target: self, action: #selector(mapView1))
-        leftItem.tintColor = #colorLiteral(red: 0.7254902124, green: 0.4784313738, blue: 0.09803921729, alpha: 1)
+        leftItem.tintColor = #colorLiteral(red: 0.6941176471, green: 0.6666666667, blue: 0.5490196078, alpha: 1)
         navigationItem.leftBarButtonItem = leftItem
+        navigationItem.title = ""
         let searchBar: UISearchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: view.bounds.width - 100, height: 0))
         searchBar.placeholder = "Nhập Tên Sân"
         let rightNavBarButton = UIBarButtonItem(customView: searchBar)
@@ -255,7 +253,7 @@ extension ListPitchViewController: UITableViewDataSource {
         return viewModel.pitchs.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 120
     }
 }
 
@@ -283,6 +281,7 @@ extension ListPitchViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("Search text is \(searchText)")
+        searchBar.searchTextField.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         if searchText.isEmpty {
             viewModel.pitchs = viewModel.pitchTotals
         } else {
@@ -320,7 +319,6 @@ extension ListPitchViewController: ListPitchTableViewCellDelegate {
             }
         }
     }
-  
     func bookingButton(cell: ListPitchTableViewCell, id: Int) {
         loadDatePicker()
         idPitch = id
@@ -338,6 +336,7 @@ extension ListPitchViewController: ListPitchViewModelDelegate {
 extension ListPitchViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard let annotation = annotation as? MyPin else { return nil }
+        
         let identifier = "mypin"
         var view: MyPinView
         if let dequeuedView = mapKit.dequeueReusableAnnotationView(withIdentifier: identifier) as? MyPinView {
@@ -345,12 +344,22 @@ extension ListPitchViewController: MKMapViewDelegate {
             view = dequeuedView
         } else {
             view = MyPinView(annotation: annotation, reuseIdentifier: identifier)
-            // view.image = UIImage(named: "img_listpitch_pitch")
             view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             view.leftCalloutAccessoryView = UIImageView(image: UIImage(named: "ic_listpitch_pin"))
             view.canShowCallout = true
+            indexforMap = annotation.id
         }
         return view
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        let detailVC = DetailViewController()
+        guard let annotation = view.annotation else { return }
+        guard let name = annotation.title else { return }
+        for pitch in viewModel.pitchTotals where pitch.name == name {
+            detailVC.viewModel = DetailViewModel(pitch: pitch)
+            navigationController?.pushViewController(detailVC, animated: true)
+        }
     }
 }
 

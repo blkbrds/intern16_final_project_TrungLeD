@@ -12,6 +12,24 @@ import ObjectMapper
 
 final class NetworkManager: Networkable {
     // MARK: - Function request
+    func cancelResever(idCustomer: Int, idReserve: Int, completion: @escaping CompletionResult<Cancel>) {
+        provider.request(.cancelResever(idCustomer: idCustomer, idReserve: idReserve)) { (result) in
+            switch result {
+            case .success(let response):
+                do {
+                    if let result = try response.mapJSON() as? JSON {
+                        let data: Cancel = Mapper<Cancel>().map(JSONObject: result) ?? Cancel()
+                        completion(.success(data))
+                    }
+                } catch {
+                    completion(.failure(error))
+                }
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
     func getResever(idCustomer: Int, page: Int, pageSize: Int, completion: @escaping CompletionResult<[Reserve]>) {
         provider.request(.getResever(idCustomer: idCustomer, page: 1, pageSize: 100)) { (result) in
             switch result {
@@ -31,7 +49,7 @@ final class NetworkManager: Networkable {
     }
     
     func bookingThePitch(date: String, idCustomer: Int, idPitch: Int, idPrice: Int, idTime: Int, completion: @escaping CompletionResult<BookingPitch>) {
-        provider.request(.bookingPitch(date: date, idCustomer: idCustomer, idPitch: 1, idPrice: idPrice, idTime: idTime)) {  (result) in
+        provider.request(.bookingPitch(date: date, idCustomer: idCustomer, idPitch: idPitch, idPrice: idPrice, idTime: idTime)) {  (result) in
             switch result {
             case .success(let respone):
                 do {
