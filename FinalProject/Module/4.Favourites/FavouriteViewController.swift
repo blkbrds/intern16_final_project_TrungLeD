@@ -20,7 +20,7 @@ final class FavouriteViewController: UIViewController {
     // MARK: Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.6950495243, green: 0.6684789658, blue: 0.547100842, alpha: 1)
+      //  navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.6950495243, green: 0.6684789658, blue: 0.547100842, alpha: 1)
     }
     
     override func viewDidLoad() {

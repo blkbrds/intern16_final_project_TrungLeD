@@ -13,6 +13,7 @@ final class TabbarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTabbar()
+        tabBar.barTintColor = #colorLiteral(red: 0.09019607843, green: 0.1098039216, blue: 0.1568627451, alpha: 1)
     }
     
     // MARK: - Setup View Controllers
@@ -27,10 +28,9 @@ final class TabbarViewController: UITabBarController {
         
         let scheduleVC = UINavigationController(rootViewController: ScheduleViewController())
         scheduleVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "ic_tabbar_schedule"), selectedImage: UIImage(named: "ic_tabbar_schedule"))
-        scheduleVC.navigationBar.barTintColor = #colorLiteral(red: 0.09019607843, green: 0.1098039216, blue: 0.1568627451, alpha: 1)
+         scheduleVC.navigationBar.barTintColor = #colorLiteral(red: 0.09019607843, green: 0.1098039216, blue: 0.1568627451, alpha: 1)
         viewControllers = [homeNavi, scheduleVC, favouriteVC]
-        tabBar.tintColor = #colorLiteral(red: 0.09019607843, green: 0.1098039216, blue: 0.1568627451, alpha: 1)
-        tabBar.isTranslucent = false
-        tabBar.backgroundColor = #colorLiteral(red: 0.09019607843, green: 0.1098039216, blue: 0.1568627451, alpha: 1)
+        tabBar.tintColor = #colorLiteral(red: 0.6950495243, green: 0.6684789658, blue: 0.547100842, alpha: 1)
+        tabBar.isTranslucent = true
     }
 }
