@@ -46,6 +46,7 @@
                                     </connections>
                                 </barButtonItem>
                             </items>
+                            <color key="tintColor" red="0.019607843140000001" green="0.066666666669999999" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </toolbar>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

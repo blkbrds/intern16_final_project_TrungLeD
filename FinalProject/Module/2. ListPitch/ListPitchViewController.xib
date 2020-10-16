@@ -23,11 +23,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iMK-4T-y4R">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rhu-6x-M47">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                 </mapView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRY-Go-aYb">
                     <rect key="frame" x="342" y="790" width="62" height="62"/>
@@ -82,17 +82,17 @@
             </subviews>
             <color key="tintColor" red="0.019607843140000001" green="0.066666666669999999" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="rhu-6x-M47" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="7pr-9V-ZID"/>
-                <constraint firstItem="9NL-R8-rN4" firstAttribute="bottom" secondItem="iMK-4T-y4R" secondAttribute="bottom" id="8T0-x5-LNq"/>
+                <constraint firstItem="rhu-6x-M47" firstAttribute="top" secondItem="9NL-R8-rN4" secondAttribute="top" id="7pr-9V-ZID"/>
+                <constraint firstAttribute="bottom" secondItem="iMK-4T-y4R" secondAttribute="bottom" id="8T0-x5-LNq"/>
                 <constraint firstItem="iMK-4T-y4R" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="AZD-wp-Vae"/>
                 <constraint firstItem="rhu-6x-M47" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="HAc-xr-AIO"/>
                 <constraint firstItem="PYy-YL-LVz" firstAttribute="trailing" secondItem="9NL-R8-rN4" secondAttribute="trailing" id="VmE-Nb-6G0"/>
                 <constraint firstItem="9NL-R8-rN4" firstAttribute="bottom" secondItem="DRY-Go-aYb" secondAttribute="bottom" constant="10" id="Xig-pf-eyq"/>
                 <constraint firstAttribute="bottom" secondItem="PYy-YL-LVz" secondAttribute="bottom" id="fGo-3B-gGJ"/>
-                <constraint firstItem="iMK-4T-y4R" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="h8H-6X-H12"/>
+                <constraint firstItem="iMK-4T-y4R" firstAttribute="top" secondItem="9NL-R8-rN4" secondAttribute="top" id="h8H-6X-H12"/>
                 <constraint firstAttribute="trailing" secondItem="rhu-6x-M47" secondAttribute="trailing" id="iQA-cm-WNj"/>
                 <constraint firstAttribute="trailing" secondItem="iMK-4T-y4R" secondAttribute="trailing" id="iR3-Q8-eBB"/>
-                <constraint firstItem="9NL-R8-rN4" firstAttribute="bottom" secondItem="rhu-6x-M47" secondAttribute="bottom" id="uGu-xa-sag"/>
+                <constraint firstAttribute="bottom" secondItem="rhu-6x-M47" secondAttribute="bottom" id="uGu-xa-sag"/>
                 <constraint firstItem="PYy-YL-LVz" firstAttribute="leading" secondItem="9NL-R8-rN4" secondAttribute="leading" id="yVj-7D-g8k"/>
                 <constraint firstAttribute="trailing" secondItem="DRY-Go-aYb" secondAttribute="trailing" constant="10" id="yuF-J9-vhF"/>
             </constraints>

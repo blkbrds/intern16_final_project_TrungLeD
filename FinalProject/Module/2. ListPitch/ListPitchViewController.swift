@@ -35,7 +35,6 @@ class ListPitchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
-        configureUI()
         mapView1()
         configSyncRealm()
         getData()
@@ -190,7 +189,6 @@ class ListPitchViewController: UIViewController {
         navigationItem.leftBarButtonItem = leftItem
         navigationItem.rightBarButtonItem = nil
         navigationItem.title = "Map View"
-        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.737254902, green: 0.6980392157, blue: 0.5176470588, alpha: 1)
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
         tableView.isHidden = true
         mapKit.isHidden = false
@@ -214,11 +212,6 @@ class ListPitchViewController: UIViewController {
     }
     
     // MARK: - Function
-    private func configureUI() {
-        navigationController?.navigationBar.isTranslucent = true
-        navigationItem.hidesSearchBarWhenScrolling = true
-    }
-    
     func configTableView() {
         let nib = UINib(nibName: "ListPitchTableViewCell", bundle: Bundle.main)
         tableView.register(nib, forCellReuseIdentifier: "ListPitchTableViewCell")
@@ -229,7 +222,7 @@ class ListPitchViewController: UIViewController {
     //    let datePicker = Bundle.main.loadNibNamed("DatePickerUIView", owner: self, options: nil)?.first as? DatePickerUIView
     private func loadDatePicker() {
         UIView.animate(withDuration: 0.5, animations: {
-//            self.tabBarController?.tabBar.isHidden = true
+            self.tabBarController?.tabBar.isHidden = true
             self.viewContainerDatePicker.isHidden = false
             self.tableView.alpha = 0.5
             self.tableView.allowsSelection = false

@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AnQ-O6-kNu">
-                        <rect key="frame" x="10" y="5" width="300" height="160"/>
+                        <rect key="frame" x="10" y="5" width="300" height="157.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tên Sân" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i5P-By-o9D">
                                 <rect key="frame" x="10" y="10" width="92.5" height="30"/>
@@ -66,7 +66,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ngày" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ltz-TV-ouD">
-                                <rect key="frame" x="38" y="109" width="40" height="46"/>
+                                <rect key="frame" x="38" y="111.5" width="40" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.38823529410000002" green="0.4823529412" blue="0.46274509800000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -106,7 +106,7 @@
                 <color key="backgroundColor" red="0.6950495243" green="0.66847896579999999" blue="0.54710084199999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="AnQ-O6-kNu" secondAttribute="trailing" constant="10" id="TBh-6r-kUZ"/>
-                    <constraint firstAttribute="bottom" secondItem="AnQ-O6-kNu" secondAttribute="bottom" id="rFC-Ge-d8M"/>
+                    <constraint firstAttribute="bottom" secondItem="AnQ-O6-kNu" secondAttribute="bottom" constant="2.5" id="rFC-Ge-d8M"/>
                     <constraint firstItem="AnQ-O6-kNu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="yof-zC-uwh"/>
                     <constraint firstItem="AnQ-O6-kNu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="zlx-Wf-eqU"/>
                 </constraints>

@@ -50,6 +50,7 @@ class DetailViewController: UIViewController {
     // MARK: - Function for DatePicker
     private func loadDatePicker() {
         UIView.animate(withDuration: 0.3, animations: {
+            self.tabBarController?.tabBar.isHidden = true
             self.viewContainerDatePicker.isHidden = false
             self.tableView.alpha = 0.5
             self.tableView.allowsSelection = false
@@ -65,6 +66,7 @@ class DetailViewController: UIViewController {
         UIView.transition(with: viewContainerDatePicker, duration: 0.5,
                           options: .transitionCrossDissolve,
                           animations: {
+                            self.tabBarController?.tabBar.isHidden = false
                             self.viewContainerDatePicker.isHidden = true
                             self.tableView.alpha = 1
                             self.tableView.allowsSelection = true
@@ -222,6 +224,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let numberOfsection = viewModel.typeSectionLoad(number: indexPath.section)
+        print(indexPath.section)
         switch numberOfsection {
         case .header:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellHeader", for: indexPath) as? DetailHeaderTableViewCell else {
