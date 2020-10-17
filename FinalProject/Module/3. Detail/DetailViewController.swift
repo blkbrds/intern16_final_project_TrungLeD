@@ -224,6 +224,7 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let numberOfsection = viewModel.typeSectionLoad(number: indexPath.section)
+        print(indexPath.section)
         switch numberOfsection {
         case .header:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellHeader", for: indexPath) as? DetailHeaderTableViewCell else {

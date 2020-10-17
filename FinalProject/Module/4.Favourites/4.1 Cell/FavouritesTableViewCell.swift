@@ -15,6 +15,7 @@ protocol FavouriteTableViewCellDelegate: class {
 class FavouritesTableViewCell: UITableViewCell {
     // MARK: - IBOutlet
     @IBOutlet weak var image1: UIImageView!
+    @IBOutlet weak var viewContainer: UIView!
     @IBOutlet weak var namePitch: UILabel!
     @IBOutlet weak var timeAction: UILabel!
     @IBOutlet weak var address: UILabel!
@@ -34,6 +35,7 @@ class FavouritesTableViewCell: UITableViewCell {
         namePitch.layer.cornerRadius = 15
         timeAction.layer.cornerRadius = 15
         address.layer.cornerRadius = 15
+        viewContainer.layer.cornerRadius = 15
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

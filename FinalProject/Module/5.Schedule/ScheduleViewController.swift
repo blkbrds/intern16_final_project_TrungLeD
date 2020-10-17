@@ -62,6 +62,7 @@ class ScheduleViewController: UIViewController {
     
     func configTableView() {
         navigationItem.title = "Schedule"
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
         let nib = UINib(nibName: "ScheduleCell", bundle: Bundle.main)
         tableView.register(nib, forCellReuseIdentifier: "ScheduleCell")
         tableView.dataSource = self
@@ -87,7 +88,7 @@ extension ScheduleViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
+        return 165
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -111,8 +112,8 @@ extension ScheduleViewController: UITableViewDataSource, UITableViewDelegate {
             }
             completion(true)
         }
-        actionCancel.image = UIImage(named: "ic_schedule_cancel")
-        actionCancel.backgroundColor = .red
+        actionCancel.image = UIImage(named: "ic_schedule_cancel1")
+        actionCancel.backgroundColor = #colorLiteral(red: 0.6950495243, green: 0.6684789658, blue: 0.547100842, alpha: 1)
         return actionCancel
     }
 }

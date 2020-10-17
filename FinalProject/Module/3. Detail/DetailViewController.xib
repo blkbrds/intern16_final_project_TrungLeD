@@ -29,6 +29,7 @@
                     <subviews>
                         <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="R8t-8X-okG">
                             <rect key="frame" x="0.0" y="44" width="414" height="216"/>
+                            <locale key="locale" localeIdentifier="vi_VN"/>
                         </datePicker>
                         <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M37-AH-hlq">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -45,6 +46,7 @@
                                     </connections>
                                 </barButtonItem>
                             </items>
+                            <color key="tintColor" red="0.019607843140000001" green="0.066666666669999999" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </toolbar>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
