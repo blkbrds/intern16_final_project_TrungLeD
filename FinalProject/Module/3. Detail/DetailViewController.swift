@@ -119,8 +119,8 @@ class DetailViewController: UIViewController {
         if formattedDate == date {
             showAlert(alertText: "Lỗi", alertMessage: "Vui lòng đặt trước ít nhất 1 ngày")
         }
-        HUD.show()
         viewModel.bookingThePitch(date: date, idCustomer: 1, idPitch: viewModel.pitch.id, idPrice: 1, idTime: idTime) { [weak self] (result) in
+            HUD.show()
             guard let this = self else { return }
             switch result {
             case .success:

@@ -45,6 +45,7 @@
 		B06B766E252F217B00D6F5D2 /* BookingPitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06B766D252F217B00D6F5D2 /* BookingPitch.swift */; };
 		B080EBD8251AF82300C6EFDB /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B080EBD7251AF82300C6EFDB /* Utilities.swift */; };
 		B099A933253D2DAE002261E8 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = B099A932253D2DAE002261E8 /* Login.swift */; };
+		B099A935253DA0CD002261E8 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B099A934253DA0CD002261E8 /* String.swift */; };
 		B0A4A4192513560300E39134 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B0A4A4182513560300E39134 /* GoogleService-Info.plist */; };
 		B0A4A41A2513560300E39134 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B0A4A4182513560300E39134 /* GoogleService-Info.plist */; };
 		B0C3AF672512059B00959BDD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C3AF652512059B00959BDD /* LoginViewController.swift */; };
@@ -135,6 +136,7 @@
 		B06B766D252F217B00D6F5D2 /* BookingPitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingPitch.swift; sourceTree = "<group>"; };
 		B080EBD7251AF82300C6EFDB /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		B099A932253D2DAE002261E8 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		B099A934253DA0CD002261E8 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		B0A4A4182513560300E39134 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B0C3AF652512059B00959BDD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B0C3AF662512059B00959BDD /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				0EBA374A2511CA7A003465DD /* App.swift */,
+				B099A934253DA0CD002261E8 /* String.swift */,
 			);
 			path = Define;
 			sourceTree = "<group>";
@@ -772,6 +775,7 @@
 				B0F8378C25245F36008F08C3 /* ListPitchViewModel.swift in Sources */,
 				513D17462531A92000156C1A /* Price.swift in Sources */,
 				B0F8379325245F5D008F08C3 /* PitchType.swift in Sources */,
+				B099A935253DA0CD002261E8 /* String.swift in Sources */,
 				B06B06ED2526BB8E002762B4 /* DetailCellInforTableViewCell.swift in Sources */,
 				B00B7D8F252ADD8A007BC7E0 /* FavouriteCellViewModel.swift in Sources */,
 				0EBA37152511C6C2003465DD /* SceneDelegate.swift in Sources */,

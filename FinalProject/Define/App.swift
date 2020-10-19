@@ -10,7 +10,6 @@ import Foundation
 
 struct App {
     struct Key { }
-    
     static let calendar = Calendar(identifier: .gregorian)
     static let locale = Locale(identifier: "ja")
 }

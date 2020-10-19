@@ -13,29 +13,28 @@ class ListPitchViewController: UIViewController {
     // MARK: - IBOutlet
     @IBOutlet var mapKit: MKMapView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var locationCurrentBtn: UIButton!
-    @IBOutlet weak var datePicker1: UIDatePicker!
+    @IBOutlet weak var currentLocationButton: UIButton!
+    @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet var viewContainerDatePicker: UIView!
     
     // MARK: - Properties
-    var indexforMap: Int = 1
-    var hidenDatePicker: Bool = false
+    var index: Int = 1
     var pins: [MyPin] = []
     var inputDate: [Date] = []
     private var viewModel: ListPitchViewModel = ListPitchViewModel()
     var pitch: [Pitch]?
     var idPitch: Int = 0
+    
     // MARK: - Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
-        viewModel.fetchRealmData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configTableView()
-        mapView1()
+        changeScreenMapTapped()
         configSyncRealm()
         getData()
         addAnnotations()
@@ -45,7 +44,7 @@ class ListPitchViewController: UIViewController {
     // MARK: - Function DatePicker
     private func configDatePicker() {
         viewContainerDatePicker.isHidden = true
-        datePicker1.minimumDate = Date()
+        datePicker.minimumDate = Date()
     }
     
     private func stateDatePickerDefault() {
@@ -62,8 +61,8 @@ class ListPitchViewController: UIViewController {
     
     // MARK: - Function Check Time
     func checkTime() -> Int {
-        let hour = datePicker1.date.getTime().hour
-        let minute = datePicker1.date.getTime().minute
+        let hour = datePicker.date.getTime().hour
+        let minute = datePicker.date.getTime().minute
         if hour < 6 && hour > 22 {
             return 0 } else if  hour == 6 && minute == 30 {
             return 1 } else if  hour == 7 && minute == 30 {
@@ -94,7 +93,7 @@ class ListPitchViewController: UIViewController {
         if idTime == 0 || idTime == -1 {
             showAlert(alertText: "Lỗi", alertMessage: "Vui lòng chọn trước 9h tối và sau 6h sáng")
         }
-        let date = String(datePicker1.date.getDate())
+        let date = String(datePicker.date.getDate())
         let dateCurrent = Date()
         let format = DateFormatter()
         format.dateFormat = "yyyy-MM-dd"
@@ -102,8 +101,8 @@ class ListPitchViewController: UIViewController {
         if formattedDate == date {
             showAlert(alertText: "Lỗi", alertMessage: "Vui lòng đặt trước ít nhất 1 ngày")
         }
-        HUD.show()
         viewModel.bookingThePitch(date: date, idCustomer: 1, idPitch: idPitch, idPrice: 1, idTime: idTime) { [weak self] (result) in
+            HUD.show()
             guard let this = self else { return }
             switch result {
             case .success:
@@ -165,7 +164,6 @@ class ListPitchViewController: UIViewController {
     }
     
     func getData() {
-        //   viewModel.fetchRealmData()
         loadData()
     }
     
@@ -185,8 +183,8 @@ class ListPitchViewController: UIViewController {
     
     // MARK: - Objc Function
     var leftItem = UIBarButtonItem()
-    @objc private func mapView1() {
-        leftItem = UIBarButtonItem(image: UIImage(named: "ic_listpitch_listview"), style: .plain, target: self, action: #selector(listView))
+    @objc private func changeScreenMapTapped() {
+        leftItem = UIBarButtonItem(image: UIImage(named: "ic_listpitch_listview"), style: .plain, target: self, action: #selector(changeScreenList))
         leftItem.tintColor = #colorLiteral(red: 0.6941176471, green: 0.6666666667, blue: 0.5490196078, alpha: 1)
         navigationItem.leftBarButtonItem = leftItem
         navigationItem.rightBarButtonItem = nil
@@ -194,12 +192,12 @@ class ListPitchViewController: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
         tableView.isHidden = true
         mapKit.isHidden = false
-        locationCurrentBtn.isHidden = false
+        currentLocationButton.isHidden = false
     }
     
-    @objc private func listView() {
-        locationCurrentBtn.isHidden = true
-        let leftItem = UIBarButtonItem(image: UIImage(named: "ic_listpitch_map"), style: .plain, target: self, action: #selector(mapView1))
+    @objc private func changeScreenList() {
+        currentLocationButton.isHidden = true
+        let leftItem = UIBarButtonItem(image: UIImage(named: "ic_listpitch_map"), style: .plain, target: self, action: #selector(changeScreenMapTapped))
         leftItem.tintColor = #colorLiteral(red: 0.6941176471, green: 0.6666666667, blue: 0.5490196078, alpha: 1)
         navigationItem.leftBarButtonItem = leftItem
         navigationItem.title = ""
@@ -341,7 +339,7 @@ extension ListPitchViewController: MKMapViewDelegate {
             view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             view.leftCalloutAccessoryView = UIImageView(image: UIImage(named: "ic_listpitch_pin"))
             view.canShowCallout = true
-            indexforMap = annotation.id
+            index = annotation.id
         }
         return view
     }
