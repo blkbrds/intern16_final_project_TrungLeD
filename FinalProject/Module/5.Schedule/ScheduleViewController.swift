@@ -33,6 +33,7 @@ class ScheduleViewController: UIViewController {
 
     // MARK: - Function
     private func loadData() {
+        HUD.show()
         viewModel.getReserver { [weak self](result) in
             guard let this = self else { return }
             switch result {
@@ -42,6 +43,7 @@ class ScheduleViewController: UIViewController {
             case .failure(let error):
                 this.showAlert(alertText: "Loi", alertMessage: "Loi\(error)")
             }
+            HUD.dismiss()
         }
     }
     

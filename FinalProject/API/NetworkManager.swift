@@ -82,7 +82,7 @@ final class NetworkManager: Networkable {
             switch result {
             case .success(let response):
                 do {
-                    if let json = try response.mapJSON() as? JSON{
+                    if let json = try response.mapJSON() as? JSON {
                         let loginJS: Login = Mapper<Login>().map(JSON: json) ?? Login()
                         completion(.success(loginJS))
                     }

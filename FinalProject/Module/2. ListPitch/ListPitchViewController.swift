@@ -89,6 +89,7 @@ class ListPitchViewController: UIViewController {
     }
     
     @IBAction func doneTapped(_ sender: UIBarButtonItem) {
+        
         let idTime = checkTime()
         if idTime == 0 || idTime == -1 {
             showAlert(alertText: "Lỗi", alertMessage: "Vui lòng chọn trước 9h tối và sau 6h sáng")
@@ -101,14 +102,16 @@ class ListPitchViewController: UIViewController {
         if formattedDate == date {
             showAlert(alertText: "Lỗi", alertMessage: "Vui lòng đặt trước ít nhất 1 ngày")
         }
+        HUD.show()
         viewModel.bookingThePitch(date: date, idCustomer: 1, idPitch: idPitch, idPrice: 1, idTime: idTime) { [weak self] (result) in
             guard let this = self else { return }
             switch result {
             case .success:
                 this.showAlert(alertText: "Đặt Sân", alertMessage: "Tình trạng: \(this.viewModel.resultBooking.status)")
             case .failure(let error):
-                self?.showAlert(alertText: "loi dat san----", alertMessage: "loi dat san\(error)")
+                self?.showAlert(alertText: "Lỗi Đặt Sân", alertMessage: "Lỗi: \(error)")
             }
+            HUD.popActivity()
         }
         stateDatePickerDefault()
     }

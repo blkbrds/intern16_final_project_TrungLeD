@@ -19,7 +19,7 @@ final class LoginViewModel {
     }
     
     // MARK: Function
-    func login(phone: String, pw: String, completion: @escaping APICompletion){
+    func login(phone: String, pw: String, completion: @escaping APICompletion) {
         networkManager.login(phone: phone, pw: pw) { [weak self] (result1) in
             guard let this = self else { return }
             switch result1 {

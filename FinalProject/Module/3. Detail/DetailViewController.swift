@@ -119,6 +119,7 @@ class DetailViewController: UIViewController {
         if formattedDate == date {
             showAlert(alertText: "Lỗi", alertMessage: "Vui lòng đặt trước ít nhất 1 ngày")
         }
+        HUD.show()
         viewModel.bookingThePitch(date: date, idCustomer: 1, idPitch: viewModel.pitch.id, idPrice: 1, idTime: idTime) { [weak self] (result) in
             guard let this = self else { return }
             switch result {
@@ -127,6 +128,7 @@ class DetailViewController: UIViewController {
             case .failure(let error):
                 self?.showAlert(alertText: "Lỗi Đặt Sân", alertMessage: "Lỗi Đặt Sân\(error)")
             }
+            HUD.popActivity()
         }
         stateDatePickerDefault()
     }

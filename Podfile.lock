@@ -16,6 +16,7 @@ PODS:
     - SDWebImage/Core (= 5.9.2)
   - SDWebImage/Core (5.9.2)
   - SideMenu (6.4.9)
+  - SVProgressHUD (2.2.5)
   - SwiftLint (0.40.2)
 
 DEPENDENCIES:
@@ -24,6 +25,7 @@ DEPENDENCIES:
   - RealmSwift
   - SDWebImage (~> 5.0)
   - SideMenu
+  - SVProgressHUD
   - SwiftLint
 
 SPEC REPOS:
@@ -36,6 +38,7 @@ SPEC REPOS:
     - RxSwift
     - SDWebImage
     - SideMenu
+    - SVProgressHUD
     - SwiftLint
 
 SPEC CHECKSUMS:
@@ -47,8 +50,9 @@ SPEC CHECKSUMS:
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SDWebImage: 0b42b8719ab0c5257177d5894306e8a336b21cbb
   SideMenu: 8ef57a3cfc024a2d3fc1c036c7fe98537baec9e0
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftLint: 1216c910d27c2633ade33b4f071bb6b930982e62
 
-PODFILE CHECKSUM: 3793f941341e320cdcdeb612da08b985ddcc3a9b
+PODFILE CHECKSUM: 8533daf3d7554072f8f1f294ca97eb2d3edba989
 
 COCOAPODS: 1.9.3
