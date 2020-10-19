@@ -11,7 +11,7 @@ extension UIButton {
     
     // MARK: Function
     func drawColor() {
-        self.backgroundColor = #colorLiteral(red: 0.737254902, green: 0.6980392157, blue: 0.5176470588, alpha: 1)
+        self.backgroundColor = #colorLiteral(red: 0.2705882353, green: 0.2392156863, blue: 0.5647058824, alpha: 1)
         self.layer.cornerRadius = 15.0
         self.tintColor = UIColor.white
     }

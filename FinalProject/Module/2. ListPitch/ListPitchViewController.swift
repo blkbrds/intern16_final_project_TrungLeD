@@ -56,7 +56,6 @@ class ListPitchViewController: UIViewController {
                             self.tableView.alpha = 1
                             self.tableView.allowsSelection = true
         })
-        
     }
     
     // MARK: - Function Check Time
@@ -79,7 +78,7 @@ class ListPitchViewController: UIViewController {
             return 12 } else if  hour == 18 && minute == 30 {
             return 13 } else if  hour == 19 && minute == 30 {
             return 14 } else if  hour == 20 && minute == 30 {
-            return 15 } else if minute == 0 { showAlert(alertText: "Sai Khung giờ", alertMessage: "Chọn Lại Giờ")
+            return 15 } else if minute == 0 { showAlert(alertText: App.ErrorBooking.errorTime, alertMessage: App.ErrorBooking.chooseTime)
             return 0 } else { return -1 }
     }
     
@@ -91,7 +90,7 @@ class ListPitchViewController: UIViewController {
         
         let idTime = checkTime()
         if idTime == 0 || idTime == -1 {
-            showAlert(alertText: "Lỗi", alertMessage: "Vui lòng chọn trước 9h tối và sau 6h sáng")
+            showAlert(alertText: App.ErrorBooking.errorInforBooking, alertMessage: App.ErrorBooking.minHours)
         }
         let date = String(datePicker.date.getDate())
         let dateCurrent = Date()
@@ -99,16 +98,16 @@ class ListPitchViewController: UIViewController {
         format.dateFormat = "yyyy-MM-dd"
         let formattedDate = format.string(from: dateCurrent)
         if formattedDate == date {
-            showAlert(alertText: "Lỗi", alertMessage: "Vui lòng đặt trước ít nhất 1 ngày")
+            showAlert(alertText: App.ErrorBooking.errorInforBooking, alertMessage: App.ErrorBooking.minDay)
         }
         viewModel.bookingThePitch(date: date, idCustomer: 1, idPitch: idPitch, idPrice: 1, idTime: idTime) { [weak self] (result) in
             HUD.show()
             guard let this = self else { return }
             switch result {
             case .success:
-                this.showAlert(alertText: "Đặt Sân", alertMessage: "Tình trạng: \(this.viewModel.resultBooking.status)")
+                this.showAlert(alertText: App.ErrorBooking.bookingthePitch, alertMessage: "\(App.ErrorBooking.statusBooking): \(this.viewModel.resultBooking.status)")
             case .failure(let error):
-                self?.showAlert(alertText: "Lỗi Đặt Sân", alertMessage: "Lỗi: \(error)")
+                self?.showAlert(alertText: App.ErrorBooking.errorBooking, alertMessage: "\(App.ErrorBooking.errorInforBooking): \(error)")
             }
             HUD.popActivity()
         }
@@ -176,7 +175,7 @@ class ListPitchViewController: UIViewController {
                 this.tableView.reloadData()
                 this.getDataPin()
             case .failure(let error):
-                this.showAlert(alertText: "Error", alertMessage: "error loadData \(error)")
+                this.showAlert(alertText: App.ErrorBooking.errorInforBooking, alertMessage: "\(App.ErrorBooking.errorInforBooking) \(error)")
             }
         }
     }
@@ -219,7 +218,6 @@ class ListPitchViewController: UIViewController {
         tableView.dataSource = self
     }
     // MARK: - Func Load Date Picker
-    //    let datePicker = Bundle.main.loadNibNamed("DatePickerUIView", owner: self, options: nil)?.first as? DatePickerUIView
     private func loadDatePicker() {
         UIView.animate(withDuration: 0.5, animations: {
             self.tabBarController?.tabBar.isHidden = true
@@ -251,7 +249,6 @@ extension ListPitchViewController: UITableViewDataSource {
 
 // MARK: Extension: - UITableView Delegate
 extension ListPitchViewController: UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = DetailViewController()
         detailVC.viewModel = viewModel.getInforPitch(at: indexPath)
