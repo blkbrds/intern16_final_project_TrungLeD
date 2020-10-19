@@ -18,7 +18,6 @@
 		513D17462531A92000156C1A /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513D173F2531A91F00156C1A /* Price.swift */; };
 		513D174A2531A92000156C1A /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513D17432531A92000156C1A /* Time.swift */; };
 		513D174B2531A92000156C1A /* Reserve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513D17442531A92000156C1A /* Reserve.swift */; };
-		51FFB1A5253B6CF300640AB9 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FFB1A4253B6CF300640AB9 /* Login.swift */; };
 		A60B0B08D1A3DB52D7F3C114 /* Pods_FinalProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E200185B9A7477CBBC2CA9 /* Pods_FinalProject.framework */; };
 		B00B7D8C252AC5BA007BC7E0 /* FavouritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00B7D8A252AC5BA007BC7E0 /* FavouritesTableViewCell.swift */; };
 		B00B7D8D252AC5BA007BC7E0 /* FavouritesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B00B7D8B252AC5BA007BC7E0 /* FavouritesTableViewCell.xib */; };
@@ -46,6 +45,7 @@
 		B06B06F92526DAC3002762B4 /* DetailHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06B06F82526DAC3002762B4 /* DetailHistoryViewModel.swift */; };
 		B06B766E252F217B00D6F5D2 /* BookingPitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06B766D252F217B00D6F5D2 /* BookingPitch.swift */; };
 		B080EBD8251AF82300C6EFDB /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B080EBD7251AF82300C6EFDB /* Utilities.swift */; };
+		B099A933253D2DAE002261E8 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = B099A932253D2DAE002261E8 /* Login.swift */; };
 		B0A4A4192513560300E39134 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B0A4A4182513560300E39134 /* GoogleService-Info.plist */; };
 		B0A4A41A2513560300E39134 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B0A4A4182513560300E39134 /* GoogleService-Info.plist */; };
 		B0C3AF672512059B00959BDD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C3AF652512059B00959BDD /* LoginViewController.swift */; };
@@ -109,7 +109,6 @@
 		513D173F2531A91F00156C1A /* Price.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
 		513D17432531A92000156C1A /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		513D17442531A92000156C1A /* Reserve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reserve.swift; sourceTree = "<group>"; };
-		51FFB1A4253B6CF300640AB9 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Login.swift; path = ../../../../../trungld/intern16_final_project_TrungLeD/FinalProject/Model/ObjectMapper/Login.swift; sourceTree = "<group>"; };
 		A9141D71461BAD6FBA92C021 /* Pods_FinalProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinalProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B00B7D8A252AC5BA007BC7E0 /* FavouritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesTableViewCell.swift; sourceTree = "<group>"; };
 		B00B7D8B252AC5BA007BC7E0 /* FavouritesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavouritesTableViewCell.xib; sourceTree = "<group>"; };
@@ -137,6 +136,7 @@
 		B06B06F82526DAC3002762B4 /* DetailHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHistoryViewModel.swift; sourceTree = "<group>"; };
 		B06B766D252F217B00D6F5D2 /* BookingPitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingPitch.swift; sourceTree = "<group>"; };
 		B080EBD7251AF82300C6EFDB /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		B099A932253D2DAE002261E8 /* Login.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		B0A4A4182513560300E39134 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B0C3AF652512059B00959BDD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B0C3AF662512059B00959BDD /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -458,12 +458,12 @@
 		B04CBDEE251C65F00092D49F /* ObjectMapper */ = {
 			isa = PBXGroup;
 			children = (
+				B099A932253D2DAE002261E8 /* Login.swift */,
 				B0F8378E25245F5C008F08C3 /* Owner.swift */,
 				B0F8378F25245F5C008F08C3 /* Pitch.swift */,
 				B0F8379025245F5D008F08C3 /* PitchType.swift */,
 				B04CBDEF251C66020092D49F /* Customer.swift */,
 				B06B766D252F217B00D6F5D2 /* BookingPitch.swift */,
-				51FFB1A4253B6CF300640AB9 /* Login.swift */,
 			);
 			path = ObjectMapper;
 			sourceTree = "<group>";
@@ -760,7 +760,7 @@
 				0EBA374B2511CA7A003465DD /* App.swift in Sources */,
 				B0C53864252AA99C00D707EE /* ScheduleViewController.swift in Sources */,
 				0EBA37452511C97B003465DD /* Networkable.swift in Sources */,
-				51FFB1A5253B6CF300640AB9 /* Login.swift in Sources */,
+				B099A933253D2DAE002261E8 /* Login.swift in Sources */,
 				B0C3AF6A2512148300959BDD /* LoginViewModel.swift in Sources */,
 				B0F8378A25245F36008F08C3 /* ListPitchCellViewModel.swift in Sources */,
 				B0C53868252AA9AC00D707EE /* FavouriteViewController.swift in Sources */,
