@@ -16,6 +16,11 @@ final class Customer: Mappable {
     var phone: String?
 
     // MARK: - Init
+    init(id: String = "", name: String = "", phone: String = "") {
+        self.id = id
+        self.phone = phone
+        self.name = name
+    }
     required init(map: Map) { }
     // MARK: - Function
     func mapping(map: Map) {

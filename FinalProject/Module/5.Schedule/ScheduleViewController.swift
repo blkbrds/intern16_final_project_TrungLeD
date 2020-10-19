@@ -48,7 +48,7 @@ class ScheduleViewController: UIViewController {
     private func checkEmptyReserver() {
         if viewModel.reseverTotals.isEmpty {
             notification.isHidden = false
-            notification.text = "No Reserver Pitch!"
+            notification.text = "Không Có Lịch Đặt Sân!"
         } else {
             notification.isHidden = true
         }
@@ -61,7 +61,7 @@ class ScheduleViewController: UIViewController {
     }
     
     func configTableView() {
-        navigationItem.title = "Schedule"
+        navigationItem.title = "Lịch Đã Đặt"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
         let nib = UINib(nibName: "ScheduleCell", bundle: Bundle.main)
         tableView.register(nib, forCellReuseIdentifier: "ScheduleCell")

@@ -18,6 +18,7 @@
 		513D17462531A92000156C1A /* Price.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513D173F2531A91F00156C1A /* Price.swift */; };
 		513D174A2531A92000156C1A /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513D17432531A92000156C1A /* Time.swift */; };
 		513D174B2531A92000156C1A /* Reserve.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513D17442531A92000156C1A /* Reserve.swift */; };
+		51FFB1A5253B6CF300640AB9 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51FFB1A4253B6CF300640AB9 /* Login.swift */; };
 		A60B0B08D1A3DB52D7F3C114 /* Pods_FinalProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3E200185B9A7477CBBC2CA9 /* Pods_FinalProject.framework */; };
 		B00B7D8C252AC5BA007BC7E0 /* FavouritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00B7D8A252AC5BA007BC7E0 /* FavouritesTableViewCell.swift */; };
 		B00B7D8D252AC5BA007BC7E0 /* FavouritesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B00B7D8B252AC5BA007BC7E0 /* FavouritesTableViewCell.xib */; };
@@ -108,6 +109,7 @@
 		513D173F2531A91F00156C1A /* Price.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Price.swift; sourceTree = "<group>"; };
 		513D17432531A92000156C1A /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		513D17442531A92000156C1A /* Reserve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reserve.swift; sourceTree = "<group>"; };
+		51FFB1A4253B6CF300640AB9 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Login.swift; path = ../../../../../trungld/intern16_final_project_TrungLeD/FinalProject/Model/ObjectMapper/Login.swift; sourceTree = "<group>"; };
 		A9141D71461BAD6FBA92C021 /* Pods_FinalProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinalProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B00B7D8A252AC5BA007BC7E0 /* FavouritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesTableViewCell.swift; sourceTree = "<group>"; };
 		B00B7D8B252AC5BA007BC7E0 /* FavouritesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavouritesTableViewCell.xib; sourceTree = "<group>"; };
@@ -461,6 +463,7 @@
 				B0F8379025245F5D008F08C3 /* PitchType.swift */,
 				B04CBDEF251C66020092D49F /* Customer.swift */,
 				B06B766D252F217B00D6F5D2 /* BookingPitch.swift */,
+				51FFB1A4253B6CF300640AB9 /* Login.swift */,
 			);
 			path = ObjectMapper;
 			sourceTree = "<group>";
@@ -757,6 +760,7 @@
 				0EBA374B2511CA7A003465DD /* App.swift in Sources */,
 				B0C53864252AA99C00D707EE /* ScheduleViewController.swift in Sources */,
 				0EBA37452511C97B003465DD /* Networkable.swift in Sources */,
+				51FFB1A5253B6CF300640AB9 /* Login.swift in Sources */,
 				B0C3AF6A2512148300959BDD /* LoginViewModel.swift in Sources */,
 				B0F8378A25245F36008F08C3 /* ListPitchCellViewModel.swift in Sources */,
 				B0C53868252AA9AC00D707EE /* FavouriteViewController.swift in Sources */,

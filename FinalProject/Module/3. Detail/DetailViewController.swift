@@ -125,7 +125,7 @@ class DetailViewController: UIViewController {
             case .success:
                 this.showAlert(alertText: "Đặt Sân", alertMessage: "Tình trạng: \(this.viewModel.resultBooking.status)")
             case .failure(let error):
-                self?.showAlert(alertText: "loi dat san----", alertMessage: "loi dat san\(error)")
+                self?.showAlert(alertText: "Lỗi Đặt Sân", alertMessage: "Lỗi Đặt Sân\(error)")
             }
         }
         stateDatePickerDefault()
@@ -147,6 +147,7 @@ class DetailViewController: UIViewController {
     }
     
     private func configNavi() {
+        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.737254902, green: 0.6980392157, blue: 0.5176470588, alpha: 1)
         let backBtn = UIBarButtonItem(image: UIImage(named: "ic_detail_back1"), style: .plain, target: self, action: #selector(backListVC))
         backBtn.tintColor = .orange
         navigationItem.leftBarButtonItem = backBtn
@@ -201,14 +202,14 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let nib2 = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CustomHeader") as? CustomHeader else { return UIView() }
         if section == 0 {
-            nib2.titleLabel.text = "Map"
+            nib2.titleLabel.text = "Bản Đồ"
             nib2.verifyIcon.isHidden = true
         }
         if section == 1 {
             nib2.titleLabel.text = viewModel.pitch.name
         }
         if section == 2 {
-            nib2.titleLabel.text = "Information"
+            nib2.titleLabel.text = "Thông Tin"
             nib2.verifyIcon.isHidden = true
         }
         if section == 3 {

@@ -65,7 +65,6 @@ class ListPitchViewController: UIViewController {
         let hour = datePicker1.date.getTime().hour
         let minute = datePicker1.date.getTime().minute
         if hour < 6 && hour > 22 {
-            showAlert(alertText: "Sai khung giờ", alertMessage: "Chọn lại khung giờ")
             return 0 } else if  hour == 6 && minute == 30 {
             return 1 } else if  hour == 7 && minute == 30 {
             return 2 } else if  hour == 8 && minute == 30 {
@@ -188,7 +187,7 @@ class ListPitchViewController: UIViewController {
         leftItem.tintColor = #colorLiteral(red: 0.6941176471, green: 0.6666666667, blue: 0.5490196078, alpha: 1)
         navigationItem.leftBarButtonItem = leftItem
         navigationItem.rightBarButtonItem = nil
-        navigationItem.title = "Map View"
+        navigationItem.title = "Bản Đồ"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
         tableView.isHidden = true
         mapKit.isHidden = false

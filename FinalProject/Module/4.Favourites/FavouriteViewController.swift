@@ -20,7 +20,7 @@ final class FavouriteViewController: UIViewController {
     // MARK: Life Cycle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-      //  navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.6950495243, green: 0.6684789658, blue: 0.547100842, alpha: 1)
+        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.6950495243, green: 0.6684789658, blue: 0.547100842, alpha: 1)
     }
     
     override func viewDidLoad() {
@@ -41,7 +41,7 @@ final class FavouriteViewController: UIViewController {
             guard let this = self else { return }
             if done {
                 this.notificationLabel.isHidden = false
-                this.notificationLabel.text = "No Favorite Pitch!"
+                this.notificationLabel.text = "Không Có Sân Yêu Thích!"
             } else {
                 this.notificationLabel.isHidden = true
             }
@@ -68,7 +68,7 @@ final class FavouriteViewController: UIViewController {
     }
     
     func configNavi() {
-        navigationItem.title = "Favorite List"
+        navigationItem.title = "Sân Yêu Thích"
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
         let rightBarButton = UIBarButtonItem(image: UIImage(systemName: "trash"), style: .plain, target: self, action: #selector(deleteTouchUpInSide))
         navigationItem.rightBarButtonItem = rightBarButton
