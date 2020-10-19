@@ -149,8 +149,8 @@ class DetailViewController: UIViewController {
     }
     
     private func configNavi() {
-        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.737254902, green: 0.6980392157, blue: 0.5176470588, alpha: 1)
-        let backBtn = UIBarButtonItem(image: UIImage(named: "ic_detail_back1"), style: .plain, target: self, action: #selector(backListVC))
+        navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.2705882353, green: 0.2392156863, blue: 0.5647058824, alpha: 1)
+        let backBtn = UIBarButtonItem(image: UIImage(named: "ic_detail_backbutton"), style: .plain, target: self, action: #selector(backListVC))
         backBtn.tintColor = .orange
         navigationItem.leftBarButtonItem = backBtn
         let isFavorite = viewModel.checkFavorite()
@@ -227,7 +227,6 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let numberOfsection = viewModel.typeSectionLoad(number: indexPath.section)
-        print(indexPath.section)
         switch numberOfsection {
         case .header:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "cellHeader", for: indexPath) as? DetailHeaderTableViewCell else {

@@ -118,7 +118,7 @@ class ListPitchViewController: UIViewController {
     // MARK: - Function
     func configSyncRealm() {
         viewModel.delegate = self
-        viewModel.setupObserve()
+        viewModel.setupObserver()
     }
     
     // MARK: - get data for pin mapView
@@ -172,8 +172,8 @@ class ListPitchViewController: UIViewController {
             guard let this = self else { return }
             switch result {
             case .success:
+                this.viewModel.setupObserver()
                 this.tableView.reloadData()
-                this.viewModel.setupObserve()
                 this.getDataPin()
             case .failure(let error):
                 this.showAlert(alertText: "Error", alertMessage: "error loadData \(error)")
@@ -242,7 +242,7 @@ extension ListPitchViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.pitchs.count
+        return viewModel.pitchFilter.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
@@ -273,11 +273,11 @@ extension ListPitchViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("Search text is \(searchText)")
-        searchBar.searchTextField.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        searchBar.searchTextField.textColor = #colorLiteral(red: 0.3882352941, green: 0.4823529412, blue: 0.462745098, alpha: 1)
         if searchText.isEmpty {
-            viewModel.pitchs = viewModel.pitchTotals
+            viewModel.pitchFilter = viewModel.pitchTotals
         } else {
-            viewModel.pitchs = viewModel.pitchs.filter { ($0.name.contains(searchText)) }
+            viewModel.pitchFilter = viewModel.pitchFilter.filter { ($0.name.contains(searchText)) }
         }
         tableView.reloadData()
     }

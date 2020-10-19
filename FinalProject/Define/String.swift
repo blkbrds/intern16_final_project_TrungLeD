@@ -9,7 +9,7 @@
 import Foundation
 
 extension App {
-    struct string {
-        static let error = "Lỗi"
-    }
+//    struct string {
+//        static let error = "Lỗi"
+//    }
 }
