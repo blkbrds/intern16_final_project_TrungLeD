@@ -10,7 +10,7 @@ import Foundation
 
 extension App {
     struct String {
-        static let error = "ERROR"
+        static let error = "Lỗi"
         static let ok = "OK"
     }
     struct ErrorBooking {
@@ -22,5 +22,23 @@ extension App {
         static let statusBooking = "Tình Trạng"
         static let errorBooking = "Lỗi Đặt Sân"
         static let errorInforBooking = "Lỗi"
+    }
+    
+    struct Login {
+        static let errorLogin = "Lỗi Đăng Nhập"
+        static let messLogin = "Nhập lại mật khẩu hoặc số điện thoại"
+        static let error = "Lỗi"
+    }
+    
+    struct Favorite {
+        static let errorFavorite = "Lỗi Yêu Thích"
+    }
+    
+    struct Schedule {
+        static let isEmptySchedule = "Không Có Lịch Đặt Sân!"
+        static let booked = "Lịch Đã Được Đặt"
+        static let cancelTitle = "Hủy"
+        static let cancelBooking = "Hủy Sân"
+        
     }
 }

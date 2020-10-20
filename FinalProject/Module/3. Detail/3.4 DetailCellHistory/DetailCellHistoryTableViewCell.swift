@@ -10,7 +10,7 @@ import UIKit
 
 class DetailCellHistoryTableViewCell: UITableViewCell {
     // MARK: Iboutlet
-    @IBOutlet weak var description1: UILabel!
+    @IBOutlet weak var descriptionPitch: UILabel!
     
     // MARK: Properties
     var viewModel: DetailHistoryViewModel? {
@@ -28,6 +28,6 @@ class DetailCellHistoryTableViewCell: UITableViewCell {
     
     // MARK: - Function
     func updateView() {
-        description1.text = viewModel?.description
+        descriptionPitch.text = viewModel?.description
     }
 }

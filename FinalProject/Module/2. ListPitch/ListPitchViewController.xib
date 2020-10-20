@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -30,8 +30,7 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                 </mapView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRY-Go-aYb">
-                    <rect key="frame" x="374" y="822" width="30" height="30"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <rect key="frame" x="374" y="812" width="30" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="O7W-Rc-IBk"/>
                         <constraint firstAttribute="width" constant="30" id="qWl-R0-til"/>
@@ -88,7 +87,7 @@
                 <constraint firstItem="iMK-4T-y4R" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="AZD-wp-Vae"/>
                 <constraint firstItem="rhu-6x-M47" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="HAc-xr-AIO"/>
                 <constraint firstItem="PYy-YL-LVz" firstAttribute="trailing" secondItem="9NL-R8-rN4" secondAttribute="trailing" id="VmE-Nb-6G0"/>
-                <constraint firstItem="9NL-R8-rN4" firstAttribute="bottom" secondItem="DRY-Go-aYb" secondAttribute="bottom" constant="10" id="Xig-pf-eyq"/>
+                <constraint firstItem="9NL-R8-rN4" firstAttribute="bottom" secondItem="DRY-Go-aYb" secondAttribute="bottom" constant="20" id="Xig-pf-eyq"/>
                 <constraint firstAttribute="bottom" secondItem="PYy-YL-LVz" secondAttribute="bottom" id="fGo-3B-gGJ"/>
                 <constraint firstItem="iMK-4T-y4R" firstAttribute="top" secondItem="9NL-R8-rN4" secondAttribute="top" id="h8H-6X-H12"/>
                 <constraint firstAttribute="trailing" secondItem="rhu-6x-M47" secondAttribute="trailing" id="iQA-cm-WNj"/>

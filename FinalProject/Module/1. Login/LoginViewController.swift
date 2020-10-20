@@ -49,10 +49,10 @@ extension LoginViewController {
                 if self?.viewModel.login.message == "OK" {
                     AppDelegate.shared.changeRoot(rootType: .tabbar)
                 } else {
-                    self?.showAlert(alertText: "Lỗi Đăng Nhập", alertMessage: "Nhập lại mật khẩu hoặc số điện thoại")
+                    self?.showAlert(alertText: App.Login.errorLogin, alertMessage: App.Login.messLogin)
                 }
             case .failure(let error):
-                self?.showAlert(alertText: "Lỗi đăng nhập", alertMessage: "Lỗi\(error)")
+                self?.showAlert(alertText: App.Login.errorLogin, alertMessage: "\(App.Login.error)\(error)")
             }
         }
     }

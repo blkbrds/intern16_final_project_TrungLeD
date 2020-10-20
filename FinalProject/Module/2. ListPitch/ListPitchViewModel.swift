@@ -27,8 +27,6 @@ class ListPitchViewModel {
     var resultBooking: BookingPitch = BookingPitch()
     var pitchTotals: [Pitch] = []
     var pitchFilter: [Pitch] = []
-    var realmPitch: [Pitch] = []
-    var nameSort: [String] = []
     let networkManager: NetworkManager
     var isBooking: Bool = false
     
@@ -52,8 +50,16 @@ class ListPitchViewModel {
         }
     }
 
-    func bookingThePitch(date: String, idCustomer: Int, idPitch: Int, idPrice: Int, idTime: Int, completion: @escaping APICompletion) {
-        networkManager.bookingThePitch(date: date, idCustomer: 1, idPitch: idPitch, idPrice: 1, idTime: idTime) { [weak self](result) in
+    func bookingThePitch(date: String,
+                         idCustomer: Int,
+                         idPitch: Int,
+                         idPrice: Int,
+                         idTime: Int, completion: @escaping APICompletion) {
+        networkManager.bookingThePitch(date: date,
+                                       idCustomer: 1,
+                                       idPitch: idPitch,
+                                       idPrice: 1,
+                                       idTime: idTime) { [weak self](result) in
             guard let this = self else { return }
             switch result {
             case .failure(let error):
@@ -135,7 +141,7 @@ class ListPitchViewModel {
             let pitchRealm = Pitch(id: pitchTemp.id,
                                    type: pitchTemp.type ?? PitchType(),
                                    name: pitchTemp.name,
-                                   description1: pitchTemp.description1,
+                                   description1: pitchTemp.description,
                                    timeUse: pitchTemp.timeUse,
                                    count: pitchTemp.count,
                                    imagePitch: pitchTemp.imagePitch,

@@ -72,7 +72,6 @@
 		B0F837A1252461CF008F08C3 /* UITextFieldExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F8379C252461CF008F08C3 /* UITextFieldExt.swift */; };
 		B0F837A825256A07008F08C3 /* UIVIewControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F837A725256A06008F08C3 /* UIVIewControllerExt.swift */; };
 		B0F837AA252570C3008F08C3 /* DateExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F837A9252570C3008F08C3 /* DateExt.swift */; };
-		B0F837BE2525DECD008F08C3 /* UIDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F837BD2525DECD008F08C3 /* UIDatePicker.swift */; };
 		B0F837C22525E179008F08C3 /* DetailHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F837C02525E179008F08C3 /* DetailHeaderTableViewCell.swift */; };
 		B0F837C32525E179008F08C3 /* DetailHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0F837C12525E179008F08C3 /* DetailHeaderTableViewCell.xib */; };
 		B0F837C72525E494008F08C3 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F837C52525E494008F08C3 /* DetailViewController.swift */; };
@@ -162,7 +161,6 @@
 		B0F8379C252461CF008F08C3 /* UITextFieldExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextFieldExt.swift; sourceTree = "<group>"; };
 		B0F837A725256A06008F08C3 /* UIVIewControllerExt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIVIewControllerExt.swift; sourceTree = "<group>"; };
 		B0F837A9252570C3008F08C3 /* DateExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExt.swift; sourceTree = "<group>"; };
-		B0F837BD2525DECD008F08C3 /* UIDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDatePicker.swift; sourceTree = "<group>"; };
 		B0F837C02525E179008F08C3 /* DetailHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		B0F837C12525E179008F08C3 /* DetailHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		B0F837C52525E494008F08C3 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -288,7 +286,6 @@
 				B0F83799252461CF008F08C3 /* UIButtonExt.swift */,
 				B0F8379C252461CF008F08C3 /* UITextFieldExt.swift */,
 				B080EBD7251AF82300C6EFDB /* Utilities.swift */,
-				B0F837BD2525DECD008F08C3 /* UIDatePicker.swift */,
 				B0F837A9252570C3008F08C3 /* DateExt.swift */,
 			);
 			path = Ext;
@@ -782,7 +779,6 @@
 				513D174B2531A92000156C1A /* Reserve.swift in Sources */,
 				B062BBFE252EA3650083BA0B /* MyPinView.swift in Sources */,
 				B03DF9482535613000877640 /* ScheduleViewModel.swift in Sources */,
-				B0F837BE2525DECD008F08C3 /* UIDatePicker.swift in Sources */,
 				B06B06F32526BB98002762B4 /* DetailBodyTableViewCell.swift in Sources */,
 				B06B06F92526DAC3002762B4 /* DetailHistoryViewModel.swift in Sources */,
 				B0C3AF672512059B00959BDD /* LoginViewController.swift in Sources */,

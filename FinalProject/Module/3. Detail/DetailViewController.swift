@@ -16,7 +16,7 @@ enum Favorite {
 class DetailViewController: UIViewController {
     // MARK: - IBoutlet
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var datePicker1: UIDatePicker!
+    @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet var viewContainerDatePicker: UIView!
     
     // MARK: Properties
@@ -59,7 +59,7 @@ class DetailViewController: UIViewController {
     
     private func configDatePicker() {
         viewContainerDatePicker.isHidden = true
-        datePicker1.minimumDate = Date()
+        datePicker.minimumDate = Date()
     }
     
     private func stateDatePickerDefault() {
@@ -76,15 +76,12 @@ class DetailViewController: UIViewController {
     
     // MARK: - Function Check Time
     func checkTime() -> Int {
-        let hour = datePicker1.date.getTime().hour
-        let minute = datePicker1.date.getTime().minute
+        let hour = datePicker.date.getTime().hour
+        let minute = datePicker.date.getTime().minute
         if hour < 6 && hour > 22 {
-            showAlert(alertText: "Sai khung giờ", alertMessage: "Chọn lại khung giờ")
             return 0 } else if  hour == 6 && minute == 30 {
-            return 1
-        } else if  hour == 7 && minute == 30 {
-            return 2
-        } else if  hour == 8 && minute == 30 {
+            return 1 } else if  hour == 7 && minute == 30 {
+            return 2 } else if  hour == 8 && minute == 30 {
             return 3 } else if  hour == 9 && minute == 30 {
             return 4 } else if  hour == 10 && minute == 30 {
             return 5 } else if  hour == 11 && minute == 30 {
@@ -97,9 +94,8 @@ class DetailViewController: UIViewController {
             return 12 } else if  hour == 18 && minute == 30 {
             return 13 } else if  hour == 19 && minute == 30 {
             return 14 } else if  hour == 20 && minute == 30 {
-            return 15 } else if minute == 0 { showAlert(alertText: "Sai Khung giờ", alertMessage: "Chọn Lại Giờ")
-            return 0
-        } else { return 0 }
+            return 15 } else if minute == 0 { showAlert(alertText: App.ErrorBooking.errorTime, alertMessage: App.ErrorBooking.chooseTime)
+            return 0 } else { return -1 }
     }
     
     @IBAction func cancelTapped(_ sender: UIBarButtonItem) {
@@ -109,24 +105,24 @@ class DetailViewController: UIViewController {
     @IBAction func doneTapped(_ sender: UIBarButtonItem) {
         let idTime = checkTime()
         if idTime == 0 {
-            showAlert(alertText: "Lỗi", alertMessage: "Vui lòng chọn trước 9h tối và sau 6h sáng")
+            showAlert(alertText: App.ErrorBooking.errorInforBooking, alertMessage: App.ErrorBooking.minHours)
         }
-        let date = String(datePicker1.date.getDate())
+        let date = String(datePicker.date.getDate())
         let dateCurrent = Date()
         let format = DateFormatter()
         format.dateFormat = "yyyy-MM-dd"
         let formattedDate = format.string(from: dateCurrent)
         if formattedDate == date {
-            showAlert(alertText: "Lỗi", alertMessage: "Vui lòng đặt trước ít nhất 1 ngày")
+            showAlert(alertText: App.ErrorBooking.errorInforBooking, alertMessage: App.ErrorBooking.minDay)
         }
         viewModel.bookingThePitch(date: date, idCustomer: 1, idPitch: viewModel.pitch.id, idPrice: 1, idTime: idTime) { [weak self] (result) in
             HUD.show()
             guard let this = self else { return }
             switch result {
             case .success:
-                this.showAlert(alertText: "Đặt Sân", alertMessage: "Tình trạng: \(this.viewModel.resultBooking.status)")
+                this.showAlert(alertText: App.ErrorBooking.bookingthePitch, alertMessage: "\(App.ErrorBooking.statusBooking): \(this.viewModel.resultBooking.status)")
             case .failure(let error):
-                self?.showAlert(alertText: "Lỗi Đặt Sân", alertMessage: "Lỗi Đặt Sân\(error)")
+                self?.showAlert(alertText: App.ErrorBooking.errorBooking, alertMessage: "\(App.ErrorBooking.errorInforBooking): \(error)")
             }
             HUD.popActivity()
         }
@@ -134,8 +130,8 @@ class DetailViewController: UIViewController {
     }
     // MARK: - Private Function
     private func configTableView() {
-        let customHeader = UINib(nibName: "CustomHeader", bundle: Bundle.main)
-        tableView.register(customHeader, forHeaderFooterViewReuseIdentifier: "CustomHeader")
+        let nibcustomHeader = UINib(nibName: "CustomHeader", bundle: Bundle.main)
+        tableView.register(nibcustomHeader, forHeaderFooterViewReuseIdentifier: "CustomHeader")
         let nibHeader = UINib(nibName: "DetailHeaderTableViewCell", bundle: Bundle.main)
         tableView.register(nibHeader, forCellReuseIdentifier: "cellHeader")
         let nibBody = UINib(nibName: "DetailBodyTableViewCell", bundle: Bundle.main)
@@ -202,23 +198,23 @@ extension DetailViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let nib2 = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CustomHeader") as? CustomHeader else { return UIView() }
+        guard let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CustomHeader") as? CustomHeader else { return UIView() }
         if section == 0 {
-            nib2.titleLabel.text = "Bản Đồ"
-            nib2.verifyIcon.isHidden = true
+            header.titleLabel.text = "Bản Đồ"
+            header.verifyIcon.isHidden = true
         }
         if section == 1 {
-            nib2.titleLabel.text = viewModel.pitch.name
+            header.titleLabel.text = viewModel.pitch.name
         }
         if section == 2 {
-            nib2.titleLabel.text = "Thông Tin"
-            nib2.verifyIcon.isHidden = true
+            header.titleLabel.text = "Thông Tin"
+            header.verifyIcon.isHidden = true
         }
         if section == 3 {
-            nib2.verifyIcon.isHidden = true
-            nib2.titleLabel.text = "250.000 VND - 300.000 VND"
+            header.verifyIcon.isHidden = true
+            header.titleLabel.text = "250.000 VND - 300.000 VND"
         }
-        return nib2
+        return header
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

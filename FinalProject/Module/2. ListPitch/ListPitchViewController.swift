@@ -23,6 +23,7 @@ class ListPitchViewController: UIViewController {
     var inputDate: [Date] = []
     private var viewModel: ListPitchViewModel = ListPitchViewModel()
     var pitch: [Pitch]?
+    var leftItem = UIBarButtonItem()
     var idPitch: Int = 0
     
     // MARK: - Life Cycle
@@ -49,7 +50,7 @@ class ListPitchViewController: UIViewController {
     
     private func stateDatePickerDefault() {
         UIView.transition(with: viewContainerDatePicker, duration: 1,
-                          options: .transitionCrossDissolve,
+                          options: .transitionCurlUp,
                           animations: {
                             self.tabBarController?.tabBar.isHidden = false
                             self.viewContainerDatePicker.isHidden = true
@@ -87,7 +88,6 @@ class ListPitchViewController: UIViewController {
     }
     
     @IBAction func doneTapped(_ sender: UIBarButtonItem) {
-        
         let idTime = checkTime()
         if idTime == 0 || idTime == -1 {
             showAlert(alertText: App.ErrorBooking.errorInforBooking, alertMessage: App.ErrorBooking.minHours)
@@ -109,7 +109,7 @@ class ListPitchViewController: UIViewController {
             case .failure(let error):
                 self?.showAlert(alertText: App.ErrorBooking.errorBooking, alertMessage: "\(App.ErrorBooking.errorInforBooking): \(error)")
             }
-            HUD.popActivity()
+            HUD.dismiss()
         }
         stateDatePickerDefault()
     }
@@ -151,7 +151,7 @@ class ListPitchViewController: UIViewController {
     
     func getDataPin() {
         for i in 0..<viewModel.pitchTotals.count {
-            let pin = MyPin(id: viewModel.pitchTotals[i].id, title: viewModel.pitchTotals[i].name,
+            let pin = MyPin(title: viewModel.pitchTotals[i].name,
                             locationName: viewModel.pitchTotals[i].type?.owner?.address ?? "",
                             coordinate: CLLocationCoordinate2D(latitude: viewModel.pitchTotals[i].type?.owner?.lat ?? 0.0, longitude: viewModel.pitchTotals[i].type?.owner?.lng ?? 0.0))
             pins.append(pin)
@@ -181,7 +181,6 @@ class ListPitchViewController: UIViewController {
     }
     
     // MARK: - Objc Function
-    var leftItem = UIBarButtonItem()
     @objc private func changeScreenMapTapped() {
         leftItem = UIBarButtonItem(image: UIImage(named: "ic_listpitch_listview"), style: .plain, target: self, action: #selector(changeScreenList))
         leftItem.tintColor = #colorLiteral(red: 0.6941176471, green: 0.6666666667, blue: 0.5490196078, alpha: 1)
@@ -257,17 +256,6 @@ extension ListPitchViewController: UITableViewDelegate {
 }
 
 extension ListPitchViewController: UISearchBarDelegate {
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        print("Search bar editing did begin..")
-    }
-    
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        print("Search bar editing did end..")
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-    }
-    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print("Search text is \(searchText)")
         searchBar.searchTextField.textColor = #colorLiteral(red: 0.3882352941, green: 0.4823529412, blue: 0.462745098, alpha: 1)
@@ -279,6 +267,7 @@ extension ListPitchViewController: UISearchBarDelegate {
         tableView.reloadData()
     }
 }
+
 // MARK: - Extension: - ListPitchTableViewCellDelegate
 extension ListPitchViewController: ListPitchTableViewCellDelegate {
     func handleFavoriteTableView(cell: ListPitchTableViewCell, needPerform action: ListPitchTableViewCell.Action) {
@@ -292,7 +281,7 @@ extension ListPitchViewController: ListPitchTableViewCellDelegate {
                     case .success:
                         this.tableView.reloadData()
                     case.failure(let error):
-                        this.showAlert(alertText: "Error favorite", alertMessage: "error From realm \(error)")
+                        this.showAlert(alertText: App.Favorite.errorFavorite, alertMessage: "\(App.Favorite.errorFavorite): \(error)")
                     }
                 }
             } else {
@@ -302,7 +291,7 @@ extension ListPitchViewController: ListPitchTableViewCellDelegate {
                     case .success:
                         this.tableView.reloadData()
                     case .failure(let error):
-                        this.showAlert(alertText: "Error add favorite", alertMessage: "error From realm \(error)")
+                        this.showAlert(alertText: App.Favorite.errorFavorite, alertMessage: "\(App.Favorite.errorFavorite): \(error)")
                     }
                 }
             }
@@ -325,7 +314,6 @@ extension ListPitchViewController: ListPitchViewModelDelegate {
 extension ListPitchViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard let annotation = annotation as? MyPin else { return nil }
-        
         let identifier = "mypin"
         var view: MyPinView
         if let dequeuedView = mapKit.dequeueReusableAnnotationView(withIdentifier: identifier) as? MyPinView {
@@ -336,7 +324,6 @@ extension ListPitchViewController: MKMapViewDelegate {
             view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             view.leftCalloutAccessoryView = UIImageView(image: UIImage(named: "ic_listpitch_pin"))
             view.canShowCallout = true
-            index = annotation.id
         }
         return view
     }
