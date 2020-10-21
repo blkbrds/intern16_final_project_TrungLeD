@@ -41,7 +41,7 @@ final class FavouriteViewController: UIViewController {
             guard let this = self else { return }
             if done {
                 this.notificationLabel.isHidden = false
-                this.notificationLabel.text = "Không Có Sân Yêu Thích!"
+                this.notificationLabel.text = App.Favorite.noFavorite
             } else {
                 this.notificationLabel.isHidden = true
             }
@@ -62,13 +62,13 @@ final class FavouriteViewController: UIViewController {
                 this.checkFavoriteData()
                 this.tableView.reloadData()
             } else {
-                this.showAlert(alertText: "Error Get Data", alertMessage: "error data from realm")
+                this.showAlert(alertText: App.String.error, alertMessage: App.String.error)
             }
         }
     }
     
     func configNavi() {
-        navigationItem.title = "Sân Yêu Thích"
+        navigationItem.title = App.Favorite.title
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
         let rightBarButton = UIBarButtonItem(image: UIImage(systemName: "trash"), style: .plain, target: self, action: #selector(deleteTouchUpInSide))
         navigationItem.rightBarButtonItem = rightBarButton
@@ -81,7 +81,7 @@ final class FavouriteViewController: UIViewController {
                 this.fectchData()
                 this.tableView.reloadData()
             } else {
-                this.showAlert(alertText: "error delete", alertMessage: "error data from realm)")
+                this.showAlert(alertText: App.String.error, alertMessage: App.String.error)
             }
         }
     }
@@ -93,19 +93,19 @@ final class FavouriteViewController: UIViewController {
                 this.fectchData()
                 this.tableView.reloadData()
             } else {
-                this.showAlert(alertText: "error deleteAll", alertMessage: "error data from realm)")
+                this.showAlert(alertText: App.String.error, alertMessage: App.String.error)
             }
         }
     }
 
     // MARK: - Objc Function
     @objc func deleteTouchUpInSide() {
-        let alert = UIAlertController(title: "Warning", message: "Delete all", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .destructive) { [weak self] (_) in
+        let alert = UIAlertController(title: App.Favorite.warningDelete, message: App.Favorite.deleteAll, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: App.String.ok, style: .destructive) { [weak self] (_) in
             guard let this = self else { return }
             this.deleteAllItem()
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let cancelAction = UIAlertAction(title: App.String.cancel, style: .cancel)
         alert.addAction(okAction)
         alert.addAction(cancelAction)
         present(alert, animated: true, completion: nil)
@@ -144,7 +144,7 @@ extension FavouriteViewController: FavouriteViewModelDelegate {
         case .loadData:
             fectchData()
         case .failure(let error):
-            self.showAlert(alertText: "Loi", alertMessage: "Loi Load data \(error)")
+            self.showAlert(alertText: App.String.error, alertMessage: "\(App.String.error): \(error)")
         }
     }
 }

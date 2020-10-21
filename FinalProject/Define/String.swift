@@ -12,6 +12,7 @@ extension App {
     struct String {
         static let error = "Lỗi"
         static let ok = "OK"
+        static let cancel = "Cancel"
     }
     struct ErrorBooking {
         static let errorTime = "Sai Khung Giờ"
@@ -32,6 +33,10 @@ extension App {
     
     struct Favorite {
         static let errorFavorite = "Lỗi Yêu Thích"
+        static let noFavorite = "Không Có Sân Yêu Thích!"
+        static let title = "Sân Yêu Thích"
+        static let warningDelete = "Cảnh Báo"
+        static let deleteAll = "Xóa Tất Cả"
     }
     
     struct Schedule {
