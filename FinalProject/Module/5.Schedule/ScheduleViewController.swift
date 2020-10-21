@@ -33,6 +33,7 @@ class ScheduleViewController: UIViewController {
 
     // MARK: - Function
     private func loadData() {
+        HUD.show()
         viewModel.getReserver { [weak self](result) in
             guard let this = self else { return }
             switch result {
@@ -40,15 +41,16 @@ class ScheduleViewController: UIViewController {
                 this.checkEmptyReserver()
                 this.tableView.reloadData()
             case .failure(let error):
-                this.showAlert(alertText: "Loi", alertMessage: "Loi\(error)")
+                this.showAlert(alertText: App.String.error, alertMessage: "\(App.String.error): \(error)")
             }
+            HUD.dismiss()
         }
     }
     
     private func checkEmptyReserver() {
         if viewModel.reseverTotals.isEmpty {
             notification.isHidden = false
-            notification.text = "No Reserver Pitch!"
+            notification.text = App.Schedule.isEmptySchedule
         } else {
             notification.isHidden = true
         }
@@ -61,7 +63,8 @@ class ScheduleViewController: UIViewController {
     }
     
     func configTableView() {
-        navigationItem.title = "Schedule"
+        navigationItem.title = App.Schedule.booked
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.orange]
         let nib = UINib(nibName: "ScheduleCell", bundle: Bundle.main)
         tableView.register(nib, forCellReuseIdentifier: "ScheduleCell")
         tableView.dataSource = self
@@ -87,7 +90,7 @@ extension ScheduleViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
+        return 165
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -96,14 +99,14 @@ extension ScheduleViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func cancelAction(at indexPath: IndexPath) -> UIContextualAction {
-        let actionCancel = UIContextualAction(style: .normal, title: "Cancel") { (_, _, completion) in
+        let actionCancel = UIContextualAction(style: .normal, title: App.Schedule.cancelTitle) { (_, _, completion) in
             self.viewModel.cancelReserver(idReserve: self.idResever) { [weak self](result) in
                 guard let this = self else { return }
                 switch result {
                 case .failure(let error):
-                    this.showAlert(alertText: "loi", alertMessage: "\(error)")
+                    this.showAlert(alertText: App.String.error, alertMessage: "\(error)")
                 case .success:
-                    this.showAlert(alertText: "Huỷ Sân", alertMessage: "\(this.viewModel.resultCancel.data)")
+                    this.showAlert(alertText: App.Schedule.cancelBooking, alertMessage: "\(this.viewModel.resultCancel.data)")
                     this.viewModel.reseverTotals.remove(at: indexPath.row)
                     this.tableView.reloadData()
                     this.checkEmptyReserver()
@@ -112,7 +115,7 @@ extension ScheduleViewController: UITableViewDataSource, UITableViewDelegate {
             completion(true)
         }
         actionCancel.image = UIImage(named: "ic_schedule_cancel")
-        actionCancel.backgroundColor = .red
+        actionCancel.backgroundColor = #colorLiteral(red: 0.6950495243, green: 0.6684789658, blue: 0.547100842, alpha: 1)
         return actionCancel
     }
 }

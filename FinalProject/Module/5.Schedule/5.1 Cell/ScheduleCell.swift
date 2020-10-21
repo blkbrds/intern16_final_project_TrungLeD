@@ -12,6 +12,7 @@ protocol ScheduleCellDelegate: class {
 }
 class ScheduleCell: UITableViewCell {
     // MARK: - IBOutlet
+    @IBOutlet weak var viewContainer: UIView!
     @IBOutlet var nameOfPitch: UILabel!
     @IBOutlet var addressOfPitch: UILabel!
     @IBOutlet var priceOfPitch: UILabel!
@@ -40,6 +41,7 @@ class ScheduleCell: UITableViewCell {
         timeOfPitch.text = "\(viewModel?.resever.time.startTime ?? "") - \(viewModel?.resever.time.endTime ?? "")"
         dateofPitch.text = viewModel?.resever.date
         delegate?.cancelReserver(at: self, idResever: viewModel?.resever.id ?? 0)
+        viewContainer.layer.cornerRadius = 15
     }
     
 }

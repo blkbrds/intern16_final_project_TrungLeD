@@ -11,8 +11,8 @@ extension UIButton {
     
     // MARK: Function
     func drawColor() {
-        self.backgroundColor = UIColor(red: 48 / 255, green: 173 / 255, blue: 99 / 255, alpha: 1)
-        self.layer.cornerRadius = 25.0
+        self.backgroundColor = #colorLiteral(red: 0.2705882353, green: 0.2392156863, blue: 0.5647058824, alpha: 1)
+        self.layer.cornerRadius = 15.0
         self.tintColor = UIColor.white
     }
     func styleHollowButton() {

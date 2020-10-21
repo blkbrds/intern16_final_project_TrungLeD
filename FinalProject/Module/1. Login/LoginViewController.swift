@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
     // MARK: - IBoutlet
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var passWordTextField: UITextField!
@@ -40,13 +40,19 @@ class LoginViewController: UIViewController {
 // MARK: - Extension
 extension LoginViewController {
     private func login() {
+        HUD.show()
         guard let phone = phoneTextField.text, let pw = passWordTextField.text else { return }
         viewModel.login(phone: phone, pw: pw) { [weak self] result  in
+            HUD.popActivity()
             switch result {
             case .success:
-                AppDelegate.shared.changeRoot(rootType: .tabbar)
+                if self?.viewModel.login.message == "OK" {
+                    AppDelegate.shared.changeRoot(rootType: .tabbar)
+                } else {
+                    self?.showAlert(alertText: App.Login.errorLogin, alertMessage: App.Login.messLogin)
+                }
             case .failure(let error):
-                self?.showAlert(alertText: "Lỗi Đăng Nhập", alertMessage: "Nhập lại mật khẩu hoặc số điện thoại \(error)")
+                self?.showAlert(alertText: App.Login.errorLogin, alertMessage: "\(App.Login.error)\(error)")
             }
         }
     }

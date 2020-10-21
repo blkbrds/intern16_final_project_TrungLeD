@@ -7,18 +7,22 @@
 //
 
 import UIKit
-import SideMenu
+import SVProgressHUD
+
 enum RootType {
     case login
     case tabbar
 }
+
+typealias HUD = SVProgressHUD
+
 @UIApplicationMain
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        changeRoot(rootType: .tabbar)
+        changeRoot(rootType: .login)
         window?.makeKeyAndVisible()
         LocationManager.shared().request()
         return true

@@ -9,8 +9,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListPitchViewController" customModule="FinalProject" customModuleProvider="target">
             <connections>
-                <outlet property="datePicker1" destination="Oc7-Kb-gWb" id="8Hm-a3-qef"/>
-                <outlet property="locationCurrentBtn" destination="DRY-Go-aYb" id="oaF-yQ-gof"/>
+                <outlet property="currentLocationButton" destination="DRY-Go-aYb" id="oaF-yQ-gof"/>
+                <outlet property="datePicker" destination="Oc7-Kb-gWb" id="8Hm-a3-qef"/>
                 <outlet property="mapKit" destination="rhu-6x-M47" id="WPc-HV-RFT"/>
                 <outlet property="tableView" destination="iMK-4T-y4R" id="6kZ-ce-ldd"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -23,17 +23,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iMK-4T-y4R">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rhu-6x-M47">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                 </mapView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRY-Go-aYb">
-                    <rect key="frame" x="342" y="790" width="62" height="62"/>
+                    <rect key="frame" x="374" y="812" width="30" height="30"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="62" id="O7W-Rc-IBk"/>
-                        <constraint firstAttribute="width" constant="62" id="qWl-R0-til"/>
+                        <constraint firstAttribute="height" constant="30" id="O7W-Rc-IBk"/>
+                        <constraint firstAttribute="width" constant="30" id="qWl-R0-til"/>
                     </constraints>
                     <state key="normal" image="ic_listpitch_currentlocation"/>
                     <connections>
@@ -41,13 +41,17 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PYy-YL-LVz">
-                    <rect key="frame" x="0.0" y="636" width="414" height="260"/>
+                    <rect key="frame" x="0.0" y="635" width="414" height="261"/>
                     <subviews>
                         <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="30" translatesAutoresizingMaskIntoConstraints="NO" id="Oc7-Kb-gWb">
-                            <rect key="frame" x="0.0" y="44" width="414" height="216"/>
+                            <rect key="frame" x="0.0" y="45" width="414" height="216"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="216" id="XzJ-0l-7aA"/>
+                            </constraints>
+                            <locale key="locale" localeIdentifier="vi_VN"/>
                         </datePicker>
                         <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NdZ-Ce-9JG">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="45"/>
                             <items>
                                 <barButtonItem systemItem="cancel" id="BEW-Y2-Ieb">
                                     <connections>
@@ -63,40 +67,40 @@
                             </items>
                         </toolbar>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="260" id="5LZ-pk-fjQ"/>
-                        <constraint firstAttribute="trailing" secondItem="Oc7-Kb-gWb" secondAttribute="trailing" id="6pi-LH-kxz"/>
-                        <constraint firstItem="Oc7-Kb-gWb" firstAttribute="leading" secondItem="PYy-YL-LVz" secondAttribute="leading" id="QI3-R4-lfr"/>
-                        <constraint firstItem="NdZ-Ce-9JG" firstAttribute="leading" secondItem="PYy-YL-LVz" secondAttribute="leading" id="VBt-kl-7mO"/>
-                        <constraint firstAttribute="bottom" secondItem="Oc7-Kb-gWb" secondAttribute="bottom" id="jDn-CW-oL0"/>
-                        <constraint firstItem="Oc7-Kb-gWb" firstAttribute="top" secondItem="NdZ-Ce-9JG" secondAttribute="bottom" id="lNq-hh-g0Y"/>
-                        <constraint firstAttribute="trailing" secondItem="NdZ-Ce-9JG" secondAttribute="trailing" id="lcR-nC-xgL"/>
-                        <constraint firstItem="NdZ-Ce-9JG" firstAttribute="top" secondItem="PYy-YL-LVz" secondAttribute="top" id="pkb-je-enJ"/>
+                        <constraint firstItem="NdZ-Ce-9JG" firstAttribute="leading" secondItem="PYy-YL-LVz" secondAttribute="leading" id="3CL-RR-GTQ"/>
+                        <constraint firstAttribute="trailing" secondItem="Oc7-Kb-gWb" secondAttribute="trailing" id="BU3-Tq-w50"/>
+                        <constraint firstAttribute="height" constant="261" id="SgD-me-zbf"/>
+                        <constraint firstAttribute="bottom" secondItem="Oc7-Kb-gWb" secondAttribute="bottom" id="Wrd-MX-QkV"/>
+                        <constraint firstItem="NdZ-Ce-9JG" firstAttribute="top" secondItem="PYy-YL-LVz" secondAttribute="top" id="axY-eg-yEn"/>
+                        <constraint firstItem="Oc7-Kb-gWb" firstAttribute="leading" secondItem="PYy-YL-LVz" secondAttribute="leading" id="qOV-cQ-QGN"/>
+                        <constraint firstItem="Oc7-Kb-gWb" firstAttribute="top" secondItem="NdZ-Ce-9JG" secondAttribute="bottom" id="rMI-lZ-Hgp"/>
+                        <constraint firstAttribute="trailing" secondItem="NdZ-Ce-9JG" secondAttribute="trailing" id="wk1-Es-iHJ"/>
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <color key="tintColor" red="0.019607843140000001" green="0.066666666669999999" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="rhu-6x-M47" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="7pr-9V-ZID"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="iMK-4T-y4R" secondAttribute="bottom" id="8T0-x5-LNq"/>
-                <constraint firstItem="PYy-YL-LVz" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="9nC-Fx-fKh"/>
-                <constraint firstItem="iMK-4T-y4R" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="AZD-wp-Vae"/>
-                <constraint firstItem="rhu-6x-M47" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="HAc-xr-AIO"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="DRY-Go-aYb" secondAttribute="bottom" constant="10" id="Xig-pf-eyq"/>
-                <constraint firstItem="iMK-4T-y4R" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="h8H-6X-H12"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rhu-6x-M47" secondAttribute="trailing" id="iQA-cm-WNj"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="iMK-4T-y4R" secondAttribute="trailing" id="iR3-Q8-eBB"/>
-                <constraint firstAttribute="bottom" secondItem="PYy-YL-LVz" secondAttribute="bottom" id="keA-wZ-KK1"/>
-                <constraint firstItem="PYy-YL-LVz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="l5k-rs-ze5"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="rhu-6x-M47" secondAttribute="bottom" id="uGu-xa-sag"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="DRY-Go-aYb" secondAttribute="trailing" constant="10" id="yuF-J9-vhF"/>
+                <constraint firstItem="rhu-6x-M47" firstAttribute="top" secondItem="9NL-R8-rN4" secondAttribute="top" id="7pr-9V-ZID"/>
+                <constraint firstAttribute="bottom" secondItem="iMK-4T-y4R" secondAttribute="bottom" id="8T0-x5-LNq"/>
+                <constraint firstItem="iMK-4T-y4R" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="AZD-wp-Vae"/>
+                <constraint firstItem="rhu-6x-M47" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="HAc-xr-AIO"/>
+                <constraint firstItem="PYy-YL-LVz" firstAttribute="trailing" secondItem="9NL-R8-rN4" secondAttribute="trailing" id="VmE-Nb-6G0"/>
+                <constraint firstItem="9NL-R8-rN4" firstAttribute="bottom" secondItem="DRY-Go-aYb" secondAttribute="bottom" constant="20" id="Xig-pf-eyq"/>
+                <constraint firstAttribute="bottom" secondItem="PYy-YL-LVz" secondAttribute="bottom" id="fGo-3B-gGJ"/>
+                <constraint firstItem="iMK-4T-y4R" firstAttribute="top" secondItem="9NL-R8-rN4" secondAttribute="top" id="h8H-6X-H12"/>
+                <constraint firstAttribute="trailing" secondItem="rhu-6x-M47" secondAttribute="trailing" id="iQA-cm-WNj"/>
+                <constraint firstAttribute="trailing" secondItem="iMK-4T-y4R" secondAttribute="trailing" id="iR3-Q8-eBB"/>
+                <constraint firstAttribute="bottom" secondItem="rhu-6x-M47" secondAttribute="bottom" id="uGu-xa-sag"/>
+                <constraint firstItem="PYy-YL-LVz" firstAttribute="leading" secondItem="9NL-R8-rN4" secondAttribute="leading" id="yVj-7D-g8k"/>
+                <constraint firstAttribute="trailing" secondItem="DRY-Go-aYb" secondAttribute="trailing" constant="10" id="yuF-J9-vhF"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <viewLayoutGuide key="safeArea" id="9NL-R8-rN4"/>
             <point key="canvasLocation" x="185.50724637681162" y="223.66071428571428"/>
         </view>
     </objects>
     <resources>
-        <image name="ic_listpitch_currentlocation" width="32" height="32"/>
+        <image name="ic_listpitch_currentlocation" width="128" height="128"/>
     </resources>
 </document>

@@ -19,17 +19,17 @@ class ListPitchViewModel {
         case loadFavorite
         case failure(Error)
     }
+    
     // MARK: - Properties
     weak var delegate: ListPitchViewModelDelegate?
     var notificationToken: NotificationToken?
     var item: Pitch = Pitch()
     var resultBooking: BookingPitch = BookingPitch()
     var pitchTotals: [Pitch] = []
-    var pitchs: [Pitch] = []
-    var realmPitch: [Pitch] = []
-    var nameSort: [String] = []
+    var pitchFilter: [Pitch] = []
     let networkManager: NetworkManager
     var isBooking: Bool = false
+    
     // MARK: - Init
     init(networkManager: NetworkManager = NetworkManager.shared) {
         self.networkManager = networkManager
@@ -44,14 +44,22 @@ class ListPitchViewModel {
                 completion( .failure(error))
             case .success(let result):
                 this.pitchTotals = result
-                this.pitchs = this.pitchTotals
-                completion( .success)
+                this.pitchFilter = this.pitchTotals
+                this.fetchRealmData(completion: completion)
             }
         }
     }
 
-    func bookingThePitch(date: String, idCustomer: Int, idPitch: Int, idPrice: Int, idTime: Int, completion: @escaping APICompletion) {
-        networkManager.bookingThePitch(date: date, idCustomer: 1, idPitch: idPitch, idPrice: 1, idTime: idTime) { [weak self](result) in
+    func bookingThePitch(date: String,
+                         idCustomer: Int,
+                         idPitch: Int,
+                         idPrice: Int,
+                         idTime: Int, completion: @escaping APICompletion) {
+        networkManager.bookingThePitch(date: date,
+                                       idCustomer: 1,
+                                       idPitch: idPitch,
+                                       idPrice: 1,
+                                       idTime: idTime) { [weak self](result) in
             guard let this = self else { return }
             switch result {
             case .failure(let error):
@@ -64,47 +72,59 @@ class ListPitchViewModel {
     }
 
     func numberOfRowInSectionByDefault() -> Int {
-        return pitchTotals.count
+        return pitchFilter.count
     }
     
     func viewModelForCell(at indexPath: IndexPath) -> ListPitchCellViewModel {
-        let item = pitchs[indexPath.row]
+        let item = pitchFilter[indexPath.row]
         let viewModel = ListPitchCellViewModel(item: item)
         return viewModel
     }
 
     func getInforPitch(at indexPath: IndexPath) -> DetailViewModel {
-        let item = pitchTotals[indexPath.row]
+        let item = pitchFilter[indexPath.row]
         let detail = DetailViewModel(pitch: item)
         return detail
     }
 
     // MARK: - Realm
-    func setupObserve() {
+    func setupObserver() {
         do {
             let realm = try Realm()
-            notificationToken = realm.objects(Pitch.self).observe({ [weak self] _ in
+            notificationToken = realm.objects(Pitch.self).observe({ [weak self] changes in
                 guard let this = self else { return }
-                if let delegate = this.delegate {
-                    this.fetchRealmData()
-                    for i in 0..<this.pitchTotals.count {
-                        this.pitchTotals[i].isFavorite = this.realmPitch.contains(where: { $0.id == this.pitchTotals[i].id })
+                switch changes {
+                case .update(let pitch, _, _, _):
+                    for item in this.pitchFilter {
+                        if pitch.contains(where: { $0.id == item.id }) {
+                            item.isFavorite = true
+                        } else {
+                            item.isFavorite = false
+                        }
                     }
-                    delegate.syncFavorite(viewModel: this, needperformAction: .loadFavorite)
+                    this.delegate?.syncFavorite(viewModel: this, needperformAction: .loadFavorite)
+                case .error(let error):
+                    this.delegate?.syncFavorite(viewModel: this, needperformAction: .failure(error))
+                default: break
                 }
             })
         } catch {
             delegate?.syncFavorite(viewModel: self, needperformAction: .failure(error))
         }
     }
-
-    func fetchRealmData() {
+    
+    func fetchRealmData(completion: @escaping APICompletion) {
         do {
             let realm = try Realm()
-            let results = realm.objects(Pitch.self)
-            realmPitch = Array(results)
+            let results = Array(realm.objects(Pitch.self))
+            for item in pitchTotals {
+                if results.contains(where: { $0.id == item.id }) {
+                    item.isFavorite = true
+                }
+            }
+            completion(.success)
         } catch {
-            return
+            completion(.failure(error))
         }
     }
 
@@ -117,11 +137,11 @@ class ListPitchViewModel {
     func addFavorite(index: Int, completion: @escaping APICompletion) {
         do {
             let realm = try Realm()
-            let pitchTemp = pitchTotals[index]
+            let pitchTemp = pitchFilter[index]
             let pitchRealm = Pitch(id: pitchTemp.id,
                                    type: pitchTemp.type ?? PitchType(),
                                    name: pitchTemp.name,
-                                   description1: pitchTemp.description1,
+                                   description1: pitchTemp.description,
                                    timeUse: pitchTemp.timeUse,
                                    count: pitchTemp.count,
                                    imagePitch: pitchTemp.imagePitch,
