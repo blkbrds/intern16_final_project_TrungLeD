@@ -8,12 +8,12 @@ target 'FinalProject' do
   # Pods for FinalProject
   pod 'Moya/RxSwift'
   pod 'SwiftLint'
-  pod 'SideMenu'
   pod 'RealmSwift'
   pod 'ObjectMapper', '~> 3.5'
   pod 'RealmSwift'
   pod 'SDWebImage', '~> 5.0'
   pod 'SVProgressHUD'
+  pod 'SimpleCheckbox'
   target 'FinalProjectTests' do
     inherit! :search_paths
     # Pods for testing

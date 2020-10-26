@@ -10,6 +10,8 @@ import UIKit
 
 final class LoginViewController: UIViewController {
     // MARK: - IBoutlet
+    
+    @IBOutlet weak var containerViewSignIn: UIView!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var passWordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
@@ -25,10 +27,15 @@ final class LoginViewController: UIViewController {
     
     // MARK: - Function
     private func setupElements() {
-        phoneTextField.drawLine()
-        passWordTextField.drawLine()
-        loginButton.drawColor()
+        phoneTextField.layer.cornerRadius = 15
+        passWordTextField.layer.cornerRadius = 15
         loginButton.styleHollowButton()
+        containerViewSignIn.layer.cornerRadius = 25
+        let color = UIColor.lightText
+        let phoneHolder = phoneTextField.placeholder ?? "" //There should be a placeholder set in storyboard or elsewhere string or pass empty
+        phoneTextField.attributedPlaceholder = NSAttributedString(string: phoneHolder, attributes: [NSAttributedString.Key.foregroundColor: color])
+        let passHolder = passWordTextField.placeholder ?? "" //There should be a placeholder set in storyboard or elsewhere string or pass empty
+        passWordTextField.attributedPlaceholder = NSAttributedString(string: passHolder, attributes: [NSAttributedString.Key.foregroundColor: color])
     }
     
     // MARK: - IBAction

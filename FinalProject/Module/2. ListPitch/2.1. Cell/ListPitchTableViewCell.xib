@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -16,104 +16,73 @@
                 <rect key="frame" x="0.0" y="0.0" width="368" height="120"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="njt-dY-XEE">
-                        <rect key="frame" x="5" y="7" width="358" height="113"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_detail_pitch" translatesAutoresizingMaskIntoConstraints="NO" id="GuY-Sg-eOj">
-                                <rect key="frame" x="10" y="13" width="120" height="90"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="Vgn-Jd-W64"/>
-                                    <constraint firstAttribute="height" constant="90" id="glS-V6-I4r"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dia Chi" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Knq-1v-Dfk">
-                                <rect key="frame" x="163" y="45" width="46.5" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.43137254899999999" green="0.42352941179999998" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thoi Gian" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="93l-Ng-q7V" userLabel="Booking">
-                                <rect key="frame" x="164" y="72.5" width="65.5" height="18"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.43137254899999999" green="0.42352941179999998" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Da Nang" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A3r-f9-Fwl" userLabel="KhuVuc">
-                                <rect key="frame" x="150" y="13" width="95.5" height="29"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                <color key="textColor" red="0.27058823529999998" green="0.23921568630000001" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_listpitch_location" translatesAutoresizingMaskIntoConstraints="NO" id="euu-hZ-FLX">
-                                <rect key="frame" x="144" y="46" width="15" height="15"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="15" id="FhU-BL-w0y"/>
-                                    <constraint firstAttribute="height" constant="15" id="gcC-36-g8B"/>
-                                </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_listpitch_clock" translatesAutoresizingMaskIntoConstraints="NO" id="M8m-Zg-Rfw">
-                                <rect key="frame" x="143" y="74.5" width="15" height="15"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="15" id="fvc-ip-faQ"/>
-                                    <constraint firstAttribute="height" constant="15" id="t4N-cO-nwa"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EiR-Wl-Pvk" userLabel="HeartButton">
-                                <rect key="frame" x="323" y="5" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="XMf-En-Dgb"/>
-                                    <constraint firstAttribute="width" constant="30" id="m1E-zZ-fle"/>
-                                </constraints>
-                                <color key="tintColor" red="0.27058823529999998" green="0.23921568630000001" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" image="heart" catalog="system"/>
-                                <state key="selected" image="heart.fill" catalog="system"/>
-                                <connections>
-                                    <action selector="favoriteTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="n30-J3-hme"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uam-Ed-cYT">
-                                <rect key="frame" x="320" y="75" width="30" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="8G5-HC-ONY"/>
-                                    <constraint firstAttribute="width" constant="30" id="9Af-rK-aBX"/>
-                                    <constraint firstAttribute="height" constant="30" id="GgT-eJ-4d7"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="30" id="Np6-P3-6KT"/>
-                                </constraints>
-                                <state key="normal" image="ic_detail_booking"/>
-                                <connections>
-                                    <action selector="bookingTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="1GV-pr-Xez"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img_detail_pitch" translatesAutoresizingMaskIntoConstraints="NO" id="GuY-Sg-eOj">
+                        <rect key="frame" x="14" y="30" width="60" height="60"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Uam-Ed-cYT" secondAttribute="trailing" constant="8" id="03s-NT-Wqu"/>
-                            <constraint firstAttribute="trailing" secondItem="EiR-Wl-Pvk" secondAttribute="trailing" constant="5" id="6Xe-ll-O03"/>
-                            <constraint firstItem="EiR-Wl-Pvk" firstAttribute="top" secondItem="njt-dY-XEE" secondAttribute="top" constant="5" id="8fU-e6-6zy"/>
-                            <constraint firstItem="GuY-Sg-eOj" firstAttribute="centerY" secondItem="njt-dY-XEE" secondAttribute="centerY" constant="1.5" id="CPD-5o-Gtn"/>
-                            <constraint firstAttribute="bottom" secondItem="Uam-Ed-cYT" secondAttribute="bottom" constant="8" id="Fsc-wM-jAw"/>
-                            <constraint firstItem="A3r-f9-Fwl" firstAttribute="leading" secondItem="GuY-Sg-eOj" secondAttribute="trailing" constant="20" id="KjX-JZ-UmY"/>
-                            <constraint firstItem="A3r-f9-Fwl" firstAttribute="top" secondItem="GuY-Sg-eOj" secondAttribute="top" id="RHf-r9-qJL"/>
-                            <constraint firstItem="euu-hZ-FLX" firstAttribute="leading" secondItem="GuY-Sg-eOj" secondAttribute="trailing" constant="14" id="V0F-Um-zEv"/>
-                            <constraint firstItem="Knq-1v-Dfk" firstAttribute="top" secondItem="A3r-f9-Fwl" secondAttribute="bottom" constant="3" id="ZxB-f1-iud"/>
-                            <constraint firstItem="GuY-Sg-eOj" firstAttribute="leading" secondItem="njt-dY-XEE" secondAttribute="leading" constant="10" id="krS-um-k50"/>
-                            <constraint firstItem="euu-hZ-FLX" firstAttribute="top" secondItem="Knq-1v-Dfk" secondAttribute="top" constant="1" id="lZ8-TP-nGO"/>
-                            <constraint firstItem="M8m-Zg-Rfw" firstAttribute="leading" secondItem="GuY-Sg-eOj" secondAttribute="trailing" constant="13" id="oLd-j6-1Ma"/>
-                            <constraint firstItem="Knq-1v-Dfk" firstAttribute="leading" secondItem="euu-hZ-FLX" secondAttribute="trailing" constant="4" id="q4B-7k-TK6"/>
-                            <constraint firstItem="93l-Ng-q7V" firstAttribute="top" secondItem="Knq-1v-Dfk" secondAttribute="bottom" constant="10.5" id="scI-LY-ajT"/>
-                            <constraint firstItem="93l-Ng-q7V" firstAttribute="leading" secondItem="euu-hZ-FLX" secondAttribute="trailing" constant="5" id="uqb-Kg-8Px"/>
-                            <constraint firstItem="Uam-Ed-cYT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="93l-Ng-q7V" secondAttribute="trailing" constant="7" id="y1c-Ln-nYe"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Knq-1v-Dfk" secondAttribute="trailing" constant="10" id="zSP-73-Tdp"/>
-                            <constraint firstItem="M8m-Zg-Rfw" firstAttribute="top" secondItem="93l-Ng-q7V" secondAttribute="top" constant="2" id="zV6-pO-rTN"/>
+                            <constraint firstAttribute="height" constant="60" id="J2Q-WR-v2l"/>
+                            <constraint firstAttribute="width" constant="60" id="Wfv-B5-wyh"/>
                         </constraints>
-                    </view>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Thoi Gian" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="93l-Ng-q7V" userLabel="Booking">
+                        <rect key="frame" x="240" y="23" width="65.5" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.55281686779999994" green="0.55260413890000004" blue="0.57326740030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Da Nang" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A3r-f9-Fwl" userLabel="KhuVuc">
+                        <rect key="frame" x="84" y="30" width="95.5" height="29"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                        <color key="textColor" red="0.55294117647058827" green="0.55294117647058827" blue="0.5725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_home_location" translatesAutoresizingMaskIntoConstraints="NO" id="euu-hZ-FLX">
+                        <rect key="frame" x="84" y="65" width="15" height="15"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="nPs-qf-GWQ"/>
+                            <constraint firstAttribute="width" constant="15" id="tFr-5G-TIH"/>
+                        </constraints>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_listpitch_clock" translatesAutoresizingMaskIntoConstraints="NO" id="M8m-Zg-Rfw">
+                        <rect key="frame" x="137" y="90" width="15" height="15"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EiR-Wl-Pvk" userLabel="HeartButton">
+                        <rect key="frame" x="216" y="90" width="30" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="tintColor" red="0.27058823529999998" green="0.23921568630000001" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <state key="normal" image="heart" catalog="system"/>
+                        <state key="selected" image="heart.fill" catalog="system"/>
+                        <connections>
+                            <action selector="favoriteTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="n30-J3-hme"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uam-Ed-cYT">
+                        <rect key="frame" x="270" y="63" width="30" height="30"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal" image="ic_detail_booking"/>
+                        <connections>
+                            <action selector="bookingTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="1GV-pr-Xez"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dia Chi" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Knq-1v-Dfk">
+                        <rect key="frame" x="105" y="64" width="46.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.55281686779999994" green="0.55260413890000004" blue="0.57326740030000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
-                <color key="backgroundColor" red="0.6950495243" green="0.66847896579999999" blue="0.54710084199999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="backgroundColor" red="0.17629578709999999" green="0.1755726933" blue="0.2211556435" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
-                    <constraint firstItem="njt-dY-XEE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="PY1-g6-0GL"/>
-                    <constraint firstAttribute="bottom" secondItem="njt-dY-XEE" secondAttribute="bottom" id="QPI-oC-W2v"/>
-                    <constraint firstItem="njt-dY-XEE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="Wei-cm-BBx"/>
-                    <constraint firstAttribute="trailing" secondItem="njt-dY-XEE" secondAttribute="trailing" constant="5" id="xrB-gq-tbr"/>
+                    <constraint firstItem="Knq-1v-Dfk" firstAttribute="leading" secondItem="euu-hZ-FLX" secondAttribute="trailing" constant="6" id="BZV-7z-hGn"/>
+                    <constraint firstItem="A3r-f9-Fwl" firstAttribute="leading" secondItem="GuY-Sg-eOj" secondAttribute="trailing" constant="10" id="BiT-Ou-aBx"/>
+                    <constraint firstItem="Knq-1v-Dfk" firstAttribute="centerY" secondItem="euu-hZ-FLX" secondAttribute="centerY" id="HLR-Xq-Bzf"/>
+                    <constraint firstItem="euu-hZ-FLX" firstAttribute="top" secondItem="A3r-f9-Fwl" secondAttribute="bottom" constant="6" id="HtF-i8-zZB"/>
+                    <constraint firstItem="A3r-f9-Fwl" firstAttribute="top" secondItem="GuY-Sg-eOj" secondAttribute="top" id="OZQ-yS-QRu"/>
+                    <constraint firstItem="euu-hZ-FLX" firstAttribute="leading" secondItem="A3r-f9-Fwl" secondAttribute="leading" id="Q9E-p1-Sx6"/>
+                    <constraint firstItem="GuY-Sg-eOj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="s3f-of-Akb"/>
+                    <constraint firstItem="GuY-Sg-eOj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="14" id="yjs-qn-LJw"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -126,15 +95,15 @@
                 <outlet property="imagePitch" destination="GuY-Sg-eOj" id="18E-TO-3KU"/>
                 <outlet property="namePitch" destination="A3r-f9-Fwl" id="cAl-29-78H"/>
             </connections>
-            <point key="canvasLocation" x="35" y="0.0"/>
+            <point key="canvasLocation" x="34.782608695652179" y="0.0"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="ic_detail_booking" width="50" height="50"/>
+        <image name="ic_home_location" width="25" height="25"/>
         <image name="ic_listpitch_clock" width="50" height="50"/>
-        <image name="ic_listpitch_location" width="50" height="50"/>
         <image name="img_detail_pitch" width="2016" height="1512"/>
     </resources>
 </document>

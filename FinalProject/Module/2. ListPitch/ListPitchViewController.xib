@@ -66,16 +66,30 @@
                                 </barButtonItem>
                             </items>
                         </toolbar>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="fK5-rS-S0k">
+                            <rect key="frame" x="40" y="45" width="374" height="136"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ndf-uH-8UZ">
+                                <size key="itemSize" width="128" height="128"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
                     </subviews>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="fK5-rS-S0k" secondAttribute="trailing" id="0Pu-nW-HTs"/>
                         <constraint firstItem="NdZ-Ce-9JG" firstAttribute="leading" secondItem="PYy-YL-LVz" secondAttribute="leading" id="3CL-RR-GTQ"/>
                         <constraint firstAttribute="trailing" secondItem="Oc7-Kb-gWb" secondAttribute="trailing" id="BU3-Tq-w50"/>
+                        <constraint firstAttribute="bottom" secondItem="fK5-rS-S0k" secondAttribute="bottom" constant="80" id="CiX-3W-Rqo"/>
+                        <constraint firstItem="fK5-rS-S0k" firstAttribute="leading" secondItem="PYy-YL-LVz" secondAttribute="leading" constant="40" id="H7U-TJ-Wjc"/>
                         <constraint firstAttribute="height" constant="261" id="SgD-me-zbf"/>
                         <constraint firstAttribute="bottom" secondItem="Oc7-Kb-gWb" secondAttribute="bottom" id="Wrd-MX-QkV"/>
                         <constraint firstItem="NdZ-Ce-9JG" firstAttribute="top" secondItem="PYy-YL-LVz" secondAttribute="top" id="axY-eg-yEn"/>
                         <constraint firstItem="Oc7-Kb-gWb" firstAttribute="leading" secondItem="PYy-YL-LVz" secondAttribute="leading" id="qOV-cQ-QGN"/>
                         <constraint firstItem="Oc7-Kb-gWb" firstAttribute="top" secondItem="NdZ-Ce-9JG" secondAttribute="bottom" id="rMI-lZ-Hgp"/>
+                        <constraint firstItem="fK5-rS-S0k" firstAttribute="top" secondItem="Oc7-Kb-gWb" secondAttribute="top" id="tgf-j1-JiO"/>
                         <constraint firstAttribute="trailing" secondItem="NdZ-Ce-9JG" secondAttribute="trailing" id="wk1-Es-iHJ"/>
                     </constraints>
                 </view>

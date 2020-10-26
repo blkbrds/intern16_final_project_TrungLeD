@@ -15,7 +15,7 @@ PODS:
   - SDWebImage (5.9.2):
     - SDWebImage/Core (= 5.9.2)
   - SDWebImage/Core (5.9.2)
-  - SideMenu (6.4.9)
+  - SimpleCheckbox (2.1.0)
   - SVProgressHUD (2.2.5)
   - SwiftLint (0.40.2)
 
@@ -24,7 +24,7 @@ DEPENDENCIES:
   - ObjectMapper (~> 3.5)
   - RealmSwift
   - SDWebImage (~> 5.0)
-  - SideMenu
+  - SimpleCheckbox
   - SVProgressHUD
   - SwiftLint
 
@@ -37,7 +37,7 @@ SPEC REPOS:
     - RealmSwift
     - RxSwift
     - SDWebImage
-    - SideMenu
+    - SimpleCheckbox
     - SVProgressHUD
     - SwiftLint
 
@@ -49,10 +49,10 @@ SPEC CHECKSUMS:
   RealmSwift: ed40f371b62e8677141939e05b44a0c1a0a2d965
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   SDWebImage: 0b42b8719ab0c5257177d5894306e8a336b21cbb
-  SideMenu: 8ef57a3cfc024a2d3fc1c036c7fe98537baec9e0
+  SimpleCheckbox: ddcd433ab8c3a8f57300bebda13151a8f302c7f9
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftLint: 1216c910d27c2633ade33b4f071bb6b930982e62
 
-PODFILE CHECKSUM: 8533daf3d7554072f8f1f294ca97eb2d3edba989
+PODFILE CHECKSUM: 7c4b9a37d45c47c3f221c33af80010dae7d260e1
 
 COCOAPODS: 1.9.3
